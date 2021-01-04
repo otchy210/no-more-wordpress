@@ -3,11 +3,13 @@ import fs from 'fs/promises';
 import config from './config.mjs';
 import { newConnection } from './mysql.mjs';
 
-const DATA_ROOT = path.resolve('data');
+const DATA_ROOT = path.resolve(config.dirs.data);
 
 const conn = newConnection(config.mysql);
 
 const main = async () => {
+    await fs.mkdir(DATA_ROOT, {recursive: true});
+
     conn.connect();
 
     const terms = await getTerms(conn);
@@ -16,7 +18,6 @@ const main = async () => {
         categories: terms.categories,
         tags: terms.tags
     };
-    await fs.mkdir(DATA_ROOT, {recursive: true});
     await fs.writeFile(metaPath, prettyStringify(meta));
 
     const posts = await getPosts(conn);

@@ -4,5 +4,9 @@ export default {
         user: 'user',
         password: 'password',
         database: 'database',
+    },
+    dirs: {
+        data: 'data',
+        docs: 'docs'
     }
 };
