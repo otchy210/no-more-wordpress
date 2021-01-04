@@ -1,0 +1,116 @@
+MySQL のダンプを Gmail でお手軽に定期バックアップ
+----------------
+<h4>用意するもの</h4>
+<ul>
+	<li>perl</li>
+	<li>cron</li>
+	<li>sendmail (もしくは sendmail ラッパを持った他の MTA)</li>
+	<li>zip</li>
+	<li>Gmail アカウント</li>
+	<li><span style="text-decoration: line-through;"><a href="http://srekcah.org/jcode/" target="_blank">jcode.pl</a></span></li>
+	<li><a href="http://www.cc.rim.or.jp/~ikuta/mime_pls/document.html#mimew.pl" target="_blank">mimew.pl</a></li>
+</ul>
+<h4>対象者</h4>
+<ul>
+	<li>「用意するもの」に書かれているものの意味が分かる</li>
+	<li>perl スクリプトを作成して実行権限を与える方法が分かる</li>
+	<li>作成したスクリプトを cron に登録する事が出来る</li>
+</ul>
+上記にあてはまらない方は、知識を身につけてから再度お越し下さい。
+<h4>設置</h4>
+下記のスクリプトを作成して、パスとかを適宜修正します。
+※cron から動かすためにパスは全てフルパスで。
+<pre class="height_middle">#!/usr/bin/perl
+
+<span style="text-decoration: line-through;">require "/path/to/library/jcode.pl";
+</span>require "/path/to/library/mimew.pl";
+
+#### Setting
+$sendmail = '/usr/sbin/sendmail';
+$tmp = '/tmp';
+$mysqldump = '/usr/bin/mysqldump';
+$zip = '/usr/bin/zip';
+$debug = 0;
+
+$dbname = 'your_db_name';
+$dbuser = 'your_db_username';
+$dbpass = 'your_db_password';
+
+$from = 'mail@from.address';
+$to = 'mail@to.address';
+$subject = 'Subject of mail';
+
+$boundary = 'BOUNDARYBOUNDARYBOUNDARYBOUNDARY';
+
+#### Header
+$header = &lt;&lt;"EOH";
+Content-Type: Multipart/Mixed; boundary="$boundary"
+Content-Transfer-Encoding: Base64
+From: $from
+To: $to
+Subject: $subject
+EOH
+
+#### Backup
+($sec, $min, $hour, $mday, $mon, $year) = localtime(time);
+$filename = sprintf($dbname . '_%04d%02d%02d%02d%02d%02d.dump', $year + 1900, $mon + 1, $mday, $hour, $min, $sec);
+`$mysqldump -u $dbuser --password=$dbpass --skip-lock-tables --skip-extended-insert $dbname &gt; $tmp/$filename`;
+`$zip $tmp/${filename}.zip $tmp/${filename}`;
+unlink("$tmp/${filename}");
+
+#### File
+$filename = "$tmp/${filename}.zip";
+open(FILE, $filename);
+binmode FILE; # For Win
+while (read(FILE, $buf, 1024)) {
+        $contents .= $buf;
+}
+close(FILE);
+$base64 = &amp;bodyencode($contents);
+$base64 .= &amp;benflush();
+
+#### Body
+$body = &lt;&lt;"EOB";
+--$boundary
+Content-Type: application/octet-stream; name="$filename"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="$filename"
+
+$base64
+--$boundary--
+EOB
+
+if ($debug) {
+        open(MAIL, "&gt;&gt; dbbackup.txt");
+} else {
+        open(MAIL, "| $sendmail -t");
+}
+print MAIL qq($header);
+print MAIL qq(\n\n);
+print MAIL $body;
+close(MAIL);
+
+unlink($filename);</pre>
+スクリプトを試しに動かしてみて、問題ないようならcron に以下を設定します。
+※毎日 3:00 AM にメールを送る場合。
+<pre>00 3 * * * /path/to/script/script_name.pl</pre>
+これで、DB のダンプが zip 圧縮されて Gmail のメールボックスに毎日たまっていきます。
+やったね！
+<h4>カスタマイズのヒント</h4>
+mysqldump コマンドのオプション --skip-extended-insert は、ダンプ時に INSERT 文を 1 行ずつはき出す設定です。
+ダンプデータをエディタで開いて見る事があるので、可読性を高めるために指定していますが、リストアの速度は劣るので、用途によっては外しましょう。
+
+バックアップデータは Windows で扱う事が多いので、zip を使っていますが、tar に変えてもいいでしょう。
+
+mysqldump の部分を色々と変えれば、PostgreSQL 等の他の DB はもとより、様々なバックアップ用途に使う事が出来ます。
+Otchy は、SVN のバックアップにも使用してます。
+
+zip コマンドを工夫すれば、複数ファイルのバックアップも出来るでしょう。
+
+Gmail のアドレスは、userid+suffix@gmail.com の様に、任意のサフィックスを付けても同じメールボックスで受け取る事が出来ます。
+たとえば、userid+dbbackup@gmail.com 宛にバックアップを送信するようにして、userid+dbbackup でフィルタすれば、バックアップメールだけ受信トレイに入れずにそのままアーカイブ出来るので、バックアップメールも邪魔にならずに済みます。
+<h4>備考</h4>
+<span style="text-decoration: line-through;">今更、jcode.pl ？と思われるかもしれませんが、「おけば動く」という事と、昔からお世話になっていて慣れている、という理由で選択してます。
+</span> 特に必要性を感じなかったので Subject の日本語化には対応してません。
+
+<strong>[追記]</strong>すごい事に気がついた！jcode.pl 使ってない！途中で日本語使うのやめちゃったんだな＜過去のおれ

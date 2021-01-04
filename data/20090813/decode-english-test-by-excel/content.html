@@ -1,0 +1,14 @@
+「解読がとても難しい英語テストの解答用紙」を Excel で解読
+----------------
+GIGAZINE で紹介されていた、<a href="http://gigazine.net/index.php?/news/comments/20090813_english_test/" target="_blank">解読がとても難しい英語テストの解答用紙</a>を、Excel で解読してみました。
+
+全文はこちら↓
+
+<a href="//s.otchy.net/uploads/2009/08/poem.png"><img class="aligncenter size-medium wp-image-799" title="poem" src="//s.otchy.net/uploads/2009/08/poem-300x119.png" alt="poem" width="300" height="119" /></a>
+
+一番左のブロックは、単に内容を写し取っただけ。
+真ん中のブロックは、左のブロックを 2 進数と解釈して 16 進数に変換します。
+<pre>=BIN2HEX(A1)</pre>
+右のブロックは、真ん中のブロックを 16進数と解釈して 10 進数に変換の上、アスキーコードとして文字に解釈します。
+<pre>=CHAR(HEX2DEC(J1))</pre>
+もちろん、16 進数とか見せずに、一気に文字化も出来ますが、そこはまあ見た目の問題ですね。

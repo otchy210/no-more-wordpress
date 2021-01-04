@@ -1,0 +1,21 @@
+ちんゃと よゃちめう？ジェネレータ。
+----------------
+<a href="http://www.asks.jp/users/hiro/59059.html" target="_blank">読めることが間違い？ : ひろゆき＠オープンSNS</a> なんていう記事があって面白かったので、早速ジェネレータを作ってみました。
+
+<script src="//s.otchy.net/js/yomechau.js"></script>
+<form>
+<textarea name="from" style="width:450px; height: 8em; display: block;">ひらがなと カタカナ だけで、たんごを くぎるように にゅうりょく してください。でも実は、漢字を入れても無視するような動作をするので、ほどよく漢字仮名交じりだと、スペース開けなくても大丈夫かも知れない。よめちゃう？</textarea>
+<input type="button" name="yomechau" onclick="convert(this.form.from, this.form.to);" value="↓読めちゃう？↓" style="display: block; width: 150px; margin: 10px 150px;" />
+<textarea name="to" style="width:450px; height: 8em; display: block;"></textarea>
+</form>
+
+変換結果がイマイチだった時は、何度かボタンを押してみるといいと思います。
+ソースが気になる方はこちらからどうぞ。
+<a href="//s.otchy.net/js/yomechau.js">yomechau.js</a>
+
+<h4>追記</h4>
+公開当初、変換元を変えても反映されないバグと、単語のシャッフルがときどき行われないバグがありました。
+現在は修正済みです。
+
+<h4>追記２</h4>
+上手く漢字仮名交じりで書くと、いちいちスペースを空けなくてもそれっぽくなる事を発見。

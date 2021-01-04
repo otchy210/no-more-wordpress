@@ -1,0 +1,120 @@
+サーバサイド高機能エディタ ecoder インストール方法
+----------------
+<h4>ecoder って何？</h4>
+<a href="http://phpspot.org/blog/archives/2009/03/ecoder.html" target="_blank">ブラウザ上でソースコード編集が可能な開発環境を提供「ecoder」:phpspot開発日誌</a> で紹介されている、激しく便利そうなエディタです。
+ブラウザ上から、こんな感じでサーバ上のファイルを直接編集することができます。
+
+<a href="//s.otchy.net/uploads/2009/03/edit_html.gif"><img src="//s.otchy.net/uploads/2009/03/edit_html-150x150.gif" alt="HTML の編集" title="HTML の編集" width="150" height="150" class="alignnone size-thumbnail wp-image-443" /></a><a href="//s.otchy.net/uploads/2009/03/edit_css.gif"><img src="//s.otchy.net/uploads/2009/03/edit_css-150x150.gif" alt="CSS の編集" title="CSS の編集" width="150" height="150" class="alignnone size-thumbnail wp-image-444" /></a><a href="//s.otchy.net/uploads/2009/03/edit_js.gif"><img src="//s.otchy.net/uploads/2009/03/edit_js-150x150.gif" alt="JavaScript の編集" title="JavaScript の編集" width="150" height="150" class="alignnone size-thumbnail wp-image-445" /></a><a href="//s.otchy.net/uploads/2009/03/edit_php.gif"><img src="//s.otchy.net/uploads/2009/03/edit_php-150x150.gif" alt="PHP の編集" title="PHP の編集" width="150" height="150" class="alignnone size-thumbnail wp-image-446" /></a>
+
+順に、HTML / CSS / JavaScript / PHP を編集している様子です。これらのファイルが、色分けされた状態でブラウザで編集できるなんて、よだれが止まりません。
+
+そこで早速インストールしてみようとしたところ、まだベータ版ゆえか、公式ではいっさいドキュメントが用意されていなかったので、ソースを読みながらインストールした記録を公開することにしました。
+
+<h4>対象者</h4>
+<ul>
+	<li>PHP の動作するサーバを使用できる</li>
+	<li>Linux 設定について基本的な事を理解している or 自分で調べられる</li>
+	<li>Apache の設定について基本的な事を理解している or 自分で調べられる</li>
+</ul>
+
+<h4>ファイルのダウンロードと展開</h4>
+<a href="http://ecoder.gmeditor.com/">ecoder のウェブサイト</a>から、tar.gz ファイルをダウンロードして、ecoder を配置したい場所に展開します。
+現在の最新版 (ver 0.3.2) の直 DL は http://downloads.sourceforge.net/ecoder/ecoder_0.3.2.tar.gz?use_mirror=jaist&amp;filesize=406946 ですが、まだベータ版の状態なので、インストール時点での最新版を調べて DL した方が良いです。
+
+Windows で作業をする場合は、ブラウザから DL して展開したファイルに対して、後述の設定変更を行った後に、FTP なりでアップすると良いでしょう。
+ここでは、Linux 上で作業を完結させるためのコマンドを掲載しておきます。
+DL するパスとか展開するパスは、それぞれの環境に合わせて読み替えてください。
+<pre>$ su -
+# cd /usr/local/src/
+# mkdir ecoder_0.3.2
+# cd ecoder_0.3.2
+# wget http://downloads.sourceforge.net/ecoder/ecoder_0.3.2.tar.gz?use_mirror=jaist&amp;filesize=406946
+# tar xfvz ecoder_0.3.2.tar.gz
+# mv ecoder_0.3.2.tar.gz ../
+# cd ../
+# cp -a ecoder_0.3.2/ /var/www/www.otchy.net/himitsu
+# cd /var/www/www.otchy.net/
+# chown -R apache:apache himitsu/
+# cd himitsu/
+# find -type d -exec chmod 755 {} \;
+# find -type f -exec chmod 644 {} \;</pre>
+※最後の権限変更は、デフォルトの設定がいろいろと気持ち悪かったのでなおしました
+
+<h4>設定ファイルの編集</h4>
+ルートディレクトリ直下にある code.php というファイルに、正しい設定を書かないと ecoder は動作しません。といっても、必要な設定はすべてここにまとめられているので、さほど難しくはないかと思います。
+以下では、修正が必要な項目について、本サイトの設定を例に順番に説明します。
+まずは、大抵の場合で修正が必要な項目です。
+
+動作させるサイトのドメイン。
+<pre>$code['domain'] = "http://www.otchy.net/";</pre>
+クッキーを適用するドメイン。
+<pre>$code['domain_cookie'] = "www.otchy.net";</pre>
+編集するファイルのルート。スラッシュから始まるフルパスで記述する。
+<pre>$code['root'] = '/var/www/www.otchy.net/';</pre>
+エラーログの出力先。後述の .htaccess の設定と同じパスにする。
+事前に Apache ユーザに対して書き込み許可を与えておく必要がある。
+<pre>$dbug['error_path'] = '/var/log/ecoder/error.log';</pre>
+
+続いて、必要に応じて修正するといいかも知れない項目です。
+
+自動セーブ機能をデフォルトで ON にするかどうか。保存即公開の場合は、OFF 推奨。
+デフォルト OFF になっていても、画面上から切り替えることが可能。
+<pre>$code['autosave'] = 0;</pre>
+自動セーブ機能を ON にした場合のセーブ間隔 (秒)
+<pre>$code['autosave_time'] = 10;</pre>
+編集時に裏でバックアップをするかどうか。
+<pre>$code['backup'] = 1;</pre>
+ツリービューに表示させるファイルの拡張子。
+<pre>$_SESSION['tree_file_types'] = array( "php", "js", "html", "css", "txt", "htaccess", "ini" );</pre>
+アップロードできないようにするファイルの拡張子。
+<pre>$_SESSION['upload_banned'] = array( "exe" );</pre>
+ツリービューの中で無視するファイル名。
+<pre>$_SESSION['tree_file_ignore'] = array ( ".ftpquota" )</pre>
+ツリービューの中で無視するディレクトリ名。
+<pre>$_SESSION['tree_dir_ignore'] = array( ".", "..", ".files", ".snap", "logic", "cpanel", "ftp", "00", "01" );</pre>
+
+<h4>セキュリティと .htaccess 設定</h4>
+上記の設定を施しただけでも、とりあえず ecoder は動作し、ファイルの編集、保存を行うことができます。
+ただ、セキュリティは全く考慮されておらず、URL さえ知っていれば、誰でも編集可能な状態になってしまいます。
+
+実は、ecooder 自体でもセキュリティの仕組みを持っていて、code.php において、$code['secure'] = 1; と設定すれば、認証機能を有効にすることができます。
+ただ、この認証は、別プログラムでアカウントを認証し、設定したキー名で PHP のセッションを発行する事により機能するようです。(推測)
+既存のシステムにシングルサインオンで組み込むには非常に適した仕組みですが、認証プログラム自体は同梱されておらず、別途作り込む必要があります。
+
+そんな面倒くさい作り込みはしたくないので却下して、ここでは簡単に BASIC 認証を設定しておくことにします。
+平文でパスワードが流れるのが嫌な方は、SSL を同時に適用することをお勧めします。
+自分専用の編集サイトであれば、おれおれ証明書でも十分ですし。
+(その辺の設定については本記事の範疇外ですので別サイトなど参照してください。)
+
+以上を踏まえた、.htaccess の編集箇所は以下の通りです。
+
+ログファイルの出力先の権限を設定
+<pre>&lt;Files /var/log/ecoder/error.log&gt;
+  Order allow,deny
+  Deny from all
+  Satisfy All
+&lt;/Files&gt;</pre>
+ログファイルの出力先を設定
+<pre>php_value error_log /var/log/ecoder/error.log</pre>
+BASIC 認証を追加
+<pre>AuthUserFile /var/www/www.otchy.net/himitsu/.htpasswd
+AuthGroupFile /dev/null
+AuthName "ecoder login"
+AuthType Basic
+require valid-user
+
+&lt;Files .htpasswd&gt;
+  order allow,deny
+  deny from all
+&lt;/Files&gt;</pre>
+
+さらに、.htpasswd ファイルを作成する必要がありますが、ここでは詳しく説明しません。
+Apache 同梱の htpasswd コマンドを使うのが一番楽かと思います。
+<pre>$ htpasswd -c .htpasswd username</pre>
+
+以上で、設定は完了です。
+ファイル一式を配置したフォルダをブラウザから開けば、高機能なエディタが利用できます。
+もし何らかの設定が間違っている場合、ecoder 側で結構丁寧なエラーメッセージを表示してくれるので、それを元に修正していけば大丈夫です。
+
+この ecoder と <a href="http://www.ajaxplorer.info/" target="_blank">AjaXplorer</a> を組み合わせて使えば、簡単な開発はもう Web 上で完結できるんじゃないかという気がしてきますね。
+すばらしい時代になったものです。

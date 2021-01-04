@@ -1,0 +1,53 @@
+Feedly 移行記念、Feedly をはてブ対応させるユーザースクリプト
+----------------
+<strong>現在こちらのスクリプトは動作していません。</strong><a href="/feedly-hatebu-chrome-extension-edition/">代わりに作成した Chrome エクステンション</a>をご利用下さい。
+
+Google Reader の終了に先だって Feedly へ移行したのですが、Feedly はやはり海外製だけあってはてなブックマーク数の表示などには対応していないので、それに対応させるユーザースクリプトを書きました。
+
+Google Chrome の場合、以下のリンクから user.js ファイルをダウンロードして、ツール＞拡張機能 のところにドロップすると、インストールすることが出来ます。
+そのままクリックしただけではインストール出来ないのでご注意下さい。
+
+<a href="/gm/feedly_hatebu_0.7.2.user.js">Download</a> (Ver. 0.7.2) -- <span style="color:#c00; font-weight: bold;">New!</span> Feedly のフィードが feedly.com ドメインで提供されるようになった変更に対応。
+
+<div style="border: solid 1px #666; border-radius: 5px; padding: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.5) inset;">
+(2013-07-24 追記) Ver 0.7.0 で一覧でのブクマ数表示に対応しましたが、Google Reader 移行組なのでリストビュー以外は使っておらず、例えばカードビュー(？)みたいなところは未対応です。要望あれば検討します。
+</div>
+
+スクリプトが作動するとこんな感じの見た目になります。
+
+<a href="//s.otchy.net/uploads/2013/06/fwt_listview.png"><img src="//s.otchy.net/uploads/2013/06/fwt_listview-300x218.png" alt="" title="fwt_listview" width="300" height="218" class="aligncenter size-medium wp-image-2052" /></a>
+
+<a href="//s.otchy.net/uploads/2013/06/fwt_cardview.png"><img src="//s.otchy.net/uploads/2013/06/fwt_cardview-300x241.png" alt="" title="fwt_cardview" width="300" height="241" class="aligncenter size-medium wp-image-2053" /></a>
+
+<a href="//s.otchy.net/uploads/2013/06/fwt_listview_image.png"><img src="//s.otchy.net/uploads/2013/06/fwt_listview_image-300x153.png" alt="" title="fwt_listview_image" width="300" height="153" class="aligncenter size-medium wp-image-2104" /></a>
+
+ライセンスは <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank" class="blank">MIT License</a> (<a href="http://ja.wikipedia.org/wiki/MIT_License" target="_blank" class="blank">日本版 wikipedia の項</a>) で公開します。
+ライセンス内での改造、再配布ご自由に！
+
+<h4>変更履歴</h4>
+<dl>
+<dt>2013-06-06 [Ver.0.5.0]</dt><dd>初版</dd>
+<dt>2013-06-21 [Ver.0.5.1]</dt><dd>適用ドメインに cloud.feedly.com を追加。ブックマークレット版も公開 (暫定 Firefox 対応)</dd>
+<dt>2013-06-23 [Ver.0.6.0]</dt><dd>Firefox 対応版。途中で 1 秒待つ処理が入るのでロード完了直後は動きません。</dd>
+<dt>2013-07-14 [Ver.0.7.0]</dt><dd>リスト一覧にもブクマ数表示。Chrome / Firefox 版を統合。</dd>
+<dt>2013-07-17 [Ver.0.7.1]</dt><dd>URL に # を含む場合に正しく動作しない不具合を修正。</dd>
+<dt>2013-11-29 [Ver.0.7.2]</dt><dd>Feedly のフィードが feedly.com ドメインで提供されるようになった変更に対応。</dd>
+</dl>
+
+<h4>古い記述</h4>
+
+<blockquote>
+(2013-06-23 追記) Firefox 対応版出来ました。Firefox Ver.21.0 ＋ Graesemonkey Ver.1.9 で動作確認済みです。
+(2013-06-21 追記) Firefox + Greasemoneky だと動かないので、Firefox 暫定対応としてブックマークレット版を作りました。ワンクリック余計に必要ですが Firefox ユーザの方は、とりあえずこちらで凌いでもらえれば…。もし解決したらまたこのページで公開します。
+<del>あれ？？今どきの Firefox って、ブックマークレット動かないんですか!? …ちょっと方法探します。</del>
+ちゃんと動いているスクリプトを参考にして、Firefox で動くブックマークレット書けました。<small style="font-size:50%;color:#999;">半角スペースとか引数の渡し方にも意味があるかのようで (何かのチェック？)、論理的に同じ事をしているスクリプトでも、動いたり動かなかったり…。ホントどうしちゃったんでしょうね、最近の Firefox は…。</small>
+
+<a href="javascript:(function(){var%20s%20=%20document.createElement('script');%20s.type%20=%20'text/javascript';%20s.src%20=%20'http://www.otchy.net/gm/feedly_hatebu.user.js';%20document.body.insertBefore(s,%20document.body.firstChild);})()">FeedlyHatebu</a>
+</blockquote>
+
+<div style="border: solid 1px #666; border-radius: 5px; padding: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.5) inset;">
+<del>(2013-06-26 追記) 昨日、今日あたりで正常動作しなくなっているようです。一瞬表示されることもあるので、Feedly の HTML 構造が変更されたりしたのが原因ではないかと思います。Firefox 版は動いているので、Chrome の自動更新が原因と思われます。<br />
+(自分が不便なので) 近日中に修正版を作ってアップします。<br /></del>
+(2013-07-03 追記) 単に適用ドメインの問題で、www.feedly.com から cloud.freedly.com にリダイレクトされていたのが原因でした。自分のローカルが Ver 0.5.0 のままだったのを忘れていたという情けない原因で、Ver 0.5.1 にあげたらあっさりなおったので、特に修正版は作っていません。<br />
+一覧でのブクマ数表示の要望が多いので、それはそのうち対応しようかなと思ってます。あと保守が面倒なので、Chrome / Fx コードの共通化が課題ですね。
+</div>

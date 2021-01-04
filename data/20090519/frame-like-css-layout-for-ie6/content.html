@@ -1,0 +1,115 @@
+css による疑似フレーム IE6 標準準拠モード完全対応版 (CSS ハック / JavaScript未使用)
+----------------
+css のみを使って、ヘッダ / メニュー / フッタをスクロールしないように固定して疑似フレームを表現する手法は position: fixed による方法が広く知られています。
+この方法は、手軽に疑似フレームを表現できる一方で、IE6 が対応していないという非常に残念な現実があり、対象ブラウザから IE6 を完全に外してしまえるような状況ならともかく、(特に仕事の上などでは) IE6 を対象から外せない事も多いので頭痛の種でした。
+
+IE 独自拡張の expression を使って、fixed に近い状況を作り出す技が色々と開発されているのですが、どうも自分にしっくり来るものがありませんでした。
+そこで、下記の条件を満たすやり方を開発したので公開します。
+<ul>
+	<li>IE6 標準準拠モードで動作させる
+IE 7 に関して、fixed を正しく動作させるために標準準拠に関しては重要な要件</li>
+	<li>css ハックは使わない
+将来のブラウザのバージョンで異変が起きる可能性を排除</li>
+	<li>メニューもフッタも固定する
+ヘッダだけの固定であればシンプルな実装が他にもある</li>
+	<li>無駄な HTML マークアップを追加しない
+HTML 自体は fixed 対応ブラウザのみの場合と同様</li>
+	<li>極力シンプルに記述できる
+冗長なコードを書いて無理矢理つじつまを合わせるような事はしない</li>
+	<li>スクロール時に画面がちらつかない
+expression の使い方によってはダサイ見た目になってしまうのでそれを回避</li>
+	<li>IE6 以外のブラウザに影響を与えない
+当然</li>
+</ul>
+
+論より証拠。まずは<a href="http://www.otchy.net/sample/ie6fixed.html" target="_blank">サンプル</a>を見て下さい。
+このページでは、ヘッダ / メニュー / フッタの 3 つがスクロールに対して固定されています。
+fixed 対応ブラウザでは fixed で実現され、IE6 に関しては expression をちょっとだけ使っています。
+
+まず、一般的な fixed 部分について簡単に解説します。
+<pre>&lt;div id="header"&gt;ヘッダ&lt;/div&gt;
+&lt;div id="menu"&gt;メニュー&lt;/div&gt;
+&lt;div id="contents"&gt;
+START&lt;br /&gt;
+コンテンツ...&lt;br /&gt;
+END&lt;br /&gt;
+&lt;/div&gt;
+&lt;div id="footer"&gt;フッタ&lt;/div&gt;</pre>
+HTML については、非常にシンプルです。
+各部位ごとに異なる id を指定した div があるだけです。
+
+css のうち装飾に関わる部分を除くとこんな感じです。
+<pre>* {
+	margin: 0;
+	padding: 0;
+}
+#header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 24px;
+	z-index: 3;
+}
+#menu {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 150px;
+	height: 100%;
+	padding-top: 24px;
+	z-index: 2;
+}
+#contents {
+	padding: 24px 0 24px 150px;
+	z-index: 1;
+}
+#footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 24px;
+	z-index: 3;
+}</pre>
+#header / #menu / #footer については、fixed で固定されています。
+#menu / #contents では padding を指定する事で、重なってしまう部分が隠れないようにしてあります。
+fixed 対応ブラウザであれば、これだけで疑似フレームの完成です。標準準拠モードになるよう、DOCTYPE を指定しているので、IE7 であっても同様に動作します。
+
+続いて、IE6 向けの設定です。
+<pre>&lt;!--[if lt IE 7]&gt;
+&lt;style&gt;
+#header, #footer, #menu {
+	position: absolute;
+}
+#contents {
+	overflow: auto;
+	height: expression((document.documentElement.clientHeight - 48) + 'px');
+}
+#menu {
+	height: expression((document.documentElement.clientHeight - 48) + 'px');
+}
+&lt;/style&gt;
+&lt;![endif]--&gt;</pre>
+
+意外なほどシンプルではないでしょうか？これだけです。
+
+&lt;!--[if lt IE 7]&gt; から始まる記述は IE 独自拡張の条件付きコメントで、IE 以外のブラウザでは完全に無視されます。
+ここでは、IE 7 未満の IE を指定して専用の記述を読み込ませています。
+どうせ IE に対してのみ動作を変えるのであれば、変に CSS ハックを使うよりよほどリスクが少なく確実な方法だと思います。
+
+position: absolute; は、fixed に対応していない IE6 のために、設定を上書きしています。
+css の設定は後勝ちなので、IE6 向けの設定は fixed 向けよりも後に書く必要があります。
+
+#contens / #menu にある、expression がポイントです。
+expression は、filter 関数などと同様の IE 独自拡張で、任意の JavaScript コードを使用して動的に css の値を指定する事が出来きるものです。
+
+ここでは、#contents / #menu の高さを、ウィンドウ内部の高さからヘッダとフッタの分を引いた値に指定しています。
+これにより「メニューとコンテンツ部分がウィンドウからはみ出ない」という状況が生まれ、実質的な疑似フレームになります。
+また、expression 関数は、ウィンドウサイズが変更された際などにも自動的に再計算されます。
+
+ヘッダとフッタの top や left を expression 関数で設定する手法も見かけたのですが、これだとスクロール時にちらつきが出るのでイマイチです。
+この手法は、ウィンドウ自体がスクロールしないよう抑制し、コンテンツ部分のみを overflow: auto; でスクロールさせるという逆転の発想で実装されています。
+
+ソースの全容は<a href="http://www.otchy.net/sample/ie6fixed.html" target="_blank">サンプル</a>をダウンロードして確認して下さい。
+また、実際に使用する時はもちろん、css を直接 HTML に書かず、外部ファイルに切り出した方がよいです。

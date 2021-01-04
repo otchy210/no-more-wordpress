@@ -1,0 +1,178 @@
+jquery.jaticker.js
+----------------
+<script src="//s.otchy.net/js/jaticker/jquery.jaticker.js"></script>
+<link rel="stylesheet" href="//s.otchy.net/js/jaticker/jquery.jaticker.css" type="text/css">
+<p style="text-align: right;">≫<a href="//s.otchy.net/js/jaticker/jquery.jaticker_1.0.0.zip">Download </a></p>
+
+<pre id="jaticker-intro" style="white-space:normal">
+<ruby>jquery.jaticker.js は<rt>jquery.jaticker.js は</rt></ruby><ruby>日本語の<rt>にほんごの</rt></ruby><ruby>変換アニメーションに<rt>へんかんあにめーしょんに</rt></ruby><ruby>対応した、<rt>たいおうした、</rt></ruby><ruby>ティッカーの<rt>てぃっかーの</rt></ruby> jQuery <ruby>プラグインです。<rt>ぷらぐいんです。</rt></ruby><ruby>文字列を<rt>もじれつを</rt></ruby><ruby>タイプしている風に<rt>たいぷしているふうに</rt></ruby><ruby>順に表示する事が<rt>じゅんにひょうじすることが</rt></ruby><ruby>出来ます。<rt>できます。</rt></ruby>
+</pre>
+<script>
+$(function() {
+  $('#jaticker-intro').jaticker();
+});
+</script>
+
+<h4>使い方</h4>
+上部の Download リンクから zip ファイルをダウンロードして解凍すると、css ファイルと js ファイルが 1 つずつ含まれているのでそれを読み込みます。
+jQuery プラグインですので、jQuery 自体は先に読み込んでおいて下さい。
+
+<pre>
+&lt;head&gt;
+&lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="jquery.jaticker_1.0.0.js"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" href="jquery.jaticker_1.0.0.css" type="text/css"&gt;
+&lt;/head&gt;
+</pre>
+
+jQuery オブジェクトにプラグインの jaticker メソッドが追加されるので、対象となる要素に対して呼び出すと、その要素に含まれるテキストをタイプしている風にアニメーションして表示します。
+この時点で、英数字、ひらがな、カタカナはそれなりにちゃんと表示されますが、漢字については読みの情報がないため変換のアニメーションはしません。
+これで十分という場合はこのまま使っても構いません。
+
+<pre>
+&lt;div id="jaticker-1"&gt;
+ひらがな、カタカナだけならこれだけで OK !&lt;br /&gt;
+漢字が混ざるとちょっと残念な感じ。
+&lt;/div&gt;
+&lt;script&gt;
+$('#jaticker-1').jaticker();
+&lt;/script&gt;
+</pre>
+<button id="jaticker-1-start">↓動作確認</button>
+<pre id="jaticker-1">
+ひらがな、カタカナだけならこれだけで OK !
+漢字が混ざるとちょっと残念な感じ。
+</pre>
+<script>
+$('#jaticker-1').jaticker({'autoStart': false, 'leaveCursor': true});
+$('#jaticker-1-start').click(function() {
+  $('#jaticker-1').jatickerStart()
+});
+</script>
+
+漢字に対して読みを指定するときは、ruby 要素を使います。ruby 要素に囲まれた中に rt 要素があると、それを読みとして使って日本語変換のアニメーションを行います。
+変換を行うアニメーションは ruby 要素の単位になるので、漢字だけにルビを振るのではなく、送り仮名などまで含めたルビを振るとそれらしくなります。
+
+<pre style="white-space:normal">
+&lt;ruby&gt;漢字の読みは&lt;rt&gt;かんじのよみは&lt;/rt&gt;&lt;/ruby&gt;&lt;ruby&gt; ruby 要素で&lt;rt&gt; ruby ようそで&lt;/rt&gt;&lt;/ruby&gt;&lt;ruby&gt;指定して下さい。&lt;rt&gt;していしてください。&lt;/rt&gt;&lt;/ruby&gt;
+</pre>
+<button id="jaticker-2-start">↓動作確認</button>
+<pre id="jaticker-2">
+<ruby>漢字の読みは<rt>かんじのよみは</rt></ruby><ruby> ruby 要素で<rt> ruby ようそで</rt></ruby><ruby>指定して下さい。<rt>していしてください。</rt></ruby>
+</pre>
+<script>
+$('#jaticker-2').jaticker({'autoStart': false, 'leaveCursor': true});
+$('#jaticker-2-start').click(function() {
+  $('#jaticker-2').jatickerStart()
+});
+</script>
+
+インライン要素による書式指定などは、そのままに反映されます。
+<pre style="white-space:normal">
+&lt;span style="color:red"&gt;&lt;ruby&gt;文字の色を&lt;rt&gt;もじのいろを&lt;/rt&gt;&lt;/ruby&gt;&lt;ruby&gt;変えたり、&lt;rt&gt;かえたり、&lt;/rt&gt;&lt;/ruby&gt;&lt;/span&gt;&lt;span style="font-size:200%;"&gt;&lt;ruby&gt;文字の大きさを&lt;rt&gt;もじのおおきさを&lt;/rt&gt;&lt;/ruby&gt;&lt;ruby&gt;変えたりしても、&lt;rt&gt;かえたりしても、&lt;/rt&gt;&lt;/ruby&gt;&lt;/span&gt;&lt;ruby&gt;大丈夫。&lt;rt&gt;だいじょうぶ。&lt;/rt&gt;&lt;/ruby&gt;
+</pre>
+<button id="jaticker-3-start">↓動作確認</button>
+<pre id="jaticker-3" style="white-space:normal">
+<span style="color:red"><ruby>文字の色を<rt>もじのいろを</rt></ruby><ruby>変えたり、<rt>かえたり、</rt></ruby></span><span style="font-size:200%;"><ruby>文字の大きさを<rt>もじのおおきさを</rt></ruby><ruby>変えたりしても、<rt>かえたりしても、</rt></ruby></span><ruby>大丈夫。<rt>だいじょうぶ。</rt></ruby>
+</pre>
+<script>
+$('#jaticker-3').jaticker({'autoStart': false, 'leaveCursor': true});
+$('#jaticker-3-start').click(function() {
+  $('#jaticker-3').jatickerStart()
+});
+</script>
+
+アニメーションの速度を落とすとよく分かりますが、タイプしている内容はちゃんとローマ字に分解してアニメーションしています。
+<button id="jaticker-4-start">↓動作確認</button>
+<pre id="jaticker-4">
+ちゃんと<ruby>ローマ字入力<rt>ろーまじにゅうりょく</rt></ruby>しています。
+</pre>
+<script>
+$('#jaticker-4').jaticker({'autoStart': false, 'leaveCursor': true, 'inputSpeed': 200, 'convertSpeed': 300});
+$('#jaticker-4-start').click(function() {
+  $('#jaticker-4').jatickerStart()
+});
+</script>
+
+アニメーション中のフォントの書式については、デフォルトの css を修正したり、追加の css を指定することで変更できます。
+<pre>
+/* カーソル */
+.jaticker-cursor {
+  font-weight: bold;
+  color: red;
+}
+/* 入力中 */
+.jaticker-input {
+  color: green;
+  background-color: white;
+}
+/* 変換中 */
+.jaticker-convert {
+  color: blue;
+  background-color: white;
+}
+</pre>
+<style>
+#jaticker-5 .jaticker-cursor {
+  font-weight: bold;
+  color: red;
+}
+#jaticker-5 .jaticker-input {
+  color: green;
+  background-color: white;
+}
+#jaticker-5 .jaticker-convert {
+  color: blue;
+  background-color: white;
+}
+</style>
+<button id="jaticker-5-start">↓動作確認</button>
+<pre id="jaticker-5">
+<ruby>アニメーションの<rt>あにめーしょんの</rt></ruby><ruby>書式も<rt>しょしきも</rt></ruby><ruby>変更できます。<rt>へんこうできます。</rt></ruby>
+</pre>
+<script>
+$('#jaticker-5').jaticker({'autoStart': false});
+$('#jaticker-5-start').click(function() {
+  $('#jaticker-5').jatickerStart()
+});
+</script>
+
+<h4>オプション</h4>
+jaticker の実行時に引数でオプションを指定する事で、動作を色々と変更する事が出来ます。
+オプションの名前とデフォルト値は以下の通りです。
+<table>
+<tr><th>名前</th><th>意味</th><th>デフォルト値</th></tr>
+<tr><td>inputSpeed</td><td>キータイプアニメーションの速度 (msec)</td><td>60</td></tr>
+<tr><td>convertSpeed</td><td>変換アニメーションの速度 (msec)</td><td>120</td></tr>
+<tr><td>autoStart</td><td>アニメーションを自動的に開始するか</td><td>true</td></tr>
+<tr><td>cursorStr</td><td>カーソルの文字列</td><td>'|'</td></tr>
+<tr><td>cursorInterval</td><td>カーソルの点滅速度 (msec)</td><td>500</td></tr>
+<tr><td>hideCursor</td><td>カーソルを隠すか</td><td>false</td></tr>
+<tr><td>leaveCursor</td><td>アニメーション完了後にカーソルを消すか</td><td>false</td></tr>
+<tr><td>onFinished</td><td>アニメーション完了時に呼ばれるコールバック関数</td><td>undefined</td></tr>
+</table>
+
+autoStart を false として初期化した場合、アニメーションが自動的には始まりません。アニメーションを開始するためには、jaticker を実行した要素に対して、jatickerStart を実行します。
+<pre>
+// 初期化のみ
+$('#jaticker').jaticker({'autoStart': false});
+// アニメーション開始
+$('#jaticker').jatickerStart();
+</pre>
+
+onFinished に関数を指定すると、アニメーションが完了した時に実行されます。
+例えばこれを使って、複数のアニメーションを連携させる事などが出来ます。
+<pre>
+$('#jaticker-2').jaticker({'autoStart': false});
+$('#jaticker-1').jaticker({'onFinished': function() {
+  $('#jaticker-2').jatickerStart();
+}});
+</pre>
+
+<h4>実行環境・ライセンス</h4>
+jQuery 1.4 以降の環境で動作します。
+
+動作確認を行ったブラウザは、Firefox3.6 / Google Chrome 15 / IE6 / IE7 です。恐らく、古い Chrome / Firefox4+ / 最近のSafari / 最近の Opera 辺りは動きます。未確認ですが IE8 / IE9 もたぶん動くでしょう。
+これらについても、動作報告があれば有り難いです。
+
+ライセンスは <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT License</a> (<a href="http://ja.wikipedia.org/wiki/MIT_License" target="_blank">日本版 wikipedia の項</a>) で公開しています。

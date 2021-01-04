@@ -1,0 +1,73 @@
+「Greasemoneky(JavaScript)入門」への回答
+----------------
+JavaScript を初めて書いたという奮闘記なのですが、<a href="http://chishow.blogspot.com/2009/05/greasemonkeyjavascript.html" target="_blank">Greasemonkey(JavaScript)入門</a> という記事がありまして、「JavaScript いいよー、面白いよー」と勧めた者の責任としてこの中のいくつかの疑問に答えてみようと思います。
+
+<h4>配列をforeachしたい</h4>
+<blockquote><pre>for(var i in list)
+{
+    list[i];
+}</pre>
+とりあえずコレでいいみたい。ただプロトタイプ拡張（？）をすると追加したメンバー関数もリストアップされちゃうので注意らしい。まだその域に達していないので良くわからない。単純な配列であれば問題ないみたい。</blockquote>
+
+正確な理解だと思います。ただ、特に他の言語を知っている人は (他言語の便利メソッドが使いたくて)、String.prototype とか、Array.prototype をいじりたくなるのが人情なので、配列についての順次アクセスは面倒でも下記のように書くと癖を付けておいた方が後々楽かと思われます。
+
+<pre>for (var i=0; i&lt;list.length; i++) {
+    vat item = list[i];
+}</pre>
+
+逆に、for～in 文は Array だけでなく全てのオブジェクトに関して使えるので、例えば外部 API の結果など、未知のオブジェクトがあった時に、そのプロパティとメソッドを一覧するために有用です。
+
+<h4>JSONって</h4>
+<blockquote>まぁJSONってのが何なのかわかってないんだけどねｗ </blockquote>
+
+非常にもったいないです。是非理解して欲しいと思います。
+今や多くの言語で JSON のエンコード/デコードをするライブラリがあるので、JavaScript とサーバサイドとデータをやりとりするのに便利です。JSON に慣れると XML とかタルいです。
+
+<h4>setTimeoutなる関数</h4>
+<blockquote>ページを開いて５秒してから実行したい
+setTimeoutなる関数を使う。
+
+<pre>setTimeout(function(){
+    //code...
+}, 5 * 1000);</pre>
+
+比較的簡単でこりゃ便利と思ってたら思わぬ罠が・・・どうもこのfunction(){}の中が実行されるのが指定した時間の後になるため、function内部でfunction外部の変数を使ってると変数が変わってしまうと動作時に参照される変数も変わってしまう。</blockquote>
+
+これは、「5 秒後に実行される」と捉えると勘違いしがちですね。そう考えるのではなく、「5 秒後に指定した　function を実行するスレッドが起動される」と捉えるとシンプルに理解できます。
+従って、下記のような記述でスレッドを外部から終了させて処理を実行させない事も可能です。
+
+<pre>var id = setTimeout(function(){
+    // 実行されない
+}, 5 * 1000);
+clearTimeout(id);</pre>
+
+<h4>responseTextの処理の仕方</h4>
+<blockquote>結果のこのx.responseTextの処理の仕方がわからなかった。この結果をdocumentと同じように扱いたいがどうやってその形式にパースしてやるのかわからない。結局responseTextを単なるテキストとして文字列マッチで処理してしまってる。</blockquote>
+
+responseText のパースについては、昔悩んだ事があって結局　DOMParser を new してやる方法は成功しませんでした…。でも、下記のような方法であっさり解決できたと思います(確か)。既に存在している、document のパーサをそのまま使うっていうイメージでしょうかね。
+<pre>var div = document.createElement('div')
+div.style.display = 'none';
+body.appendChild(div);
+div.innerHTML = responseText; // ここで div 内に DOM が構築される
+var children = div.childElements; // 子を取得
+</pre>
+
+<h4>配列のソート</h4>
+<blockquote>配列で飛び飛びの配列ID番号(list[332] = 10; list[567] = 20; みたいな感じ)が入ってるのがあって、そのID番号に意味があるんだけどそいつらを加工するのにfilterやsortを使うと。出来上がる配列がもとにあった飛び飛びのIDがきえちゃってて0,1,2 と詰まった感じのものになってしまう。これIDを引き継いでやる方法ないのかな？</blockquote>
+
+JavaScript の Array はちょっとクセがあるので仕方ないかも。そういう事を実現したいのであれば、こういう書き方が使えます。Array の添え字はあくまでインデックスであって、ID としては使わない方が無難という事ですね。
+<pre>var array = [{id:332, value:10}, {id:567, value:20}];
+// var array = new Array(); var o1 = new Object(); o1.id = 332; o1.value = 10; array.push(o1); var o2 ... と等価
+// 比較関数でソート
+array.sort(function(a, b) {
+    return a.id - b.id;
+});</pre>
+
+<h4>click イベントの起動</h4>
+<blockquote>input type=button のオブジェクトにたいしてonclickが別JavaScriptで設定されている場合はうまく動いている気がするんだけど、img タグにonclickイベントを負荷した場合にimgタグに対してimg.click(); って呼び出しをしてもonclickイベントが通知されないみたいでコードが実行されずうんともすんとも言わない。</blockquote>
+
+ボタンの click() とか、似たようなのだと、form の submit() メソッドの方が実はフォームオブジェクトに対して特別に用意されているメソッドで、普通の要素についてのイベントを起動したい時は、img.onclick(); のようにします。
+まあこれは、知ってるかどうかというだけの話でしょう。
+
+<h4>そんなこんなで</h4>
+是非楽しい JavaScript ライフを送って下さい！

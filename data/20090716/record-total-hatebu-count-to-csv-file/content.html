@@ -1,0 +1,65 @@
+自分のサイトの合計はてブ数を淡々と csv に記録し続ける
+----------------
+<a href="http://www.otchy.net/20090629/making-of-twitter-bot-1/">Twitter ボットの作り方 Perl 編</a> 連載中ですが、ちょっとお休みして、さっき思い立って書いたスクリプトを紹介します。
+
+最近、<a href="http://tophatenar.com/" target="_blank">TopHatenar</a> の更新が止まってしまっていて悲しいので、自分のサイトのトータルはてブ数を記録して、自分でグラフを書くことにしました。
+といっても、自分が見る専用で問題ないので、csv を出力しておくだけです。適宜 Excel とかで加工してグラフ化します。
+
+まず必要になる CPAN モジュールをインストールします。root 権限必須です。
+
+<pre>
+$ su -
+# cpan
+<u>cpan&gt;</u> force install XMLRPC::Lite
+<u>cpan&gt;</u> install DateTime
+</pre>
+
+XMLRPC::Lite は自分の環境だとテストで引っかかって上手く入らなかったので、force install してます。
+force install する前に、通常の install で入れられないかを試すべきです。
+いずれのインストールも結構時間がかかるので、原則放置でたまに Enter を押してやる感じです。
+
+実際のスクリプトは下記のような感じです。
+標準出力に吐くようにしたので、ファイルに記録したい場合は任意にリダイレクトしてやります。
+
+<pre>
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use XMLRPC::Lite;
+use DateTime;
+
+my $url = 'http://www.otchy.net';
+
+my $count = XMLRPC::Lite
+    -&gt;proxy('http://b.hatena.ne.jp/xmlrpc')
+    -&gt;call('bookmark.getTotalCount', $url)
+    -&gt;result;
+
+my $now = DateTime-&gt;now(time_zone =&gt; 'Asia/Tokyo');
+print $now-&gt;strftime('%Y-%m-%d') . ',' . $count . "\n";
+</pre>
+
+$url の値はカウント対象の URL ですが、もちろん変更して下さい。
+スクリプトに実行権限を与えて実行すると、こんな感じの出力が出てきます。
+
+<pre>
+2009-07-16,204
+</pre>
+
+毎日の記録を残すのであれば、例えば下記のように cron に登録すればいいです。
+
+<pre>
+00 00 * * * /home/your_id/hatebulog/hatebulog.pl &gt;&gt; /home/your_id/hatebulog/hatebulog.csv
+</pre>
+
+今のところ日次で記録する前提で日付しか出力していませんが、はてブ数が多くもっと頻繁に記録するのであれば、出力を下記のように変える事で実行時間も記録されます。
+
+<pre>
+print $now-&gt;strftime('%Y-%m-%d %H:%M:%S') . ',' . $count . "\n";
+</pre>
+
+最初に自分専用とはいったものの、いったん csv に落としてしまえば、PHP ＋ Google Chart API でグラフ化して Web から見れるようにするとかもありですね。
+
+<h4>追記(2009-08-04)</h4>
+<a href="/20090804/total-hatebu-count-with-google-chart-api/">グラフ化してみました！</a>

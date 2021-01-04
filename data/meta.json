@@ -1,0 +1,300 @@
+{
+  "categories": {
+    "info": {
+      "label": "Information",
+      "description": "サイト自体に関する事などの一般的な情報。"
+    },
+    "tech": {
+      "label": "Technology",
+      "description": "Development に属さない一般的な技術ネタ。"
+    },
+    "dev": {
+      "label": "Development",
+      "description": "アプリケーション開発に関連するもの。"
+    },
+    "science": {
+      "label": "Science",
+      "description": "科学ネタ。Technology が工学系なら、こちらは理学系というイメージ。"
+    },
+    "business": {
+      "label": "Business",
+      "description": "仕事や商売、経済などに関する話題。"
+    },
+    "webcomic": {
+      "label": "Webcomic",
+      "description": ""
+    },
+    "lifestyle": {
+      "label": "Lifestyle",
+      "description": ""
+    },
+    "lifehack": {
+      "label": "Lifehack",
+      "description": ""
+    },
+    "english": {
+      "label": "English",
+      "description": ""
+    }
+  },
+  "tags": {
+    "network": {
+      "label": "network"
+    },
+    "ip": {
+      "label": "ip"
+    },
+    "nat": {
+      "label": "nat"
+    },
+    "mysql": {
+      "label": "mysql"
+    },
+    "dump": {
+      "label": "dump"
+    },
+    "gmail": {
+      "label": "gmail"
+    },
+    "backup": {
+      "label": "backup"
+    },
+    "os": {
+      "label": "os"
+    },
+    "windows": {
+      "label": "windows"
+    },
+    "macos": {
+      "label": "macos"
+    },
+    "linux": {
+      "label": "linux"
+    },
+    "gui": {
+      "label": "gui"
+    },
+    "jojo": {
+      "label": "jojo"
+    },
+    "dio": {
+      "label": "dio"
+    },
+    "wordpress": {
+      "label": "wordpress"
+    },
+    "twitter": {
+      "label": "twitter"
+    },
+    "greasemonkey": {
+      "label": "greasemonkey"
+    },
+    "%e8%bb%a2%e8%81%b7": {
+      "label": "転職"
+    },
+    "%e3%82%ad%e3%83%a3%e3%83%aa%e3%82%a2": {
+      "label": "キャリア"
+    },
+    "jquery": {
+      "label": "jquery"
+    },
+    "icon": {
+      "label": "icon"
+    },
+    "blank": {
+      "label": "blank"
+    },
+    "link": {
+      "label": "link"
+    },
+    "%e3%81%af%e3%81%a6%e3%83%96": {
+      "label": "はてブ"
+    },
+    "%e6%a4%9c%e7%b4%a2%e3%82%a8%e3%83%b3%e3%82%b8%e3%83%b3": {
+      "label": "検索エンジン"
+    },
+    "seo": {
+      "label": "seo"
+    },
+    "%e3%83%87%e3%82%a3%e3%82%b9%e3%83%97%e3%83%ac%e3%82%a4": {
+      "label": "ディスプレイ"
+    },
+    "%e8%a7%a3%e5%83%8f%e5%ba%a6": {
+      "label": "解像度"
+    },
+    "svn": {
+      "label": "svn"
+    },
+    "git": {
+      "label": "git"
+    },
+    "%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e7%ae%a1%e7%90%86%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0": {
+      "label": "バージョン管理システム"
+    },
+    "xpath": {
+      "label": "xpath"
+    },
+    "php": {
+      "label": "php"
+    },
+    "utf-8": {
+      "label": "utf-8"
+    },
+    "%e9%a2%a8%e9%82%aa": {
+      "label": "風邪"
+    },
+    "eco": {
+      "label": "eco"
+    },
+    "ie": {
+      "label": "ie"
+    },
+    "javascript": {
+      "label": "javascript"
+    },
+    "png": {
+      "label": "png"
+    },
+    "canvas": {
+      "label": "canvas"
+    },
+    "css": {
+      "label": "css"
+    },
+    "gamemeter": {
+      "label": "gamemeter"
+    },
+    "html": {
+      "label": "html"
+    },
+    "float": {
+      "label": "float"
+    },
+    "rss": {
+      "label": "rss"
+    },
+    "tag": {
+      "label": "tag"
+    },
+    "igoogle": {
+      "label": "igoogle"
+    },
+    "mobile": {
+      "label": "mobile"
+    },
+    "%e3%83%8b%e3%82%b3%e5%8b%95": {
+      "label": "ニコ動"
+    },
+    "bookmarklet": {
+      "label": "bookmarklet"
+    },
+    "firefox": {
+      "label": "firefox"
+    },
+    "extension": {
+      "label": "extension"
+    },
+    "synergy": {
+      "label": "synergy"
+    },
+    "excel": {
+      "label": "excel"
+    },
+    "%e3%83%aa%e3%83%a2%e3%83%bc%e3%83%88%e3%82%b3%e3%83%b3%e3%83%94%e3%83%a5%e3%83%bc%e3%82%bf": {
+      "label": "リモートコンピュータ"
+    },
+    "%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9": {
+      "label": "サービス"
+    },
+    "mmc": {
+      "label": "mmc"
+    },
+    "photoshop": {
+      "label": "photoshop"
+    },
+    "tutorial": {
+      "label": "tutorial"
+    },
+    "api": {
+      "label": "api"
+    },
+    "tinyurl": {
+      "label": "tinyurl"
+    },
+    "ecoder": {
+      "label": "ecoder"
+    },
+    "chrome": {
+      "label": "chrome"
+    },
+    "ajaxplorer": {
+      "label": "ajaxplorer"
+    },
+    "ecode": {
+      "label": "ecode"
+    },
+    "amazon": {
+      "label": "amazon"
+    },
+    "kindle": {
+      "label": "kindle"
+    },
+    "java": {
+      "label": "java"
+    },
+    "gae": {
+      "label": "gae"
+    },
+    "eclipse": {
+      "label": "eclipse"
+    },
+    "usb": {
+      "label": "usb"
+    },
+    "ie6": {
+      "label": "ie6"
+    },
+    "perl": {
+      "label": "perl"
+    },
+    "google": {
+      "label": "google"
+    },
+    "zen-coding": {
+      "label": "zen-coding"
+    },
+    "oauth": {
+      "label": "oauth"
+    },
+    "tumblr": {
+      "label": "tumblr"
+    },
+    "vbs": {
+      "label": "vbs"
+    },
+    "iphone": {
+      "label": "iphone"
+    },
+    "facebook": {
+      "label": "facebook"
+    },
+    "ios": {
+      "label": "ios"
+    },
+    "html5": {
+      "label": "html5"
+    },
+    "hatebu": {
+      "label": "hatebu"
+    },
+    "animation": {
+      "label": "animation"
+    },
+    "userscript": {
+      "label": "userscript"
+    },
+    "feedly": {
+      "label": "feedly"
+    }
+  }
+}

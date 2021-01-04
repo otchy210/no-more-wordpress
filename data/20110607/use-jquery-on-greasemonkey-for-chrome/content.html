@@ -1,0 +1,27 @@
+Greasemonkey で 超お手軽に jQuery を使うスニペット [Chrome 対応版]
+----------------
+旧版である、<a href="/20091104/use-jquery-on-greasemonkey/">Greasemonkey で 超お手軽に jQuery を使うスニペット</a> は Firefox で使用する分には問題ないのですが、Chrome ではセキュリティ上の都合か、Greasemoneky 上における unsafeWindow が unsafe では無いようで (？) unsafeWindow.jQuery などに Greasemoneky からアクセスすることが出来ません。
+
+そこで、Chrome 対応版のスニペットを用意しました。
+ただ、いわば Chrome のセキュリティを回避した書き方になるため、旧版にあった、「該当ページですでに jQuery が読み込まれていればそれを利用」という特徴が失われてしまっています。
+逆に言えば、常に自分で指定したバージョンを利用できるので、jQuery の新しい機能を使ったスクリプトを書く場合などは、こちらのほうが優れています。
+
+<h4>スクリプト</h4>
+<pre>
+(function (d, func) {
+    var h = d.getElementsByTagName('head')[0];
+    var s1 = d.createElement("script");
+    s1.setAttribute("src", "http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js");
+    s1.addEventListener('load', function() {
+        var s2 = d.createElement("script");
+        s2.textContent = "jQuery.noConflict();(" + func.toString() + ")(jQuery);";
+        h.appendChild(s2);
+    }, false);
+    h.appendChild(s1);
+})(document, function($) {
+    // ここにメインの処理を書く
+    $('#button').click(function(){
+        alert('clicked!');
+    });
+});
+</pre>

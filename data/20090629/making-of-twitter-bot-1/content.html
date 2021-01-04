@@ -1,0 +1,97 @@
+Twitter ボットの作り方 Perl 編 (1)
+----------------
+Twitter ボットの作り方解説第 1 弾。前提条件と、下準備までを解説します。
+
+<h4>前書き</h4>
+Twitter をある程度使っていると、突然見ず知らずのアカウントから reply をもらったりして、それがボットだという事は良くあります。
+そんなとき、自分だったらこういうボットを作るのに！っていう思いがあっても、なかなか作れない人も多いのではないでしょうか？
+ここでは、そのまま動作するサンプルを提示する事で、Twitter のボットを作る方法を解説します。
+Perl とか詳しくなくても、Linux の知識がある程度あれば、自由にボットを作れるようになるはずです。
+
+<h4>目標</h4>
+だんだんとレベルを上げながら、以下のようなボットを作る事を目標にします。
+<ul>
+<li>あらかじめ用意された定型文の中からランダムでつぶやくボット</li>
+<li>特定のワードに反応して、reply するボット</li>
+<li>特定の RSS の内容をつぶやき続けるボット</li>
+<li>ボットに対するメッセージを <del>Google</del> Yahoo で検索して結果を返すボット</li>
+</ul>
+
+<h4>用意するもの</h4>
+<ul>
+<li>ボット用のアカウント</li>
+<li>Perl 5.8.x が動作する Linux サーバ</li>
+<li>Perl の CPAN を利用出来る権限 (通常は root 権限)</li>
+<li>perl スクリプトにパスを通して実行可能にする権限</li>
+<li>cron を設定出来る権限</li>
+<li>UTF-8 で編集/保存が出来るエディタ</li>
+<li>上記を理解出来る知識</li>
+</ul>
+
+<h4>方針</h4>
+<ul>
+<li>CPAN で可能な事はなるべく CPAN でやる</li>
+<li>DB は使わずデータはファイルで持つ</li>
+<li>ゆるい感じで厳密なエラー処理とかはしない</li>
+</ul>
+
+ではここからいよいよ本編です！
+
+<h4>下準備</h4>
+Twitter のボットを作成するにあたっては、当然 twitter サーバとのやりとりが必要になるのですが、そのための CPAN ライブラリを導入します。
+また、今後のボットを作成するにあたっては、各種設定やデータなどを別ファイルに保存した方がやりやすいのですが、読み書きのしやすさと使いやすさを考慮して YAML を採用します。
+まずはこれらの CPAN ライブラリを導入するところからです。
+
+各モジュールのインストール中は結構時間がかかりますが、気長に待ちましょう。
+各種オプションは、意味を理解した上であえて変えようとしない限り全てデフォルト (そのまま Enter) で構いません。
+
+<pre>
+$ su -
+# perl -MCPAN -e shell
+<u>cpan&gt;</u> install YAML::Tiny
+<u>cpan&gt;</u> install Net::Twitter
+</pre>
+
+※ CPAN の利用について不明な点があれば<a href="http://www.google.co.jp/search?hl=ja&q=cpan+%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB&ie=UTF-8" target="_blank">こういったところ</a>を参照して下さい。
+
+CPAN モジュールの追加が完了したら、とりあえず簡単に動作確認をしておきましょう。
+まず、config.yml というファイルを作成します。内容は以下のような感じです。
+<pre>
+username: "twitter_user_name"
+password: "twitter_password"
+</pre>
+ここでは、Twitter で使用するアカウントのユーザ名とパスワードを記述しておきます。
+プレーンテキストでパスワードが記載されるので、ファイルの権限には気をつけて下さい。
+
+次に、twitbot.pl というファイルを作成します。内容は以下のような感じです。
+<pre>
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use YAML::Tiny;
+use Net::Twitter;
+
+my $config = (YAML::Tiny-&gt;read('config.yml'))-&gt;[0];
+my $twit = Net::Twitter-&gt;new(username =&gt; $config-&gt;{'username'}, password =&gt; $config-&gt;{'password'});
+
+$twit-&gt;update('Perl から Twiitter を更新するテストですよー');
+</pre>
+これを UTF-8 で保存し、実行属性を与えます。perl のパスは環境に合わせて修正して下さい。
+
+ここまで準備が出来たら、おもむろにスクリプトを起動します。
+config.yml の指定が相対パスになっているので、カレントディレクトリから起動して下さい。
+<pre>
+$ ./twitbot.pl
+</pre>
+
+エラーにならず実行が完了したら、Twitter の TL を確認して下さい。
+スクリプトからの更新が反映されていたら成功です。
+
+さあ、ここまで出来れば下準備は完了です。
+いよいよ次から、実際のボットを作っていきます。
+
+<div class="navi">
+<div class="next"><a href="/20090629/making-of-twitter-bot-2/">次へ</a></div>
+<div class="index"><a href="/20090726/making-of-twitter-bot-index/">目次</a></div>
+</div>

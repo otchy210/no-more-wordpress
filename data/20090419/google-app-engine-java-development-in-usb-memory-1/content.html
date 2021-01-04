@@ -1,0 +1,51 @@
+Google App Engine for Java 開発環境を USB メモリで持ち歩く (1)
+----------------
+Google App Engine の Java 開発環境を USB メモリに入れてどこでも開発できる環境を作りました。
+レポート第 1 弾。前書きと下準備、開発環境の大前提となる JDK を USB メモリに入れるところまで。
+
+<h4>はじめに</h4>
+ecoder をサーバにインストールして、軽い PHP や JavaScript ならどこでも開発できる環境が整ったのですが、大型のアプリや Java の開発となるとなかなか簡単にはいきません。
+そうしたところ、ちょうど Google が Google App Engine の Java 対応を発表したので、試してみる事にしました。
+
+開発環境さえ持ち歩く事が出来れば、ローカルで開発して、GAE サーバにアップする事で、どこでも開発できる環境の完成というわけです。
+また、どこにでも持ち歩きたかったので、USB メモリ上に環境を構築しましたが、ローカルにインストールする場合でも同様の手順が有効かと思います。
+逆に GAE とは関係なく、Eclipse を USB メモリ上で動かす場合でも参考になるはずです。
+
+基本的には Google の公式ドキュメント、<a href="http://code.google.com/intl/ja/appengine/docs/java/gettingstarted/" target="_blank">Google App Engine - Getting Started: Java</a> をなぞりつつ、USB メモリ上に構築するためのポイントや、開発を便利にするプラスアルファを加えていく予定です。
+
+<h4>用意するもの</h4>
+USB メモリ・・・ Java の SDK や開発環境、開発時のソースや確認用のブラウザなどもまとめて入れてしまうので、同様のものを作るなら 2GB 程度は容量が欲しいところです。
+用途次第で好きに選択して下さい。最近は驚くほど安くなっているので、専用に買ってしまってもいいと思います。
+
+Google アカウント・・・さしあたってローカルで動作できる環境を構築しますが、最終的に GAE で公開するためには Google のアカウントが必要です。
+
+Java の知識・・・本エントリは、あらかじめ Java での開発の知識のある方を対象としています。
+
+Windows OS ・・・対象としている OS は Windows です。XP 環境で確認していますが、恐らく 2000 と Vista では同様に動作するのではないかと思われます。
+
+<h4>JDK のインストール</h4>
+まず、<a href="http://java.sun.com/javase/downloads/index.jsp" target="_blank">Java のサイト</a>からインストーラをダウンロードしてきます。
+<blockquote>JDK 6 Update 13 → Download → Platform: Windows, Language: Multi-language, I agree... → Continue → jdk-6u13-windows-i586-p.exe
+</blockquote>
+
+次にインストーラを起動しますが、いったんローカルの HDD にインストールしてから、インストール後に必要なファイルを USB メモリにコピーして使います。
+直接 USB メモリを指定してインストールする事も可能ですが、USB メモリが抜かれている時に様々な問題が発生すると予想されるので、やらない方が無難です。
+
+<blockquote>全てのブラウザを閉じる(Java プラグインのため) → jdk-6u13-windows-i586-p.exe を実行 → 同意する → 次へ → しばし待つ → (JREインストール先の選択) 次へ → しばし待つ → 完了
+</blockquote>
+
+インストールが正常に完了したら、次は JDK を USB メモリにコピーします。
+また、これ以降 USB メモリのドライブレターを U として記述していくので、各自の環境に合わせて読み替えて下さい。
+デフォルトの設定で JDK をインストールしていると下記のパスに JDK がインストールされているはずなので、それぞれ USB メモリにコピーします。
+
+<blockquote>C:\Program Files\java\jdk1.6.0_13
+↓
+U:\java\jdk1.6</blockquote>
+
+以上で、JDK のインストールは完了です。
+別途、パスを通したりする作業が必要なのですが、USB メモリは刺した環境によってドライブレターが変わるという問題があるので、その解決は別の項で説明します。
+
+<div class="navi">
+<div class="next"><a href="http://www.otchy.net/20090419/google-app-engine-java-development-in-usb-memory-2/">次へ</a></div>
+<div class="bottom"></div>
+</div>

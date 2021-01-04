@@ -1,0 +1,39 @@
+画像まとめページを自動でサムネイル・スライドショー化するブックマークレット
+----------------
+縦に長く画像のリンクが大量にあるようなページで、ページに含まれている画像を全てサムネイル一覧にまとめて、そのサムネイルの内容をスライドショーのように表示する事が出来るブックマークレットです。
+下のリンクをブックマークバー等にドラッグしてクリックすると利用出来ます。
+
+とりあえずこのページで試してみる場合は、そのまま "imageview" をクリックしてみて下さい。
+
+<a href="javascript:(function(d){var%20s=d.createElement('script');s.src='http://s.otchy.net/js/imageview.js';d.getElementsByTagName('head')[0].appendChild(s);})(document);">imageview</a>
+
+<pre>
+javascript:(function(d){var%20s=d.createElement('script');s.src='http://s.otchy.net/js/imageview.js';d.getElementsByTagName('head')[0].appendChild(s);})(document);
+</pre>
+
+<h4>動作</h4>
+下記のように、サムネイル画像の img 要素があってそれに大きい画像がリンクしているような部分をページ上から抜き出して、サムネイル一覧を生成します。
+&lt;a href="***.jpg"&gt;&lt;img src="***_mini.jpg" /&gt;&lt;/a&gt;
+HTML のロードが完了していない時は、HTML のロードが完了するまで待ってから動作します。
+
+サムネイル一覧を作成する時、いったんページの最下部まで自動的にスクロールする事で、<a href="http://gigazine.net/" target="_blank">GIGAZINE</a> のように、画像が遅延ロードされるページでも全ての画像を取得出来るように配慮しています。
+
+サムネイル一覧から任意の画像をクリックすると、その場で大きな画像が開きます。
+画像の上でクリックしたり、矢印キーの左右で、画像を切り替える事が出来ます。
+
+<h4>画面キャプチャ</h4>
+こういう感じの画像まとめ、よくありますよね。
+<a href="//s.otchy.net/uploads/2011/10/imageview01.png"><img src="//s.otchy.net/uploads/2011/10/imageview01-300x252.png" alt="" title="imageview01" width="300" height="252" class="aligncenter size-medium wp-image-1501" /></a>
+
+ここでブックマークレットを実行すると読み込みが始まり、読み込みが完了するとサムネイル一覧が作成されます。
+<a href="//s.otchy.net/uploads/2011/10/imageview03.png"><img src="//s.otchy.net/uploads/2011/10/imageview03-300x252.png" alt="" title="imageview03" width="300" height="252" class="aligncenter size-medium wp-image-1503" /></a>
+
+サムネイルから画像を選択すると、その場で拡大表示されます。
+<a href="//s.otchy.net/uploads/2011/10/imageview04.png"><img src="//s.otchy.net/uploads/2011/10/imageview04-300x252.png" alt="" title="imageview04" width="300" height="252" class="aligncenter size-medium wp-image-1504" /></a>
+
+<h4>対象ブラウザ</h4>
+Google Chrome 14 と、Firefox 3.6 で動作確認しています。恐らく、Firefox 4+ と Safari 4+ あたりでは動作すると思われます。
+IE に関してはほとんど未確認ですが、IE6 は動作しません。IE7、IE8 もたぶん動作しません。IE9 はもしかしたら動作するかも知れません。
+
+(追記)
+利用者の方から Firefox 7 と IE9 で正常動作するとの報告をいただきました。ありがとうございます。

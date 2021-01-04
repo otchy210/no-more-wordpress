@@ -1,0 +1,20 @@
+amazon のページからワンクリックでアフェリエイトリンクを作るブックマークレット
+----------------
+タイトルの通りです。何となく需要がありそうな気がしたので作ってみました。
+いずれも、AffiliateID 部分をご自分のアフェリエイト ID に置き換えて使って下さい。
+(<a href="http://www.google.co.jp/search?q=%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88+%E4%BD%BF%E3%81%84%E6%96%B9" target="_blank">ブックマークレットの使い方</a>)
+
+URL のみ
+<pre>
+javascript:void(function(a,l){if(a){l='http://amz.ly/jp/'+encodeURIComponent(a.value)+'/AffiliateID';prompt('Copy%20it!',l)}})(document.getElementById('ASIN'))
+</pre>
+
+a タグ付き
+<pre>
+javascript:void(function(a,t,l){if(a){l='&lt;a%20href=%22http://amz.ly/jp/'+encodeURIComponent(a.value)+'/AffiliateID%22&gt;'+t.firstChild.nodeValue+'&lt;/a&gt;';prompt('Copy%20it!',l)}})(document.getElementById('ASIN'),document.getElementById('btAsinTitle'))
+</pre>
+
+こちらの記事を参考にさせてもらいました。
+<a href="http://d.hatena.ne.jp/rikuo/20091107#p2009110701" target="_blank">Amazonのページからamz.lyで短縮してTwitterに移動するBookmarklet</a>
+
+amazon アフェリエイトやってないんですけどね。

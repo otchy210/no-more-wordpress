@@ -1,0 +1,49 @@
+上下の要素をぬるっとスワップする jQuery プラグイン
+----------------
+複数のパネルが上下に並んでいるようなデザインで、上下の位置を入れ替える UI はよく見ますが、それをぬるっとアニメーションさせるための jQuery プラグインです。
+
+こんな感じに動きます。
+<div id="smoothswap" style="width:400px;padding:10px;border: solid 1px #99f;background-color:#eef;">
+<div class="smoothswap-panel" style="margin:10px;padding:10px;border:solid 1px #999;background-color:#fff;">
+  <div style="text-align:right"><button class="smoothswap-up">▲</button><button class="smoothswap-down">▼</button></div>
+  <div>
+    1つめのパネル。<br />
+    1つめのパネル。<br />
+    1つめのパネル。<br />
+    1つめのパネル。<br />
+  </div>
+</div>
+<div class="smoothswap-panel" style="margin:10px;padding:10px;border:solid 1px #999;background-color:#fff;">
+  <div style="text-align:right"><button class="smoothswap-up">▲</button><button class="smoothswap-down">▼</button></div>
+  <div>
+    2つめのパネル。<br />
+  </div>
+</div>
+<div class="smoothswap-panel" style="margin:10px;padding:10px;border:solid 1px #999;background-color:#fff;">
+  <div style="text-align:right"><button class="smoothswap-up">▲</button><button class="smoothswap-down">▼</button></div>
+  <div>
+    3つめのパネル。<br />
+    3つめのパネル。<br />
+    3つめのパネル。<br />
+    3つめのパネル。<br />
+    3つめのパネル。<br />
+    3つめのパネル。<br />
+    3つめのパネル。<br />
+    3つめのパネル。<br />
+  </div>
+</div>
+</div>
+<script src="//s.otchy.net/js/jquery.smoothswap.js"></script>
+<script type="text/javascript">// <![CDATA[
+$(function(){
+  $('#smoothswap').smoothswap({
+    'opacity': '0.6',
+    'duration': 'normal',
+    'marginHeight': 10
+  });
+});
+// ]]></script>
+
+詳細は以下の専用ページよりどうぞー。
+<a href="/javascript/smoothswap/">jquery.smoothswap.js</a>
+

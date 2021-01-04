@@ -1,0 +1,28 @@
+Google Map から検索結果無しの URL を作るブックマークレット
+----------------
+Google Map では、任意の画面からそこへリンクするための URL を生成する事が出来るのですが、その URL には、その時使用した検索ワードが含まれた形になっています。
+まあそんな事気にすんなよ、といえばそれまでですが、人に URL を伝える時とか、検索ワードが入っていない方がスマートに見えていいなぁ、なんて言う事もあるかと思います。
+
+そこで、それを簡単にするブックマークレットを作ってみました。
+(参考：<a href="http://www.google.co.jp/search?ie=UTF-8&q=%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9" target="_blank">ブックマークレットの使い方</a>)
+
+<pre>javascript:(function(l,v,i,a,r){if(!l)return;v=l.value;i=v.indexOf('?');r=v.substr(0,i)+'?';a=v.substr(i+1).split('&amp;');while(v=a.shift()){if(v.match(/^(q|hnear)=/i))continue;r+=v+'&amp;';}prompt('Copy%20it!',r);})(document.getElementById('leurl'));</pre>
+
+まず、上記のブックマークレットを登録したら、下記の 3 ステップで検索結果無し URL が手に入ります。
+
+<h4>ステップ1</h4>
+普通に検索します。
+
+<a href="//s.otchy.net/uploads/2009/12/step1.png"><img src="//s.otchy.net/uploads/2009/12/step1-300x215.png" alt="step1" title="step1" width="300" height="215" class="aligncenter size-medium wp-image-917" /></a>
+
+<h4>ステップ2</h4>
+リンクを表示させます。
+
+<a href="//s.otchy.net/uploads/2009/12/step2.png"><img src="//s.otchy.net/uploads/2009/12/step2-300x215.png" alt="step2" title="step2" width="300" height="215" class="aligncenter size-medium wp-image-918" /></a>
+
+<h4>ステップ3</h4>
+ブックマークレットを実行します。
+
+<a href="//s.otchy.net/uploads/2009/12/step3.png"><img src="//s.otchy.net/uploads/2009/12/step3.png" alt="step3" title="step3" width="356" height="134" class="aligncenter size-full wp-image-919" /></a>
+
+あとはよしなに～。

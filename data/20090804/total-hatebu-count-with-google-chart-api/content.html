@@ -1,0 +1,113 @@
+Google Chart API を使って自サイトの合計はてブ数をグラフ化する
+----------------
+日頃、自サイトにはてブが付いて増えていく様子を、<a href="http://tophatenar.com/" target="_blank">TopHatenar</a> でグラフを見てほくそ笑んでいたりしたのですが、TopHatenar は更新が遅れることが多く、残念な気持ちになることも度々ありました。
+
+そこで以前、せめて記録だけは残そうと、<a href="/20090716/record-total-hatebu-count-to-csv-file/">自分のサイトの合計はてブ数を淡々と csv に記録し続ける</a>というエントリを書いて、それ以来ずっと記録しています。
+それでまあ、そろそろデータも貯まってきたので予告通り(？)、グラフ化してみる事にしました。
+ブログパーツのようにして、このサイトの右メニューにも貼り付けてあります。
+
+大きく出すとこんな感じです。
+<iframe src="/hatebulog/hatebulog_big.php" style="width:400px;height:300px;border:0;margin:10px;" ></iframe>
+
+当初、PHP で何らかのライブラリを使用して楽をしようと思ったのですが、自分の希望を全て満たすものが見あたらなかったので、自力で Google Chart API を使用しています。
+
+グラフの元になるデータは、<a href="/20090716/record-total-hatebu-count-to-csv-file/">自分のサイトの合計はてブ数を淡々と csv に記録し続ける</a>で取得したものです。
+下記のようなファイルになっています。
+<pre>
+2009-07-16,204
+2009-07-17,205
+    ：
+    ：
+2009-08-03,245
+2009-08-04,250
+</pre>
+
+これを元に、Google Chart API のパラメータを生成して、グラフを表示しています。
+以下にソースを載せておきます。
+
+<pre class="height_middle">
+&lt;?php
+
+/* グラフ設定 */
+$api = 'http://chart.apis.google.com/chart?'; // Google Chart API の URL
+$width = 400; // 画像の横
+$height = 300; // 画像の縦
+$type = 'lc'; // グラフの種類 (折れ線グラフ)
+$yUnit = 10; // Y軸の単位 (データの内容によって調整)
+$csv = '/your_file_dir/hatebulog.csv'; // 読み取る CSV ファイル
+
+/* データ取得 */
+$fp = fopen($csv, 'r');
+$data = array();
+$isFirst = true;
+while (($values = fgetcsv($fp)) !== FALSE) {
+	if ($isFirst) {
+		$firstDate = substr($values[0], 5);
+		$isFirst = false;
+	}
+	$lastDate = substr($values[0], 5);
+	array_push($data, (int) $values[1]);
+}
+fclose($fp);
+
+/* yUnit に基づいてデータを正規化(0.0～100.0 の範囲に調整する) */
+$min = (int) min($data); // グラフ上の最小値
+while (($min % $yUnit) != 0) {
+	$min--;
+}
+$max = (int) (max($data) + 1.0); // グラフ上の最大値
+while (($max % $yUnit) != 0) {
+	$max++;
+}
+$range = (float)($max - $min); // グラフ描画範囲
+$normalizeData = array(); // 正規化データ
+foreach ($data as $d) {
+	$d = (float) $d;
+	$d = ($d - $min)/$range * 100.0;
+	array_push($normalizeData, number_format($d, 1));
+}
+
+/* min, max, yUnit に基づいて、Y軸を生成 */
+$yAxis = array();
+for ($y = $min; $y &lt;= $max; $y+=$yUnit) {
+	array_push($yAxis, $y);
+}
+$yDiv = number_format((100.0 / (count($yAxis)-1)-0.1), 1); // Y 軸の分割
+
+/* タグ を生成 */
+$url = $api . 'chs=' . $width . 'x' . $height .
+	'&amp;amp;cht=' . $type .
+	'&amp;amp;chd=t:' . implode(',', $normalizeData) .
+	'&amp;amp;chxt=x,y&amp;amp;chxl=0:|' . $firstDate . '|' . $lastDate . '|1:|' . implode('|', $yAxis) .
+	'&amp;amp;chg=0,' . $yDiv
+;
+$tag = '&lt;img src=&quot;' . $url . '&quot; width=&quot;' . $width . '&quot; height=&quot;' . $height . '&quot; alt=&quot;&quot; /&gt;'
+?&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;?php echo $tag ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+ソース中にざっくりとコメントを書いておきましたが、ポイントになるのは、Google Chaart API の線グラフでは、Y 軸の値が、0.0～100.0 と固定されていて、グラフを描画する値をその範囲の値に正規化しないといけない点です。
+値を正規化したら、Y 軸のラベルには、その正規化された世界で本来の値がどこになるのか、という情報を渡してやる必要がありますね。
+そんな処理が上に書かれています。
+
+X 軸についてはシンプルに、最初と最後の日付を載せているだけです。
+
+<del datetime="2009-08-04T14:01:17+00:00">また、今回は元データが整数値なのですが、汎用性を考えて、仮に小数の値が元データになっても問題なく動作するように書いたつもりなので、小数のデータであってもきっと上手く動作するでしょう。</del>
+整数値前提となっている部分がありました…。
+
+<h4>追記</h4>
+元データの行数が増えてくると、グラフとして描画するのが苦しくなってくることが予想されます。
+その場合、csv を保存した後に、tail -n 60 hatebulog.csv > hatebulog_tail.csv のようにしておいて、最新の何件かを取り出すようにするといいでしょう。

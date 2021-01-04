@@ -1,0 +1,69 @@
+[α版]はてブエントリーページを旧仕様っぽくする Greasemonkey
+----------------
+はてブのエントリーページを旧仕様っぽくする Greasemonkey 書きました。
+まだ超α版なので、user.js ファイルでは置きません。
+Chrome でしか確認してないです。まあ Firefox でも動くんじゃないかな？たぶん。
+
+<pre>
+// ==UserScript==
+// @name         Hatebu Entry Page Downgrader
+// @namespace    http://www.otchy.net/
+// @version      0.0.1
+// @include      http://b.hatena.ne.jp/entry*
+// ==/UserScript==
+
+(function (callback) {
+    var script = document.createElement(&quot;script&quot;);
+    script.setAttribute(&quot;src&quot;, &quot;http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js&quot;);
+    script.addEventListener('load', function() {
+        var script = document.createElement(&quot;script&quot;);
+        script.textContent = &quot;(&quot; + callback.toString() + &quot;)();&quot;;
+        document.body.appendChild(script);
+    }, false);
+    document.body.appendChild(script);
+})(function() {
+    var isMore = (location.href.indexOf('mode=more') &gt;= 0);
+    if (!isMore) {
+        var iframe = $('&lt;iframe /&gt;');
+        iframe.hide();
+        $(document.body).append(iframe);
+        var href = $('#more-link a').attr('href');
+        iframe.attr('src', href);
+    } else {
+        var pBody = $(parent.document.body);
+        var iBody = $(document.body);
+        var bk = iBody.find('#new-bookmarks');
+        pBody.find('#new-bookmarks').html(bk.html());
+        pBody.find('ul.bookmark-list li').css({'padding': '5px 0px 5px 30px'}).find('img.profile-image').css({'width': '16px', 'height': '16px', 'margin-left': '-20px'});
+        var scored = pBody.find('#scored-bookmarks');
+        var sToggle = $('&lt;span /&gt;').toggle(function() {
+            scored.find('.bookmark-list').hide();
+            $(this).text('[開く]');
+        }, function() {
+            scored.find('.bookmark-list').show();
+            $(this).text('[閉じる]');
+        });
+        scored.find('h4.entry-page-main-subtitle .inner').append(sToggle);
+        sToggle.css({'cursor': 'pointer'}).click();
+    }
+});
+</pre>
+
+<h4>出来る事</h4>
+<ul>
+	<li>エントリーページの「新着」ブックマークを「全ての」ブックマークに差し替え</li>
+	<li>ユーザのアイコンを 16 x 16 に変更</li>
+	<li>人気のブックマークの表示/非表示切り替え</li>
+</ul>
+
+<h4>出来ない事</h4>
+<ul>
+	<li>コメントのみ表示チェックが効かない</li>
+	<li>スターが付けられない</li>
+	<li>グラフが見れない</li>
+</ul>
+現状は、全てのブックマークを表示するページから HTML を親ページに流し込んでる実装です。
+この実装だと、上記の問題解決はかなり難しそうです。
+なので、全てのブックマークページをそのまま iframe で埋め込む方法に実装を変更する予定なのですが、とりあえず情報参照だけなら綺麗に動いたのでアルファ版として公開してみました。
+
+フィードバック、改造報告などがあれば是非コメントに！

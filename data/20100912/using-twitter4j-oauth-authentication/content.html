@@ -1,0 +1,168 @@
+Twitter4J から OAuth 認証部分だけを利用する方法
+----------------
+※前置き長いです。<a href="#start_main">本題はここ</a>から。
+
+9/6 ごろから 9/9 にかけて、<a href="/twitmgr/" target="_blank">TwitMgr</a> と <a href="/splitwit/" target="_blank">Splitwit</a> の OAuth 認証が正しく動作しなくなってしまっていました。
+これらは、JavaScript で Twitter API を扱うライブラリとして、<a href="/twit-api/">TwitAPI.js</a> を使っており、それがうまく動作していなかったのです。で、原因を追ったところ、JavaScript 側ではなく、OAuth 認証を肩代わりするプロキシサーバである <a href="http://code.google.com/p/taj-proxy/" target="_blank">taj-proxy</a> 側に問題があることがわかったので、今回はそれを直したときの話です。
+
+そもそも、taj-proxy は、開発当初 GAE/j 上でうまく Twitter OAuth 認証を扱えるライブラリがなかった (と思っていた) ため、OAuth 認証部分をすべて独自実装してました。Twitter 側の何らかの実装の変更により、その独自実装がうまく動かなくなったようなのですが、ぱっと見では全然原因が分かりませんでした。(多分 Signature 周りだとは思う)
+それで改めて、Twitter OAuth 認証を扱えるライブラリを探したところ、<a href="http://twitter4j.org/" target="_blank">Twitter4J</a> という超メジャーなライブラリが、GAE/j に対応していることがわかり、早速使用させてもらうことにした次第です。
+
+Twitter4J では、Twitter API と一対一に対応した java のメソッドが用意されており、きわめて簡単に TwitterAPI を利用することができます。(設計思想としては、初代の <a href="/twitter-api/">TwitterAPI.js</a> に似てますね。)
+ところが、TwitAPI.js では、将来的な TwitterAPI の拡張もにらんで、任意のパスを渡して TwitterAPI を利用することができるようになっているため、そのままでは JavaScript 側から渡されたパスを Twitter4J のメソッドに翻訳する必要が出てしまい、単に適用するだけでは済みませんでした。
+
+そこで、Twitter4J の便利メソッドは使用せず、Twitter4J として用意されている各種のクラスを使用して、OAuth 部分だけを利用させてもらったので、その方法についてまとめておきます。
+
+<a name="start_main"></a>ここから本題です。長い前置きでした‥。
+
+<h4>リクエストトークンを取得する</h4>
+Twitter API を OAuth で使用する際に、開発者側で必要な ConsumerKey と ConsumerSecret はすでに取得済みなことを前提とします。もしまだでしたら、ほかの情報を当たってください。
+ここではまず、これから始める OAuth 認証のために必要なリクエストトークン (使い捨てパスワードのようなもの) を取得します。
+
+下記の疑似コードでは捨ててますが、consumerKey と consumerSecret から、requestToken と requestTokenSecret を取得するまでがポイントです。この時点ではまだユーザには何も提示しておらず、ここで取得した requestToken を次に使います。また、requestTokenSecret も必ずペアで保持しておきます。
+
+<pre>
+Configuration conf = ConfigurationContext.getInstance();
+OAuthAuthorization oauth = new OAuthAuthorization(conf, <span style="color:blue;">consumerKey</span>, <span style="color:blue;">consumerSecret</span>);
+HttpClientWrapper http = new HttpClientWrapper(conf);
+try {
+    HttpResponse res = http.post(conf.getOAuthRequestTokenURL(), oauth);
+    String result = res.asString();
+    if (res.getStatusCode() != 200) {
+        System.out.println(result);
+        return false;
+    }
+    Map&lt;String, String&gt; results = OAuthUtil.parseResult(result);
+    String <span style="color:blue;">requestToken</span> = results.get("oauth_token");
+    String <span style="color:blue;">requestTokenSecret</span> = results.get("oauth_token_secret");
+} catch (TwitterException e) {
+    e.printStackTrace();
+    return false;
+}
+return true;
+</pre>
+<pre>
+public static Map&lt;String, String&gt; parseResult(String result) {
+    String[] results = result.split("&");
+    Map&lt;String, String&gt; map = new HashMap&lt;String, String&gt;();
+    for (String param : results) {
+        String[] kv = param.split("=");
+        String key = kv[0];
+        String value = kv[1];
+        map.put(key, value);
+    }
+    return map;
+}
+</pre>
+
+<h5>Twitter4J の役者たち</h5>
+<dl>
+<dt>Configuration クラス</dt>
+<dd>Twitter4J の設定情報を保持しています。シングルトンなので、こうしてインスタンスを取得して様々に使用します。</dd>
+<dt>OAuthAuthorization クラス</dt>
+<dd>Twitter4J で OAuth の認証情報を扱うクラスです。この時点ではまだ consumerKey と consumerSecret しか持ちません。</dd>
+<dt>HttpClientWrapper クラス</dt>
+<dd>GAE/j では外部サイトに対してソケットを開くことができず、Apache Commons Http Client などの普通の HttpClient は軒並み全滅という状況の中、HttpClientWrapper は、GAE/j でも利用可能な HttpURLConnection も状況に応じて使用して GAE/j 上でもスムーズな動作を可能とした、超ナイスなクラスです。</dd>
+</dl>
+
+<h5>独自メソッド</h5>
+<dl>
+<dt>OAuthUtil.parseResult メソッド</dt>
+<dd>HttpResponse#asString() メソッドでは、単にサーバからのリプライを文字列で返してきます。Twitter API の仕様上、OAuth 認証段階では、名前=値&名前=値&名前=値... という文字列が返ってくるので、それを Map にパースするだけです。</dd>
+</dl>
+<h4>OAuth 認証の要求</h4>
+単に以下の URL をユーザに表示して (通常、ブラウザであればリダイレクト) ユーザからの認証許可を待ちます。
+認証が許可されると、ConsumerKey を取得した際に登録したコールバック URL に結果が返ってきます。
+<pre>
+https://twitter.com/oauth/authorize?oauth_token=<span style="color:blue;">requestToken</span>
+https://twitter.com/oauth/authenticate?oauth_token=<span style="color:blue;">requestToken</span>
+</pre>
+ここで、authorize は、必ず毎回ユーザの手動による認証が必要になります。
+authenticate の場合、初回のみ認証が必要なだけで、一回認証してしまえば次回からは自動的にコールバックが呼ばれるようになります。大半のウェブサービスではこちらを使ってますね。
+ちなみに TwitAPI.js では、その性質上<a href="/20100816/oauth-with-javascript-and-security/">簡単に認証情報を横取りすることが可能</a>なので、authorize のみ利用可能にしています。
+
+<h4>アクセストークンの取得</h4>
+ユーザから OAuth 認証が許可されると、コールバック URL に結果が返ってきます。その際、リクエストパラメータとして oauth_token が渡されるので、これを requestToken と見なし、ペアで保持しておいた requestTokenSecret を取り出します。
+
+再度 Twitter サーバに問い合わせた結果得られる、oauth_token と oauth_token_secret が、真に重要なアクセストークンになります。これがいわば、OAuth 認証の結果得られた、対象アプリケーション専用のパスワードのようなものです。その際、各ユーザのユニークキーである user_id と表示上の名前である screen_name が得られるので、これらすべてをセットにして保持しておきます。
+ただ、screen_name に関してはユーザ設定で変更も可能なので、もしアプリ側でユーザごとの情報を何か保存する場合、user_id に関連づけて保存しておく必要があります。
+
+<pre>
+Configuration conf = ConfigurationContext.getInstance();
+AccessToken accessToken = new AccessToken(<span style="color:blue;">requestToken</span>, <span style="color:blue;">requestTokenSecret</span>);
+OAuthAuthorization oauth = new OAuthAuthorization(conf, consumerKey, consumerSecret, accessToken);
+HttpClientWrapper http = new HttpClientWrapper(conf);
+try {
+    HttpResponse res = http.post(conf.getOAuthAccessTokenURL(), oauth);
+    String result = res.asString();
+    if (res.getStatusCode() != 200) {
+        System.out.println(result);
+        return false;
+    }
+    Map&lt;String, String&gt; results = OAuthUtil.parseResult(result);
+    String <span style="color:blue;">accessToken</span> = results.get("oauth_token");
+    String <span style="color:blue;">accessTokenSecret</span> = results.get("oauth_token_secret");
+    String <span style="color:blue;">userId</span> = results.get("user_id");
+    String <span style="color:blue;">screenName</span> = results.get("screen_name");
+} catch (TwitterException e) {
+    e.printStackTrace();
+    return false;
+}
+return true;
+</pre>
+
+<h5>Twitter4J の役者たち</h5>
+<dl>
+<dt>AccessToken クラス</dt>
+<dd>Twitter4J で OAuth のトークン情報を扱うクラスです。この時点では一時パスワードに相当する、requestToken を保持します。</dd>
+<dt>OAuthAuthorization クラス</dt>
+<dd>前と違って、取得済みのリクエストトークン情報も渡します。こうすることで、先ほどユーザが OAuth 認証した結果を結びつけて Twitter 側に伝えることができます。</dd>
+</dl>
+
+<h4>Twitter API の呼び出し</h4>
+accessToken と accessTokenSecret が得られれば、後はそれを使って任意の Twitter API が呼び出せるようになります。
+Twitter API は使用する HTTP メソッドにより効果が異なるので GET/POST/DELETE に応じて、使用する Java のメソッドが異なります。
+
+<pre>
+Configuration conf = ConfigurationContext.getInstance();
+AccessToken accessToken = new AccessToken(<span style="color:blue;">accessToken</span>, <span style="color:blue;">accessTokenSecret</span>);
+OAuthAuthorization oauth = new OAuthAuthorization(conf, consumerKey, consumerSecret, accessToken);
+HttpClientWrapper http = new HttpClientWrapper(conf);
+String <span style="color:blue;">url</span> = "https://twitter.com/some_api_path.json";
+HttpParameter[] parameters = new HttpParameter[]{new HttpParameter(name1, value1), new HttpParameter(name2, value2)};
+
+try {
+    HttpResponse res = http.get(url, parameters, oauth);
+    // HttpResponse res = http.post(url, parameters, oauth);
+    // HttpResponse res = http.delete(url, parameters, oauth);
+    String result = res.asString();
+    if (res.getStatusCode() != 200) {
+        System.out.println(result);
+        return false;
+    }
+    // Document document = res.asDocument(); // for xml
+    // JSONObject jsonObj = res.asJSONObject(); // for json object
+    // JSONArray jsonArr = res.asJSONArray(); // for json array
+} catch (TwitterException e) {
+    e.printStackTrace();
+    return false;
+}
+return true;
+</pre>
+
+<h5>Twitter4J の役者たち</h5>
+<dl>
+<dt>AccessToken クラス</dt>
+<dd>前と違って、一時パスワードに当たる requestToken ではなく、認証済みの accessToken を保持します。</dd>
+<dt>OAuthAuthorization クラス</dt>
+<dd>認証済みのアクセストークン情報も渡すことで、任意の API を呼び出し可能になります。</dd>
+<dt>url</dt>
+<dd>任意の Twitter API の URL が指定可能です。Twitter API の仕様として「拡張子」に当たる部分を、json とか xml に変えると、Twitter が返す結果のフォーマットを制御できます。詳しくは、Twitter API のドキュメントを参照してください。</dd>
+<dt>HttpParameter クラス</dt>
+<dd>HttpClientWrapper クラスに、任意のパラメータを渡すために使います。どういったパラメータが有効に機能するかは、Twitter API のドキュメントを参照してください。</dd>
+</dl>
+
+<h4>あとがき</h4>
+Twitter4J を使用するほとんどの人は、最初から用意されている便利メソッドで十分事足りると思うので、OAuth 部分のみ使用するといった用途は限定的かと思います。例えば、Twitter4J 未対応の新 API を使いたい場合や、今回のケースのように独自のアプリで変わったことをしたい場合などでしょうか。
+ただ、そういった用途を想定したかのように、Twitter4J のクラス郡は非常によくできていて、とても使いやすいので助かりました。
+改めて、Twitter4J の作者様には謝辞を述べたいと思います。
