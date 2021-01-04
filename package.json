@@ -4,7 +4,7 @@
   "description": "No More WordPress allows you to 1) convert WordPress DB to static files 2) generate static websites based on 1 3) eliminate PHP and MySQL",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "convert": "node bin/convert.mjs"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/otchy210/no-more-wordpress/issues"
   },
-  "homepage": "https://github.com/otchy210/no-more-wordpress#readme"
+  "homepage": "https://github.com/otchy210/no-more-wordpress#readme",
+  "devDependencies": {
+    "mysql": "^2.18.1"
+  }
 }

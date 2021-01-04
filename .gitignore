@@ -1,2 +1,4 @@
 www-otchy-net.sql
-node-modules/
+node_modules/
+
+bin/config.mjs
