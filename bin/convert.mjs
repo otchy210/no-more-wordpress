@@ -112,7 +112,7 @@ const getPosts = async (conn) => {
 };
 
 const handlePost = async (post, terms) => {
-    const {date, title, content} = post;
+    const {date, title, content, type} = post;
     const path = getPostPath(post);
 
     const dataDir = `${DATA_ROOT}/${path}`;
@@ -121,6 +121,7 @@ const handlePost = async (post, terms) => {
     const metaPath = `${dataDir}/meta.json`;
     const meta = {
         ...terms,
+        type,
         time: date.getTime(),
     };
     await fs.writeFile(metaPath, prettyStringify(meta));
@@ -195,7 +196,7 @@ const isBlock = (elem) => {
 }
 
 const addBr = (content) => {
-    const dom = new JSDOM(`${content}`);
+    const dom = new JSDOM(content);
     const body = dom.window.document.body;
     const results = [];
     pushInnerHtml(body, results);
