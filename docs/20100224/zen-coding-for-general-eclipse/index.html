@@ -1,0 +1,64 @@
+
+<html>
+<head>
+    <title>Aptana 以外の Eclipse で Zen-Coding を有効にする方法</title>
+</head>
+<body>
+<div style="margin:0 20px;padding: 10px; border: solid 1px #f00;">
+【2011-05-27 追記】<br>
+EC studio さんで紹介されているからか、未だに多くアクセスがあるんですが、現在であれば <a href="http://reoto.com/archives/307" target="_blank">ぼんずーず : eclipse + zen-coding プラグイン3.6Helios動作確認済み「eclipse-zencoding」</a> で紹介されている方法の方が推奨です。<br>
+</div>
+<br>
+<a href="http://designblog.ecstudio.jp/htmlcss/zen-coding-aptana.html" target="_blank">知らない人は損してる？コーディングが3倍速くなるZen-Codingを導入してみた - EC studio デザインブログ</a> で紹介されていた、Zen-Coding が激しく気になって、常用している Eclipse で使いたいと思ったのですが、どうも Aptana で無いとすんなりとは動いてくれない様子。<br>
+<br>
+調べていくと、Zen-Coding は、Aptana 自体の機能ではなく、Eclipse Monkey なる Eclipse プラグインの機能を用いて実現しているようだったので、普通の Eclipse でもちゃんと設定すれば動作するのではないかと踏んで、試してみました。<br>
+以下、普通の Eclipse で Zen-Coding を有効にする方法です。<br>
+<br>
+<h4>Eclipse Monkey のインストール</h4>
+<ul>
+    <li>ヘルプ → ソフトウェア更新 → 検索およびインストール</li>
+    <li>サイトの追加 → http://download.eclipse.org/technology/dash/update/</li>
+    <li>「Eclipse Monkey」「Mozilla Rhino」をインストール</li>
+    <li>しばし待つ → Eclipse 再起動</li>
+</ul>
+[参考]<a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20090218/324952/" target="_blank">Part4 Eclipse Monkeyで統合開発環境に機能を追加 - マクロで始める実用プログラミング：ITpro</a><br>
+<br>
+<h4>Zen-Coding (Eclipse Monkey スクリプト) の導入</h4>
+<ul>
+    <li><a href="http://code.google.com/p/zen-coding/downloads/list" target="_blank">Downloads - zen-coding -  Project Hosting on Google Code</a></li>
+    <li>「Zen Coding for Aptana v0.6.0.1」をダウンロード</li>
+    <li>Eclipse 上、任意のプロジェクト直下に、scripts フォルダを作成</li>
+    <li>ダウンロードしたファイルの中身を scripts フォルダ内に展開</li>
+    <li>Eclipse 再起動</li>
+</ul>
+[参考]<a href="http://designblog.ecstudio.jp/htmlcss/zen-coding-aptana.html" target="_blank">知らない人は損してる？コーディングが3倍速くなるZen-Codingを導入してみた - EC studio デザインブログ</a><br>
+<br>
+<h4>動作確認とショートカット変更</h4>
+導入が成功すれば、メニューに「スクリプト」が追加され、導入済みのスクリプト一覧が表示されているはずです。<br>
+このメニューから選択しても、Zen-Coding の各機能を使うことが出来ます。<br>
+<br>
+ショートカットの設定が適切であれば、メニュー内にもショートカットが表示されるのですが、元々 Eclipse には大量のショートカットが設定されているため、そのどれかとバッティングしていると、Zen-Coding のショートカットは使用することが出来ません。<br>
+<br>
+ショートカットを利用するためには、参考リンク先にもあるように、Eclipse 側のショートカットを逃がすか、Zen-Coding のショートカットを変更する必要があります。<br>
+ここでは、Zen-Coding 側のショートカットを変更する方法を紹介します。<br>
+<br>
+ショートカットの変更は、scripts フォルダ以下にある *.js ファイルを編集して行います。<br>
+例えば、HTML の展開だったら、"Expand Abbreviation.js" です。<br>
+<br>
+冒頭 5 行目に Key: という値があり、ここでショートカットが定義されています。この辺は Zen-Coding の設定と言うよりも、Eclipse Monkey の設定ですね。<br>
+ここでショートカットを変更して *.js ファイルを保存すれば、即座に反映されるので、スクリプトメニューで確認して下さい。<br>
+また、仮想キーについては、下記のエイリアスが設定されているようです。<br>
+<br>
+M1 = Ctrl<br>
+M2 = Shift<br>
+M3 = Alt<br>
+<br>
+…と思ったら、CTRL、SHIFT、ALT と直接書いても大丈夫でした。こっちの方が分かりやすいですね。<br>
+<br>
+[参考]<a href="http://designblog.ecstudio.jp/htmlcss/zen-coding-shortcut-key.html" target="_blank">  Zen-Codingのショートカットをまとめてみました - EC studio デザインブログ</a><br>
+<br>
+以上で、すんなりと動作させることが出来ました。<br>
+Zen-Coding すげぇ面白いし楽ちんです。素晴らしい！<br>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+
+<html>
+<head>
+    <title>Twitter ボットの作り方 Perl 編 (3)</title>
+</head>
+<body>
+Twitter ボットの作り方解説第 3 弾。特定のワードが含まれたつぶやきに反応して、何らかの返信をするボット作ってみます。<br>
+以下は、第 2 弾までの状態を前提としています。<br>
+<br>
+<h4>ボット作成の方針</h4>
+基本的なボットの動作としては、まず、特定ワードの検索をして、検索結果に含まれるユーザに対して何らかの返信をするという方法になります。<br>
+ただ検索をする際、Twitter 全体を対象として検索すると、ワードによってはあり得ない件数の検索結果となってしまったり、プログラムに間違いがあった場合、不特定多数に迷惑をかけてしまう事になりかねません。<br>
+そこで検索対象としては、ボットに @ してくれた人の発言だけを対象とする事にします。<br>
+検索対象を全体に広げるのは、ボットの属性で考えたり、プログラムの正常動作を確認出来てからでいいでしょう。<br>
+<br>
+また、ボットの動作は cron による一定の間隔になるので、1 回の動作の間に大量のつぶやきがあった場合、一度に取得できる検索結果件数には限度があるので、検索結果に漏れが出る可能性があります。<br>
+この漏れに対しても、厳密に検索を繰り返して遡っていく事は可能ですが、その部分には対応しない事にします。<br>
+さしあたってその程度の精度のボットを作ると思って下さい。まあ Twitter という文化からすれば許容出来る範囲でしょう。<br>
+<br>
+あと返信の内容についてですが、何らかの反応があった方が面白いので、基本的にはオウム返しになりますが、「@username えー○○って( 艸｀*)ププッ」(○○には相手の発言が入る) という感じにしましょう。<br>
+<br>
+<h4>設定ファイルの追加</h4>
+第 1 弾から使用している config.xml に対して、元々の username と password の後ろに、今回新たに 2 つの値を追加します。<br>
+<br>
+<pre>query: "ダメ"
+template: "えー「{text}」って( 艸｀*)ププッ"
+</pre>
+<br>
+query が検索ワードで、template がそれに対する返信のひな形になります。<br>
+投げられた発言を埋め込む場所としてあらかじめ {text} を入れ込んでおいて、ここを置換します。<br>
+<br>
+<h4>状態ファイルの準備</h4>
+返信を送る際に、同じ人に何度も続けて返信をしてしまうと非常に失礼…というかこれはもうボットのバグなので、最後に返信をしたつぶやきを記録しておいて、次に検索する時はそれより後のつぶやきを検索するようにします。<br>
+最後に返信したつぶやきの id を次の検索時の検索条件として、since_id というもので指定するので、第 2 弾と同様、status.xml にそれを記録するようにしましょう。<br>
+<br>
+<pre>sinceId: 0
+</pre>
+<br>
+初期値は最も小さい id、すなわち 0 を入れておきます。<br>
+<br>
+<h4>実際のスクリプト</h4>
+<pre>#!/usr/bin/perl
+
+# 使用するモジュールの読み込み
+use strict;
+use warnings;
+use Encode;
+use FindBin;
+use YAML::Tiny;
+use Net::Twitter;
+
+# yml ファイルの読み込みと、Twitter モジュールの初期化
+my $config = (YAML::Tiny-&gt;read($FindBin::Bin . '/config.yml'))-&gt;[0];
+my $status = (YAML::Tiny-&gt;read($FindBin::Bin . '/status.yml'))-&gt;[0];
+my $twit = Net::Twitter-&gt;new(username =&gt; $config-&gt;{'username'}, password =&gt; $config-&gt;{'password'});
+
+# 各種設定値の取得
+my $username = $config-&gt;{'username'};
+my $query = Encode::encode('utf8', $config-&gt;{'query'});
+my $template = Encode::encode('utf8', $config-&gt;{'template'});
+my $sinceId = $status-&gt;{'sinceId'};
+
+# Twitter 検索。to: オプションでボット宛のつぶやきだけを絞り込み
+my $response = $twit-&gt;search({q =&gt; 'to:' . $username . ' ' . $query, since_id =&gt; $sinceId});
+
+# 検索結果を 1 件ずつ処理
+my $result;
+foreach $result ( reverse( @{$response-&gt;{'results'}} ) ) {
+    my $text = Encode::encode('utf8', $result-&gt;{'text'});
+    my $fromUser = $result-&gt;{'from_user'};
+    my $statusId = $result-&gt;{'id'};
+    my $reply = $template;
+    $text =~ s/\s*\@${username}\s*//;
+    $reply =~ s/{text}/$text/;
+    $reply = '@' . "${fromUser} ${reply}";
+    $twit-&gt;update({status =&gt; $reply, in_reply_to_status_id =&gt; $statusId});
+    $sinceId = $statusId;
+}
+
+# 最後に処理したつぶやきの ID を保存
+YAML::Tiny::DumpFile($FindBin::Bin . '/status.yml', {sinceId =&gt; $sinceId});
+</pre>
+<br>
+さて、ではポイントを絞って解説します。<br>
+<br>
+まず重要なのが Twitter 検索の使い方です。<br>
+パラメータ q に検索文字列を指定して検索しますが、ここでは <a href="http://search.twitter.com/" target="_blank">Twitter検索</a> で使用可能なオプションを指定することが出来ます。<br>
+検索時に指定出来るオプションについては、<a href="http://www.google.co.jp/search?hl=ja&amp;q=twitter+%E6%A4%9C%E7%B4%A2%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3&amp;btnG=" target="_blank">このあたり</a>を参照して下さい。<br>
+<br>
+パラメータ since_id は、つぶやきの id を指定することで、それより後のつぶやきを対象として検索します。<br>
+これがないと、重複返信をしてしまうのでとても重要なオプションです。<br>
+<br>
+検索結果を 1 件ずつ処理するループでは、まず検索結果を配列として取得し、その順番を反転します。<br>
+検索結果は新しいものから順に返されるのですが、それに対する返信は古い順に行うからです。<br>
+<br>
+検索結果の内容から、text, from_user, id を取り出します。<br>
+それぞれ、つぶやきの内容、つぶやいた人、つぶやき ID に相当します。<br>
+<br>
+それ以降の部分は、ひな形の内容とつぶやきの内容を元に、返信する文章を組み立てています。<br>
+この部分まで詳しく解説するのは大変なので、詳細については別途 Perl について学んでみて下さい。<br>
+<br>
+また、返信をつぶやく時の記述ですが、これまでになかった in_reply_to_status_id というオプションを指定しています。<br>
+このオプションは、どの発言に対する返信なのかを明示するもので、特に必須というわけではないです。<br>
+ですがこれをつけることで、返信から元の発言に対してリンクが張られるようになるので、返信の場合はつけておくのがマナーと言えます。<br>
+<br>
+最後に動作確認が完了したら cron に登録しましょう。<br>
+あまり頻繁に検索すると API 制限にかかるので、5 分おきくらいにチェックするのが適当ではないでしょうか。<br>
+<br>
+<h4>動作サンプル</h4>
+<pre>otchy : @damedashi おれはもうダメだよ…
+damedashi : @otchy えー「おれはもうダメだよ…」って( 艸｀*)ププッ
+otchy : @damedashi そんなダメとか繰り返さないでくれよ
+damedashi : @otchy えー「そんなダメとか繰り返さないでくれよ」って( 艸｀*)ププッ
+</pre>
+※このボットは実在しません<br>
+<br>
+<h4>改造のヒント</h4>
+今回、ボットの返信に使うひな形は文章を 1 つだけにしましたが、第 2 弾で紹介した list.yml を使ったランダムテキストを組み込めば、バラエティーに富んだ返信をする事が可能です。<br>
+つぶやきの内容の一部を別の言葉に置換して返信しても面白そうですね。<br>
+list.yml の内容を配列ではなく、「キーワード：値」のペアにしておいて、「○○を△△に空目」ボットなんていうのも作れそうです。<br>
+また、検索自体のオプションを工夫すれば、もっと色々なボットも考えられるでしょう。<br>
+<br>
+<h4>実は…</h4>
+とここまで書いてきましたが、上記のスクリプトは期待したとおりの動作をしません。<br>
+それはなぜかというと、Twitter の検索 API では、日本語の検索結果がリアルタイムには検索出来ず、数時間の遅れがあるためです。<br>
+しかしながら、日本語の検索は 7 月末を目処に提供されるという話があるので、それまでは現状でリアルタイム検索が可能な英語表記でテストをしつつ待ちましょう。<br>
+<br>
+さて、だんだんと本格的なボットになってきましたね。<br>
+第 4 弾以降では、ボット内だけで完結せず、外部の情報を読み込んで使用するようなボットを作ってみたいと思います。<br>
+<br>
+<div class="navi">
+<div class="prev"><a href="/20090629/making-of-twitter-bot-2/">前へ</a></div>
+<div class="next"><a href="/20090719/making-of-twitter-bot-4/">次へ</a></div>
+<div class="index"><a href="/20090726/making-of-twitter-bot-index/">目次</a></div>
+</div>
+
+</body>
+</html>

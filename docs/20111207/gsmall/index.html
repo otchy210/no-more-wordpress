@@ -1,0 +1,44 @@
+
+<html>
+<head>
+    <title>Gmail 新デザインのフォントサイズを小さくするスクリプト</title>
+</head>
+<body>
+カッとなって書いた。後悔はしていない。<br>
+<br>
+ブックマークレット版<br>
+<a href="javascript:(function(d,s){s=d.createElement('link');s.rel='stylesheet';s.type='text/css';s.href='data:text/css;base64,LnB3LC5mTiwuQmt7Zm9udC1zaXplOjkwJX0uQWssLnhZLC5uTSwudkJ7Zm9udC1zaXplOjgwJX0uV3IsLlQtSSwuSi1NLC5ha2h7Zm9udC1zaXplOjEycHh9';d.body.appendChild(s)})(document.getElementById('canvas_frame').contentWindow.document);">Gsmall</a><br>
+<pre>javascript:(function(d,s){s=d.createElement('link');s.rel='stylesheet';s.type='text/css';s.href='data:text/css;base64,LnB3LC5mTiwuQmt7Zm9udC1zaXplOjkwJX0uQWssLnhZLC5uTSwudkJ7Zm9udC1zaXplOjgwJX0uV3IsLlQtSSwuSi1NLC5ha2h7Zm9udC1zaXplOjEycHh9';d.body.appendChild(s)})(document.getElementById('canvas_frame').contentWindow.document);
+</pre>
+<br>
+<h4>2011-12-14 追記</h4>
+Greasemonkey 版が上手く動いたり上手く動かなかったり、多分タイミングの問題とかあって対応が面倒なので取り下げます。<br>
+個人的には Gmail 画面は一回開いたら開きっぱなしなので、ブックマークレット版だけで十分だったりするのです。<br>
+それと、ブックマークレット版は CSS の短縮化と適用範囲の拡大を行いました。<br>
+<br>
+<del>Greasemonkey 版
+<a href="/gm/gsmall.user.js">インストール</a></del><br>
+<pre><del>
+// ==UserScript==
+// @name           Gsmall
+// @namespace      http://www.otchy.net/
+// @include        https://mail.google.com/mail/*
+// @version        1.0.0
+// ==/UserScript==
+
+(function (d, func) {
+	var h = d.getElementsByTagName('head')[0];
+	var s = d.createElement("script");
+	s.textContent = '(' + func.toString() + ')(document);';
+	h.appendChild(s);
+})(document, function(d) {
+	var d = d.getElementById('canvas_frame').contentWindow.document;
+	var s = d.createElement('link');
+	s.rel = 'stylesheet';
+	s.type = 'text/css';
+	s.href = 'data:text/css;base64,LnB3e2ZvbnQtc2l6ZTo5MCV9LnhZe2ZvbnQtc2l6ZTo4MCV9Lm5Ne2ZvbnQtc2l6ZTo4MCV9LnZCe2ZvbnQtc2l6ZTo4MCV9Lldye2ZvbnQtc2l6ZToxMnB4fS5ULUl7Zm9udC1zaXplOjEycHh9LkotTXtmb250LXNpemU6MTJweH0uYWtoe2ZvbnQtc2l6ZToxMnB4fQ==';
+	d.getElementsByTagName('head')[0].appendChild(s);
+});
+</del></pre>
+</body>
+</html>

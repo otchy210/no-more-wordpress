@@ -1,0 +1,131 @@
+
+<html>
+<head>
+    <title>TwitAPI.js</title>
+</head>
+<body>
+<p style="text-align: right;">≫<a href="//s.otchy.net/js/twitapi_0.2.1.js">Download</a></p>
+<br>
+<h4>概要</h4>
+Twitter の API を JavaScript から簡単に使うためのライブラリです。 上部の Download リンクより、js ファイルをダウンロードして読み込む事で、専用のプロキシサーバを通じて Twitter API を呼び出す事が出来るようになります。<br>
+Twitter API が BASIC 認証をサポートしなくなる事に合わせて、<a href="/javascript/twitter-api/">TwitterAPI.js</a> の後継ライブラリとして開発されました。<br>
+<br>
+現在のバージョンは 0.2.1 です。<br>
+<a href="/twitmgr/" target="_blank">TwitMgr</a> や <a href="/splitwit/" target="_blank">Splitwit</a> の開発の都合上、必要になった機能については順次追加していったりしていますが、まだ十分に枯れたとは言えません。<br>
+動作のおかしい点などあれば、ご連絡頂けると助かります。<br>
+<br>
+<h4>特徴</h4>
+<ul>
+	<li>OAuth 対応</li>
+	<li>プロキシサーバを経由して Twitter API にアクセス</li>
+	<li>単一の JS ファイルを読み込むだけでも利用可能</li>
+	<li>コールバック関数として、関数オブジェクトをそのまま渡せる</li>
+	<li>外部の JS ライブラリに依存していない</li>
+	<li>Twitter API で定義されている全ての API をシームレスに利用可能</li>
+	<li>GET / POST / DELETE 全てのメソッドの API に対応</li>
+</ul>
+<br>
+<h4>プロキシサーバについて</h4>
+JS から OAuth 対応し、かつ全てのメソッドの API に対応するために、TwitAPI.js ではプロキシサーバを利用しています。<br>
+デフォルトの設定では、TwitAPI.js 公式の標準プロキシサーバを使用するようになっていますが、これは <a href="http://code.google.com/intl/ja/appengine/" target="_blank">Google App Engine</a> の無料分を利用して運用されているため、無料分のリソースを使い切ってしまった場合、TwitAPI.js の動作も止まってしまいます。<br>
+また、OAuth 認証の画面で表示されるアプリケーション名が「TwitAPI JS」となるため、それが不都合なケースもあるかと思われます。<br>
+<br>
+標準プロキシサーバの利用について特に制限は設けていませんが、上記のような事情があるので、本格的なアプリケーションを構築する場合や、OAuth 認証画面の表記を作成するアプリケーションと揃えて信頼性を向上させたい場合は、別途、プロキシサーバを構築する必要があります。<br>
+<br>
+プロキシサーバについても全てのソースを <a href="http://code.google.com/p/taj-proxy/" target="_blank">taj-proxy</a> として公開しているので、必要に応じて独自のプロキシサーバを立ち上げてください。<br>
+<br>
+<h4>サンプル</h4>
+TwitAPI.js を使うと、Twitter API を簡単に呼び出す事が出来ます。<br>
+<br>
+≪Twitter に投稿する≫<br>
+<pre>function callback() {
+	alert('DONE!');
+}
+var api = new TwitAPI();
+api.call('post', 'statuses/update', callback, {'status': 'テスト'});
+</pre>
+<br>
+≪ホーム TL を取得する≫<br>
+<pre>var api = new TwitAPI();
+api.call('get', 'statuses/home_timeline', function(statuses) {
+	var html = '';
+	for (var i=0; i&lt;statuses.length; i++) {
+		var status = statuses[i];
+		html += status.user.name + ' : ' + status.text + '&lt;br /&gt;';
+	}
+	document.getElementById('result').innerHTML = html;
+});
+</pre>
+<br>
+これらの実際の動作は、<a href="http://taj-proxy.appspot.com/sample/" target="_blank">TwitAPI.js sample</a> で確認できます。<br>
+<br>
+<h4>API ドキュメント</h4>
+TwitAPI.js ならびにプロキシサーバは、指定された API のパスを透過的に Twitter サーバに投げるため、本家の API ドキュメントの記述をそのまま使用する事が出来ます。<br>
+Twitter API については、日本語訳を公開して下さっている方がいるので参考にして下さい。<br>
+<a href="http://www.google.co.jp/search?q=Twitter+API+%E4%BB%95%E6%A7%98%E6%9B%B8+%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%B3" target="_blank">Twitter API 仕様書 日本語訳</a><br>
+<br>
+例えば、サンプルで使用した Twitter に投稿する API ですが、Twitter API だと、以下のような URL です。<br>
+<pre>http://twitter.com/<span style="color: #0000ff;">statuses/update</span>?status=[Tweet message]</pre>
+この URL に対して、POST でアクセスする事になっています。<br>
+この場合、TwitAPI.js では下記のように呼び出す事が出来ます。<br>
+<pre>var api = new TwitAPI();
+api.call('<span style="color: #0000ff;">post</span>', '<span style="color: #0000ff;">statuses/update</span>', callback, {status: 'Tweet message'});
+</pre>
+<br>
+このように、TwitAPI.js での API 呼び出しは、本家の API の書式にそのまま対応します。<br>
+<pre>api.call(<span style="color: #0000ff;">[get|post|delete]</span>, <span style="color: #0000ff;">[api path]</span>, callback, {param1:value1, param2:value2, ...});
+</pre>
+<br>
+なお、callback に何も指定しなければ、実行結果はそのまま捨てられます。<br>
+<br>
+<h4>メソッド "jsonp" のサポート</h4>
+上記 API のメソッドの指定で、"get"、"post"、"delete" を指定した際は、上記の説明通りプロキシサーバを使用しますが、Ver.0.2.0 より新たに "jsonp" が指定可能になりました。<br>
+<br>
+TwitAPI.js はその仕組み上、どのメソッドを使用した時でも JSONP を使う事には変わりないのですが、あえて "jsonp" を指定した場合、プロキシサーバを使わないで Twitter API がサポートしている JSONP の機能を直接利用します。<br>
+つまり、GET メソッドでかつ認証不要な API を利用する際は、TwitAPI.js で "jsonp" を指定する事で、プロキシサーバのオーバーヘッドを無くして動作させる事が出来ます。<br>
+<br>
+使い勝手はプロキシサーバを使用した際と同様で、コールバック関数の定義などについては TwitAPI.js 内に隠蔽されたままとなります。<br>
+<br>
+<h4>プロキシサーバの指定</h4>
+自分でプロキシサーバを構築してそれを利用する場合、TwitAPI.js 上で、そのプロキシサーバを指定する必要があります。<br>
+プロキシサーバにはサーバのドメインと、ドメインごとに複数設定可能なアプリケーションパスがあるので、それらを指定して TwitAPI オブジェクトを生成します。<br>
+<br>
+<pre>var api = new TwitAPI(<span style="color: #0000ff;">[server url]</span>, <span style="color: #0000ff;">[app path]</span>);
+</pre>
+<br>
+デフォルトの設定では下記のように指定したのと同じ状態になっています。<br>
+<pre>var api = new TwitAPI('http://taj-proxy.appspot.com', 'twit-api-js');
+</pre>
+<br>
+<h4>動作条件・制限事項・ライセンス</h4>
+下記のブラウザで動作確認しています。<br>
+IE6 / IE7 / Firefox3.6 / Chrome<br>
+未確認ですが、IE8 / Safari / Opera あたりでもそのまま動作すると思われます。<br>
+<br>
+情報を送信するメソッドを使用する場合、JavaScript を実行している HTML/JS が UTF-8 で書かれていないと、日本語が文字化けします。<br>
+<br>
+ライセンスは <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT License</a> (<a href="http://ja.wikipedia.org/wiki/MIT_License" target="_blank">日本版 wikipedia の項</a>) で公開します。<br>
+<br>
+<h4>更新履歴</h4>
+<dl>
+<dt><a href="//s.otchy.net/js/twitapi_0.1.0.js">Ver.0.1.0</a> [2010-06-12]</dt>
+<dd>初公開</dd>
+<dt><a href="//s.otchy.net/js/twitapi_0.1.1.js">Ver.0.1.1</a> [2010-06-17]</dt>
+<dd><a href="/javascript/twitter-api2/">TwitterAPI2.js</a> 対応のため、param 値を String でも受け取れるように修正。</dd>
+<dt><a href="//s.otchy.net/js/twitapi_0.1.2.js">Ver.0.1.2</a> [2010-08-13]</dt>
+<dd>初回認証時、サーバのレスポンスによっては表示がもたつくので、waiting 表示を挿入。</dd>
+<dt><a href="//s.otchy.net/js/twitapi_0.1.3.js">Ver.0.1.3</a> [2010-08-14]</dt>
+<dd><a href="/javascript/twitter-api2/">TwitterAPI2.js</a> の互換性向上のための修正。</dd>
+<dt><a href="//s.otchy.net/js/twitapi_0.2.0.js">Ver.0.2.0</a> [2011-08-26]</dt>
+<dd>メソッド "jsonp" のサポート</dd>
+<dt><a href="//s.otchy.net/js/twitapi_0.2.1.js">Ver.0.2.1</a> [2012-06-02]</dt>
+<dd>パラメータの文字列に # が含まれるとそれ以降を無視してしまう不具合の修正。</dd>
+</dl>
+<br>
+<h4>TODO</h4>
+<ul>
+	<li>クッキーによる自動認証を実装？←セキュリティ面から要検討</li>
+</ul>
+
+</body>
+</html>

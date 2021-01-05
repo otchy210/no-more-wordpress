@@ -1,0 +1,114 @@
+
+<html>
+<head>
+    <title>Twitter ボットの作り方 Perl 編 (2)</title>
+</head>
+<body>
+Twitter ボットの作り方解説第 2 弾。あらかじめ用意された定型文の中からランダムでつぶやくボットを作ってみます。<br>
+以下は、第 1 弾までの状態を前提としています。<br>
+<br>
+<h4>状態ファイルの準備</h4>
+完全なランダムでつぶやいてもいいのですが、それだと同じつぶやきが連続したり、なかなか出てこないつぶやきがあったりしてしまいますね。<br>
+ですので、どこまでつぶやき終わったかを保持して、一通りつぶやき終わるまでは重複しないように制御したいと思います。<br>
+そのために、現在の状態を保持するファイルを用意します。ここでは名前を status.yml にしましょう。<br>
+ファイルのフォーマットは、config.yml と同様です。<br>
+1 回つぶやくたびに状態を保存するため、ファイルには書き込み属性をつけておいて下さい。<br>
+<br>
+<pre>lastIndex: 9999
+</pre>
+<br>
+lastIndex には、最後につぶやいた文のインデックスを保持するようにします。<br>
+初期データとしては、用意しようとしている定型文の数よりも十分に大きな数値を設定しておいて下さい。<br>
+<br>
+<h4>データの準備</h4>
+ボットがつぶやく定型文をあらかじめ準備しておきます。<br>
+設定ファイルと同様に、yml ファイルで作ります。ここでは名前を list.yml にしましょう。<br>
+下記のような感じです。日本語を含む場合は UTF-8 で保存して下さい。<br>
+<br>
+このファイルはランダムでつぶやくようにするため、後ほどプログラムでシャッフルします。<br>
+シャッフルしたあと、このファイルに上書きするようにするので、書き込み属性をつけておいて下さい。<br>
+<br>
+<pre>- つぶやきA
+- つぶやきB
+- つぶやきC
+- つぶやきD
+- つぶやきE
+</pre>
+<br>
+なお、行頭にある半角ハイフンは、YAML の文法における配列の表現になります。<br>
+<br>
+<h4>実際のスクリプト</h4>
+<pre>#!/usr/bin/perl
+
+# 使用するモジュールの読み込み
+use strict;
+use warnings;
+use FindBin;
+use List::Util;
+use Encode;
+use YAML::Tiny;
+use Net::Twitter;
+
+# yml ファイルの読み込みと、Twitter モジュールの初期化
+my $config = (YAML::Tiny-&gt;read($FindBin::Bin . '/config.yml'))-&gt;[0];
+my $status = (YAML::Tiny-&gt;read($FindBin::Bin . '/status.yml'))-&gt;[0];
+my @list = @{(YAML::Tiny-&gt;read($FindBin::Bin . '/list.yml'))-&gt;[0]};
+my $twit = Net::Twitter-&gt;new(username =&gt; $config-&gt;{'username'}, password =&gt; $config-&gt;{'password'});
+
+# 最後につぶやいたインデックスと、定型文リストのサイズ
+my $lastIndex = $status-&gt;{lastIndex};
+my $listSize = @list;
+
+# つぶやきが一周していたら、定型文をシャッフルしてファイルに保存
+if ($lastIndex &gt;= ($listSize - 1)) {
+        @list = List::Util::shuffle(@list);
+        YAML::Tiny::DumpFile($FindBin::Bin . '/list.yml', [@list]);
+        $lastIndex = -1;
+}
+
+# 実際のつぶやき
+my $update = $list[++$lastIndex];
+$update = Encode::encode('utf8', $update);
+$twit-&gt;update($update);
+YAML::Tiny::DumpFile($FindBin::Bin . '/status.yml', {lastIndex =&gt; $lastIndex});
+</pre>
+<br>
+大体の動作に関しては、スクリプト内のコメントに書いたとおりですが、いくつか補足します。<br>
+<br>
+FindBin は、スクリプトの絶対パスを取得するために使用しています。<br>
+第 1 弾のスクリプトでは、設定ファイルなどを相対パスで指定していましたが、ボットとして cron に登録する際は、絶対パスでの動作が求められます。<br>
+スクリプトの位置を変えるたびに、設定ファイルのパスを書き換えなくて済むように、スクリプト自体の絶対パスを取得して、同ディレクトリにある設定ファイルを読み書きするようにしています。<br>
+<br>
+List::Util は、配列をランダムにシャッフルするために使用しています。<br>
+必要時のみ、List::Util::shuffle で配列をシャッフルしてその内容をファイルに保存しています。<br>
+<br>
+Encode は、yml ファイルから読み取った日本語文字列を適切に扱うために使用しています。<br>
+*.yml ファイル自体を UTF-8 で記述していても、YAML::Tiny での UTF-8 の扱いが微妙なため、この変換が必要になっています。<br>
+※"use utf8; use encoding 'utf-8';" 等があるとかえってうまくいきませんでした。<br>
+<br>
+YAML::Tiny::DumpFile は、各種データを *.yml ファイルに書き込むために使用しています。<br>
+渡すデータの形式に少しクセがあるので、このように使うもの、と覚えてしまった方が良いでしょう。<br>
+<br>
+<h4>cron への登録</h4>
+上記のスクリプトの動作が確認出来たら、後は自動的につぶやくように設定するだけです。<br>
+つぶやきの自動化には、cron を使います。<br>
+<br>
+例えば以下のように設定すると、5 分おきにつぶやきます。<br>
+<pre>*/5 * * * * /home/username/twitbot/twitbot.pl
+</pre>
+Twitter API は 1 分あたり 100回まで (2009-06-29 現在) しか実行出来ないという制限があるので、あまり頻度を上げすぎない方が良いでしょう。<br>
+もちろん、ボットの属性によって色々と変更した方が良いのは、言うまでもありません。<br>
+<br>
+cron の設定に関して分からない点があれば、<a href="http://www.google.co.jp/search?hl=ja&amp;q=cron+%E8%A8%AD%E5%AE%9A&amp;btnG=" target="_blank">このあたり</a>を参照して下さい。<br>
+<br>
+さあ、ごく簡単なボットですがこれで自動的につぶやき続けるボットを作る事が出来ました。<br>
+第 3 弾以降では、より高度なボットの作成を行っていきます。<br>
+<br>
+<div class="navi">
+<div class="prev"><a href="/20090629/making-of-twitter-bot-1/">前へ</a></div>
+<div class="next"><a href="/20090710/making-of-twitter-bot-3/">次へ</a></div>
+<div class="index"><a href="/20090726/making-of-twitter-bot-index/">目次</a></div>
+</div>
+
+</body>
+</html>

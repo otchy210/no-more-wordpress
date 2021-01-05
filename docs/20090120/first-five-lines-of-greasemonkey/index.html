@@ -1,0 +1,44 @@
+
+<html>
+<head>
+    <title>Greasemonkey スクリプトの冒頭に書く 5 行</title>
+</head>
+<body>
+<a href="http://www.otchy.net/greasemonkey/wordpress-with-twitter/">WordPress with Twitter</a> の不具合を修正した記念に、Greasemonkey を書く時に頻繁に利用する関数をまとめたので、公開してみます。<br>
+外部の JavaScript ライブラリを読み込む方法を解説したサイトもありますが、そこまで大げさな機能が必要でもなく、軽く動作させたいときに便利です。<br>
+特に共通ライブラリを利用すると、Firefox 以外のブラウザの対応も無駄に読み込む事になるので、スマートじゃないなぁと思います。<br>
+<pre>var d = document;
+var $ = function(id) { return d.getElementById(id); }
+var $x = function(xp) { return d.evaluate(xp, d, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; }
+var $a = function(xp) { var r = d.evaluate(xp, d, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null); var a=[]; for(var i=0; i&lt;r.snapshotLength; i++){ a.push(r.snapshotItem(i)); } return a; }
+var $e = function(e,t,f) { if (!e) return; e.addEventListener(t, f, false); }</pre>
+<ul>
+	<li>d<br>
+document のエイリアスです。目的はコードの短縮と実行速度の高速化です。</li>
+	<li>$ 関数<br>
+getElementById のエイリアスです。説明不要でしょう。</li>
+	<li>$x 関数<br>
+xpath を引数としてとり、最初に一致したエレメントを返します。</li>
+	<li>$a 関数<br>
+xpath を引数としてとり、一致したエレメント全てを配列で返します。</li>
+	<li>$e 関数<br>
+addEventListener のエイリアスです。説明不要でしょう。</li>
+</ul>
+Greasemonkey で既存のサイトをいじくる場合、対象のエレメントに必ずしも id が振られているとは限らない (むしろそうなっていない場合が多い) ので、xpath から任意のエレメントを簡単に取得できる、$x/$a は有用かなと思います。<br>
+この辺は、ブラウザ間の互換を考えないといけない汎用ライブラリではなかなか実装できないところですね。<br>
+<br>
+もちろん、下記のように名前空間を汚さないように書くのは基本的なマナーです。<br>
+$ 関数とかをグローバル (window オブジェクトのメンバ) に定義しちゃうと、サイトによっては壊滅的に動作がおかしくなってしまうかも？<br>
+<pre>(function(){
+    // 処理本体
+})();</pre>
+<h4>2009-01-26 追記 -- コメントでご指摘いただいた点について</h4>
+Greasemonkey の実行環境はサンドボックス上にあるので、function によるラッピングは不要だそうです。<br>
+ちまたでよく見る GM は大概ラッピングされていたので、ずっと勘違いしていました。公式マニュアルにリンクしておきます。<br>
+<a href="http://wiki.greasespot.net/Greasemonkey_Manual:Environment" target="_blank">公式マニュアル</a><br>
+<br>
+$a のパフォーマンスが良くないという話もありますが、配列のサイズがあらかじめ確定しているので、配列のインスタンス生成時にサイズを指定するようにして、push を使わないほうがいいよ。って事かと思います。気になる方は直して使って下さい。<br>
+<br>
+いずれにせよ、ご指摘ありがとうございました。
+</body>
+</html>

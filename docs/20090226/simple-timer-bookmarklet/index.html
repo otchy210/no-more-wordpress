@@ -1,0 +1,47 @@
+
+<html>
+<head>
+    <title>簡易タイマーとして利用できるブックマークレット</title>
+</head>
+<body>
+<a href="http://blog.creamu.com/mt/2009/02/url.html" target="_blank">URLに入力するシンプルなタイマー</a> で紹介されていたシンプルなタイマーを、さらにシンプルに使うためのブックマークレットです。<br>
+以下のリンクをブックマークレットとして登録して、クリックすれば簡単にタイマーを起動できます。<br>
+<br>
+ブックマークレットを起動するとダイアログが立ち上がるので、そこに書いてあるコメントを参考に、設定したい時間を入力します。<br>
+<br>
+<a href="//s.otchy.net/uploads/2009/02/simple_timer.png"><img class="aligncenter size-full wp-image-354" title="シンプルタイマー" src="//s.otchy.net/uploads/2009/02/simple_timer.png" alt="シンプルタイマー" width="355" height="138"></a><br>
+<br>
+タイマーとしての精度は、推して知るべしって感じですが、カップ麺作るような使い方なら十分実用的かと思います。お試しあれ！<br>
+<br>
+<a href="javascript:(function(){var%20s=prompt('Y=year%20M=month%20D=day%20h=hour%20m=minute%20s=secondnex)%201D12h%201h45m%201m20s','');var%20f=function(s){var%20r='http://e.ggtimer.com/';for(var%20i=0;i<s.length;i++){switch(s.charAt(i)){case'Y':r+='years';break;case'M':r+='months';break;case'D':r+='days';break;case'h':r+='hours';break;case'm':r+='minutes';break;case's':r+='seconds';break;default:r+=s.charAt(i);}}return%20r;};if(!s.match('^[0-9YMDhms]+$')){alert('UnknownFormat!')}else{open(f(s),null)}})();">シンプルタイマー</a><br>
+<br>
+下記は読みやすく整形したソースです。<br>
+<pre>javascript:(
+  function(){
+    var s=prompt('Y=year M=month D=day h=hour m=minute s=secondnex) 1D12h 1h45m 1m20s','');
+    var f=function(s){
+      var r='http://e.ggtimer.com/';
+      for(var i=0;i&lt;s.length;i++){
+        switch(s.charAt(i)){
+          case'Y':r+='years';break;
+          case'M':r+='months';break;
+          case'D':r+='days';break;
+          case'h':r+='hours';break;
+          case'm':r+='minutes';break;
+          case's':r+='seconds';break;
+          default:r+=s.charAt(i);
+        }
+      }
+      return r;
+    };
+    if(!s.match('^[0-9YMDhms]+$')){
+      alert('UnknownFormat!')
+    }else{
+      open(f(s),null)
+    }
+  }
+)();</pre>
+<br>
+どうも最近、ブックマークレットづいてるなぁ。
+</body>
+</html>

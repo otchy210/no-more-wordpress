@@ -1,0 +1,84 @@
+
+<html>
+<head>
+    <title>MultiLink.js</title>
+</head>
+<body>
+<p style="text-align: right;">»<a href="//s.otchy.net/js/multilink.js">Download </a></p>
+<br>
+<h4>概要</h4>
+1つのリンクで複数サイトにリンクさせるためのスクリプトです。<br>
+複数のリンクがポップアップして表示されます。<br>
+<br>
+<h4>特徴</h4>
+<ul>
+<li>スクリプトの導入は script タグを 1 行追加するだけ</li>
+<li>リンク部分は簡単なマークアップで記述できる</li>
+<li>JavaScript が無効な環境でも意味が通じるマークアップが可能</li>
+</ul>
+<br>
+<h4>導入方法</h4>
+上記 Download よりスクリプトをダウンロードしたら、head タグの中で下記のように読み込みます。<br>
+<pre>&lt;script type="text/javascript" src="multilink.js"&gt;&lt;/script&gt;
+</pre>
+<br>
+<h4>マークアップ</h4>
+●単に動作させるだけの場合<br>
+<pre>いろんな&lt;span class="multi-link" title="検索エンジン"&gt;
+    &lt;a href="http://www.google.com"&gt;Google&lt;/a&gt;
+    &lt;a href="http://www.yahoo.com"&gt;Yahoo!&lt;/a&gt;
+    &lt;a href="http://www.bing.com"&gt;bing&lt;/a&gt;
+&lt;/span&gt;があるから好きなのを使うといいよ！
+</pre>
+<br>
+●動作イメージ<br>
+<blockquote>
+いろんな<span class="multi-link" title="検索エンジン">
+    <a href="http://www.google.com">Google</a>
+    <a href="http://www.yahoo.com">Yahoo!</a>
+    <a href="http://www.bing.com">bing</a>
+</span>があるから好きなのを使うといいよ！<br>
+</blockquote>
+<br>
+●解説<br>
+リンクをしたい場所にまず、span タグを追加します。このとき class 属性は "multi-link" としておき、リンクテキストを title 属性に書いておきます。<br>
+次に、実際にリンクさせたいサイトを span タグの中に a タグで追加します。<br>
+このようにマークアップしておくと、ページの読込み完了時に自動的にポップアップが設定されます。<br>
+<br>
+●JavaScript オフ環境への対応<br>
+JavaScript が無効になっている環境で、上記のマークアップを表示すると、こんな見た目になってしまいます。<br>
+<blockquote>
+いろんな <a href="http://www.google.com">Google</a> <a href="http://www.yahoo.com">Yahoo!</a> <a href="http://www.bing.com">bing</a> があるから好きなのを使うといいよ！<br>
+</blockquote>
+<br>
+span タグの中については、a タグ以外の記述を全て無視するように動作するため、下記のようなマークアップをすることで、JavaScript が無効な環境でも意味の通じるように表示することができます。<br>
+<pre>いろんな&lt;span class="multi-link" title="検索エンジン"&gt;検索エンジン(
+    &lt;a href="http://www.google.com"&gt;Google&lt;/a&gt;・
+    &lt;a href="http://www.yahoo.com"&gt;Yahoo!&lt;/a&gt;・
+    &lt;a href="http://www.bing.com"&gt;bing&lt;/a&gt;
+)&lt;/span&gt;があるから好きなのを使うといいよ！
+</pre>
+<br>
+この場合、JavaScript が無効な環境では以下のように表示されます。<br>
+<blockquote>
+いろんな検索エンジン(<a href="http://www.google.com">Google</a>・<a href="http://www.yahoo.com">Yahoo!</a>・<a href="http://www.bing.com">bing</a>)があるから好きなのを使うといいよ！</blockquote>
+<br>
+もちろん、JavaScript が有効ならちゃんとポップアップします。<br>
+<blockquote>
+いろんな<span class="multi-link" title="検索エンジン">検索エンジン(<a href="http://www.google.com">Google</a>・<a href="http://www.yahoo.com">Yahoo!</a>・<a href="http://www.bing.com">bing</a>)</span>があるから好きなのを使うといいよ！<br>
+</blockquote>
+<br>
+<br>
+<h4>カスタマイズ</h4>
+ポップアップ部分のデザインについては、スクリプト内に css が記述されています。<br>
+スクリプト冒頭のスタイル部分を修正すれば、任意のデザインに変更する事が可能です。<br>
+<br>
+<h4>動作条件・制限事項・ライセンス</h4>
+下記のブラウザで動作確認しています。<br>
+IE6 / IE7 / IE8 / Firefox3 / Chrome<br>
+未確認ですが、IE9 / Firefox2 / Safari / Opera あたりでもそのまま動作すると思われます。<br>
+<br>
+ライセンスは <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT License</a> (<a href="http://ja.wikipedia.org/wiki/MIT_License" target="_blank">日本版 wikipedia の項</a>) で公開します。<br>
+
+</body>
+</html>

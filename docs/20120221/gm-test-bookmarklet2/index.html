@@ -1,0 +1,19 @@
+
+<html>
+<head>
+    <title>Greasemonkey をインストールせずに試すブックマークレット改良版</title>
+</head>
+<body>
+Gresemonkey (など) のスクリプトをインストールすることなく任意のサイトでちょこっと試すためのブックマークレットとして、「<a href="/gm-test-bookmarklet/">Greasemonkey をインストールせずに試すブックマークレット</a>」を、以前作って公開していたのですが、すこし改良を加えたので再度公開します。<br>
+<br>
+使い方は同じで、起動すると、user.js の URL を聞いてくるので、入力すると今開いているページにそのスクリプトを読み込みます。<br>
+単にその user.js をそのページに追加するだけの単純な仕組みなので、GM_* 等への対応はありません。<br>
+<br>
+今回追加したポイントとしては、最後に開いた URL を localStorage で保持するようにしたので、同じスクリプトを繰り返しテストする時など、毎回 URL を入力しなくても良くなりました。<br>
+テストの度に URL をコピーするのがアホらしくなったので、ちょっと修正したという感じです。<br>
+<br>
+<a href="javascript:(function(d){var a=prompt('Enter script URL.',localStorage.getItem('gm_test_url'));if(a){var s=d.createElement('script');s.src=a;localStorage.setItem('gm_test_url',a);d.getElementsByTagName('head')[0].appendChild(s);}})(document);">GM Test</a><br>
+<pre>javascript:(function(d){var a=prompt('Enter script URL.',localStorage.getItem('gm_test_url'));if(a){var s=d.createElement('script');s.src=a;localStorage.setItem('gm_test_url',a);d.getElementsByTagName('head')[0].appendChild(s);}})(document);</pre>
+
+</body>
+</html>

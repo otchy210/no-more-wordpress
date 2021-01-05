@@ -1,0 +1,61 @@
+
+<html>
+<head>
+    <title>フォームのサブミットをぐりぐりカスタマイズする jQuery プラグイン jquery.submittable.js リリース！</title>
+</head>
+<body>
+さて突然ですが、ウェブアプリ・サイトを作っている時、以下のような悩みを持つことはありませんか？<br>
+<br>
+<ul>
+<li>デザイン上、リンクになっている所からフォームをサブミットしたい</li>
+<li>進むボタンと戻るボタンでフォームの遷移先を変えたい</li>
+<li>フォームのサブミット前に確認メッセージを表示したい</li>
+<li>サブミットボタンのダブルクリックでフォームが二重サブミットされないようにしたい</li>
+<li>セレクトボックス/ラジオボタン等を変更した時にフォームをサブミットしたい</li>
+</ul>
+<br>
+その時々に応じて JavaScript のロジックを記述したり、サーバサイドで一生懸命頑張ったりなどしてはいませんか？<br>
+<a href="/javascript/submittable/">jquery.submittable.js</a> を使うことで、それらの悩みが簡単に解決するかもしれません。<br>
+<br>
+<h4>サンプル</h4>
+<br>
+<pre>// リンクをクリックすると通常のサブミットボタン同様、それを含むフォームをサブミットします。
+$('a').submittable();
+
+// ボタンをクリックするとフォームの属性を書き換えてからサブミットします。
+$('button.back').submittable({
+    action: './back/',
+    method: 'GET',
+    target: '_top'
+});
+
+// ボタンをクリックするとそのボタンがあるフォームとは別のフォームをサブミットします。
+$('button.option').submittable({
+    form: '#optionForm'
+});
+
+// セレクトボックスが変更されたらフォームをサブミットし、その後セレクト要素は無効にします。
+$('select').submittable({
+    on: 'change',
+    autoDisabled: true
+});
+
+// サブミット前に確認メッセージを表示し、サブミット直前に特定の処理を実行します。
+$('input[type=submit]').submittable({
+    confirm: '送信してよろしいですか？',
+    onbeforesubmit: function(e) {
+        $('input[name=flag]').val('true');
+    }
+});
+
+// 特定のチェックボックスがチェックされている時だけサブミットします。
+$('input[type=submit]').submittable({
+    onconfirm: function(e) {
+        return $('input[type=checkbod]').prop('checked');
+    }
+});
+</pre>
+<br>
+詳しい使い方は、<a href="/javascript/submittable/">jquery.submittable.js</a> を参照して下さい！
+</body>
+</html>

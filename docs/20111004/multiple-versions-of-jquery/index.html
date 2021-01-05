@@ -1,0 +1,37 @@
+
+<html>
+<head>
+    <title>複数のバージョンの jQuery を共存させる方法</title>
+</head>
+<body>
+古いアプリをメンテしてて、元々の jQuery のバージョンが 1.0 だの 1.1 だのだとすごく残念な気持ちになりますね。やっぱり、最新の jQuery でサクサク書きたいものです。<br>
+バージョンを上げてしまえればいいんですが、動作確認の手間まで考えると、そこまでやる時間もない。いま、ちょっとこの画面だけ手直し出来ればいいんだけど…という場合は、複数のバージョンの jQuery を共存させてしまいましょう。<br>
+<br>
+jQuery には $ の競合を避けるための jQuery.noConflict という function が用意されていますが、これに引数で true を渡すと、window.jQuery オブジェクトの競合も避けるように動作します。<br>
+<br>
+ですので以下のように書けば、複数のバージョンの jQuery が共存出来ます。<br>
+現実的にやる事はないと思いますが、onload を追加する事で、3つでも 4 つでも共存可能という事です。<br>
+<br>
+<pre>&lt;script&gt;
+$(function() {
+    var func = function() {
+        <span style="color:green">// 実際に動作させたい部分</span>
+        var $16 = jQuery.noConflict(<span style="color:blue">true</span>);
+        alert($.fn.jquery);  <span style="color:green">// old version</span>
+        alert($16.fn.jquery);  <span style="color:green">// ver 1.6</span>
+    }
+    <span style="color:green">// 使いたいバージョンの jQuery を用意し、load イベントを設定</span>
+    var s = $('&lt;script&gt;').attr('src', 'http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js').load(func).get(0);
+    <span style="color:green">// IE の場合は script の onload が発生しないので onreadystatechange で検知</span>
+    s.onreadystatechange = function() {
+        if (this.readyState == 'loaded' || this.readyState == 'complete') {
+            func();
+        }
+    }
+    <span style="color:green">// jQuery.append だと load イベントが発生しない(？)ようなので、生 DOM で head に script を追加</span>
+    $('head').get(0).appendChild(s);
+});
+&lt;/script&gt;
+</pre>
+</body>
+</html>

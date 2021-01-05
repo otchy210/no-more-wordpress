@@ -1,0 +1,289 @@
+
+<html>
+<head>
+    <title>HTML5 で作る iPhone ローカル Web アプリ入門</title>
+</head>
+<body>
+さて、まず「ローカル Web アプリ」ってなんぞっていう話ですが、Web ベースの技術で作られブラウザからサーバにアクセスして利用するものの、いったんロードが完了したら、それ以降はネットワーク接続不要で動作する Web アプリ、といった概念を表した造語です。<br>
+iPhone の App Store を経由することなく配布が可能なので、アプリの内容について一切の制限がなく、また、最近のライブラリの進歩やモバイルパフォーマンスの向上により、ものによってはネイティブアプリと遜色ないレベルのものも作れるようになってきました。<br>
+<br>
+先日、<a href="/1cc/" target="_blank">1 Click Config</a> (<a href="/20111116/1cc-v2/">解説記事</a>) を作って公開しましたが、これがまさにローカル Web アプリとして動作しています。<br>
+ここで使われている技術の各論についてはそれぞれ詳しく書いたサイトがあるのですが、これらの技術をひとまとめに紹介しているサイトが見当たらなかったので、入門記事として使いやすいよう配慮しています。<br>
+<br>
+当記事では iPhone を対象として扱っていますが、ローカル Web アプリは、うまく配慮して作成することで 1 ソース、マルチプラットフォームで動かすことが可能です。<br>
+モバイルの iPhone / iPad / Android でも、デスクトップの Chrome / Firefox / Safari / (IE10+) でも、全く同じソースで動かせるというのが魅力です。<br>
+今後さらに広まっていく技術だと思っています。<br>
+<br>
+<h4 id="index">目次</h4>
+<ul>
+  <li><a href="#jqm">jQuery Mobile</a></li>
+  <li><a href="#ls">localStorage</a></li>
+  <li><a href="#ac">アプリケーションキャッシュ</a></li>
+  <li><a href="#ds">data スキーム</a></li>
+  <li><a href="#wc">Web クリップ</a></li>
+  <li><a href="#debug">デバッグ方法</a></li>
+  <li><a href="#source">1 Click Config ソース</a></li>
+  <li><a href="#ending">終わりに</a></li>
+</ul>
+<br>
+<h4 id="jqm">jQuery Mobile</h4>
+<a href="http://jquerymobile.com/" target="_blank">jQuery Mobile</a> は長いβ期間を経て最近 Ver.1 がリリースされたライブラリです。<br>
+<a href="http://jquery.com/" target="_blank">jQuery</a> ベースで各種モバイル環境向けのサイトを作成するためのフレームワークといった感じです。<br>
+<br>
+HTML5 で追加された data-* 属性を多用していて、それゆえにシンプルに記述することができます。<br>
+data-* 属性はアプリケーションの都合で任意の名前を使用して良い属性です。値をどのように使うかはアプリケーション次第です。<br>
+<br>
+例えば jQuery Mobile では data-role="page" を指定した div 要素が 1 ページの単位になり、ページの中に data-role="header" を指定した div 要素があれば、それがヘッダになるといった具合です。data-role で要素の役割を決めたら、data-theme="a" でテーマ A のデザインになり、data-theme="b" ではテーマ B のデザインになります。data-* 属性のお陰で、class 属性一つでいろんな意味を持たせる旧来のライブラリに比べ、シンプルに分かりやすく記述することができます。<br>
+<br>
+jQuery Mobile が秀逸なのは、このように jQuery Mobile で決められた仕様に沿って HTML を記述するだけで、ネイティブアプリの UI に似せた Web の UI をプログラミング不要で実現できるところにあります。<br>
+<br>
+jQuery Mobile の弱点は、情報がまだ十分に見つからないという点が一番大きいです。特に日本語情報は少ないです。<br>
+<br>
+<dl>
+  <dt>◎<a href="http://jquerymobile.com/demos/1.0/" target="_blank">jQuery Mobile: Demos and Documentation</a></dt>
+  <dd>公式ドキュメントです。当然ながら一番情報が正確ですが、英文なので日本語情報を求めている人には辛いかも知れません。ただ現状で jQuery Mobile を使うのであれば、公式ドキュメントは必須かと思います。</dd>
+  <dt>△<a href="http://dev.screw-axis.com/doc/jquery_mobile/" target="_blank">jQuery Mobile 1.0b1 日本語リファレンス</a></dt>
+  <dd>公式ドキュメントの翻訳ですが、バージョンが古いです。β版になった後なので、通用する部分も多いですが、うまく動かないときにドキュメントが古いのか、書き方が間違っているのか判断がつかないので、結局公式ドキュメントが必要になります。</dd>
+<br>
+  <dt>×<a href="http://ascii.jp/elem/000/000/607/607366/" target="_blank">ASCII.jp：西畑一馬のjQuery Mobileデザイン入門</a></dt>
+  <dd>読み物としては面白く、jQuery Mobile の思想を知るためであれば利用できます。対象としているバージョンがα版で、その後仕様が大きく変わった部分もあるため、実装のための情報としては全く使えない情報になってしまっています。<a href="http://blog.webcreativepark.net/" target="_blank">西畑一馬さん</a>の記事は読みやすく情報も正確なので、正式版を対象とした記事を書いてくれると嬉しいところなのですが。</dd>
+  <dt><a href="http://www.google.co.jp/search?q=jquery+mobile" target="_blank">その他</a></dt>
+  <dd>色々な Tips や入門記事などが他にもたくさん公開されています。それらの記事を参照するときは対象としているバージョンが何かを見て、そのバージョンでの API が正式版でも同様の使い方かを公式ドキュメントで確認する、といった使い方になるかと思います。</dd>
+</dl>
+<a href="#index">↑目次</a><br>
+<br>
+<h4 id="ls">localStorage</h4>
+localStorage は HTML5 で追加されたブラウザ自体に任意の情報を保存できる KVS (キーバリューストア) です。ドメイン単位に情報を保存しクロスドメインでアクセスすることが出来なかったり、保存できる情報は全て文字列として保存されるという辺り、Cookie と似たような位置づけの技術になります。ですが、利用可能な容量が Cookie に比べて多く、また使い方もいたってシンプルなので、使いやすいという特徴があります。<br>
+<br>
+<pre>//localStorege に値を保存する。
+localStorage['name'] = 'value';
+
+// localStorage から値を取得する。
+alert(localStorage['name']);
+</pre>
+<br>
+なんとこれだけでとりあえず使うことができます。これだけの記述で、同一ドメイン上のスクリプトからは同じ値が取れるし、次にブラウザを開いた時も同じ値が取れます。<br>
+1 Click Config では、オプション値の保存や、最終更新確認日時など、クライアントごとに異なる値を保持するために使っています。<br>
+<br>
+将来的に www.otchy.net ドメインで 1 Click Config 以外のアプリを作った時、キー名が重複しないようにしたかったのと、初めて値を取得するときにデフォルト値を指定したりしたかったので、以下のラッパを書いて利用しました。<br>
+<pre>var ls = {
+	get: function(name, defValue) {
+		var val = localStorage['1cc-' + name];
+		if (val == undefined) {
+			return defValue != undefined ? defValue : '';
+		}
+		return val;
+	},
+	set: function(name, value) {
+		localStorage['1cc-' + name] = value;
+	}
+};
+</pre>
+<br>
+<dl>
+  <dt>◎<a href="http://perutago.seesaa.net/article/206013819.html" target="_blank">localStorageはいい感じ: ぺるたごブログ</a></dt>
+  <dd>詳細な使い方、イベントハンドリングなどについても解説されています。</dd>
+  <dt>◯<a href="http://www.atmarkit.co.jp/fsmart/articles/iphoneweb04/01.html" target="_blank">HTML5のlocalStorageでiPhone用Webアプリを高速化 - ＠IT</a></dt>
+  <dd>localStorage を利用してサーバの応答をキャッシュすることで、Web アプリを高速化する方法について解説しています。localStorage の効果的な利用方法です。後述の data スキームを利用することでバイナリファイルをキャッシュすることも可能になるので、今後の Web アプリにおいては高速化のための一般的な手法になっていくと思います。</dd>
+  <dt>◯<a href="http://d.hatena.ne.jp/Jxck/20100821/1282412125" target="_blank">localStorageの挙動と簡単なラッパー - Block Rockin’ Codes</a></dt>
+  <dd>ブラウザ環境によって挙動が異なる点について記事にしてくれています。新しい規格ゆえに、環境によって実装に差が出るのは避けられないので、複数の環境をターゲットにして開発する場合、こういった情報があると助かります。</dd>
+  <dt>△<a href="http://www.ninxit.com/blog/2010/01/31/localstorage-%E3%81%A7%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E8%A8%AD%E5%AE%9A%E3%81%AE%E7%AE%A1%E7%90%86/" target="_blank">localStorage でオプション設定の管理 | ninxit.blog</a></dt>
+  <dd>localStorage に文字列以外の情報を保持させるための方法として eval を使ったやり方が紹介されていますが、eval はパフォーマンス面よりもセキュリティ面で問題を起こすことが多いので推奨されません。JSON.parse が使える環境ではそれを使い、そうでない環境では JSON パーサライブラリを使用するのが望ましいです。</dd>
+</dl>
+<a href="#index">↑目次</a><br>
+<br>
+<h4 id="ac">アプリケーションキャッシュ</h4>
+localStorage と並んで、ローカル Web アプリを実現するための肝になる機能がこのアプリケーションキャッシュです。<br>
+通常のウェブサイトを閲覧している際も、ブラウザは動作を高速化させるためにローカルにキャッシュファイルを持ちますが、「どのファイルをキャッシュして、どのファイルをキャッシュしないか」を明示するのが、このアプリケーションキャッシュです。<br>
+<br>
+アプリケーションキャッシュを利用するためには、キャッシュマニフェストと呼ばれるファイルでキャッシュすべきファイルを指定します。<br>
+<br>
+キャッシュマニフェストの指定がない従来のキャッシュの場合は、どのタイミングでキャッシュが破棄されるかがブラウザ任せですし、キャッシュを保持している場合であっても、ページを開くたびに、キャッシュしているファイルがその後更新されていないかの確認のため、サーバへのアクセスが発生します。<br>
+<br>
+一方、キャッシュマニフェストで指定したキャッシュファイルに関しては、明示的なキャッシュの削除操作を行うまではキャッシュが破棄される事がないですし、「キャッシュマニフェストが」更新されない限りは、キャッシュ自体も更新されないため、サーバへのアクセスがいっさい発生しません。<br>
+<br>
+キャッシュマニフェスト自体の使い方はとても簡単です。<br>
+<br>
+HTML の指定<br>
+<pre>&lt;html manifest="cache.manifest"&gt;
+</pre>
+html 要素の manifest 属性で、キャッシュマニフェストファイルを指定します。慣例的に拡張子として .manifest を使用します。<br>
+<br>
+キャッシュマニフェスト<br>
+<pre>CACHE MANIFEST
+# Ver 1
+
+CACHE:
+css/style.css
+js/script.js
+
+NETWORK:
+list.php
+update.php
+</pre>
+ファイルの１行目は "CACHE MANIFEST" で固定、# 以降改行までがコメント、CACHE: 行以降がローカルにキャッシュするファイル、NETWORK: 以降が必ずサーバを参照するファイル、という意味になります。<br>
+<br>
+キャッシュマニフェストが更新されているかの判断は、ファイルが 1 バイトでも変わっているか、という事で判断されます。<br>
+キャッシュに含まれるファイルに更新があっても、キャッシュマニフェストが更新されない場合、ブラウザはいつまでもキャッシュされたファイルを参照し続けます。<br>
+<br>
+このままだといつまでたってもファイルを更新できないので、キャッシュマニフェストの内容自体に変化がない場合でも、ブラウザに対してキャッシュマニフェストの更新を通知するため、バージョンを表すコメントを冒頭に記入する事が一般的に行われています。<br>
+<br>
+最後に .manifest ファイルの MIME タイプが "text/cache-manifest" となるようにします。<br>
+apache の .htaccess ファイルや httpd.conf ファイルであれば以下のような指定です。この部分だけミドルウェアの知識が必要になるので、少しハードルが高くなるかもしれません。<br>
+<pre>AddType text/cache-manifest .manifest
+</pre>
+<br>
+さて、キャッシュマニフェストを書いている時にまず最初にやりたくなるのがワイルドカードの利用です。<br>
+css/*.css のような記述が可能であれば嬉しいところですが、それは出来ません。<br>
+というのも、キャッシュマニフェストでキャッシュに指定したファイルについては、プリフェッチが有効になるためです。このプリフェッチがあるからこそ、「ネットワークがなくても動作する」という事が実現します。<br>
+<br>
+ワイルドカードでは保持すべきファイルの名前が実際にリクエストされるまでわからず、その大前提が崩れてしまう事になります。<br>
+1 Click Config でもそのようにしていますが、ファイルの内容が変化する前提の場合、マニフェストファイル自体を動的に生成するのが良いでしょう。<br>
+<br>
+<dl>
+  <dt>◎<a href="http://www.atmarkit.co.jp/fsmart/articles/iphoneweb05/01.html" target="_blank">HTML5でiPhone用Webアプリをオフライン対応に - ＠IT</a></dt>
+  <dd>アプリケーションキャッシュの基本的な使い方から、iPhone で明示的にキャッシュを更新する方法までが書かれています。Mobile Safari の場合、JavaScript から明示的に指定しない限り、キャッシュマニフェストそのものの更新チェックも行われません。バージョンアップを想定する場合、キャッシュマニフェストの更新チェックを行う実装は必須になります。</dd>
+</dl>
+<br>
+<a href="#index">↑目次</a><br>
+<br>
+<h4 id="ds">data スキーム</h4>
+data スキーム自体は HTML5 の仕様に含まれるものではありませんが、時期を同じくして普及がはじまった事、data スキームを扱う API が HTML5 で追加されたことなどから考えて、実質的には HTML5 の要素技術と考えて差し支えない感じです。例えば HTML5 の File API では、data スキームを直接扱う事が出来ます。<br>
+<br>
+a 要素の href 属性に "http:..." と書く代わりに、"mailto:..." とか、"javascript:..." などと書くと、それぞれ異なった動きをする事はよく知られていると思います。こういったものを URL スキームと言い、その中の一つが data スキームです。<br>
+ちなみに、1 Click Config も iOS5 で追加された prefs スキームを使う事によって設定画面を呼び出しています。<br>
+<br>
+data スキームは、その名の通り任意の「データ」を扱う事ができるスキームです。構造は以下のようになっています。<br>
+<pre>data:[&lt;MIME タイプ&gt;][;&lt;エンコード方式&gt;],&lt;エンコード済みデータ&gt;
+</pre>
+<br>
+仕様上、MIME タイプとエンコード方式は省略可能な事になっていますが、MIME タイプを省略した際のブラウザの挙動が不安ですし、エンコード方式は base64 のみが利用可能と考えてほぼ差し支えないので、いずれも実質的には必須項目です。<br>
+<br>
+この data スキームは例えば以下のようなシーンで使えます。<br>
+<pre>&lt;-- 任意のファイルをダウンロード --&gt;
+&lt;a href="data:application/excel;base64,XXXXXXXX..."&gt;Excel ファイルをダウンロード&lt;/a&gt;
+
+&lt;-- 画像ファイルを表示 --&gt;
+&lt;img src="data:image/gif;base64,XXXXXXXX..." class="animation-icon" /&gt;
+
+&lt;-- 背景画像を表示 --&gt;
+&lt;div style="background-image: url(data:image/png;base64,XXXXXXXX...)"&gt;&lt;/div&gt;
+</pre>
+<br>
+base64 エンコードは、バイナリデータを文字列化するエンコード方式の中では比較的効率が高い方式ですが、それでも元のバイナリデータに比べて容量が増加するのは避けられません。<br>
+単純にダウンロードするファイルサイズだけで言えば、data スキームを使わない方が容量は少ない事になります。<br>
+<br>
+ですが、大量のアイコン画像など容量の小さいファイルが多くある場合、それぞれを別々のバイナリファイルとしてサーバから取得しようとすると、一つ一つに HTTP のオーバーヘッドが発生しますし、HTTP のコネクションを同時に張れる数 (通常は 2) にも制限があって並列ダウンロードは出来ません。<br>
+こういった時に、画像をバイナリファイルではなく data スキームで扱うと、全てのアイコンを同時に一括ダウンロードしたのと同じ効果になるので、結果として動作が高速になります。これはモバイルの 3G 回線のような環境で特に顕著です。<br>
+<br>
+ところで、base64 エンコードのやり方についてですが、各種プログラミング言語の実装/ライブラリを利用したり、リンク先として紹介しているウェブサービスを利用する方法などがあります。<br>
+<br>
+PHP であれば極端な話、以下のような記述だけでも data スキームを使う事が出来ます。<br>
+(表示の度に base64 エンコードの処理が走るので実際にやってはいけません。)<br>
+<pre>&lt;img src="img/icon.png" width="16" height="16" alt="" /&gt;
+↓のように修正
+&lt;img src="data:image/png;base64,&lt;?php echo base64_encode(file_get_contents('img/icon.png')); ?&gt;" width="16" height="16" alt="" /&gt;
+</pre>
+<br>
+前述のように、アプリケーションキャッシュは静的なファイルをローカルにキャッシュするにはとても適した方法です。ですが、動的に追加されるファイルをキャッシュしようとすると、マニフェストファイルを変更する手間があったり、更新の手順が回りくどかったり、あまりいい事がありません。<br>
+<br>
+こういった場合、キャッシュさせたいファイルを base64 エンコードした状態でサーバからブラウザに渡し、それを localStorage に置いておく事で、いつでもローカルから呼び出す事が可能になります。<br>
+ユーザごとに異なるユーザアイコン画像などを、ローカルキャッシュに置いておくような用途に使えますね。<br>
+<br>
+<dl>
+  <dt>◯<a href="http://tokkono.cute.coocan.jp/blog/slow/index.php/xhtmlcss/reduce-http-requests-using-data-uris/" target="_blank">Data URIによるHTTPリクエストの削減とYSlowスコア | ゆっくりと…</a></dt>
+  <dd>より詳細な data スキームの使い方についての解説です。</dd>
+  <dt>◯<a href="http://pgmon.heteml.jp/n/dsg/" target="_blank">dataスキーム生成</a></dt>
+  <dd>オンラインで base64 エンコードが出来るサイトです。シンプルなツールながら、ローカルからファイルをアップしてエンコード出来て、エンコード結果のプレビューもそのまま出るので使い勝手がいいです。</dd>
+  <dt>△<a href="http://www.kawa.net/works/js/data-scheme/base64.html" target="_blank">[JavaScript] dataスキームURI生成（画像データのBase64変換）</a></dt>
+  <dd>オンラインで base64 エンコードが出来るサイトですが、元々アップされていて URL があるファイルしかエンコード出来ません。</dd>
+  <dt>◯<a href="http://tech.kayac.com/archive/html5-canvas-slideshow.html" target="_blank">JavaScriptで画像のオフラインキャッシュを実装する | tech.kayac.com - KAYAC engineers' blog</a></dt>
+  <dd>文中で触れた localStorage にキャッシュを保存するアイディアと、CANVAS 連携のアイディアなどが紹介されています。実装については触れられていませんが、こういった考え方は今後重要だと思います。</dd>
+</dl>
+<br>
+<a href="#index">↑目次</a><br>
+<br>
+<h4 id="wc">Web クリップ</h4>
+Web クリップは HTML5 とは特に関連しない話ですが、iPhone 上でネイティブっぽい Web アプリを作る上で、必須の知識になるので触れておきます。<br>
+Mobile Safari で任意のサイトを開いて、メニューから「ホーム画面に追加」すると、ホーム画面にそのサイトへのショートカットが作成されます。これが Web クリップと呼ばれています。<br>
+<br>
+Web クリップを適切に使う事で、Safari を経由せず直接任意のサイトを開く事が出来るようになるので、iPhone 上でネイティブアプリ風に使いたいローカル Web アプリは、Web クリップの利用が前提になるかと思います。<br>
+<br>
+Web クリップに限った話、さらに言えば iOS に限った話でもないですが、まずモバイル環境での HTML レンダリングについて viewport を定義して、不意に拡大されたり縮小されたりする事を防ぎます。デバイスの幅に合わせてレンダリングをし、拡大・縮小を許可しない記述は以下のようになります。<br>
+<pre>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" /&gt;
+</pre>
+<br>
+iOS において、Web クリップからサイトを開いた時に、Safari ではなくフルスクリーンで専用のビューを開くには apple-mobile-web-app-capable を指定します。この値が "yes" の時に Web クリップを作成すると、それ以降 Web クリップから起動した時にフルスクリーンで表示されます。<br>
+<br>
+HTML の初期ロード時の値ではなく、動的に変更された後の値も有効なので、1 Click Config では、フルスクリーンの有無を切り替えられる実装にしました。<br>
+なお、フルスクリーンで起動すると、ネイティブアプリと同様マルチタスクにアイコンが残るので、そこからも Web アプリが起動出来るようになります。<br>
+<pre>&lt;meta name="apple-mobile-web-app-capable" content="yes" /&gt;
+</pre>
+<br>
+iOS において、Web クリップを作った時にホーム画面に追加されるアイコンを指定するには、apple-touch-icon を設定します。画像フォーマットは PNG で、画像サイズは 114 x 114 が望ましいです。それ以外のサイズは自動的に拡大・縮小されます。(3GS 時代までは 57 x 57 でした。)<br>
+<br>
+アイコンには角丸処理がなされ、上部に半円のハイライトが自動的に付与されます。ハイライトが入ると、適当なデザインでもそれなりに見栄えがしますが、やはりそれなりです。ちゃんとデザインされたアイコンが用意出来て、自動のハイライトが不要な場合は、apple-touch-icon の代わりに apple-touch-icon-precomposed を指定します。<br>
+<pre>&lt;-- ハイライト自動付与 --&gt;
+&lt;link rel="apple-touch-icon" href="data:image/png;base64,XXXXX" &gt;
+
+&lt;-- ハイライト付与なし --&gt;
+&lt;link rel="apple-touch-icon-precomposed" href="data:image/png;base64,XXXXX" &gt;
+</pre>
+<br>
+ここで、link 要素の href 属性には任意のファイルのパスを記述するのが一般的ですが、あえて data スキームを使うのには高速化の他にも理由があります。<br>
+iPhone 上で Web クリップを作る時、いったんプレビュー画面が表示されるのですが、そこに表示されるアイコンは、ローカルにキャッシュファイルがあっても、再度ネットワーク上から取りなおすような動きをしているためです。<br>
+<br>
+このためせっかくローカルにキャッシュがあってもアイコンが上手く表示されなかったり、3G 回線ではアイコンの表示が遅れたり、といった事が起こります。<br>
+data スキームであればそもそもネットワークを参照に行かないので、高速・確実に表示されます。<br>
+<br>
+なお余談ですが、アイコンの指定が無いような普通のサイトを Web クリップする時は、そのサイトのサムネイル画像がアイコンとして使われます。このサムネイル画像は最後にサイトを開いていた時の状態から作られるので、サイト上の特徴的な部分を拡大した状態で Web クリップを作ると、幾分見やすくなります。<br>
+<br>
+<dl>
+  <dt>◎<a href="http://symple.jp/93.html" target="_blank">iPhone向けSafari、HTML拡張属性を使いこなす | 株式会社シンメトリック公式ブログ</a></dt>
+  <dd>Web クリップで適用される様々な meta 要素の指定の他、Mobile Safari で有効な各種の拡張などについても詳しく解説されています。超お勧めです。</dd>
+  <dt>◎<a href="http://blog.fonland.net/2011/06/iphone-android-apple-touch-icon.html" target="_blank">iPhone と Android の apple-touch-icon の違い - Fonland</a></dt>
+  <dd>Android も含めてアイコンの詳細な仕様について解説されています。サイズごとに異なる指定の仕方もあるので、3/3GS 用、4/4S 用、iPad 用それぞれに別の画像を指定する方法が分かります。</dd>
+  <dt>◯<a href="http://ipn3g.com/web/study3.html" target="_blank">Viewport [iPhone生活]</a></dt>
+  <dd>viewport についての詳しい解説です。jQuery Mobile を使ったサイトであれば、拡大縮小させないケースが多いと思うので「◯」評価ですが、PC 向けサイトを含めて考える場合は必読です。</dd>
+</dl>
+<br>
+<a href="#index">↑目次</a><br>
+<br>
+<h4 id="debug">デバッグ方法</h4>
+最後にデバッグ方法にも触れておきます。<br>
+Web アプリで色々と動的な操作を行おうと思った場合、プログラミング言語は事実上 JavaScript 一択 です。別の言語で記述して JavaScript に変換する事も出来ますが、最終的に実行されるのが JavaScript である以上、JavaScript のデバッグが効率的に行えないと、アプリ開発の効率は上がりません。<br>
+<br>
+iOS 実機でも、設定で「デバッグコンソール」を有効にする事である程度のデバッグが可能ですが、サーバへアップする手間 (あるいは開発用マシンに接続出来るようにする手間) を考えると面倒ですし、そもそも情報量が足りません。<br>
+シミュレータを使った開発ではだいぶ改善されますが、Mac オンリーになります。<br>
+<br>
+実際の所 Mobile Safari は Webkit ベースのフルブラウザでもあるので、ピンチイン・アウトのイベントを使ったり、加速度センサ使うようなアプリでも作らない限りは、Safari / Chrome など、Webkit ベースのデスクトップ向けブラウザで、実機とほとんど変わらない動作確認が可能です。特に Webkit ベースのブラウザには優秀なデベロッパーツールが標準添付されているので、css の調整や JavaScript のバグ修正に非常に役立ちます。<br>
+<br>
+ですので、モバイル向けの Web アプリ開発でも、デバッグ環境としてはデスクトップ上のブラウザがお勧めです。<br>
+1 Click Config についても、動作の大半を PC 上の Chrome で作り込んで、どうしても実機の確認が必要な時だけ、実機で確認していました。<br>
+<br>
+<dl>
+  <dt>◯<a href="http://css-eblog.com/tools/weinre.html" target="_blank">スマホの開発が超絶楽に！ weinreでスマートフォンをPCでリモートデバッグ！ | CSS-EBLOG</a></dt>
+  <dd>どうしても実機の動きを詳しくデバッグする必要がある場合、こういった環境を準備すると最強です。最大の問題点は、面倒でなかなかやる気が起きない点です。それでも、実機ならではの機能を使い倒すアプリを作る場合は、必須の環境になるかと思います。</dd>
+</dl>
+<br>
+<a href="#index">↑目次</a><br>
+<br>
+<h4 id="source">1 Click Config ソース</h4>
+これらを全部含んで実装した 1 Click Config のソースをまとめて zip で公開しようかと思いましたが、そもそも HTML / JavaScript / CSS なんて全然隠されてないので、必要に応じて <a href="/1cc/" target="_blank">1 Click Config</a> の中身をみてみて下さい。<br>
+それこそ、Chrome のデベロッパーツールを使えば簡単に解析出来るはずです。<br>
+<br>
+1 Click Config 自体は静的なファイルのみで構成されていますが、キャッシュマニフェストの更新や data スキームの生成自体はサーバ側で動的に生成しているので、必要なファイルだけを抽出して zip 化するのが面倒、という事情もあります。<br>
+zip の提供はリクエストが多ければ検討します。<br>
+<br>
+<a href="#index">↑目次</a><br>
+<br>
+<h4 id="ending">終わりに</h4>
+冒頭にも書きましたが、この「ローカル Web アプリ」という手法は、今後どんどん増えていくだろうと思っています。これまでネットワーク前提でしか使えなかったような知識が、ネットワーク無しでも動くようになるのはとても面白いです。<br>
+キャッシングの仕組みなどは、ネットワーク前提の普通の Web アプリであっても、動作を高速化させる手法として定着していく事と思います。<br>
+<br>
+この記事が、そういった機能に期待し、面白いアプリを作ってくれる未来の開発者の助けになれば幸いです。<br>
+<br>
+<a href="#index">↑目次</a><br>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+
+<html>
+<head>
+    <title>フツーの方法では出来ない Google Reader からタグ付けした記事をエクスポートする一回限りの無茶な手順</title>
+</head>
+<body>
+Google Reader にどっぷり依存していた身としては有料で良いから Google Reader の存続を願わずにいられないのですが、そう夢見てばかりもいられないのでそろそろ移行の準備など始めています。<br>
+<br>
+とりあえず試しに、と Google Reader のエクスポートを試してみたのですが、ない…ないんですよ！<br>
+確かに購読中のフィード一覧はあります。スター付きアイテムも、フォロワーも、その辺はちゃんとあります。でもフィードではなく、フィードに含まれている記事ごとに付けてあるタグの情報がすっぽり抜け落ちてるんですよ！<br>
+これ、ブックマーク代わりとして重宝してたのに…。ここにしか持ってない情報いっぱいあるのに…。<br>
+<br>
+と言うわけで、一回限りの無茶な手順でエクスポートした方法を残しておきます。<br>
+もしかしたら誰かの役に立つかも知れないですしね。<br>
+<br>
+<h4>一覧の取得</h4>
+まず Google Chrome で Google Reader にアクセスして対象タグのページを開きます。<br>
+表示形式は一覧で、内容を「すべてのアイテム」にしてます。表示順はお好みで選びます。<br>
+ここで、下にスクロールしていくと逐次続きが読み込まれるので、これ以上なくなるところまで全部読み込ませます。<br>
+全ての記事のタイトルが一覧表示されたら…<br>
+<br>
+おもむろにデベロッパーツールを起動します。<br>
+そしてコンソールを開いて以下の内容を実行！(一回限りの無茶っぽさその1)<br>
+<br>
+<pre>var t = document.getElementsByClassName('entry-title'); var u = document.getElementsByClassName('entry-original'); for (var i=0;i&lt;t.length; i++) {console.log(t[i].innerText + '\t' + u[i].href);}
+</pre>
+<br>
+コンソールにタイトルと URL がタブ区切りで展開されます。<br>
+あとはコピペすれば tsv になるので、煮るなり焼くなりご自由に！<br>
+<br>
+ならない…。<br>
+<br>
+URL の大半が feedproxy.google.com でした。転送用アドレスですね。<br>
+Google Reader が無くなるとなった今、転送用ドメインがいつまで生きているか怪しすぎます。これは転送先に置換してやらないといけません。<br>
+<br>
+<h4>feedproxy.google.com を一括で展開</h4>
+<br>
+URL の一覧を次のような感じに加工します。使うツールは、使い捨てのスクリプトでも、Excel の関数でも、エディタの正規表現置換でも、好きな方法で加工して下さい。ちなみに私は正規表現置換でやりました！(一回限りの無茶っぽさその2)<br>
+<br>
+<pre>#!/bin/sh
+curl -I -s http://feedproxy.google.com/〜〜/ | egrep -i "Location|HTTP.+ [0-9]{3} " | cut -d ' ' -f 2
+curl -I -s http://feedproxy.google.com/〜〜/ | egrep -i "Location|HTTP.+ [0-9]{3} " | cut -d ' ' -f 2
+curl -I -s http://www.originaldomain.com/〜〜/ | egrep -i "Location|HTTP.+ [0-9]{3} " | cut -d ' ' -f 2
+：
+：
+</pre>
+<br>
+そしたら、対象ファイルに実行権限を与えて実行すると、一気に一覧が取れます。<br>
+<br>
+$ chmod u+x list.sh<br>
+$ ./list.sh > resutls.txt<br>
+<br>
+curl が 301 を解釈してリダイレクトするのを待つので、件数が多いと結構時間がかかりますが、これまで試したところ全件取れました。<br>
+Google のサーバに負荷をかけている予感がしますが、並列アクセスじゃないし、リダイレクト先へのアクセスを待った後で次のリクエストになるからいいかな、という感じです。そもそも Google Reader やめるんだからこのくらいは大目に見て欲しいです。<br>
+最初、Location だけ出てればいいかと思ってたのですが、時々 feedproxy を挟まないオリジナルの URL の事もあってそこが抜けてしまうと後から見たときに分かりにくいので、HTTP Status も出力するようにしています。<br>
+<br>
+<blockquote>
+curl を使ってリダイレクト先を取得する手法は<a href="http://nyaocat.hatenablog.jp/entry/2012/12/10/235259">シェルで短縮URLの展開 - nyaocatのブログ</a>を参考にしました。ありがとうございます。<br>
+</blockquote>
+<br>
+Mac であればそのまま動きます。Linux も多分大丈夫ですが、wget しかなかったら多少オプションの修正が必要かも知れません。Windows の場合はどうするんでしょう？ cygwin 入れるのが早そうな。<br>
+<br>
+そんなこんなで、一回限りの無茶な手順でした。<br>
+エンジニアやってなかったら諦めてたデータなのかなとは思います。ハックというには大げさですが、こういうのは好きですね。
+</body>
+</html>

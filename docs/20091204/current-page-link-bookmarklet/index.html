@@ -1,0 +1,18 @@
+
+<html>
+<head>
+    <title>今見ているページへリンクする a タグを作るブックマークレット</title>
+</head>
+<body>
+今ちょうど、色んな参照ページを開きながら、そのリンクを含んだブログ記事を書こうとしているのですが、毎回リンク用 HTML を作るのがめんどくさくなって、脊髄反射的に書きました。<br>
+<br>
+今見ているページの URL とタイトルを a タグに納めて表示するブックマークレットです。<br>
+きっと類似品はいっぱいあります。<br>
+<br>
+<pre>javascript:(function(d,l,t,a){t=d.getElementsByTagName('title')[0].innerHTML;prompt('','&lt;a%20href=%22'+l.href+'%22%20target=%22_blank%22&gt;'+t+'&lt;/a&gt;');})(document,location);</pre>
+<a href="javascript:(function(d,l,t,a){t=d.getElementsByTagName('title')[0].innerHTML;prompt('','<a%20href=%22'+l.href+'%22%20target=%22_blank%22>'+t+'</a>');})(document,location);">MakeLink</a> (左記をリンクバー等にドラッグ)<br>
+<br>
+検索するより早そうなら、車輪も再発明しちゃえ！という事で、自分向けメモエントリでした。<br>
+毎回、面倒に感じてたのに、何で今まで放置してたんだろう…。
+</body>
+</html>

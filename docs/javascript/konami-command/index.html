@@ -1,0 +1,107 @@
+
+<html>
+<head>
+    <title>コナミコマンド.js</title>
+</head>
+<body>
+<p style="text-align: right;">»<a href="//s.otchy.net/js/konamicommand.js">Download</a></p>
+<br>
+あの懐かしい「上上下下…」の響き。伝説のコナミコマンドを、あなたのウェブページに簡単に導入する事が出来るスクリプトです。<br>
+<br>
+Google Reader がコナミコマンドに対応しているというニュースを読んだらいても立ってもいられなくなり、条件反射のように作成してしまいました。<br>
+<br>
+さて、とりあえずこのページ自体がサンプルになっているので、コナミコマンドを入力してみて下さい。<br>
+<span style="text-decoration: line-through;">スクリプトの作成時間よりこの説明ページの作成時間の方が長かった事は秘密だ。</span><br>
+<h4>動作条件</h4>
+下記のブラウザで動作確認しています。他のブラウザでも動くかも知れませんが、分かりません。<br>
+IE6、IE7、Firefox1、Firefox1.5、Firefox2.0、Safari3、Opera9<br>
+日本語入力が ON になっていたり、ウィンドウ (もしくはタブ) にフォーカスがない時は無効です。<br>
+<br>
+なお、例によって ここで公開されているスクリプトは保証無しですが、著作権も放棄しています。<br>
+好きなだけ持って行って好きなだけ改造して下さい。<br>
+<h4>導入方法 (基本)</h4>
+上記の Download リンクから取得した <code>konamicommand.js</code> ファイルを読み込むと、<code>konamicommand</code> 関数が利用可能になるので、コナミコマンド成功時に実行したい関数を指定するだけです。<br>
+下記のサンプルのようなコードを書くだけで、コナミコマンド成功時に指定した関数が実行されます。<br>
+<pre>&lt;script type="text/javascript" src="konamicommand.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+&lt;!--
+    function powerUp() {
+        alert('パワーアップ');
+    }
+    konamicommand(powerUp);
+//--&gt;
+&lt;/script&gt;</pre>
+上記のソースは以下のように書いても同じ意味になります。関数を 1 カ所でしか使わない場合はこの方が見やすいかも知れません。<br>
+<pre>&lt;script type="text/javascript" src="konamicommand.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+&lt;!--
+    konamicommand(function() {
+        alert('パワーアップ');
+    });
+//--&gt;
+&lt;/script&gt;</pre>
+<h4>トグルの実装 (拡張)</h4>
+コナミコマンドを繰り返し実行した際に、動作を変化させる事も出来ます。<br>
+実行時関数には、コナミコマンド実行回数のカウンタが渡されるため、そのカウンタで判別します。<br>
+カウンタは 0 から始まる整数なので、たとえばトグルは以下のように実装できます。<br>
+<pre>function powerUp(count) {
+    if (count % 2 == 0) {
+        // 偶数の時のみ実行
+        alert('パワーアップ');
+    } else {
+        // 奇数の時のみ実行
+        alert('元に戻す');
+    }
+}
+konamicommand(powerUp);</pre>
+凝った作りにするのなら、以下のような事も可能です。<br>
+<pre>konamicommand(function(count) {
+    switch (count) {
+        case 0 : alert('スピーダップ'); break;
+        case 1 : alert('ミッソー'); break;
+        case 2 : alert('ダボゥ'); break;
+        case 3 : alert('ウェイサー'); break;
+        case 4 : alert('アップシュン'); break;
+        case 5 : alert('フォースフィー'); break;
+        default : alert('自爆');
+    }
+});</pre>
+<h4>別のコマンドを実行 (上級)</h4>
+<code>konamicommand</code> 関数の第二引数に、オプションとしてコマンド文字列を渡す事が出来ます。<br>
+コマンド文字列とは、キーコードの値を「<code>|</code>」で区切った文字列で、任意のコマンドを指定する事が出来ます。<br>
+コマンド文字列には最初と最後にも「<code>|</code>」が含まれている事に注意して下さい。<br>
+この構文を使えば、隠しコマンドが作り放題です。<br>
+<pre>konamicommand(実行時関数, 'コマンド文字列');</pre>
+デフォルトである「<code>上上下下左右左右BA</code>」のコマンド文字列は <code>"|38|38|40|40|37|39|37|39|66|65|"</code> になっています。<br>
+例えば、「<code>L</code>」の文字コードは "<code>76</code>" で、「<code>R</code>」の文字コードは "<code>82</code>" なので、「<code>上上下下LRLRBA</code>」 は次のように実装できます。<br>
+<pre>konamicommand(function() {
+    alert('Ⅲ');
+}, '|38|38|40|40|76|82|76|82|66|65|');</pre>
+<code>konamicommand</code> 関数は、複数回実行しても全て有効になるため、1つのページに複数のコマンドを仕掛ける事も可能です。<br>
+このページ自体にも、通常のコナミコマンド以外の隠しコマンドが…<br>
+<br>
+<script src="//s.otchy.net/js/konamicommand.js" type="text/javascript"></script><br>
+ <script type="text/javascript"><!--
+	konamicommand(function(count){
+		var b = document.body;
+		if (count % 2 == 0) {
+			alert('パワーアップ');
+			b.style.backgroundColor = '#006';
+		} else {
+			b.style.backgroundColor = '#fff';
+		}
+		window.scrollTo(0,0);
+	});
+	konamicommand(function(count){
+		var b = document.body;
+		if (count % 2 == 0) {
+			alert('自爆');
+			b.style.backgroundColor = '#600';
+		} else {
+			b.style.backgroundColor = '#fff';
+		}
+		window.scrollTo(0,0);
+	}, '|38|38|40|40|76|82|76|82|66|65|');
+// --></script>
+</body>
+</html>

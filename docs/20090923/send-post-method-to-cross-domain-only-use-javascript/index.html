@@ -1,0 +1,106 @@
+
+<html>
+<head>
+    <title>JavaScript だけでクロスドメインで POST メソッドを送る方法</title>
+</head>
+<body>
+JavaScript のみを使って、クロスドメインを実現しつつ POST メソッドでリクエストを送信する方法について解説します。<br>
+ここで解説する方法にはこんな特徴があります。<br>
+<strong>(2009-10-30 追記)</strong> iframe の unload のタイミングについて、重大な不具合がある可能性に気づきました。<del>Chrome/</del>Firefox において、2度イベントが発生している可能性が高いです。unload イベントを使わない場合は無関係です。結論が分かったら修正版をこのページで公開します。<br>
+<strong>(2010-01-29 追記)</strong> Chrome は大丈夫そうです。Firefox もカウンタ or フラグを使ってイベントを記録すれば大丈夫ぽいです。ちゃんと直せて無くてすいません。<br>
+<ul>
+<li>XMLHttpRequest では不可能な、クロスドメインによるポストを実現している。</li>
+<li>元になるページの文字エンコードの種類にかかわらず、必ず UTF-8 でポストできる。</li>
+<li>ポストが終わったタイミングをイベントで捕捉できる。</li>
+<li>JavaScript だけで実現するので、サーバサイドに何らかのスクリプトを用意する必要がない。</li>
+<li>必要な HTML は DOM で後から埋め込むので、元になっているページの HTML は修正する必要がない。</li>
+</ul>
+<br>
+さて、話の発端は、<a href="/greasemonkey/hatebu-with-twitter/">はてブ with Twitter</a> になります。<br>
+このスクリプトは、元々 Greasemonkey に搭載されている GM_xmlhttpRequest 関数を使って実装されていました。<br>
+GM_xmlhttpRequest は通常の XMLHttpRequest に存在するクロスドメインの制限がないので (その分危ないとも言えますが)、 「はてブを追加する前に Twitter につぶやいて、その処理が終わってからはてブを追加する」という事がいとも簡単に実現していました。<br>
+ところがこのスクリプトを Google Chrome に対応させるにあたって、Google Chrome では、GM_* 系の関数が存在しないので、それを代替する手段を模索する必要があったのです。<br>
+<br>
+通常、JavaScript によるクロスドメインというと、API 側が、JSONP 対応している前提で、script タグを埋め込んで対応するのが一般的です。<br>
+ただ、この方法には制限があり、script タグによるリクエストは必ず GET メソッドになってしまいます。<br>
+Twitter の API は大半が GET でアクセスできるのですが、つぶやきを送信する API については、POST でのアクセスが必須となっていて、Twitter でつぶやくために JSONP を使う事は出来ません。<br>
+<br>
+単につぶやいてそれっきり、という動きでよければ、以前 <a href="/20090416/bookmarklet-for-twitter/">閲覧中のページについてそこから遷移せずTwitterでつぶやくためのブックマークレット</a>でやったのと同じ方法でいいのですが、はてブへの追加をするにあたっては、Twitter API へのアクセス完了を待たないといけないので、そのあたりを解決したのが、Google Chrome 版スクリプトになります。<br>
+<br>
+以下では、はてブ with Twitter (for Google Chrome) のソースから一部を抜粋して、どうやってその動作を実現したかを解説してきます。<br>
+<br>
+<pre>var d = document;
+var f = /* なんかのフォーム Element */;
+var b = /* なんかのサブミットボタン Element */;
+
+// サブミットボタンにイベント登録
+b.addEventListener('click', function (e) {
+    // クロスドメインポスト用隠し iframe
+    var i = d.createElement('iframe');
+    i.style.display = 'none';
+    d.body.appendChild(i);
+
+    // レスポンスイベント取得用隠し iframe
+    var i2 = d.createElement('iframe');
+    i2.name = 'postresult';
+    i2.style.display = 'none';
+    d.body.appendChild(i2);
+
+    // レスポンス時イベント登録
+    i2.contentWindow.addEventListener('unload', function(e) {
+        f.submit();
+    }, false);
+
+    // クロスドメインへの POST メソッド送信
+    var iDoc = i.contentWindow.document;
+    iDoc.open();
+    iDoc.write('&lt;form method="POST" action="http://twitter.com/statuses/update.xml" target="postresult"&gt;');
+    iDoc.write('&lt;input type="hidden" name="status" value="ポストしたい内容" /&gt;');
+    iDoc.write('&lt;/form&gt;');
+    iDoc.write('&lt;script&gt;window.onload = function(){document.forms[0].submit();}&lt;/script&gt;');
+    iDoc.close();
+
+    // サブミットボタン本来の動作をキャンセル
+    e.preventDefault();
+}, false);
+</pre>
+<br>
+このソースは、元々ページに存在するフォームに対して、そのサブミットボタンの動作をフックし、サブミットが行われる前に Twitter へのつぶやき (クロスドメインでの POST メソッド送信) をして、それが完了したから本来のサブミットをする、という動作を意図しています。<br>
+ソース中の f が元々のフォーム、b が元々のサブミットボタンです。<br>
+<br>
+まず、サブミットボタンの click イベントを追加し、イベントの中で、e.preventDefault() する事で、本来のサブミット動作をキャンセルします。<br>
+そしてそのイベントの中で、i と i2 という 2 つの不可視 iframe を追加しています。<br>
+<br>
+i は、POST メソッド送信用の iframe です。<br>
+<i>window</i>.write メソッドを使って iframe 内に form を組み立てつつ、<i>window</i>.onload で、読み込みと同時に <i>form</i>.submit() が走るようにしておきます。<br>
+ここで、form タグの method に POST を指定し、target に i2 の name を指定するのがポイントです。<br>
+<br>
+i2 はあらかじめ name を指定してある iframe です。<br>
+i2 については、中身は空のままでいいですが、unload イベントを登録しておくのがポイントです。<br>
+これにより、i の中の POST 処理結果が i2 に送られたタイミングで i2 の unload イベントが発生するので、POST の完了を捕捉する事が出来ます。<br>
+ここで f.submit() と本来のサブミット動作を指定する事により、サブミットボタンのクリック動作をフックして別の動作を組み込む事が実現します。<br>
+<br>
+<h4>(備考) 後かたづけの必要性</h4>
+この例では、i2 の unload イベントの中で、親画面を遷移させてしまっているのでそれっきりでいいですが、親画面をそのままにする場合は、i と i2 を削除するなど後かたづけをしておく必要があるでしょう。<br>
+JSONP を使う場合もそうですが、テンポラリに生成したエレメントを放置していると、動的な HTML がどんどん汚くなって非常にマナーが悪いので後かたづけもちゃんと考えたいですね。<br>
+<br>
+<h4>(備考) なぜ iframe で POST するのか</h4>
+実は、単に POST メソッドを送信するだけでよければ、1つ目の iframe は不要です。document に直接 form を追加する事でも POST メソッドを送信する事が出来ます。<br>
+あえて、iframe を追加し、<i>window</i>.write で form を作っているのは、文字コードの都合になります。<br>
+iframe を空っぽの状態から作ると、内部的にその iframe の文字コードが UTF-8 になる事を利用して、POST の内容を UTF-8 にしています。<br>
+Web 用に POST メソッドの API を公開しているような最近のサービスは、要求される文字コードが大抵 UTF-8 かと思うので、元のページが Shift_JIS とか、EUC-JP であっても、iframe を利用すればスムーズに API を使えます。<br>
+<br>
+<h4>(備考) なぜ iframe が 2 つ必要なのか</h4>
+iframe を 1 つにして、それ自身の unload イベントを捕捉すればいいじゃないか、と思ったアナタ。その通りです。正しい思考です。<br>
+こればっかりは、実際にやって上手くいかなかったから、としか言えません。どうも、POST 後に unload イベントが発生していなかったようなので、2 つめの iframe を用意してやる必要がありました。<br>
+<br>
+Twitter API が返すのが xml だからなのか、クロスドメインの制約によるものか、Firefox だったらそれでも上手くいくのか、理由はよく分かりません。<br>
+まあ、このあたりも含めて一種のノウハウなのでそのまま公開します。<br>
+<br>
+<h4>(備考) IE の場合</h4>
+IE の場合は未検証ですが、イベント周りの扱いが標準とかけ離れているので、上記のソースがそのまま動く事はないです。<br>
+具体的には、addEventListener のあたりと、preventDefault のあたりは確実に違います。<br>
+もし IE も視野に入れてどうにかしたいなら、イベントモデルの差異を吸収してくれているラッパ (jQuery やら prototype.js やら) を使うのが賢明かと思います。<br>
+
+</body>
+</html>

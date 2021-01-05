@@ -1,0 +1,101 @@
+
+<html>
+<head>
+    <title>Google App Engine for Java 開発環境を USB メモリで持ち歩く (2)</title>
+</head>
+<body>
+Google App Engine の Java 開発環境を USB メモリに入れてどこでも開発できる環境を作りました。<br>
+レポート第 2 弾。USB メモリ向け設定を施した Eclipse のインストールから、日本語化を行って Eclipse が起動するまで。<br>
+<br>
+<h4>Eclipse のインストール</h4>
+<a href="http://www.eclipse.org/downloads/" target="_blank">Eclipse 公式ページ</a>から、Eclipse 本体をダウンロードします。最新版である、3.4 系を使用します。<br>
+<blockquote>Eclipse IDE for Java Developers → ミラーサイトを選択</blockquote>
+ダウンロードしたファイルを解凍して、USB メモリにコピーします。<br>
+<blockquote>U:\eclipse</blockquote>
+ここでいったん、USB メモリ上の JRE で Eclipse が起動するかの確認をしたいと思います。<br>
+Eclipse の起動時パラメータに JRE のパスを指定する事で、任意の JRE で Eclipse を起動する事が出来るのですが、USB メモリでは困った問題が 1 つあります。<br>
+USB メモリを利用する環境によってドライブレターが異なるため、ショートカットなどが利用できないという事です。<br>
+<br>
+そこで、VB Script を使用してこの問題を解決します。<br>
+以下の内容を eclipse.vbs という名前で USB メモリのルートに保存して下さい。<br>
+このスクリプトは、USB メモリを使用している環境に合わせてドライブレターを取得した上で、JRE とワークスペースを指定して Eclipse を起動します。 <br>
+<br>
+<pre>Set fso = CreateObject("Scripting.FileSystemObject")
+Set shell = CreateObject("WScript.Shell")
+drive = fso.GetDriveName(WScript.ScriptFullName)
+shell.CurrentDirectory = ".\eclipse"
+
+eclipse = drive &amp; "\eclipse\eclipse.exe"
+javaw = drive &amp; "\jdk\jre\bin\javaw.exe"
+ws = drive &amp; "\workspace"
+cmd = eclipse &amp; " -vm " &amp; javaw &amp; " -data " &amp; ws
+
+Call shell.Run(cmd, 1, False)</pre>
+<br>
+ここで作成した、eclipse.vbs を起動すると、USB メモリ上の JRE で Eclipse が起動するはずです。<br>
+無事に Eclipse が起動して Welcome 画面が表示されれば OK です。<br>
+<br>
+<h4>Google Plugin for Eclipse のインストール</h4>
+いよいよ、GAE 開発環境のインストールを行います。<br>
+起動した Eclipse 上からネットワークインストールが可能なので、下記の通り実行します。<br>
+参考) <a href="http://code.google.com/intl/ja/appengine/docs/java/gettingstarted/installing.html" target="_blank">Google App Engine - Installing the Java SDK</a><br>
+<br>
+<blockquote>Help → Software Updates → Available Software タブ → Add site ボタン → Location: http://dl.google.com/eclipse/plugin/3.4 入力 → OK ボタン → http://dl.google.com/eclipse/plugin/3.4  にチェック → Install ボタン → ちょっと待つ → Next ボタン → I accept ... にチェック → Finish ボタン → しばらく待つ → Yes ボタン → Eclipse 再起動</blockquote>
+<br>
+以上で、Google Plugin のインストールは完了ですが、Eclipse にはもう少しプラグインを足しておきます。<br>
+個人的には重要度の高いプラグインを導入していますが、この作業は必須でないので、好みによって飛ばしたり、別のプラグインを追加しても良いでしょう。<br>
+<br>
+<h4>Eclipse の日本語化 (Pleiades)</h4>
+Eclipse が起動していたらいったん落とします。<br>
+<a href="http://mergedoc.sourceforge.jp/index.html#/pleiades.html" target="_blank">Pleiades 公式サイト</a>より、プラグインをダウンロードして、eclipse をインストールしたフォルダ以下に展開します。<br>
+<br>
+<blockquote>Pleiades 本体ダウンロード → 安定版 1.3.0 → pleiades_1.3.0.zip 解凍 → plugins フォルダ、features フォルダを U:\eclipse 以下にコピー</blockquote>
+<br>
+Pleiades を有効にするために U:\eclipse\eclipse.ini を編集し、最終行に下記を追加します。<br>
+<pre>-javaagent:plugins/jp.sourceforge.mergedoc.pleiades/pleiades.jar</pre>
+<br>
+ついでなので、昨今の PC スペックに合わせて eclipse.init を多少カスタマイズしておきます。<br>
+この辺は各自の環境に合わせて、調整が必要です。<br>
+<br>
+<pre>-Xms512m
+-Xmx512m</pre>
+<br>
+Pleiades を利用する際は、その仕組み上、プラグインが追加されるたびに clean オプション付きで Eclipse を起動しなければなりません。<br>
+そのため、Pleiades にはそれを行うためのバッチファイルが同梱されていますが、USB メモリ上では上手く動作しません。<br>
+<br>
+ですので、eclipse.vbs をコピーして、eclipse-clean.vbs を作成しておきます。<br>
+<br>
+<pre>Set fso = CreateObject("Scripting.FileSystemObject")
+Set shell = CreateObject("WScript.Shell")
+drive = fso.GetDriveName(WScript.ScriptFullName)
+shell.CurrentDirectory = ".\eclipse"
+
+eclipse = drive &amp; "\eclipse\eclipse.exe <span style="color:#00f;">-clean</span>"
+javaw = drive &amp; "\jdk\jre\bin\javaw.exe"
+ws = drive &amp; "\workspace"
+cmd = eclipse &amp; " -vm " &amp; javaw &amp; " -data " &amp; ws
+
+Call shell.Run(cmd, 1, False)</pre>
+<br>
+作成した eclipse-clean.vbs を使用して Eclipse を起動し、メニューなどが日本語化されていたら、Pleiades の導入は完了です。<br>
+clean 起動はかなり時間がかかるので、必要時のみ行うようにした方が良いです。<br>
+すなわち、eclipse-clean.vbs は、プラグインを追加するごとに 1 回ずつ使用するスクリプトという事です。<br>
+<br>
+<h4>全角スペース、タブの可視化 (JStyle)</h4>
+Eclipse が起動していたらいったん落とします。<br>
+<a href="http://mergedoc.sourceforge.jp/index.html#/jstyle.html" target="_blank">JStype 公式サイト</a>より、プラグインをダウンロードして、eclipse をインストールしたフォルダ以下に展開します。<br>
+<br>
+<blockquote>ダウンロード → Eclipse 3.4.2 用 → jstyle_3.4.2.3.zip 解凍 → plugins フォルダを U:\eclipse 以下にコピー</blockquote>
+<br>
+プラグインの追加を行ったので、1 回 eclipse-clean.vbs で起動させます。<br>
+起動後は、Jstyle 推奨の設定を行っておいた方が良いでしょう。<br>
+<br>
+<blockquote>ウィンドウ → 設定 → 一般 → 外観 → 色とフォント → 基本 → テキスト・フォント→ 変更ボタン → MS ゴシック → 標準 → 9 ポイント → OK ボタン → OK ボタン</blockquote>
+<br>
+<div class="navi">
+<div class="prev"><a href="http://www.otchy.net/20090419/google-app-engine-java-development-in-usb-memory-1/">前へ</a></div>
+<div class="next"><a href="http://www.otchy.net/20090419/google-app-engine-java-development-in-usb-memory-3/">次へ</a></div>
+<div class="bottom"></div>
+</div>
+</body>
+</html>

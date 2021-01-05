@@ -1,0 +1,60 @@
+
+<html>
+<head>
+    <title>Chrome 正式版 Greasemonkey でクロスドメイン POST をする方法</title>
+</head>
+<body>
+最近公開された、Google Chrome の Ver 4 では、正式に Greasemonkey がサポートされ、以前のように特別なオプションを指定することなく、ワンクリックでユーザスクリプトがインストール出来るようになりました。<br>
+それ自体は非常に嬉しい事だったんですが、バージョンアップに伴い、<a href="/greasemonkey/hatebu-with-twitter/">はてブ with Twitter</a> が動かなくなってしまっていました。(現在は修正済み)<br>
+<br>
+以前、<a href="/20090923/send-post-method-to-cross-domain-only-use-javascript/">JavaScript だけでクロスドメインで POST メソッドを送る方法</a>で紹介したやり方が、Chrome のバージョンアップによって無効になってしまったためです。<br>
+無効になったとはいえ、通常の JavaScript として使用する分には問題なく、Greasemonkey だけに問題が発生していました。<br>
+動的に生成した iframe の contentWidow オブジェクトが取得出来なくなっており、セキュリティの制限が強化されたものと思われます。<br>
+<br>
+最終的にはその制限を回避する方法を見つけたので、以下に解説します。<br>
+<br>
+<h4>通常 JavaScript の記述</h4>
+まず、Greasemonkey ではなく普通の JavaScript として<a href="/20090923/send-post-method-to-cross-domain-only-use-javascript/">JavaScript だけでクロスドメインで POST メソッドを送る方法</a>等を参考に、本来やりたい処理を記述します。<br>
+この時は普通に script タグでスクリプトを読み込んで、正常動作を確認しておきます。<br>
+<br>
+そして、正常に動作するスクリプトが作成出来たら、それを任意のサーバにアップします。<br>
+<br>
+<h4>Greasemonkey の記述</h4>
+以下のようなスクリプトを書きます。<br>
+<pre>(function() {
+    var d = document;
+    var s = d.createElement('script');
+    s.src = 'http://www ...'; // スクリプトファイルをアップした場所
+    d.body.appendChild(s);
+})();
+</pre>
+<br>
+これだけで、本来の window オブジェクトから実行したかった処理が実行され、Greasemonkey の制限に掛かることなく、iframe を使用したクロスドメイン POST が実現します。<br>
+<br>
+<h4>でもちょっと待って</h4>
+Greasemonkey が実行されるたびに、自分のサーバから js ファイルがダウンロードされるなんて嫌ですよね？私は嫌です。レスポンスを考えたって好ましくないですし。<br>
+<br>
+そこで、data スキームを使って外部スクリプト自体を Greasemonkey スクリプトの中に埋め込んでしまう事にします。(data スキームについては<a href="http://www.google.com/search?q=javascript+data+%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%A0&amp;btnG=%E6%A4%9C%E7%B4%A2" target="_blank">この辺</a>を参照して下さい。)<br>
+<br>
+data スキームへの変換には、<a href="http://www.kawa.net/works/js/data-scheme/base64.html" target="_blank">[JavaScript] dataスキームURI生成（画像データのBase64変換）</a>を使用させていただきました。<br>
+このサイトで、先ほどアップした js ファイルの URL を指定し、data スキームに変換した文字列を取得します。<br>
+<br>
+その上で、Greasemonkey を以下のように書き換えます。<br>
+<pre>(function() {
+    var data = 'data:application/x-javascript;base64,'+
+        'KGZ1bmN0aW9uKCkgewoJdmFyIGQgPSBkb2N1bWVudDsKCWZ1bmN0aW9uIGdldEVsZW1lbnQoeHBh'+
+        // 中略
+        'fSkoKTs=';
+        var d = document;
+    var s = d.createElement('script');
+    s.src = data;
+    d.body.appendChild(s);
+})();
+</pre>
+<br>
+これで、単体の Greasemonkey スクリプトでありながら、外部スクリプトを読み込んだのと同等の状況を作り出す事が出来ます。<br>
+<br>
+これでスッキリしましたね！<br>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+
+<html>
+<head>
+    <title>IE を標準準拠っぽく動作させる JavaScript ライブラリまとめ</title>
+</head>
+<body>
+<a href="http://coliss.com/articles/browser/supported-list-browsers-for-web-wtechnologies.html">主要ブラウザの各バージョンでのサポート状況の一覧表</a> っていう記事が紹介されていました。<br>
+<br>
+IE があんまり標準準拠していない事はよく知られた事実ですが、かといって普通の Web 開発では IE を無視する事が出来ないのも、これまた紛れもない事実。<br>
+そんな状況に心を痛めた世界中の開発者のために、IE をなるべく標準準拠っぽく動作させるための、JavaScript ライブラリが、いくつか公開されているので、簡単にまとめてみます。<br>
+<br>
+いずれも、JavaSript によるライブラリなので、スクリプトが Off になっていると全く意味をなしませんが、そもそも今時メインのブラウザとして IE を使っている層って、JavaScript は On のままだと思いませんか？<br>
+<h4>alphafilter.js</h4>
+IE6 で、透過 png を使えるようにするライブラリです。アルファ画像が使えると、デザインの自由度が大幅に上がります。<br>
+入手はこちらから、<a href="http://blog.webcreativepark.net/2007/02/01-233315.html" target="_blank">アルファ画像を扱うalphafilter.jsライブラリ</a><br>
+<h4>ExplorerCanvas</h4>
+IE で、canvas タグを使えるようにするライブラリです。canvas タグを利用した、グラフ描画ライブラリなんかも、IE で動作させる事が可能になります。<br>
+入手はこちらから、<a href="http://excanvas.sourceforge.net/" target="_blank">ExplorerCanvas</a><br>
+<h4>IE7.js</h4>
+IE7 以下のバージョンでの css/html まわりで標準非準拠な部分を、標準準拠の動作に修正するライブラリです。一部、png の透過表示にも対応しているので、IE7.js を導入するのであれば、alphafilter.js は不要になるかもしれません。ケースバイケースで使い分けるのが良いでしょう。<br>
+入手はこちらから、<a href="http://code.google.com/p/ie7-js/" target="_blank">ie7-js</a><br>
+<h4>ところで、</h4>
+これらのライブラリを使用するにあたって、IE 以外のブラウザにもライブラリを読ませて<br>
+しまうと、帯域と処理時間がもったいないですね。<br>
+JavaScript によるブラウザ判定を行っても良いですが、どうせ IE 独自実装を活用するライブラリを導入するのであれば、ライブラリの読み分けも IE 独自実装に頼ってしまうのはどうでしょう。<br>
+<br>
+そこで登場するのが、IE でのみ有効な「条件付きコメント」。これを利用すれば、IE 以外のブラウザでは完全に無視されるので、無駄な処理がいっさい発生しません。<br>
+<pre>&lt;!--[if IE]&gt;
+   &lt;script src="≪IE にだけ読ませたいライブラリ≫"&gt;&lt;/script&gt;
+&lt;![endif]--&gt;</pre>
+他にも、同種のライブラリがまだあるかもしれないですので、情報をお持ちの方は、コメントかトラックバックで教えてくれると嬉しいです。
+</body>
+</html>
