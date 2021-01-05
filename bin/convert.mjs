@@ -2,6 +2,8 @@ import path from 'path';
 import fs from 'fs/promises';
 import config from './config.mjs';
 import { newConnection } from './mysql.mjs';
+import jsdom from 'jsdom';
+const { JSDOM } = jsdom;
 
 const DATA_ROOT = path.resolve(config.dirs.data);
 
@@ -122,9 +124,9 @@ const handlePost = async (post, terms) => {
         time: date.getTime(),
     };
     await fs.writeFile(metaPath, prettyStringify(meta));
-    
+
     const contentPath = `${dataDir}/content.html`;
-    const contentBody = `${title}\n----------------\n${content}`;
+    const contentBody = `${title}\n----------------\n${addBr(content)}`;
     await fs.writeFile(contentPath, contentBody);
 };
 
@@ -147,6 +149,95 @@ const getPostDatePath = (post) => {
     const d = date.getDate();
     return `${y}${m.toString().padStart(2, '0')}${d.toString().padStart(2, '0')}`;
 };
+
+const blockTagNames = new Set([
+    'ADDRESS',
+    'ARTICLE',
+    'ASIDE',
+    'BLOCKQUOTE',
+    'CANVAS',
+    'DD',
+    'DIV',
+    'DL',
+    'DT',
+    'FIELDSET',
+    'FIGCAPTION',
+    'FIGURE',
+    'FOOTER',
+    'FORM',
+    'H1',
+    'H2',
+    'H3',
+    'H4',
+    'H5',
+    'H6',
+    'HEADER',
+    'HR',
+    'LI',
+    'MAIN',
+    'NAV',
+    'NOSCRIPT',
+    'OL',
+    'P',
+    'PRE',
+    'SECTION',
+    'TABLE',
+    'TFOOT',
+    'UL',
+    'VIDEO'
+]);
+
+const isBlock = (elem) => {
+    if (!elem) {
+        return true;
+    }
+    return blockTagNames.has(elem.tagName);
+}
+
+const addBr = (content) => {
+    const dom = new JSDOM(`${content}`);
+    const body = dom.window.document.body;
+    const results = [];
+    pushInnerHtml(body, results);
+    return results.join('');
+};
+
+const pushInnerHtml = (elem, results) => {
+    const children = Array.from(elem.childNodes);
+    let prev = null;
+    for (const curr of children) {
+        switch (curr.nodeType) {
+            case 1: // ELEMENT_NODE
+                const html = curr.outerHTML;
+                if (curr.tagName === 'PRE') {
+                    results.push(html.split('&nbsp;').join(' '));
+                } else if (!isBlock(curr)) {
+                    results.push(html);
+                } else if (isBlock(curr)) {
+                    const startTag = html.substr(0, html.indexOf('>') + 1);
+                    results.push(startTag);
+                    pushInnerHtml(curr, results);
+                    const endTag = html.substr(html.lastIndexOf('<'));
+                    results.push(endTag);
+                }
+                break;
+            case 3: // TEXT_NODE
+                const text = curr.textContent;
+                if (
+                    isBlock(prev) &&
+                    text.length > 0 &&
+                    text.charAt(0) === '\n'
+                ) {
+                    results.push('\n');
+                    results.push(text.substr(1).split('\n').join('<br>\n'));
+                } else {
+                    results.push(text.split('\n').join('<br>\n'));
+                }
+                break;
+        }
+        prev = curr;
+    }
+}
 
 const prettyStringify = (object) => {
     return JSON.stringify(object, null, 2);
