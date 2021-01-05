@@ -1,13 +1,13 @@
 Greasemonkey で 超お手軽に jQuery を使うスニペット
 ----------------
 <div style="margin:0 5px; padding: 5px; border: solid 1px #f00">
-【2011-06-07 追記】
-下記の手法は Chrome の Greasemoneky では無効なため、Firefox / Chrome 両対応としたい場合は 
-<a href="/20110607/use-jquery-on-greasemonkey-for-chrome/">Greasemonkey で 超お手軽に jQuery を使うスニペット [Chrome 対応版]</a> を参照してください。
+【2011-06-07 追記】<br>
+下記の手法は Chrome の Greasemoneky では無効なため、Firefox / Chrome 両対応としたい場合は <br>
+<a href="/20110607/use-jquery-on-greasemonkey-for-chrome/">Greasemonkey で 超お手軽に jQuery を使うスニペット [Chrome 対応版]</a> を参照してください。<br>
 </div>
-
-タイトルの通りです。
-
+<br>
+タイトルの通りです。<br>
+<br>
 <h4>特徴</h4>
 <ul>
 	<li>script タグ追加型の読み込み</li>
@@ -17,18 +17,17 @@ Greasemonkey で 超お手軽に jQuery を使うスニペット
 	<li>ローカルのキャッシュも多分有効 (CDN が適切なヘッダを返してれば)</li>
 	<li>jQuery 読み込み完了を待ってから実行される</li>
 </ul>
-
+<br>
 <h4>作成動機</h4>
-Greasemonkey で jQuery を使う方法検索してみると、GM_xmlhttpRequest で読み込んで eval する方法と、script タグを追加する方法に大別されます。
-前者の方がスマートなやり方ではあるのですが、スニペットとして貼り付けるにはいかんせんコードが長くなりがちなのと、jQuery が導入される名前空間の違いからか、jQuery がフル機能で利用出来ないといった制限があるようです。
-そこで後者を選択しようと思ったのですが、検索で上位に来るスクリプトはいまいち洗練されていなくて、二重読み込みなどの問題が解決されていなかったりします。
-
-で、自分で書く事にしました。
-特に任意のサイトで動作させるスクリプトを書くような場合、元々のページに jQuery が導入済みでもそれに干渉しない、というのがウリでしょうか。
-
+Greasemonkey で jQuery を使う方法検索してみると、GM_xmlhttpRequest で読み込んで eval する方法と、script タグを追加する方法に大別されます。<br>
+前者の方がスマートなやり方ではあるのですが、スニペットとして貼り付けるにはいかんせんコードが長くなりがちなのと、jQuery が導入される名前空間の違いからか、jQuery がフル機能で利用出来ないといった制限があるようです。<br>
+そこで後者を選択しようと思ったのですが、検索で上位に来るスクリプトはいまいち洗練されていなくて、二重読み込みなどの問題が解決されていなかったりします。<br>
+<br>
+で、自分で書く事にしました。<br>
+特に任意のサイトで動作させるスクリプトを書くような場合、元々のページに jQuery が導入済みでもそれに干渉しない、というのがウリでしょうか。<br>
+<br>
 <h4>スクリプト</h4>
-<pre>
-(function(d, func) {
+<pre>(function(d, func) {
     var check = function() {
         if (typeof unsafeWindow.jQuery == 'undefined') return false;
         func(unsafeWindow.jQuery); return true;
@@ -49,11 +48,11 @@ Greasemonkey で jQuery を使う方法検索してみると、GM_xmlhttpRequest
     });
 });
 </pre>
-
-重たい処理は必要ないぞ、っていう場合はこちらも参考にどうぞ。
-<a href="/20090120/first-five-lines-of-greasemonkey/">Greasemonkey スクリプトの冒頭に書く 5 行</a>
+<br>
+重たい処理は必要ないぞ、っていう場合はこちらも参考にどうぞ。<br>
+<a href="/20090120/first-five-lines-of-greasemonkey/">Greasemonkey スクリプトの冒頭に書く 5 行</a><br>
 <blockquote>
-Greasemonkey を書く時に頻繁に利用する関数をまとめたので、公開してみます。
-外部の JavaScript ライブラリを読み込む方法を解説したサイトもありますが、そこまで大げさな機能が必要でもなく、軽く動作させたいときに便利です。
-特に共通ライブラリを利用すると、Firefox 以外のブラウザの対応も無駄に読み込む事になるので、スマートじゃないなぁと思います。
+Greasemonkey を書く時に頻繁に利用する関数をまとめたので、公開してみます。<br>
+外部の JavaScript ライブラリを読み込む方法を解説したサイトもありますが、そこまで大げさな機能が必要でもなく、軽く動作させたいときに便利です。<br>
+特に共通ライブラリを利用すると、Firefox 以外のブラウザの対応も無駄に読み込む事になるので、スマートじゃないなぁと思います。<br>
 </blockquote>

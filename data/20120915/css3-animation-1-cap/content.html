@@ -1,30 +1,27 @@
 そろそろ本気で CSS3 アニメーション [その1 - Cap]
 ----------------
-<link rel="stylesheet" href="//s.otchy.net/css/anime/01.cap.css" type="text/css" />
-
 <p>
-ブラウザ上でのちょっとしたアニメーション、っていうと長い間 jQuery がそのデファクトの座にいたわけですが、モバイルだと重いし、各ブラウザの CSS3 実装も進んできたし、そろそろ CSS3 だよね！<br />
-というわけで、重い腰を上げて本気で CSS3 アニメーション書いてみました。いろいろ調べながら書いているので、ダメな所とか突っ込み歓迎です。<br />
-<br />
-今回は連載の第 1 回目、"Cap" と題して、アイコンに蓋をかぶせてみたいと思います。<br />
+ブラウザ上でのちょっとしたアニメーション、っていうと長い間 jQuery がそのデファクトの座にいたわけですが、モバイルだと重いし、各ブラウザの CSS3 実装も進んできたし、そろそろ CSS3 だよね！<br><br>
+というわけで、重い腰を上げて本気で CSS3 アニメーション書いてみました。いろいろ調べながら書いているので、ダメな所とか突っ込み歓迎です。<br><br>
+<br><br>
+今回は連載の第 1 回目、"Cap" と題して、アイコンに蓋をかぶせてみたいと思います。<br><br>
 </p>
-
+<br>
 <p style="border: solid 1px #c00; background-color: #c99; color: #c00; padding: 0.5em;">
-※注意！<br />
-ページの下の方にループしているアニメーションがありますが、そのせいで長時間ページを開いたままにしていると、Chrome / Firefox 共に少しずつ重たくなってきます。特に Firefox の方が顕著です。<br />
-おそらく何らかのバグではないかと思うのですが、将来的に解消されるまでは、ページが重たくなったらタブを閉じて開きなおして下さい。リロードでも解消するかと思いきや、Chrome の場合リロードだけでは解消しない事があるようです。<br />
+※注意！<br><br>
+ページの下の方にループしているアニメーションがありますが、そのせいで長時間ページを開いたままにしていると、Chrome / Firefox 共に少しずつ重たくなってきます。特に Firefox の方が顕著です。<br><br>
+おそらく何らかのバグではないかと思うのですが、将来的に解消されるまでは、ページが重たくなったらタブを閉じて開きなおして下さい。リロードでも解消するかと思いきや、Chrome の場合リロードだけでは解消しない事があるようです。<br><br>
 </p>
-
-<a href="#step6" style="font-size: 60%;">とりあえず完成品を見てみる場合はこちら。</a>
-
+<br>
+<a href="#step6" style="font-size: 60%;">とりあえず完成品を見てみる場合はこちら。</a><br>
+<br>
 <h4 id="base">BASE</h4>
-
+<br>
 <p>
-まずはベースとなる HTML です。本連載を通じて、この HTML の基本は変えずに行こうと思います。
+まずはベースとなる HTML です。本連載を通じて、この HTML の基本は変えずに行こうと思います。<br>
 </p>
-
-<pre>
-&lt;ul class=&quot;css3anime&quot;&gt;
+<br>
+<pre>&lt;ul class="css3anime"&gt;
 	&lt;li&gt;&lt;/li&gt;
 	&lt;li&gt;&lt;/li&gt;
 	&lt;li&gt;&lt;/li&gt;
@@ -32,13 +29,12 @@
 	&lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-
+<br>
 <p>
-この HTML に CSS を適用します。
+この HTML に CSS を適用します。<br>
 </p>
-
-<pre>
-ul.css3anime {
+<br>
+<pre>ul.css3anime {
 	display: inline-block;
 	margin: 0;
 	padding: 10px;
@@ -63,13 +59,13 @@ ul.css3anime li:nth-child(3) {background-position: -256px 0;}
 ul.css3anime li:nth-child(4) {background-position: -384px 0;}
 ul.css3anime li:nth-child(5) {background-position: -512px 0;}
 </pre>
-
+<br>
 <p>
-とりあえずデザインする範囲に枠を付けて、li を横に並べて、CSS スプライトで背景をセットしただけです。<br />
-背景画像は透過 PNG を使っています。<br />
-ここで詰まってしまった方は、「clearfix」「float レイアウト」「CSS スプライト」「nth-child 疑似クラス」でググると幸せになれます。
+とりあえずデザインする範囲に枠を付けて、li を横に並べて、CSS スプライトで背景をセットしただけです。<br><br>
+背景画像は透過 PNG を使っています。<br><br>
+ここで詰まってしまった方は、「clearfix」「float レイアウト」「CSS スプライト」「nth-child 疑似クラス」でググると幸せになれます。<br>
 </p>
-
+<br>
 <ul class="css3anime">
 	<li></li>
 	<li></li>
@@ -77,76 +73,73 @@ ul.css3anime li:nth-child(5) {background-position: -512px 0;}
 	<li></li>
 	<li></li>
 </ul>
-
+<br>
 <p>
-見た目はこんな感じです。<br />
-大前提として、表示確認は Chrome Ver.21 と Firefox Ver.15 (いずれも現時点での最新版) で行っています。<br />
-それ以外のブラウザのサポートについては、とりあえず考えずに進みます。<br />
+見た目はこんな感じです。<br><br>
+大前提として、表示確認は Chrome Ver.21 と Firefox Ver.15 (いずれも現時点での最新版) で行っています。<br><br>
+それ以外のブラウザのサポートについては、とりあえず考えずに進みます。<br><br>
 </p>
-
+<br>
 <h4>STEP1</h4>
-
+<br>
 <p>
-まずは、アイコンを丸く切り取りました。
+まずは、アイコンを丸く切り取りました。<br>
 </p>
-
+<br>
 <ul class="css3anime" id="css3-cap-1">
 	<li><span></span></li>
 	<li><span></span></li>
 	<li><span></span></li>
 </ul>
-
+<br>
 <p>
-HTML の基本を変えないと言いつつ、いきなり変えてしまっています。
+HTML の基本を変えないと言いつつ、いきなり変えてしまっています。<br>
 </p>
-
-<pre>
-&lt;ul class=&quot;css3anime&quot;&gt;
+<br>
+<pre>&lt;ul class="css3anime"&gt;
 	&lt;li&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
 	&lt;li&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
 	&lt;li&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-
+<br>
 <p>
-5 つのアイコンを 3 つに減らしたのは、デザイン上の幅の問題ですが、span を追加したのはやむにやまれぬ訳あっての事です。<br />
-このアイコンの上に「蓋」をかぶせていくために、当初 :before と :after でやろうとしたのですが、これらの疑似クラスに対しては、アニメーションやグラデーションのスタイルが中途半端にしか適用されなかったためです。<br />
-将来の実装では対応されるかもしれないので、そうなったら span は不要になりますね。<br />
+5 つのアイコンを 3 つに減らしたのは、デザイン上の幅の問題ですが、span を追加したのはやむにやまれぬ訳あっての事です。<br><br>
+このアイコンの上に「蓋」をかぶせていくために、当初 :before と :after でやろうとしたのですが、これらの疑似クラスに対しては、アニメーションやグラデーションのスタイルが中途半端にしか適用されなかったためです。<br><br>
+将来の実装では対応されるかもしれないので、そうなったら span は不要になりますね。<br><br>
 </p>
-
-<pre>
-ul.css3anime li {
+<br>
+<pre>ul.css3anime li {
 	background-color: #fff;
 	margin-right: 5px;
 	border: solid 1px #666;
 	border-radius: 64px;
 }
 </pre>
-
+<br>
 <p>
-CSS についてはこの先、追加の差分だけ記載していきます。<br />
-ここはまだ、透過 PNG の後ろを白くして、アイコンのサイズに合わせて角を丸めただけですね。まだ全然アニメーションの話には入れません。ちゃっちゃと次に行きましょう。<br />
-ここで詰まってしまった方は、「CSS 角丸」でググると幸せになれます。<br />
+CSS についてはこの先、追加の差分だけ記載していきます。<br><br>
+ここはまだ、透過 PNG の後ろを白くして、アイコンのサイズに合わせて角を丸めただけですね。まだ全然アニメーションの話には入れません。ちゃっちゃと次に行きましょう。<br><br>
+ここで詰まってしまった方は、「CSS 角丸」でググると幸せになれます。<br><br>
 </p>
-
+<br>
 <h4>STEP2</h4>
-
+<br>
 <p>
-アイコンに蓋をしました。
+アイコンに蓋をしました。<br>
 </p>
-
+<br>
 <ul class="css3anime" id="css3-cap-2">
 	<li><span></span></li>
 	<li><span></span></li>
 	<li><span></span></li>
 </ul>
-
+<br>
 <p>
-HTML は変えず、span にスタイルを適用しただけです。
+HTML は変えず、span にスタイルを適用しただけです。<br>
 </p>
-
-<pre>
-ul.css3anime li span {
+<br>
+<pre>ul.css3anime li span {
 	display: block;
 	width: 128px;
 	height: 128px;
@@ -156,31 +149,30 @@ ul.css3anime li span {
 	background-image: -moz-linear-gradient(bottom, #999 49%, #333 50%, #999 51%);
 }
 </pre>
-
+<br>
 <p>
-このあと蓋を傾ける予定なので、傾きが分かりやすいように横線を入れています。少し CSS3 っぽくなってきましたが、アニメーションはまだです。はい、次に行きましょう。<br />
-ここで詰まってしまった方は、「CSS グラデーション」でググると幸せになれます。<br />
+このあと蓋を傾ける予定なので、傾きが分かりやすいように横線を入れています。少し CSS3 っぽくなってきましたが、アニメーションはまだです。はい、次に行きましょう。<br><br>
+ここで詰まってしまった方は、「CSS グラデーション」でググると幸せになれます。<br><br>
 </p>
-
+<br>
 <h4>STEP3</h4>
-
+<br>
 <p>
-蓋をちょっと傾けました。
+蓋をちょっと傾けました。<br>
 </p>
-
+<br>
 <ul class="css3anime" id="css3-cap-3">
 	<li><span></span></li>
 	<li><span></span></li>
 	<li><span></span></li>
 </ul>
-
+<br>
 <p>
-span に対して、回転軸を指定した傾きを与えています。<br />
-回転軸の所にポッチを足すことで、視覚的にも分かりやすくしてあります。<br />
+span に対して、回転軸を指定した傾きを与えています。<br><br>
+回転軸の所にポッチを足すことで、視覚的にも分かりやすくしてあります。<br><br>
 </p>
-
-<pre>
-ul.css3anime li span {
+<br>
+<pre>ul.css3anime li span {
 	position: absolute;
 	-webkit-transform: rotate(-30deg);
 	-moz-transform: rotate(-30deg);
@@ -200,37 +192,36 @@ ul.css3anime li:after {
 	z-index: 9;
 }
 </pre>
-
+<br>
 <p>
-transform: rotate で、要素の傾きを指定することが出来ます。ここでは -30 度の傾きです。<br />
-そして、要素を傾けるときの中心を transform-origin で指定します。ここでは左右の真ん中、上から 8px の位置です。<br />
-<br />
-ポッチについては li の after 疑似要素で作りました。<br />
-正確な位置に重ねるため、position: absolute を li:after と span の両方に加え、margin で位置を調整しています。<br />
-また、z-index で span の上に持ってくることも忘れません。この 9 はまた後で効いてきます。<br />
-<br />
-さあ、いよいよ次はアニメーションします。張り切ってまいりましょう！<br />
-ここで詰まってしまった方は、「CSS 回転」「CSS 疑似要素」でググると幸せになれます。<br />
+transform: rotate で、要素の傾きを指定することが出来ます。ここでは -30 度の傾きです。<br><br>
+そして、要素を傾けるときの中心を transform-origin で指定します。ここでは左右の真ん中、上から 8px の位置です。<br><br>
+<br><br>
+ポッチについては li の after 疑似要素で作りました。<br><br>
+正確な位置に重ねるため、position: absolute を li:after と span の両方に加え、margin で位置を調整しています。<br><br>
+また、z-index で span の上に持ってくることも忘れません。この 9 はまた後で効いてきます。<br><br>
+<br><br>
+さあ、いよいよ次はアニメーションします。張り切ってまいりましょう！<br><br>
+ここで詰まってしまった方は、「CSS 回転」「CSS 疑似要素」でググると幸せになれます。<br><br>
 </p>
-
+<br>
 <h4>STEP4</h4>
-
+<br>
 <p>
-あれ？蓋が閉じてしまいました。大丈夫。オンマウスで蓋が傾きます。<br />
+あれ？蓋が閉じてしまいました。大丈夫。オンマウスで蓋が傾きます。<br><br>
 </p>
-
+<br>
 <ul class="css3anime" id="css3-cap-4">
 	<li><span></span></li>
 	<li><span></span></li>
 	<li><span></span></li>
 </ul>
-
+<br>
 <p>
-やりました！とりあえずアニメーションしてますね。<br />
+やりました！とりあえずアニメーションしてますね。<br><br>
 </p>
-
-<pre>
-ul.css3anime li {
+<br>
+<pre>ul.css3anime li {
 	cursor: pointer;
 }
 ul.css3anime li span {
@@ -249,42 +240,41 @@ ul.css3anime li:nth-child(1) span {z-index: 3;}
 ul.css3anime li:nth-child(2) span {z-index: 2;}
 ul.css3anime li:nth-child(3) span {z-index: 1;}
 </pre>
-
+<br>
 <p>
-まず、hover でアニメーションさせたので、さしあたってカーソルのスタイルを変えています。<br />
-<br />
-そして通常状態での span の回転角度を 0 度に戻し、hover 時に角度を付けるようにします。<br />
-ここで、span:hover ではなく li:hover を使うのは、span が動いたときにマウスカーソルが span から外れて、ピクピクしてしまわないようにです。<br />
-動かす要素自体に hover 指定しないのがポイントです。<br />
-<br />
-そしてキモになるのが transition です。ここでは、全てのスタイルに対して 0.2 秒かけて直線的にアニメーションせよ、という指定をしています。<br />
-:hover 側の指定は hover したときのアニメーションで、通常側の指定は hover から戻った時のアニメーションです。<br />
-どちらか一方だけの指定では、片方がアニメーションせずにスタイルが適用されてカクカクした動きになってしまうので、双方向で指定します。<br />
-<br />
-z-index の指定は、蓋がずれて隣の蓋の上に重なったときの上下を指定しています。<br />
-デフォルトでは後にある要素が上に来て、右側に回転させて蓋を開けたときに右側の要素の下に蓋が滑り込んでしまうので、それを是正しています。<br />
-<br />
-ここでの詳しい解説は、「CSS transition」でググると幸せになれます。<br />
+まず、hover でアニメーションさせたので、さしあたってカーソルのスタイルを変えています。<br><br>
+<br><br>
+そして通常状態での span の回転角度を 0 度に戻し、hover 時に角度を付けるようにします。<br><br>
+ここで、span:hover ではなく li:hover を使うのは、span が動いたときにマウスカーソルが span から外れて、ピクピクしてしまわないようにです。<br><br>
+動かす要素自体に hover 指定しないのがポイントです。<br><br>
+<br><br>
+そしてキモになるのが transition です。ここでは、全てのスタイルに対して 0.2 秒かけて直線的にアニメーションせよ、という指定をしています。<br><br>
+:hover 側の指定は hover したときのアニメーションで、通常側の指定は hover から戻った時のアニメーションです。<br><br>
+どちらか一方だけの指定では、片方がアニメーションせずにスタイルが適用されてカクカクした動きになってしまうので、双方向で指定します。<br><br>
+<br><br>
+z-index の指定は、蓋がずれて隣の蓋の上に重なったときの上下を指定しています。<br><br>
+デフォルトでは後にある要素が上に来て、右側に回転させて蓋を開けたときに右側の要素の下に蓋が滑り込んでしまうので、それを是正しています。<br><br>
+<br><br>
+ここでの詳しい解説は、「CSS transition」でググると幸せになれます。<br><br>
 </p>
-
+<br>
 <h4>STEP5</h4>
-
+<br>
 <p>
-おお、なにやら最初から動いていますね！これぞアニメーションです。<br />
+おお、なにやら最初から動いていますね！これぞアニメーションです。<br><br>
 </p>
-
+<br>
 <ul class="css3anime" id="css3-cap-5">
 	<li><span></span></li>
 	<li><span></span></li>
 	<li><span></span></li>
 </ul>
-
+<br>
 <p>
-hover では、マウスを持ってくるまでそこがクリック可能である事が分からないので、最初からアニメーションでチラ見せするようにしてみました。<br />
+hover では、マウスを持ってくるまでそこがクリック可能である事が分からないので、最初からアニメーションでチラ見せするようにしてみました。<br><br>
 </p>
-
-<pre>
-@-webkit-keyframes css3-cap-5-kf {
+<br>
+<pre>@-webkit-keyframes css3-cap-5-kf {
 	  0% { -webkit-transform: rotate(0); }
 	 40% { -webkit-transform: rotate(0); }
 	 50% { -webkit-transform: rotate(-15deg); }
@@ -313,46 +303,45 @@ ul.css3anime li:hover span {
 	-moz-animation-name: none;
 }
 </pre>
-
+<br>
 <p>
-こういった自由なアニメーションを実現するためにはまず、CSS 上でキーフレームというものを定義する必要があります。<br />
-ここでは、css3-cap-5-kf という名前を付けてキーフレームを定義しています。<br />
-パーセントで時間の経過を表し、何パーセントの時に要素にどんなスタイルを適用するかを定義します。<br />
-0%〜40% までの間は角度 0 でじっとしていて、50% で 15 度までぴくっと動き、また 60%〜100% まではじっとしている、という感じです。<br />
-<br />
-このように定義したキーフレームを要素に適用するには animation-name にキーフレーム名を指定します。<br />
-さらにアニメーションにかかる時間を animation-duration で、アニメーションを繰り返す回数を animation-iteration-count で指定します。<br />
-ここではアニメーションにかかる時間を 2 秒としているので、ちょうど 1 秒経ったところ (50% のところ) でぴくっと動きます。繰り返し回数は無限です。<br />
-<br />
-また hover 時のスタイルについては、大きく蓋が開くように角度を 135 度まで広げ、その間はアニメーションをストップするよう、animation-name: none としています。<br />
-<br />
-ここでの詳しい解説は、「CSS keyframes」「CSS animation」でググると幸せになれます。<br />
+こういった自由なアニメーションを実現するためにはまず、CSS 上でキーフレームというものを定義する必要があります。<br><br>
+ここでは、css3-cap-5-kf という名前を付けてキーフレームを定義しています。<br><br>
+パーセントで時間の経過を表し、何パーセントの時に要素にどんなスタイルを適用するかを定義します。<br><br>
+0%〜40% までの間は角度 0 でじっとしていて、50% で 15 度までぴくっと動き、また 60%〜100% まではじっとしている、という感じです。<br><br>
+<br><br>
+このように定義したキーフレームを要素に適用するには animation-name にキーフレーム名を指定します。<br><br>
+さらにアニメーションにかかる時間を animation-duration で、アニメーションを繰り返す回数を animation-iteration-count で指定します。<br><br>
+ここではアニメーションにかかる時間を 2 秒としているので、ちょうど 1 秒経ったところ (50% のところ) でぴくっと動きます。繰り返し回数は無限です。<br><br>
+<br><br>
+また hover 時のスタイルについては、大きく蓋が開くように角度を 135 度まで広げ、その間はアニメーションをストップするよう、animation-name: none としています。<br><br>
+<br><br>
+ここでの詳しい解説は、「CSS keyframes」「CSS animation」でググると幸せになれます。<br><br>
 </p>
-
+<br>
 <p>
-※残念なことに Chrome の実装にバグがあるようで、hover の一度目は綺麗にアニメーションするのですが、二度目以降はアニメーションしません。残念ですね。<br />
-Firefox はちゃんと動いています。<br />
+※残念なことに Chrome の実装にバグがあるようで、hover の一度目は綺麗にアニメーションするのですが、二度目以降はアニメーションしません。残念ですね。<br><br>
+Firefox はちゃんと動いています。<br><br>
 </p>
-
+<br>
 <h4 id="step6">STEP6</h4>
-<a href="#base" style="font-size: 60%;">最初に戻る場合はこちら。</a>
-
+<a href="#base" style="font-size: 60%;">最初に戻る場合はこちら。</a><br>
+<br>
 <p>
-これで完成です。デザインが殺風景だったのでグラデーションとか影とか付けてみました。<br />
+これで完成です。デザインが殺風景だったのでグラデーションとか影とか付けてみました。<br><br>
 </p>
-
+<br>
 <ul class="css3anime" id="css3-cap-6">
 	<li><span></span></li>
 	<li><span></span></li>
 	<li><span></span></li>
 </ul>
-
+<br>
 <p>
-見た目の問題なので詳しくは解説しません。最後に CSS の全体をまとめておくので興味のある方は読み下してみてください。<br />
+見た目の問題なので詳しくは解説しません。最後に CSS の全体をまとめておくので興味のある方は読み下してみてください。<br><br>
 </p>
-
-<pre style="height: 400px; overflow: auto;">
-ul.css3anime {
+<br>
+<pre style="height: 400px; overflow: auto;">ul.css3anime {
 	display: inline-block;
 	margin: 0;
 	padding: 10px;
@@ -448,13 +437,13 @@ ul#css3-cap-6 li:after {
 	z-index: 9;
 }
 </pre>
-
+<br>
 <h4>まとめ</h4>
-
+<br>
 <p>
-「そろそろ本気で CSS3 アニメーション」連載第 1 回の "Cap" はいかがだったでしょうか？<br />
-こういったことが CSS で可能になった事は把握しながら、これまで手つかずだったので、個人的にはとても楽しみながら作ることが出来ました。<br />
-今後の構想としては、ありきたりなテーマではありますが、"Dock"、"3D Cube"、"Cover Flow" あたりをやってみたいなと思っています。<br />
-<br />
-興味を持ってもらえたら期待を込めてシェア！よろしくお願いします。<br />
+「そろそろ本気で CSS3 アニメーション」連載第 1 回の "Cap" はいかがだったでしょうか？<br><br>
+こういったことが CSS で可能になった事は把握しながら、これまで手つかずだったので、個人的にはとても楽しみながら作ることが出来ました。<br><br>
+今後の構想としては、ありきたりなテーマではありますが、"Dock"、"3D Cube"、"Cover Flow" あたりをやってみたいなと思っています。<br><br>
+<br><br>
+興味を持ってもらえたら期待を込めてシェア！よろしくお願いします。<br><br>
 </p>

@@ -1,11 +1,10 @@
 [α版]はてブエントリーページを旧仕様っぽくする Greasemonkey
 ----------------
-はてブのエントリーページを旧仕様っぽくする Greasemonkey 書きました。
-まだ超α版なので、user.js ファイルでは置きません。
-Chrome でしか確認してないです。まあ Firefox でも動くんじゃないかな？たぶん。
-
-<pre>
-// ==UserScript==
+はてブのエントリーページを旧仕様っぽくする Greasemonkey 書きました。<br>
+まだ超α版なので、user.js ファイルでは置きません。<br>
+Chrome でしか確認してないです。まあ Firefox でも動くんじゃないかな？たぶん。<br>
+<br>
+<pre>// ==UserScript==
 // @name         Hatebu Entry Page Downgrader
 // @namespace    http://www.otchy.net/
 // @version      0.0.1
@@ -13,11 +12,11 @@ Chrome でしか確認してないです。まあ Firefox でも動くんじゃ�
 // ==/UserScript==
 
 (function (callback) {
-    var script = document.createElement(&quot;script&quot;);
-    script.setAttribute(&quot;src&quot;, &quot;http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js&quot;);
+    var script = document.createElement("script");
+    script.setAttribute("src", "http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js");
     script.addEventListener('load', function() {
-        var script = document.createElement(&quot;script&quot;);
-        script.textContent = &quot;(&quot; + callback.toString() + &quot;)();&quot;;
+        var script = document.createElement("script");
+        script.textContent = "(" + callback.toString() + ")();";
         document.body.appendChild(script);
     }, false);
     document.body.appendChild(script);
@@ -48,22 +47,22 @@ Chrome でしか確認してないです。まあ Firefox でも動くんじゃ�
     }
 });
 </pre>
-
+<br>
 <h4>出来る事</h4>
 <ul>
 	<li>エントリーページの「新着」ブックマークを「全ての」ブックマークに差し替え</li>
 	<li>ユーザのアイコンを 16 x 16 に変更</li>
 	<li>人気のブックマークの表示/非表示切り替え</li>
 </ul>
-
+<br>
 <h4>出来ない事</h4>
 <ul>
 	<li>コメントのみ表示チェックが効かない</li>
 	<li>スターが付けられない</li>
 	<li>グラフが見れない</li>
 </ul>
-現状は、全てのブックマークを表示するページから HTML を親ページに流し込んでる実装です。
-この実装だと、上記の問題解決はかなり難しそうです。
-なので、全てのブックマークページをそのまま iframe で埋め込む方法に実装を変更する予定なのですが、とりあえず情報参照だけなら綺麗に動いたのでアルファ版として公開してみました。
-
+現状は、全てのブックマークを表示するページから HTML を親ページに流し込んでる実装です。<br>
+この実装だと、上記の問題解決はかなり難しそうです。<br>
+なので、全てのブックマークページをそのまま iframe で埋め込む方法に実装を変更する予定なのですが、とりあえず情報参照だけなら綺麗に動いたのでアルファ版として公開してみました。<br>
+<br>
 フィードバック、改造報告などがあれば是非コメントに！

@@ -1,25 +1,24 @@
 jquery.tablefix.js
 ----------------
 <p style="text-align: right;">»<a href="//s.otchy.net/js/jquery.tablefix_1.0.1.js">Download </a></p>
-
-jquery.tablefix.js は、Excel のウィンドウ枠固定のように、テーブルのヘッダや左側を固定して、残りの部分をスクロールさせるための、jQuery プラグインです。
-
-JavaScript 無効時はただのテーブルとして普通にそのまま表示される点と、他の類似品と違ってソート変更などの高度な機能がない代わりに、すでにデザイン済みの任意のテーブルにそのまま適用出来る点が特徴です。
-読み込むのはプラグインだけで、追加の css や画像ファイルは必要ありません。
-
-<h4>使い方<h4>
+<br>
+jquery.tablefix.js は、Excel のウィンドウ枠固定のように、テーブルのヘッダや左側を固定して、残りの部分をスクロールさせるための、jQuery プラグインです。<br>
+<br>
+JavaScript 無効時はただのテーブルとして普通にそのまま表示される点と、他の類似品と違ってソート変更などの高度な機能がない代わりに、すでにデザイン済みの任意のテーブルにそのまま適用出来る点が特徴です。<br>
+読み込むのはプラグインだけで、追加の css や画像ファイルは必要ありません。<br>
+<br>
+<h4>使い方</h4><h4>
 <ol>
     <li>普通にテーブルをデザインする</li>
     <li>jQuery とプラグインを読み込む</li>
     <li>jQuery のセレクタでテーブルを選択して、プラグインを呼び出す</li>
 </ol>
-これだけで、あとはプラグインがよかれにやってくれます。
-
-<h4>プラグインの呼び出し方</h4>
-<pre>
-$('tableSelector').tablefix({width: 600, height: 400, fixRows: 1, fixCols: 2});
+これだけで、あとはプラグインがよかれにやってくれます。<br>
+<br>
+</h4><h4>プラグインの呼び出し方</h4>
+<pre>$('tableSelector').tablefix({width: 600, height: 400, fixRows: 1, fixCols: 2});
 </pre>
-指定可能なオプション
+指定可能なオプション<br>
 <dl>
     <dt>width</dt>
     <dd>テーブル全体がこの横幅に収まるようにします。</dd>
@@ -30,21 +29,20 @@ $('tableSelector').tablefix({width: 600, height: 400, fixRows: 1, fixCols: 2});
     <dt>fixCols</dt>
     <dd>テーブルの左側で固定する列数を指定します。</dd>
 </dl>
-オプションは全てを設定する必要はありません。
-例えば height と fixCols を指定しなければ、縦の長さは元のテーブルのまま横スクロールだけが発生し、固定列は無くテーブル全体が横スクロールします。
-また、width / height を両方とも指定しない場合や、指定した width / height が元々のテーブルサイズよりも大きい場合など、固定スクロールを必要としない場合は、無理にスクロールを追加したりしません。
-
+オプションは全てを設定する必要はありません。<br>
+例えば height と fixCols を指定しなければ、縦の長さは元のテーブルのまま横スクロールだけが発生し、固定列は無くテーブル全体が横スクロールします。<br>
+また、width / height を両方とも指定しない場合や、指定した width / height が元々のテーブルサイズよりも大きい場合など、固定スクロールを必要としない場合は、無理にスクロールを追加したりしません。<br>
+<br>
 <h4>サンプル</h4>
-HTML
-<pre class="height_middle">
-&lt;table id=&quot;tablefix1&quot;&gt;
+HTML<br>
+<pre class="height_middle">&lt;table id="tablefix1"&gt;
     &lt;thead&gt;
     &lt;tr&gt;
-        &lt;th rowspan=&quot;2&quot;&gt;ヘッダA&lt;/th&gt;
-        &lt;th rowspan=&quot;2&quot;&gt;ヘッダB&lt;/th&gt;
-        &lt;th colspan=&quot;2&quot;&gt;ヘッダC&lt;/th&gt;
-        &lt;th rowspan=&quot;2&quot;&gt;ヘッダD&lt;/th&gt;
-        &lt;th rowspan=&quot;2&quot;&gt;ヘッダE&lt;/th&gt;
+        &lt;th rowspan="2"&gt;ヘッダA&lt;/th&gt;
+        &lt;th rowspan="2"&gt;ヘッダB&lt;/th&gt;
+        &lt;th colspan="2"&gt;ヘッダC&lt;/th&gt;
+        &lt;th rowspan="2"&gt;ヘッダD&lt;/th&gt;
+        &lt;th rowspan="2"&gt;ヘッダE&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
         &lt;th&gt;ヘッダ C-1&lt;/th&gt;
@@ -95,14 +93,14 @@ HTML
     &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;br /&gt;
-&lt;table id=&quot;tablefix2&quot;&gt;
+&lt;table id="tablefix2"&gt;
     &lt;thead&gt;
     &lt;tr&gt;
-        &lt;th rowspan=&quot;2&quot;&gt;ヘッダA&lt;/th&gt;
-        &lt;th rowspan=&quot;2&quot;&gt;ヘッダB&lt;/th&gt;
-        &lt;th colspan=&quot;2&quot;&gt;ヘッダC&lt;/th&gt;
-        &lt;th rowspan=&quot;2&quot;&gt;ヘッダD&lt;/th&gt;
-        &lt;th rowspan=&quot;2&quot;&gt;ヘッダE&lt;/th&gt;
+        &lt;th rowspan="2"&gt;ヘッダA&lt;/th&gt;
+        &lt;th rowspan="2"&gt;ヘッダB&lt;/th&gt;
+        &lt;th colspan="2"&gt;ヘッダC&lt;/th&gt;
+        &lt;th rowspan="2"&gt;ヘッダD&lt;/th&gt;
+        &lt;th rowspan="2"&gt;ヘッダE&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
         &lt;th&gt;ヘッダ C-1&lt;/th&gt;
@@ -137,14 +135,14 @@ HTML
     &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;br /&gt;
-&lt;table id=&quot;tablefix3&quot;&gt;
+&lt;table id="tablefix3"&gt;
     &lt;thead&gt;
     &lt;tr&gt;
-        &lt;th rowspan=&quot;2&quot;&gt;ヘッダA&lt;/th&gt;
-        &lt;th rowspan=&quot;2&quot;&gt;ヘッダB&lt;/th&gt;
-        &lt;th colspan=&quot;2&quot;&gt;ヘッダC&lt;/th&gt;
-        &lt;th rowspan=&quot;2&quot;&gt;ヘッダD&lt;/th&gt;
-        &lt;th rowspan=&quot;2&quot;&gt;ヘッダE&lt;/th&gt;
+        &lt;th rowspan="2"&gt;ヘッダA&lt;/th&gt;
+        &lt;th rowspan="2"&gt;ヘッダB&lt;/th&gt;
+        &lt;th colspan="2"&gt;ヘッダC&lt;/th&gt;
+        &lt;th rowspan="2"&gt;ヘッダD&lt;/th&gt;
+        &lt;th rowspan="2"&gt;ヘッダE&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
         &lt;th&gt;ヘッダ C-1&lt;/th&gt;
@@ -173,17 +171,16 @@ HTML
     &lt;/tbody&gt;
 &lt;/table&gt;
 </pre>
-
-JavaScript
-<pre>
-$(function() {
+<br>
+JavaScript<br>
+<pre>$(function() {
     $('#tablefix1').tablefix({width: 500, height: 200, fixRows: 2, fixCols: 2});
     $('#tablefix2').tablefix({width: 500, fixCols: 2});
     $('#tablefix3').tablefix({height: 200, fixRows: 2});
 });
 </pre>
-
-実行結果
+<br>
+実行結果<br>
 <style>
 .tablefix {
     width: 800px;
@@ -203,7 +200,7 @@ $(function() {
 #tablefix3 {
     width: 500px;
 }
-</style>
+</style><br>
 <table id="tablefix1" class="tablefix">
     <thead>
     <tr>
@@ -217,7 +214,7 @@ $(function() {
         <th>ヘッダ C-1</th>
         <th>ヘッダ C-2</th>
     </tr>
-    </thead>
+    </thead><br>
     <tbody>
     <tr>
         <td>データ</td>
@@ -275,9 +272,9 @@ $(function() {
         <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
         <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
     </tr>
-    </tbody>
+    </tbody><br>
 </table>
-<br />
+<br><br>
 <table id="tablefix2" class="tablefix">
     <thead>
     <tr>
@@ -291,7 +288,7 @@ $(function() {
         <th>ヘッダ C-1</th>
         <th>ヘッダ C-2</th>
     </tr>
-    </thead>
+    </thead><br>
     <tbody>
     <tr>
         <td>データ</td>
@@ -317,9 +314,9 @@ $(function() {
         <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
         <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
     </tr>
-    </tbody>
+    </tbody><br>
 </table>
-<br />
+<br><br>
 <table id="tablefix3" class="tablefix">
     <thead>
     <tr>
@@ -331,7 +328,7 @@ $(function() {
         <th>ヘッダ C-1</th>
         <th>ヘッダ C-2</th>
     </tr>
-    </thead>
+    </thead><br>
     <tbody>
     <tr>
         <td>データ</td>
@@ -363,27 +360,27 @@ $(function() {
         <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
         <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
     </tr>
-    </tbody>
+    </tbody><br>
 </table>
-<script src="//s.otchy.net/js/jquery.tablefix.js"></script>
+<script src="//s.otchy.net/js/jquery.tablefix.js"></script><br>
 <script>
 $(function() {
     $('#tablefix1').tablefix({width: 500, height: 200, fixRows: 2, fixCols: 2});
     $('#tablefix2').tablefix({width: 500, fixCols: 2});
     $('#tablefix3').tablefix({height: 200, fixRows: 2});
 });
-</script>
-
+</script><br>
+<br>
 <h4>制限事項</h4>
 <ul>
     <li>テーブルの中にフォームが含まれるとフォーム自体が誤動作する可能性があります。</li>
     <li>テーブルに colspan や rowspan が含まれる場合、その位置によっては正しく動作しない場合があります。</li>
     <li>jQuery 1.2 系では動作しません。1.3 系、1.4 系で動作するはずです。</li>
 </ul>
-
+<br>
 <h4>技術的な話</h4>
-既存の様々な実装を参考にしつつ、固定スクロールを実現するために、以下のような方法を使っています。
-細かい部分は省いていますが、概ねこんな感じです。
+既存の様々な実装を参考にしつつ、固定スクロールを実現するために、以下のような方法を使っています。<br>
+細かい部分は省いていますが、概ねこんな感じです。<br>
 <ol>
     <li>元のテーブルから、スクロールさせる原点となる座標を求める。</li>
     <li>テーブルを 3 つコピーして、全部で 4 つの全く同じテーブルを用意。</li>
@@ -394,12 +391,12 @@ $(function() {
     <li>上固定行 / 左固定列 / スクロール部 については、見えてはいけない部分を隠すため、ネガティブマージンを設定する。</li>
     <li>上固定行 / 左固定列は、overflow を hidden にして、スクロールをスクロール部と同期させる。</li>
 </ol>
-
+<br>
 <h4>更新履歴</h4>
 <dl>
   <dt>2010-03-08 [Ver 1.0.0]</dt><dd>初版リリース</dd>
   <dt>2013-06-13 [Ver 1.0.1]</dt><dd>複数のエレメントに対して適用した際に、width と height が少しずつずれていく問題を修正。</dd>
 </dl>
-
+<br>
 <h4>ライセンス</h4>
 ライセンスは <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT License</a> (<a href="http://ja.wikipedia.org/wiki/MIT_License" target="_blank">日本版 wikipedia の項</a>) で公開します。

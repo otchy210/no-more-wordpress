@@ -1,30 +1,30 @@
 TwitterAPI.js
 ----------------
 <p style="border: solid 1px #999; background: #fee; margin: 0 20px; padding: 10px;">
-<strong style="color:#c00;">【2010-06-17 追記】<br />従来と同じ使い方のまま OAuth に対応した、TwitterAPI2.js を公開しました。</strong>
-下記、TwitAPI.js に対するラッパになります。
-詳細は、<a href="/javascript/twitter-api2/">TwitterAPI2.js</a> を参照して下さい。
-<strong style="color:#c00;">【2010-06-12 追記】OAuth 対応版を公開しました</strong>
-まだ完成度は低いですが、基本的な動作は可能になったので公開しました。インターフェースなどが変更になっていますが、基本的な使用感は変わりません。
-<a href="/javascript/twit-api/">TwitAPI.js</a>
+<strong style="color:#c00;">【2010-06-17 追記】<br>従来と同じ使い方のまま OAuth に対応した、TwitterAPI2.js を公開しました。</strong><br>
+下記、TwitAPI.js に対するラッパになります。<br>
+詳細は、<a href="/javascript/twitter-api2/">TwitterAPI2.js</a> を参照して下さい。<br>
+<strong style="color:#c00;">【2010-06-12 追記】OAuth 対応版を公開しました</strong><br>
+まだ完成度は低いですが、基本的な動作は可能になったので公開しました。インターフェースなどが変更になっていますが、基本的な使用感は変わりません。<br>
+<a href="/javascript/twit-api/">TwitAPI.js</a><br>
 </p>
-
-<p style="border: solid 1px #999; background: #fee; margin: 10px 20px 0 20px; padding: 10px;"><strong style="color:#c00;">現状の TwitterAPI.js は <del>2010-06-30</del> 2010-08-31 をもって利用できなくなります。</strong>
-Twitter の BASIC 認証による API 提供が、6月末に終了することが<a href="http://www.itmedia.co.jp/news/articles/1004/27/news063.html" target="_blank">正式発表され</a>、BASIC 認証を利用している現状の TwitterAPI.js はそれと同時に利用できなくなります。TwitterAPI.js の OAuth への対応も検討していますが、現時点での予定は未定です。
-従って、これから新しく何かを作成するのに、TwitterAPI.js を選択するのはお勧めしません。Twitter 公式の JavaScript ライブラリ @anywhere も、<a href="http://internet.watch.impress.co.jp/docs/news/20100415_361350.html" target="_blank">開発者向けに公開</a>されているので、あわせてご検討下さい。
-【追記】
-BASIC 認証が不要な API については、7 月以降も TwitterAPI.js でそのまま利用可能な可能性もありますが、現時点では不明です。
-【追記】
-移行期限を 8 月 16 日まで延長し、8 月 31 日にかけて段階的に終了することが<a href="http://blog.twitter.jp/2010/06/twitter-api-oauth.html" target="_blank">アナウンス</a>されました。
+<br>
+<p style="border: solid 1px #999; background: #fee; margin: 10px 20px 0 20px; padding: 10px;"><strong style="color:#c00;">現状の TwitterAPI.js は <del>2010-06-30</del> 2010-08-31 をもって利用できなくなります。</strong><br>
+Twitter の BASIC 認証による API 提供が、6月末に終了することが<a href="http://www.itmedia.co.jp/news/articles/1004/27/news063.html" target="_blank">正式発表され</a>、BASIC 認証を利用している現状の TwitterAPI.js はそれと同時に利用できなくなります。TwitterAPI.js の OAuth への対応も検討していますが、現時点での予定は未定です。<br>
+従って、これから新しく何かを作成するのに、TwitterAPI.js を選択するのはお勧めしません。Twitter 公式の JavaScript ライブラリ @anywhere も、<a href="http://internet.watch.impress.co.jp/docs/news/20100415_361350.html" target="_blank">開発者向けに公開</a>されているので、あわせてご検討下さい。<br>
+【追記】<br>
+BASIC 認証が不要な API については、7 月以降も TwitterAPI.js でそのまま利用可能な可能性もありますが、現時点では不明です。<br>
+【追記】<br>
+移行期限を 8 月 16 日まで延長し、8 月 31 日にかけて段階的に終了することが<a href="http://blog.twitter.jp/2010/06/twitter-api-oauth.html" target="_blank">アナウンス</a>されました。<br>
 </p>
-
+<br>
 <p style="text-align: right;">»<a href="//s.otchy.net/js/twitterapi_0.9.4.js">Download </a></p>
 <p style="text-align: right;">»<a href="//s.otchy.net/js/twitterapi_0.9.2.js">Download (Ver 0.9.2)</a></p>
-
-<script src="//s.otchy.net/js/twitterapi_0.9.4.js" type="text/javascript"></script> <script src="//s.otchy.net/js/twitterapi_sample.js" type="text/javascript"></script>
-
+<br>
+<script src="//s.otchy.net/js/twitterapi_0.9.4.js" type="text/javascript"></script> <script src="//s.otchy.net/js/twitterapi_sample.js" type="text/javascript"></script><br>
+<br>
 <h4>概要</h4>
-Twitter の API を JavaScript から簡単に使うためのライブラリです。 上部の Download リンクより、js ファイルをダウンロードして読み込む事で様々なメソッドが利用可能になります。
+Twitter の API を JavaScript から簡単に使うためのライブラリです。 上部の Download リンクより、js ファイルをダウンロードして読み込む事で様々なメソッドが利用可能になります。<br>
 <pre>&lt;script type="text/javascript" src="js/twitterapi_x.x.x.js"&gt;&lt;/script&gt;</pre>
 <h4>特徴</h4>
 <ul>
@@ -40,79 +40,79 @@ Twitter の API を JavaScript から簡単に使うためのライブラリで�
 	<li>入力済みの BASIC 認証の再ログインを一部サポート (Ver 0.9.3～)</li>
 </ul>
 <h4>バージョン</h4>
-まだ枯れているとは言い難いので、現在のバージョンは 0.9.4 です。 不具合がありましたら、コメントなどでお知らせ下さい。
+まだ枯れているとは言い難いので、現在のバージョンは 0.9.4 です。 不具合がありましたら、コメントなどでお知らせ下さい。<br>
 <h4>サンプル</h4>
-TwitterAPI.js を使うと、例えば以下のような事が出来ます。  以下のサンプルを最初に動作させた時は、ブラウザによる BASIC 認証のダイアログが立ち上がるので、Twitter のアカウントで認証して下さい。
-
-≪Twitter で発言する≫
+TwitterAPI.js を使うと、例えば以下のような事が出来ます。  以下のサンプルを最初に動作させた時は、ブラウザによる BASIC 認証のダイアログが立ち上がるので、Twitter のアカウントで認証して下さい。<br>
+<br>
+≪Twitter で発言する≫<br>
 <pre>&lt;script type="text/javascript"&gt;
-  function post(f) {
-    var status = f.status.value;
+  function post(f) {
+    var status = f.status.value;
     <span style="color: #0000ff;">TwitterAPI.statuses.update(status);</span>
-  }
+  }
 &lt;/script&gt;
 ：
 &lt;form&gt;
 &lt;input type="text" name="status" style="width:300px" /&gt;&lt;input type="button" onclick="post(this.form);" value="UPDATE" /&gt;
 &lt;/form&gt;</pre>
-<form action="#"> <input style="width: 300px;" name="status" type="text" /> <input onclick="post(this.form);" type="button" value="UPDATE" /> </form>≪特定のユーザのタイムラインを取得する≫
+<form action="#"> <input style="width: 300px;" name="status" type="text"> <input onclick="post(this.form);" type="button" value="UPDATE"> </form>≪特定のユーザのタイムラインを取得する≫<br>
 <pre>&lt;script type="text/javascript"&gt;
-  function callback(arr) {
-    var str = '';
-    for (var i=0; i&lt;arr.length; i++) {
-      var obj = arr[i];
-      str += obj.user.screen_name + ':' + obj.text + '&lt;br /&gt;';
-    }
-    document.getElementById('result').innerHTML = str;
-  }
-  function getTl() {
-    var id = document.getElementById('id').value;
-    var param = 'count=10';
-    <span style="color: #0000ff;">TwitterAPI.statuses.user_timeline(callback, id, param)</span>;
-  }
+  function callback(arr) {
+    var str = '';
+    for (var i=0; i&lt;arr.length; i++) {
+      var obj = arr[i];
+      str += obj.user.screen_name + ':' + obj.text + '&lt;br /&gt;';
+    }
+    document.getElementById('result').innerHTML = str;
+  }
+  function getTl() {
+    var id = document.getElementById('id').value;
+    var param = 'count=10';
+    <span style="color: #0000ff;">TwitterAPI.statuses.user_timeline(callback, id, param)</span>;
+  }
 &lt;/script&gt;
 ：
 &lt;form&gt;
 ID &lt;input type="text" id="id" /&gt;&lt;input type="button" onclick="getTl();" value="GET TL" /&gt;
 &lt;div id="result" style="height: 200px; overflow: auto; border: 1px solid #999; background: #ffe;"&gt;&lt;/div&gt;
 &lt;/form&gt;</pre>
-<form action="#"> ID 
-
-<input id="id" type="text" /> <input onclick="getTl();" type="button" value="GET TL" />
+<form action="#"> ID <br>
+<br>
+<input id="id" type="text"> <input onclick="getTl();" type="button" value="GET TL"><br>
 <div id="result" style="border: 1px solid #999999; background: #ffffee none repeat scroll 0% 0%; overflow: auto; height: 200px;">ここに結果が表示される</div>
 </form>
 <h4>API ドキュメント</h4>
-基本的には本家の API ドキュメントの記述をほぼそのまま使用する事が出来ます。
-TwitterAPI.js を使用する場合の基本的な書き方は以下のような形です。
+基本的には本家の API ドキュメントの記述をほぼそのまま使用する事が出来ます。<br>
+TwitterAPI.js を使用する場合の基本的な書き方は以下のような形です。<br>
 <pre><strong>TwitterAPI</strong>.<span style="color: #0000ff;"><em>MethodName</em></span>(callback, id, params);</pre>
-このように書くと、MethodName に該当する同一名の API が実行され、callback で指定した関数に、結果の JSON オブジェクトが渡されます。
-Twitter API については、日本語訳を公開して下さっている方がいるので参考にして下さい。
-<a href="http://watcher.moe-nifty.com/memo/2007/04/twitter_api.html" target="_blank">Twitter API 仕様書 (勝手に日本語訳シリーズ)</a>
-
-例えば、サンプルで使用した特定のユーザのタイムラインを取得するメソッドですが、Twitter API だと、以下のような URL です。
+このように書くと、MethodName に該当する同一名の API が実行され、callback で指定した関数に、結果の JSON オブジェクトが渡されます。<br>
+Twitter API については、日本語訳を公開して下さっている方がいるので参考にして下さい。<br>
+<a href="http://watcher.moe-nifty.com/memo/2007/04/twitter_api.html" target="_blank">Twitter API 仕様書 (勝手に日本語訳シリーズ)</a><br>
+<br>
+例えば、サンプルで使用した特定のユーザのタイムラインを取得するメソッドですが、Twitter API だと、以下のような URL です。<br>
 <pre>http://twitter.com/<span style="color: #0000ff;">statuses</span>/<span style="color: #0000ff;">user_timeline</span>/id.format?param</pre>
-これに対応したメソッドは、以下のようになります。(format は json で固定)
+これに対応したメソッドは、以下のようになります。(format は json で固定)<br>
 <pre>TwitterAPI.<span style="color: #0000ff;">statuses</span>.<span style="color: #0000ff;">user_timeline</span>(callback, id, param)</pre>
-このように、ほぼ全ての API はそれと同名の専用のメソッドが用意されています。
-従って、TwitterAPI.js で使えるメソッドのドキュメントとしては、Twitter API のドキュメントをそのまま参照して下さい。
-また、callback に何も指定しなければ、実行結果はそのまま捨てられ、id、param を設定しても無効な API の場合、それらの値は無視されます。
-
-ただし、一部のメソッドには例外があります。以下ではその例外について説明します。
-
+このように、ほぼ全ての API はそれと同名の専用のメソッドが用意されています。<br>
+従って、TwitterAPI.js で使えるメソッドのドキュメントとしては、Twitter API のドキュメントをそのまま参照して下さい。<br>
+また、callback に何も指定しなければ、実行結果はそのまま捨てられ、id、param を設定しても無効な API の場合、それらの値は無視されます。<br>
+<br>
+ただし、一部のメソッドには例外があります。以下ではその例外について説明します。<br>
+<br>
 <h4>追加されたメソッド</h4>
 <pre>TwitterAPI.users.own(callback, id, param);    // Ver 0.9.2～ </pre>
-元々の API には、ユーザデータを取得する http://twitter.com/users/show/id.format という API があり、id を指定しない事で自分自身のデータを取得する事が期待されるのですが、実際には id を指定しないとエラーになってしまいます。
-そのため、TwitterAPI.js では、認証されたユーザ自身のデータを取得するためのメソッドを追加しました。
-
+元々の API には、ユーザデータを取得する http://twitter.com/users/show/id.format という API があり、id を指定しない事で自分自身のデータを取得する事が期待されるのですが、実際には id を指定しないとエラーになってしまいます。<br>
+そのため、TwitterAPI.js では、認証されたユーザ自身のデータを取得するためのメソッドを追加しました。<br>
+<br>
 <pre>TwitterAPI.relogin();    // Ver 0.9.3～ </pre>
-通常、BASIC 認証による認証情報はブラウザ内に保持され、ブラウザを完全に終了するまで任意に書き換えられません。つまり一度ログインするとログアウト出来ないのが普通です。
-そのブラウザの動作に対して、あえて偽情報を送り込む事で再認証のためのダイアログを発生させ、再ログインを実現するためのメソッドです。
-ただ、セキュリティ的な制限から IE7 では動作しない事を確認しています。恐らく、IE8 でも同様です。
-今後のアップデートにより、Firefox や Chrome でも使用出来なくなる可能性があるので、利用には注意を払って下さい。
-
+通常、BASIC 認証による認証情報はブラウザ内に保持され、ブラウザを完全に終了するまで任意に書き換えられません。つまり一度ログインするとログアウト出来ないのが普通です。<br>
+そのブラウザの動作に対して、あえて偽情報を送り込む事で再認証のためのダイアログを発生させ、再ログインを実現するためのメソッドです。<br>
+ただ、セキュリティ的な制限から IE7 では動作しない事を確認しています。恐らく、IE8 でも同様です。<br>
+今後のアップデートにより、Firefox や Chrome でも使用出来なくなる可能性があるので、利用には注意を払って下さい。<br>
+<br>
 <h4>名前が異なるメソッド</h4>
-JavaScript の命名ルールの問題から、Twitter API と同じ名称を使用する事が出来なかったものがいくつかあります。
-下記の API については別名のメソッドを呼び出して下さい。
+JavaScript の命名ルールの問題から、Twitter API と同じ名称を使用する事が出来なかったものがいくつかあります。<br>
+下記の API については別名のメソッドを呼び出して下さい。<br>
 <pre>// http://twitter.com/direct_messages.format
 TwitterAPI.direct_messages.show(func, id, param);
 
@@ -124,48 +124,48 @@ TwitterAPI.favorites.show(func, id, param);
 
 // http://blocks/blocking.format
 TwitterAPI.blocks.blocking.show(func, id, param);</pre>
-
+<br>
 <h4>動作が特殊なメソッド</h4>
-以下のメソッドについては、情報の取得ではなく情報の送信 (POST) を行うためのメソッドであり、JavaScript の技術的制約から、結果を受け取る事が出来ません。
-情報の送信にあたっては特別な処理を行うため、メソッドの呼び出し方も専用のものになっています。
-また、実行結果を受け取る事は出来ませんが、Ver 0.9.3 より、任意のコールバック関数を実行出来るようになりました。POST 処理完了のタイミングで、コールバック関数が呼び出されます。
-ただし、コールバック関数が有効に機能するのは IE 以外のブラウザです。その点には留意して利用して下さい。
+以下のメソッドについては、情報の取得ではなく情報の送信 (POST) を行うためのメソッドであり、JavaScript の技術的制約から、結果を受け取る事が出来ません。<br>
+情報の送信にあたっては特別な処理を行うため、メソッドの呼び出し方も専用のものになっています。<br>
+また、実行結果を受け取る事は出来ませんが、Ver 0.9.3 より、任意のコールバック関数を実行出来るようになりました。POST 処理完了のタイミングで、コールバック関数が呼び出されます。<br>
+ただし、コールバック関数が有効に機能するのは IE 以外のブラウザです。その点には留意して利用して下さい。<br>
 <pre>TwitterAPI.statuses.update(status, func);
 TwitterAPI.direct_messages.create(user, text, func);
 TwitterAPI.account.update_location(location, func);</pre>
-コールバック関数が対応ブラウザでしか動作しない事と、指定できる引数が固定されている点が他のメソッドと大きく異なりますが、その動作については同名の Twitter API と同じ動作をします。
-動作の詳細については、API ドキュメントを参照して下さい。
-
-さらに、以下のメソッドについては呼び出し方は他と同様であるものの、やはり情報の送信 (POST) を行うため、結果をコールバック関数で受け取る事が出来ません。 
-結果自体を受け取る事は出来ませんが、コールバック関数を指定した場合、対応ブラウザでは POST 処理完了時に呼び出されます。
+コールバック関数が対応ブラウザでしか動作しない事と、指定できる引数が固定されている点が他のメソッドと大きく異なりますが、その動作については同名の Twitter API と同じ動作をします。<br>
+動作の詳細については、API ドキュメントを参照して下さい。<br>
+<br>
+さらに、以下のメソッドについては呼び出し方は他と同様であるものの、やはり情報の送信 (POST) を行うため、結果をコールバック関数で受け取る事が出来ません。 <br>
+結果自体を受け取る事は出来ませんが、コールバック関数を指定した場合、対応ブラウザでは POST 処理完了時に呼び出されます。<br>
 <pre>friendships.create(func, id, param);
 friendships.destroy(func, id, param);
 favorites.create(func, id, param);
 favorites.destroy(func, id, param);
 blocks.create(func, id, param);
 blocks.destroy(func, id, param);</pre>
-
+<br>
 <h4>除外したメソッド</h4>
-以下のメソッドについては、使用頻度が低いと思われる事から実装を見送りました。
-どうしても必要であれば、ソースを参照の上で、任意に追加して下さい。メソッドの追加自体は、JavaScript の文法を理解していればシンプルに出来るかと思います。
+以下のメソッドについては、使用頻度が低いと思われる事から実装を見送りました。<br>
+どうしても必要であれば、ソースを参照の上で、任意に追加して下さい。メソッドの追加自体は、JavaScript の文法を理解していればシンプルに出来るかと思います。<br>
 <ul>
 <li>trends 系メソッド</li>
 <li>saved_searches 系メソッド</li>
 <li>oauth 系メソッド </li>
 <li>report_spam 系メソッド </li>
 </ul>
-
+<br>
 <h4>動作条件・制限事項・ライセンス</h4>
-下記のブラウザで動作確認しています。
-IE6 / IE7 / <del>Firefox2 (～Ver 0.9.2)</del> / Firefox3  / Firefox3.5  / Firefox3.6 / Chrome (Ver 0.9.3～)
-未確認ですが、IE8 / Safari / Opera あたりでもそのまま動作すると思われます。
-
-<del>情報を送信するメソッドを使用する場合、JavaScript を実行している HTML が UTF-8 で書かれていないと、日本語が文字化けします。</del>
-POST メソッド使用時、元のページのエンコードにかかわらず、UTF-8 に変換して送信されるため、日本語の文字化けは発生しません。(Ver 0.9.3～)
-※Chrome を除く。Chrome ではスクリプトで生成した iframe の文字コードが元の charset を引き継ぐ使用となっているためです(その他のブラウザはデフォルトで UTF-8)。charset を指定して iframe を生成する方法が分からないため、現状で対応出来ていません。
-
-ライセンスは <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT License</a> (<a href="http://ja.wikipedia.org/wiki/MIT_License" target="_blank">日本版 wikipedia の項</a>) で公開します。
-
+下記のブラウザで動作確認しています。<br>
+IE6 / IE7 / <del>Firefox2 (～Ver 0.9.2)</del> / Firefox3  / Firefox3.5  / Firefox3.6 / Chrome (Ver 0.9.3～)<br>
+未確認ですが、IE8 / Safari / Opera あたりでもそのまま動作すると思われます。<br>
+<br>
+<del>情報を送信するメソッドを使用する場合、JavaScript を実行している HTML が UTF-8 で書かれていないと、日本語が文字化けします。</del><br>
+POST メソッド使用時、元のページのエンコードにかかわらず、UTF-8 に変換して送信されるため、日本語の文字化けは発生しません。(Ver 0.9.3～)<br>
+※Chrome を除く。Chrome ではスクリプトで生成した iframe の文字コードが元の charset を引き継ぐ使用となっているためです(その他のブラウザはデフォルトで UTF-8)。charset を指定して iframe を生成する方法が分からないため、現状で対応出来ていません。<br>
+<br>
+ライセンスは <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT License</a> (<a href="http://ja.wikipedia.org/wiki/MIT_License" target="_blank">日本版 wikipedia の項</a>) で公開します。<br>
+<br>
 <h4>更新履歴</h4>
 <dl>
 <dt><a href="//s.otchy.net/js/twitterapi_0.9.4.js">Ver.0.9.4</a> [2010-01-26]</dt>
@@ -186,4 +186,4 @@ POST メソッド使用時、元のページのエンコードにかかわらず
 <dt><a href="//s.otchy.net/js/twitterapi_0.9.0.js">Ver.0.9.0</a> [2009-03-19]</dt>
 <dd>初公開</dd>
 </dl>
-
+<br>

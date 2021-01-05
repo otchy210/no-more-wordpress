@@ -1,33 +1,31 @@
 連番で終わっている URL の前後に移動するブックマークレット
 ----------------
-URL が連番で終わっているような構成のサイトでは、その前後にも類似した有用なページがある場合が多いです。
-にも関わらず、前後に移動するリンクが用意されていないことがあるので、そういう時に便利なブックマークレットを書きました。
-
-例えば、以下のような URL で、その前後の番号に移動することが出来ます。
-
-http://www.example.com/hoge/fuga123.html
-http://www.example.com/fuga/00456.html
-http://www.example.com/789
-http://www.example.com/123.456-00789/
-
-以下のリンクをブックマークバーにドラッグして使って下さい。
-前へ：<a href="javascript:(function(h,a,s,d,l){a=h.match(/[^\d]*(\d+)[^/\d]*\/?$/);if(!a)return;s=a[1];d=(parseInt(s)-1)+'';if(s.charAt(0)=='0'){l=s.length;d=((new%20Array(l).join('0'))+d).slice(-l)}location.href=h.replace(a[0],a[0].replace(s,d))})(location.href);">&lt;</a>
-後ろへ：<a href="javascript:(function(h,a,s,d,l){a=h.match(/[^\d]*(\d+)[^/\d]*\/?$/);if(!a)return;s=a[1];d=(parseInt(s)+1)+'';if(s.charAt(0)=='0'){l=s.length;d=((new%20Array(l).join('0'))+d).slice(-l)}location.href=h.replace(a[0],a[0].replace(s,d))})(location.href);">&gt;</a>
-
+URL が連番で終わっているような構成のサイトでは、その前後にも類似した有用なページがある場合が多いです。<br>
+にも関わらず、前後に移動するリンクが用意されていないことがあるので、そういう時に便利なブックマークレットを書きました。<br>
+<br>
+例えば、以下のような URL で、その前後の番号に移動することが出来ます。<br>
+<br>
+http://www.example.com/hoge/fuga123.html<br>
+http://www.example.com/fuga/00456.html<br>
+http://www.example.com/789<br>
+http://www.example.com/123.456-00789/<br>
+<br>
+以下のリンクをブックマークバーにドラッグして使って下さい。<br>
+前へ：<a href="javascript:(function(h,a,s,d,l){a=h.match(/[^\d]*(\d+)[^/\d]*\/?$/);if(!a)return;s=a[1];d=(parseInt(s)-1)+'';if(s.charAt(0)=='0'){l=s.length;d=((new%20Array(l).join('0'))+d).slice(-l)}location.href=h.replace(a[0],a[0].replace(s,d))})(location.href);">&lt;</a><br>
+後ろへ：<a href="javascript:(function(h,a,s,d,l){a=h.match(/[^\d]*(\d+)[^/\d]*\/?$/);if(!a)return;s=a[1];d=(parseInt(s)+1)+'';if(s.charAt(0)=='0'){l=s.length;d=((new%20Array(l).join('0'))+d).slice(-l)}location.href=h.replace(a[0],a[0].replace(s,d))})(location.href);">&gt;</a><br>
+<br>
 <h4>ソース</h4>
-<pre>
-前に移動
+<pre>前に移動
 javascript:(function(h,a,s,d,l){a=h.match(/[^\d]*(\d+)[^/\d]*\/?$/);if(!a)return;s=a[1];d=(parseInt(s)-1)+'';if(s.charAt(0)=='0'){l=s.length;d=((new%20Array(l).join('0'))+d).slice(-l)}location.href=h.replace(a[0],a[0].replace(s,d))})(location.href);
 
 後に移動
 javascript:(function(h,a,s,d,l){a=h.match(/[^\d]*(\d+)[^/\d]*\/?$/);if(!a)return;s=a[1];d=(parseInt(s)+1)+'';if(s.charAt(0)=='0'){l=s.length;d=((new%20Array(l).join('0'))+d).slice(-l)}location.href=h.replace(a[0],a[0].replace(s,d))})(location.href);
 </pre>
-
-これだけだと面白くないので、ちゃんと整形してソースコードを解説してみます。ここで紹介するのは前に移動する例ですが、後ろに移動するのはプラスとマイナスが違うだけで他は同じです。
+<br>
+これだけだと面白くないので、ちゃんと整形してソースコードを解説してみます。ここで紹介するのは前に移動する例ですが、後ろに移動するのはプラスとマイナスが違うだけで他は同じです。<br>
 <table class="layout">
-<tr>
-<td><pre style="line-height: 1.2em; font-size: 110%;">
-01
+<tbody><tr>
+<td><pre style="line-height: 1.2em; font-size: 110%;">01
 02
 03
 04
@@ -39,8 +37,7 @@ javascript:(function(h,a,s,d,l){a=h.match(/[^\d]*(\d+)[^/\d]*\/?$/);if(!a)return
 10
 11</pre>
 </td>
-<td><pre style="line-height: 1.2em; font-size: 110%;">
-(function(h, a, s, d, l) {
+<td><pre style="line-height: 1.2em; font-size: 110%;">(function(h, a, s, d, l) {
     a = h.match(/[^\d]*(\d+)[^/\d]*\/?$/);
     if (!a) return;
     s = a[1];
@@ -53,50 +50,49 @@ javascript:(function(h,a,s,d,l){a=h.match(/[^\d]*(\d+)[^/\d]*\/?$/);if(!a)return
 })(location.href);
 </pre></td>
 </tr>
-</table>
-
-1 行目
-匿名関数を定義しつつ、その引数として変数も定義してしまいます。var を使わず関数スコープの変数を定義して文字数を減らす常套手段ですね。
-ブックマークレットはなるべく文字数を減らした方がいいので、全体的にこんなのが多くなります。
-
-2 行目
-引数として受け取った location.href を正規表現でパースします。
-最後にある連続した数字を検索しているのが (\d+) の部分で、それより後ろに / や数字がなく、それより前に数字以外が続くところまでをマッチさせる対象にしています。
-
-3 行目
-何もマッチしない＝URL の最後のディレクトリに数字が含まれない、なのでマッチしなければ終了。
-
-4 行目
-変数 s に、マッチした数字部分を保持しておきます。
-
-5 行目
-変数 s は文字列なので、int に読み替えた後に 1 を引いて、再び文字列に戻したものを、d として保持しておきます。
-
-6 行目 〜 9 行目
-s が 0 から始まる場合は、0 埋めされている数字と判断して追加の処理を入れます。d は、parseInt した時点で 0 が消えているので、左側を 0 で埋めて s と桁数を合わせないといけません。また、1 を引いたときに桁数が変わっている可能性があるのでそこも考慮します。
-
-まず l に最終的に欲しい文字数を保持しておきます。
-new Array(l) で、l の長さの空の配列を作り、join('0') する事で、l - 1 文字分の 0 が続いた文字列が出来ます。
-その後ろに d を連結して、最後に slice(-l) すると、後ろ側 (右側) から l 文字切り取られるので、最終的には s と同じ桁数で 0 埋めした数字が手に入ります。
-
-ややこしいので具体例として、l が 4 で d が '10' の場合を考えると以下のようになります。
-<pre style="line-height: 1.2em; font-size: 110%">
-new Array(4) → [undefined, undefined, undefined, undefined]
+</tbody></table>
+<br>
+1 行目<br>
+匿名関数を定義しつつ、その引数として変数も定義してしまいます。var を使わず関数スコープの変数を定義して文字数を減らす常套手段ですね。<br>
+ブックマークレットはなるべく文字数を減らした方がいいので、全体的にこんなのが多くなります。<br>
+<br>
+2 行目<br>
+引数として受け取った location.href を正規表現でパースします。<br>
+最後にある連続した数字を検索しているのが (\d+) の部分で、それより後ろに / や数字がなく、それより前に数字以外が続くところまでをマッチさせる対象にしています。<br>
+<br>
+3 行目<br>
+何もマッチしない＝URL の最後のディレクトリに数字が含まれない、なのでマッチしなければ終了。<br>
+<br>
+4 行目<br>
+変数 s に、マッチした数字部分を保持しておきます。<br>
+<br>
+5 行目<br>
+変数 s は文字列なので、int に読み替えた後に 1 を引いて、再び文字列に戻したものを、d として保持しておきます。<br>
+<br>
+6 行目 〜 9 行目<br>
+s が 0 から始まる場合は、0 埋めされている数字と判断して追加の処理を入れます。d は、parseInt した時点で 0 が消えているので、左側を 0 で埋めて s と桁数を合わせないといけません。また、1 を引いたときに桁数が変わっている可能性があるのでそこも考慮します。<br>
+<br>
+まず l に最終的に欲しい文字数を保持しておきます。<br>
+new Array(l) で、l の長さの空の配列を作り、join('0') する事で、l - 1 文字分の 0 が続いた文字列が出来ます。<br>
+その後ろに d を連結して、最後に slice(-l) すると、後ろ側 (右側) から l 文字切り取られるので、最終的には s と同じ桁数で 0 埋めした数字が手に入ります。<br>
+<br>
+ややこしいので具体例として、l が 4 で d が '10' の場合を考えると以下のようになります。<br>
+<pre style="line-height: 1.2em; font-size: 110%">new Array(4) → [undefined, undefined, undefined, undefined]
 (new Array(4)).join('0') → '000'
 (new Array(4)).join('0') + '10' → '00010'
 ((new Array(4)).join('0') + '10').slice(-4) → '0010'
 </pre>
-
-変態ですね。
-可読性を犠牲にしても文字数を減らすブックマークレットならではという感じです。
-
-10行目
-まず先に 2 行目でマッチした全体 a[0] の中から、数値部分だけを置換します。その後に、location.href 全体から最初にマッチした a[0] の部分を置換します。
-これは、a[0] の中には数字が 1 箇所しか入らないように正規表現を書いておいて、URL 全体の中で複数箇所に数字がある場合の誤動作を防ぐ目的でやっています。
-http://www.year2013.com/2013/article13.html
-みたいな URL の時に、間違ってドメイン部分や /2013/ 部分を置換してしまわないために必要です。
-
-11行目
-引数として location.href を渡して、匿名関数を実行します。
-
+<br>
+変態ですね。<br>
+可読性を犠牲にしても文字数を減らすブックマークレットならではという感じです。<br>
+<br>
+10行目<br>
+まず先に 2 行目でマッチした全体 a[0] の中から、数値部分だけを置換します。その後に、location.href 全体から最初にマッチした a[0] の部分を置換します。<br>
+これは、a[0] の中には数字が 1 箇所しか入らないように正規表現を書いておいて、URL 全体の中で複数箇所に数字がある場合の誤動作を防ぐ目的でやっています。<br>
+http://www.year2013.com/2013/article13.html<br>
+みたいな URL の時に、間違ってドメイン部分や /2013/ 部分を置換してしまわないために必要です。<br>
+<br>
+11行目<br>
+引数として location.href を渡して、匿名関数を実行します。<br>
+<br>
 以上！面白かったでしょうか？

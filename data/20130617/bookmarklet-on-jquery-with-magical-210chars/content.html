@@ -1,20 +1,20 @@
 ブックマークレットで jQuery を使う魔法の 210 文字
 ----------------
-最近、JavaScript ＝ jQuery というくらい、jQuery ありの JavaScript に慣れてしまったのですが、となると困るのがユーザースクリプトやブックマークレットです。
-ユーザースクリプトについては以前の記事、<a href="http://www.otchy.net/20110607/use-jquery-on-greasemonkey-for-chrome/" target="_blank">Greasemonkey で 超お手軽に jQuery を使うスニペット [Chrome 対応版]</a> でフォローできているのですが、ブックマークレットで使うにはこのままというわけにいきません。
-
-なので、これを元にショートコード化して、ブックマークレットでも使いやすいよう 241 文字 (コメント除く) にまとめ上げたのが下記になります。
-前述のユーザスクリプト向けのコードを書いた後に知った事を反映させて、https 対応とか、jQuery の痕跡を完全に残さない対応とかも追加してます。
-
+最近、JavaScript ＝ jQuery というくらい、jQuery ありの JavaScript に慣れてしまったのですが、となると困るのがユーザースクリプトやブックマークレットです。<br>
+ユーザースクリプトについては以前の記事、<a href="http://www.otchy.net/20110607/use-jquery-on-greasemonkey-for-chrome/" target="_blank">Greasemonkey で 超お手軽に jQuery を使うスニペット [Chrome 対応版]</a> でフォローできているのですが、ブックマークレットで使うにはこのままというわけにいきません。<br>
+<br>
+なので、これを元にショートコード化して、ブックマークレットでも使いやすいよう 241 文字 (コメント除く) にまとめ上げたのが下記になります。<br>
+前述のユーザスクリプト向けのコードを書いた後に知った事を反映させて、https 対応とか、jQuery の痕跡を完全に残さない対応とかも追加してます。<br>
+<br>
 <pre>(function(f,d,b,s){d=document;b=d.body;s=d.createElement("script");s.src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js";s.onload=function(){f(jQuery.noConflict(true));};b.appendChild(s);})(function($){/*ここにソースを記述*/})</pre>
-
-<del>たった 241 文字で使えてしまう</del> jQuery。どうぞお試し下さい。
-
-ソースコード解説は、後で <a href="http://qiita.com/users/otchy" target="_blank">Qiita</a> に書いてみようかと思います。
-
+<br>
+<del>たった 241 文字で使えてしまう</del> jQuery。どうぞお試し下さい。<br>
+<br>
+ソースコード解説は、後で <a href="http://qiita.com/users/otchy" target="_blank">Qiita</a> に書いてみようかと思います。<br>
+<br>
 <h4>追記</h4>
-嘘、もっと全然短かったです。(210 文字)
+嘘、もっと全然短かったです。(210 文字)<br>
 <pre>(function(f,s){s=document.createElement("script");s.src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js";s.onload=function(){f(jQuery.noConflict(true))};document.body.appendChild(s)})(function($){})</pre>
-
+<br>
 <h4>追記2</h4>
 コードの解説を <a href="http://qiita.com/items/5c4f2e1b2a93ac200f1c" target="_blank">Qiita</a> に書きました！

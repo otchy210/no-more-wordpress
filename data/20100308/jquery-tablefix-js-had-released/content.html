@@ -1,22 +1,21 @@
 テーブルのヘッダを固定してスクロールする jQuery プラグイン
 ----------------
-Excel のウィンドウ枠の固定のように、テーブルのヘッダや左側を固定して、残りの部分をスクロールさせるための jQuery プラグインを書きました。
-マークアップはシンプルで、普通にテーブルを書いたら、jQuery の作法でプラグインを呼び出すだけです。
-
-jQuery のおれおれプラグインはいくつか書いた事がありましたが、こうやって公開するのは初めてです。ごてごての機能が欲しいんじゃなくて、単に既存のテーブルを固定スクロール化したいだけの時に、いいのが見つからなくて書いたので、けっこうニーズがあるんじゃないかと思ってます。
-
-下記は簡単なサンプルです。詳細は<a href="/javascript/tablefix/">専用ページ</a>を見てみて下さい。
-
-HTML
-<pre class="height_middle">
-&lt;table id=&quot;tablefix&quot;&gt;
+Excel のウィンドウ枠の固定のように、テーブルのヘッダや左側を固定して、残りの部分をスクロールさせるための jQuery プラグインを書きました。<br>
+マークアップはシンプルで、普通にテーブルを書いたら、jQuery の作法でプラグインを呼び出すだけです。<br>
+<br>
+jQuery のおれおれプラグインはいくつか書いた事がありましたが、こうやって公開するのは初めてです。ごてごての機能が欲しいんじゃなくて、単に既存のテーブルを固定スクロール化したいだけの時に、いいのが見つからなくて書いたので、けっこうニーズがあるんじゃないかと思ってます。<br>
+<br>
+下記は簡単なサンプルです。詳細は<a href="/javascript/tablefix/">専用ページ</a>を見てみて下さい。<br>
+<br>
+HTML<br>
+<pre class="height_middle">&lt;table id="tablefix"&gt;
     &lt;thead&gt;
     &lt;tr&gt;
-        &lt;th rowspan=&quot;2&quot;&gt;ヘッダA&lt;/th&gt;
-        &lt;th rowspan=&quot;2&quot;&gt;ヘッダB&lt;/th&gt;
-        &lt;th colspan=&quot;2&quot;&gt;ヘッダC&lt;/th&gt;
-        &lt;th rowspan=&quot;2&quot;&gt;ヘッダD&lt;/th&gt;
-        &lt;th rowspan=&quot;2&quot;&gt;ヘッダE&lt;/th&gt;
+        &lt;th rowspan="2"&gt;ヘッダA&lt;/th&gt;
+        &lt;th rowspan="2"&gt;ヘッダB&lt;/th&gt;
+        &lt;th colspan="2"&gt;ヘッダC&lt;/th&gt;
+        &lt;th rowspan="2"&gt;ヘッダD&lt;/th&gt;
+        &lt;th rowspan="2"&gt;ヘッダE&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
         &lt;th&gt;ヘッダ C-1&lt;/th&gt;
@@ -67,15 +66,14 @@ HTML
     &lt;/tbody&gt;
 &lt;/table&gt;
 </pre>
-
-JavaScript
-<pre>
-$(function() {
+<br>
+JavaScript<br>
+<pre>$(function() {
     $('#tablefix').tablefix({width: 500, height: 200, fixRows: 2, fixCols: 2});
 });
 </pre>
-
-実行結果
+<br>
+実行結果<br>
 <style>
 #tablefix {
     width: 800px;
@@ -89,7 +87,7 @@ $(function() {
     vertical-align: middle;
     white-space: nowrap;
 }
-</style>
+</style><br>
 <table id="tablefix" class="tablefix">
     <thead>
     <tr>
@@ -103,7 +101,7 @@ $(function() {
         <th>ヘッダ C-1</th>
         <th>ヘッダ C-2</th>
     </tr>
-    </thead>
+    </thead><br>
     <tbody>
     <tr>
         <td>データ</td>
@@ -145,11 +143,11 @@ $(function() {
         <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
         <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
     </tr>
-    </tbody>
+    </tbody><br>
 </table>
-<script src="//s.otchy.net/js/jquery.tablefix.js"></script>
+<script src="//s.otchy.net/js/jquery.tablefix.js"></script><br>
 <script>
 $(function() {
     $('#tablefix').tablefix({width: 500, height: 200, fixRows: 2, fixCols: 2});
 });
-</script>
+</script><br>

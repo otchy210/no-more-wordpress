@@ -1,13 +1,13 @@
 jquery.submittable.js
 ----------------
 <p style="text-align: right;">»<a href="//s.otchy.net/js/jquery.submittable_1.0.0.js">Download</a></p>
-
-jquery.submittable.js は、a タグなど任意の要素を指定して、フォームをサブミットすることができる jQuery プラグインです。a タグ (リンク) のクリックでフォームをサブミットさせたい時などに利用することが出来ます。
-
-任意の要素の任意のイベントを対象とすることが出来るので、例えばセレクトボックスが変更されたらサブミット、チェックボックスがチェックされたらサブミット、というような使い方が出来ます。
-
-また、サブミットをする際に以下のようなオプションを指定することが可能です。
-
+<br>
+jquery.submittable.js は、a タグなど任意の要素を指定して、フォームをサブミットすることができる jQuery プラグインです。a タグ (リンク) のクリックでフォームをサブミットさせたい時などに利用することが出来ます。<br>
+<br>
+任意の要素の任意のイベントを対象とすることが出来るので、例えばセレクトボックスが変更されたらサブミット、チェックボックスがチェックされたらサブミット、というような使い方が出来ます。<br>
+<br>
+また、サブミットをする際に以下のようなオプションを指定することが可能です。<br>
+<br>
 <ul>
 <li>一時的に action / method / target を切り替えてサブミット</li>
 <li>サブミット前に確認メッセージを表示</li>
@@ -15,22 +15,21 @@ jquery.submittable.js は、a タグなど任意の要素を指定して、フ�
 <li>サブミット後に対象要素を無効化</li>
 <li>対象要素が含まれない別のフォームをサブミット</li>
 </ul>
-
-通常のサブミットボタンに比べてずっと多くの機能を提供しているため、サブミットボタンにあえて適用することで、サブミットボタンの動作をカスタマイズすることも出来ます。
-
+<br>
+通常のサブミットボタンに比べてずっと多くの機能を提供しているため、サブミットボタンにあえて適用することで、サブミットボタンの動作をカスタマイズすることも出来ます。<br>
+<br>
 <h4>使い方</h4>
-上記 Download リンクより jquery.submittable.js をダウンロードし、jquery 本体と一緒に読み込みます。<br />
-jquery のバージョンは 1.7 以降が必須です。<br />
-
+上記 Download リンクより jquery.submittable.js をダウンロードし、jquery 本体と一緒に読み込みます。<br><br>
+jquery のバージョンは 1.7 以降が必須です。<br><br>
+<br>
 <blockquote>
-すでに使っている古いバージョンの jQuery が置き換えられない？
-jQuery は<a href="/20111004/multiple-versions-of-jquery/" target="_blank">複数のバージョンを共存</a>できますよ？
+すでに使っている古いバージョンの jQuery が置き換えられない？<br>
+jQuery は<a href="/20111004/multiple-versions-of-jquery/" target="_blank">複数のバージョンを共存</a>できますよ？<br>
 </blockquote>
-
-プラグインを読み込んだら、任意の要素に対して "submittable" を呼び出せば、その要素があたかもサブミットボタンであるかのように振る舞います。
-
-<pre>
-// リンクをクリックすると通常のサブミットボタン同様、それを含むフォームをサブミットします。
+<br>
+プラグインを読み込んだら、任意の要素に対して "submittable" を呼び出せば、その要素があたかもサブミットボタンであるかのように振る舞います。<br>
+<br>
+<pre>// リンクをクリックすると通常のサブミットボタン同様、それを含むフォームをサブミットします。
 $('a').submittable();
 
 // ボタンをクリックするとフォームの属性を書き換えてからサブミットします。
@@ -66,23 +65,23 @@ $('input[type=submit]').submittable({
     }
 });
 </pre>
-
+<br>
 <h4>オプション</h4>
-以下のオプションが指定可能です。
-
+以下のオプションが指定可能です。<br>
+<br>
 <table>
-<tr><th>名前</th><th>説明</th><th>デフォルト値</th></tr>
+<tbody><tr><th>名前</th><th>説明</th><th>デフォルト値</th></tr>
 <tr><td>on</td><td>サブミットを実行するためのイベント。</td><td>'click'</td></tr>
-<tr><td>form</td><td>サブミット対象のフォーム。<br />jQuery のセレクタを文字列で指定しても、jQuery オブジェクト自体を渡しても、DOM 要素を渡しても大丈夫。</td><td>対象要素を含む form 要素</td></tr>
+<tr><td>form</td><td>サブミット対象のフォーム。<br>jQuery のセレクタを文字列で指定しても、jQuery オブジェクト自体を渡しても、DOM 要素を渡しても大丈夫。</td><td>対象要素を含む form 要素</td></tr>
 <tr><td>action</td><td>サブミット先の action。</td><td>undefined</td></tr>
 <tr><td>method</td><td>サブミット時の method。</td><td>undefined</td></tr>
 <tr><td>target</td><td>サブミット先の target。</td><td>undefined</td></tr>
-<tr><td>confirm</td><td>サブミット前に表示する確認メッセージ。<br />組み込み confirm 関数で表示するので、任意の処理が必要な場合は onconfirm を使う。</td><td>undefined</td></tr>
-<tr><td>onconfirm</td><td>サブミット確認用関数。<br />引数としてサブミットを実行した要素が渡される。<br />true を返すとサブミットを実行し、false を返すと何もしない。</td><td>undefined</td></tr>
-<tr><td>onbeforesubmit</td><td>サブミット直前に呼び出される関数。<br />引数としてサブミットを実行した要素が渡される。</td><td>undefined</td></tr>
-<tr><td>autoDisabled</td><td>サブミット後に対象要素を自動的に無効にするか。<br />true の場合、disabled 属性を true にし、disabledClass をクラスに追加する。</td><td>false</td></tr>
-<tr><td>disabledClass</td><td>autoDisabled が true の時、サブミット後に対象要素に設定するクラス。<br />無効な状態を解除したい場合は、このクラスを削除すれば良い。</td><td>'disabled'</td></tr>
-</table>
-
+<tr><td>confirm</td><td>サブミット前に表示する確認メッセージ。<br>組み込み confirm 関数で表示するので、任意の処理が必要な場合は onconfirm を使う。</td><td>undefined</td></tr>
+<tr><td>onconfirm</td><td>サブミット確認用関数。<br>引数としてサブミットを実行した要素が渡される。<br>true を返すとサブミットを実行し、false を返すと何もしない。</td><td>undefined</td></tr>
+<tr><td>onbeforesubmit</td><td>サブミット直前に呼び出される関数。<br>引数としてサブミットを実行した要素が渡される。</td><td>undefined</td></tr>
+<tr><td>autoDisabled</td><td>サブミット後に対象要素を自動的に無効にするか。<br>true の場合、disabled 属性を true にし、disabledClass をクラスに追加する。</td><td>false</td></tr>
+<tr><td>disabledClass</td><td>autoDisabled が true の時、サブミット後に対象要素に設定するクラス。<br>無効な状態を解除したい場合は、このクラスを削除すれば良い。</td><td>'disabled'</td></tr>
+</tbody></table>
+<br>
 <h4>ライセンス</h4>
 ライセンスは <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT License</a> (<a href="http://ja.wikipedia.org/wiki/MIT_License" target="_blank">日本版 wikipedia の項</a>) で公開します。

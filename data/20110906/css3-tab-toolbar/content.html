@@ -1,9 +1,9 @@
 プログラマにも書ける！画像を使わずCSS3でつくる今風のタブ＋ツールバー
 ----------------
-<a href="/twitmgr/" target="_blank">TwitMgr</a>のリニューアルに際して、今風のタブとツールバーを CSS3 だけで書いたので、その内容を順を追って説明してみます。
-
+<a href="/twitmgr/" target="_blank">TwitMgr</a>のリニューアルに際して、今風のタブとツールバーを CSS3 だけで書いたので、その内容を順を追って説明してみます。<br>
+<br>
 <h4>完成品</h4>
-こんな感じのタブとツールバーを、CSS 3 だけで書いていきます。
+こんな感じのタブとツールバーを、CSS 3 だけで書いていきます。<br>
 <style>
 .finish .tab {
 	margin: 10px 5px 0 0;
@@ -86,7 +86,7 @@
 	padding: 1px 2px;
 	border: 0;
 }
-</style>
+</style><br>
 <div class="finish">
 <div class="tab selected">フォローしている</div><div class="tab">フォローされている</div>
 <div class="toolbar">
@@ -101,21 +101,20 @@
 </ul>
 </div>
 </div>
-
+<br>
 <h4>マークアップ</h4>
-実際の TwitMgr で使ってるものとは違いますが、説明の都合上 HTML は下記のようなマークアップで行います。まだ何も CSS を適用していない状態なので、何がなにやらという状態ですね。
-<pre>
-&lt;div class=&quot;tab selected&quot;&gt;フォローしている&lt;/div&gt;
-&lt;div class=&quot;tab&quot;&gt;フォローされている&lt;/div&gt;
-&lt;div class=&quot;toolbar&quot;&gt;
-&lt;ul class=&quot;pager&quot;&gt;
-  &lt;li class=&quot;button enable&quot;&gt;1&lt;/li&gt;
-  &lt;li class=&quot;button enable&quot;&gt;2&lt;/li&gt;
-  &lt;li class=&quot;button current&quot;&gt;3&lt;/li&gt;
-  &lt;li class=&quot;button enable&quot;&gt;4&lt;/li&gt;
-  &lt;li class=&quot;button enable&quot;&gt;5&lt;/li&gt;
-  &lt;li class=&quot;period&quot;&gt;...&lt;/li&gt;
-  &lt;li class=&quot;button enable&quot;&gt;≫&lt;/li&gt;
+実際の TwitMgr で使ってるものとは違いますが、説明の都合上 HTML は下記のようなマークアップで行います。まだ何も CSS を適用していない状態なので、何がなにやらという状態ですね。<br>
+<pre>&lt;div class="tab selected"&gt;フォローしている&lt;/div&gt;
+&lt;div class="tab"&gt;フォローされている&lt;/div&gt;
+&lt;div class="toolbar"&gt;
+&lt;ul class="pager"&gt;
+  &lt;li class="button enable"&gt;1&lt;/li&gt;
+  &lt;li class="button enable"&gt;2&lt;/li&gt;
+  &lt;li class="button current"&gt;3&lt;/li&gt;
+  &lt;li class="button enable"&gt;4&lt;/li&gt;
+  &lt;li class="button enable"&gt;5&lt;/li&gt;
+  &lt;li class="period"&gt;...&lt;/li&gt;
+  &lt;li class="button enable"&gt;≫&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
@@ -133,9 +132,9 @@
 </ul>
 </div>
 </div>
-
+<br>
 <h4>レイアウト</h4>
-各部品の場所を決めていきます。位置関係が分かりやすいよう、仮で青のボーダーを入れました。ここはあまり特筆する点がありませんね。display と float を使って、適切な位置に要素を配置していくだけです。
+各部品の場所を決めていきます。位置関係が分かりやすいよう、仮で青のボーダーを入れました。ここはあまり特筆する点がありませんね。display と float を使って、適切な位置に要素を配置していくだけです。<br>
 <style>
 .step2 * {border: solid 1px blue;}
 .step2 .tab {
@@ -166,9 +165,8 @@
   width: auto;
   padding: 1px 2px;
 }
-</style>
-<pre class="height_narrow">
-.tab {
+</style><br>
+<pre class="height_narrow">.tab {
   margin: 10px 5px 0 0;
   padding: 5px 7px;
   float: left;
@@ -211,10 +209,10 @@
 </ul>
 </div>
 </div>
-
+<br>
 <h4>色の指定</h4>
-文字の色と背景色を指定しました。普通に color と background-color を指定しただけですが、css3 らしい事としては、選択中のページを表す li.current に半透明の白色を指定する事で、その部分がハイライトされたような効果を出しています。
-このようにする事で、背景色が変わったとしてもハイライト色を変える必要が無くなります。
+文字の色と背景色を指定しました。普通に color と background-color を指定しただけですが、css3 らしい事としては、選択中のページを表す li.current に半透明の白色を指定する事で、その部分がハイライトされたような効果を出しています。<br>
+このようにする事で、背景色が変わったとしてもハイライト色を変える必要が無くなります。<br>
 <style>
 .step3 .tab {
 	margin: 10px 5px 0 0;
@@ -254,10 +252,9 @@
 	width: auto;
 	padding: 1px 2px;
 }
-</style>
-
-<pre class="height_narrow">
-.tab {
+</style><br>
+<br>
+<pre class="height_narrow">.tab {
   margin: 10px 5px 0 0;
   padding: 5px 7px;
   float: left;
@@ -310,17 +307,17 @@
 </ul>
 </div>
 </div>
-
+<br>
 <h4>ボーダーの指定</h4>
-今度は各要素のボーダーを指定していきます。
-いわゆる角丸を多用しています。四隅の特定の角だけを丸める事もできるので、タブっぽいデザインを書く時に便利です。ここまでくると何となくそれらしくなってきますね。
-
-ページャー部分のボーダーは、背景色に合わせて半透明の白色にしています。背景色も文字もそれに含まれる要素も、全て一斉に半透明にする時は opacity で、背景色・ボーダーなど部分に応じて半透明にする時は rgba という使い分けをすると吉です。
-
-またベンダープレフィックスとしてここでは、webkit (Chrome / Safari 等) と moz (Firefox 等) を付けています。他にも o (Opera) や ms (IE8+) もあるので、必要に応じて使い分けて下さい。
-
-ただ、この状態では当たり前なのですが、選択中のタブとツールバーの間にも線が見えてしまっていますね。ここは綺麗に繋がってくれないと困ります。この問題は後で解決します。
-
+今度は各要素のボーダーを指定していきます。<br>
+いわゆる角丸を多用しています。四隅の特定の角だけを丸める事もできるので、タブっぽいデザインを書く時に便利です。ここまでくると何となくそれらしくなってきますね。<br>
+<br>
+ページャー部分のボーダーは、背景色に合わせて半透明の白色にしています。背景色も文字もそれに含まれる要素も、全て一斉に半透明にする時は opacity で、背景色・ボーダーなど部分に応じて半透明にする時は rgba という使い分けをすると吉です。<br>
+<br>
+またベンダープレフィックスとしてここでは、webkit (Chrome / Safari 等) と moz (Firefox 等) を付けています。他にも o (Opera) や ms (IE8+) もあるので、必要に応じて使い分けて下さい。<br>
+<br>
+ただ、この状態では当たり前なのですが、選択中のタブとツールバーの間にも線が見えてしまっていますね。ここは綺麗に繋がってくれないと困ります。この問題は後で解決します。<br>
+<br>
 <style>
 .step4 .tab {
   margin: 10px 5px 0 0;
@@ -378,9 +375,8 @@
   padding: 1px 2px;
   border: 0;
 }
-</style>
-<pre class="height_narrow">
-.tab {
+</style><br>
+<pre class="height_narrow">.tab {
   margin: 10px 5px 0 0;
   padding: 5px 7px;
   float: left;
@@ -451,11 +447,11 @@
 </ul>
 </div>
 </div>
-
+<br>
 <h4>グラデーションの指定</h4>
-ツールバー部分にグラデーションをかけました。グラデーションの上端の色を選択中のタブの色と合わせる事で、シームレスに繋がるようにします。
-このグラデーションの指定ですが、手作業で書くにはちょっと辛いので、<a href="http://www.colorzilla.com/gradient-editor/" target="_blank">Ultimate CSS Gradient Generator</a> のようなジェネレータを使って書くのが良いかと思います。
-ベンダープレフィックス付きの css を出力してくれるので、そのまま貼り付けるだけになります。
+ツールバー部分にグラデーションをかけました。グラデーションの上端の色を選択中のタブの色と合わせる事で、シームレスに繋がるようにします。<br>
+このグラデーションの指定ですが、手作業で書くにはちょっと辛いので、<a href="http://www.colorzilla.com/gradient-editor/" target="_blank">Ultimate CSS Gradient Generator</a> のようなジェネレータを使って書くのが良いかと思います。<br>
+ベンダープレフィックス付きの css を出力してくれるので、そのまま貼り付けるだけになります。<br>
 <style>
 .step5 .tab {
   margin: 10px 5px 0 0;
@@ -516,9 +512,8 @@
   padding: 1px 2px;
   border: 0;
 }
-</style>
-<pre class="height_narrow">
-.tab {
+</style><br>
+<pre class="height_narrow">.tab {
   margin: 10px 5px 0 0;
   padding: 5px 7px;
   float: left;
@@ -592,10 +587,10 @@
 </ul>
 </div>
 </div>
-
+<br>
 <h4>1px ラインの追加</h4>
-デザイン系の記事で良く取り上げられる、1px の魔法を css で追加します。
-具体的には右に 1px、下に 1px、ぼかし無しの状態で、要素の内側にボックスシャドウをかけます。こうするとちょうど、左上に 1px のラインを引いたような効果が出せます。
+デザイン系の記事で良く取り上げられる、1px の魔法を css で追加します。<br>
+具体的には右に 1px、下に 1px、ぼかし無しの状態で、要素の内側にボックスシャドウをかけます。こうするとちょうど、左上に 1px のラインを引いたような効果が出せます。<br>
 <style>
 .step6 .tab {
   margin: 10px 5px 0 0;
@@ -663,9 +658,8 @@
   padding: 1px 2px;
   border: 0;
 }
-</style>
-<pre class="height_narrow">
-.tab {
+</style><br>
+<pre class="height_narrow">.tab {
   margin: 10px 5px 0 0;
   padding: 5px 7px;
   float: left;
@@ -746,13 +740,13 @@
 </ul>
 </div>
 </div>
-
+<br>
 <h4>タブとツールバーをつなぐ</h4>
-ボーダーを追加して以来ずっと気になっていた、選択中のタブとツールバーの間の線を隠します。
-まずタブの高さ自体がそもそも 14px になっているので、選択中のタブはそれにボーダー幅 1px と、ボックスシャドウ幅 1px を足した 16px にします。
-そのままだと、非選択のタブと選択中のタブの高さが変わって、片方が浮いてしまう感じになるので、さらに margin-bottom を -2px にします。
-
-こうする事で選択中のタブが占める高さは非選択のタブと同じ高さになるものの、背景の描画自体は 2px 分下に伸びる形になるので、ツールバーとの間にあった線を隠す事ができます。
+ボーダーを追加して以来ずっと気になっていた、選択中のタブとツールバーの間の線を隠します。<br>
+まずタブの高さ自体がそもそも 14px になっているので、選択中のタブはそれにボーダー幅 1px と、ボックスシャドウ幅 1px を足した 16px にします。<br>
+そのままだと、非選択のタブと選択中のタブの高さが変わって、片方が浮いてしまう感じになるので、さらに margin-bottom を -2px にします。<br>
+<br>
+こうする事で選択中のタブが占める高さは非選択のタブと同じ高さになるものの、背景の描画自体は 2px 分下に伸びる形になるので、ツールバーとの間にあった線を隠す事ができます。<br>
 <style>
 .step7 .tab {
   margin: 10px 5px 0 0;
@@ -822,9 +816,8 @@
   padding: 1px 2px;
   border: 0;
 }
-</style>
-<pre class="height_narrow">
-.tab {
+</style><br>
+<pre class="height_narrow">.tab {
   margin: 10px 5px 0 0;
   padding: 5px 7px;
   float: left;
@@ -910,14 +903,14 @@
 </ul>
 </div>
 </div>
-
+<br>
 <h4>テキストの書式を調整する</h4>
-残りは微調整になりますが、テキストの書式を指定していきます。
-センタリングやフォントサイズの調整の他、選択中のタブやページを強調するためにテキストシャドウを指定しました。
-下に 1px の位置にぼかし無しのシャドウを付けています。あまり離したり、ぼかしすぎたりすると 90 年代テイストの野暮ったさになってしまうので気を付けたいところです。
-
-ところでこのテキストシャドウ、本当は 1px 程度はぼかした方が見た目が柔らかくなっていいのですが、XP 上の Chrome 限定で、「本来アンチエイリアスがかかっていないフォントに、テキストシャドウをぼかして適用するとアンチエイリアスがかかる」という仕様 (バグ？) があって、隣のシャドウ無しのフォントと見た目が変わってしまうので、あえてぼかし無しにしています。
-自分が XP 上で Chrome を使っていて気になるというだけなので、気にせずぼかしを適用しても良いかも知れません。
+残りは微調整になりますが、テキストの書式を指定していきます。<br>
+センタリングやフォントサイズの調整の他、選択中のタブやページを強調するためにテキストシャドウを指定しました。<br>
+下に 1px の位置にぼかし無しのシャドウを付けています。あまり離したり、ぼかしすぎたりすると 90 年代テイストの野暮ったさになってしまうので気を付けたいところです。<br>
+<br>
+ところでこのテキストシャドウ、本当は 1px 程度はぼかした方が見た目が柔らかくなっていいのですが、XP 上の Chrome 限定で、「本来アンチエイリアスがかかっていないフォントに、テキストシャドウをぼかして適用するとアンチエイリアスがかかる」という仕様 (バグ？) があって、隣のシャドウ無しのフォントと見た目が変わってしまうので、あえてぼかし無しにしています。<br>
+自分が XP 上で Chrome を使っていて気になるというだけなので、気にせずぼかしを適用しても良いかも知れません。<br>
 <style>
 .step8 .tab {
   margin: 10px 5px 0 0;
@@ -991,9 +984,8 @@
   padding: 1px 2px;
   border: 0;
 }
-</style>
-<pre class="height_narrow">
-.tab {
+</style><br>
+<pre class="height_narrow">.tab {
   margin: 10px 5px 0 0;
   padding: 5px 7px;
   float: left;
@@ -1080,19 +1072,18 @@
 </ul>
 </div>
 </div>
-
+<br>
 <h4>ユーザビリティを向上させる</h4>
-静的な見た目についてはすでに完成していますが、オンマウス時の挙動を指定する事でユーザビリティを向上させます。
-
-まずクリック可能な要素に対して cursor を pointer にするのは基本中の基本です。a 要素を使えばデフォルトのスタイルがそうなるのですが、HTML の思想からしてページ遷移 (ページ内ジャンプを含む) 以外で a 要素を使うのは正しいとは言えません。
-余談ですが、a 要素の name 属性も HTML5 で廃止されました。要素に名前を付けるために a を使うなという事です。
-
-なお、クリック時の動作自体は、JavaScript で動的に付与します。onclick 属性は Ajax で HTML を差し込む時に便利だったのですが、jQuery の live を使えば、後から追加される要素にも動的にイベントを付与出来るので、昔ながらの手法はそろそろ終わりにしましょう。
-
-後は、hover 時のスタイルを追加します。タブが上に伸びたようになるのは、padding-top を増やした分、margin-top を減らす事で表現しています。
-この時 transition を使えばさらにアニメーションさせる事もできるかと思ったのですが、padding と margin を同時に変化させると、アニメーションがガタガタしてしまうことが分かったので適用していません。
-<pre class="height_narrow">
-.tab {
+静的な見た目についてはすでに完成していますが、オンマウス時の挙動を指定する事でユーザビリティを向上させます。<br>
+<br>
+まずクリック可能な要素に対して cursor を pointer にするのは基本中の基本です。a 要素を使えばデフォルトのスタイルがそうなるのですが、HTML の思想からしてページ遷移 (ページ内ジャンプを含む) 以外で a 要素を使うのは正しいとは言えません。<br>
+余談ですが、a 要素の name 属性も HTML5 で廃止されました。要素に名前を付けるために a を使うなという事です。<br>
+<br>
+なお、クリック時の動作自体は、JavaScript で動的に付与します。onclick 属性は Ajax で HTML を差し込む時に便利だったのですが、jQuery の live を使えば、後から追加される要素にも動的にイベントを付与出来るので、昔ながらの手法はそろそろ終わりにしましょう。<br>
+<br>
+後は、hover 時のスタイルを追加します。タブが上に伸びたようになるのは、padding-top を増やした分、margin-top を減らす事で表現しています。<br>
+この時 transition を使えばさらにアニメーションさせる事もできるかと思ったのですが、padding と margin を同時に変化させると、アニメーションがガタガタしてしまうことが分かったので適用していません。<br>
+<pre class="height_narrow">.tab {
   margin: 10px 5px 0 0;
   padding: 5px 7px;
   float: left;
@@ -1188,14 +1179,14 @@
 </ul>
 </div>
 </div>
-
+<br>
 <h4>さいごに</h4>
-CSS3 を使う時は、ついつい派手に使いたくなるのですが、さりげなくワンポイントずつ使うと、比較的こなれた仕上がりになるようです。
-
-また、例によって IE のようなレガシーブラウザでは、意図したとおりの見た目にはなりません。
-IE6 でのキャプチャは以下のようになります。
-
-<a href="//s.otchy.net/uploads/2011/09/ie6.png"><img src="//s.otchy.net/uploads/2011/09/ie6-300x41.png" alt="" title="IE6" width="300" height="41" class="aligncenter size-medium wp-image-1448" /></a>
-
-このままだと厳しそうですが、選択中のページの背景色を半透明以外にも指定しておけば、ぎりぎり意図は伝えられるレベルですね。
+CSS3 を使う時は、ついつい派手に使いたくなるのですが、さりげなくワンポイントずつ使うと、比較的こなれた仕上がりになるようです。<br>
+<br>
+また、例によって IE のようなレガシーブラウザでは、意図したとおりの見た目にはなりません。<br>
+IE6 でのキャプチャは以下のようになります。<br>
+<br>
+<a href="//s.otchy.net/uploads/2011/09/ie6.png"><img src="//s.otchy.net/uploads/2011/09/ie6-300x41.png" alt="" title="IE6" width="300" height="41" class="aligncenter size-medium wp-image-1448"></a><br>
+<br>
+このままだと厳しそうですが、選択中のページの背景色を半透明以外にも指定しておけば、ぎりぎり意図は伝えられるレベルですね。<br>
 プログレッシブエンハンスメント (長すぎ！略称募集) も意識したデザインをやっていければいいなと思います。
