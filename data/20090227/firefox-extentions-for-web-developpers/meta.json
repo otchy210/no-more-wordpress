@@ -4,5 +4,6 @@
     "firefox",
     "extension"
   ],
+  "type": "post",
   "time": 1235726999000
 }
