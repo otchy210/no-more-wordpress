@@ -1,10 +1,11 @@
 
 <html>
 <head>
-    <title>Google Chart API を使って自サイトの合計はてブ数をグラフ化する</title>
+    <title>Google Chart API を使って自サイトの合計はてブ数をグラフ化する - OTCHY.NET</title>
 </head>
 <body>
-日頃、自サイトにはてブが付いて増えていく様子を、<a href="http://tophatenar.com/" target="_blank">TopHatenar</a> でグラフを見てほくそ笑んでいたりしたのですが、TopHatenar は更新が遅れることが多く、残念な気持ちになることも度々ありました。<br>
+    <main>
+        日頃、自サイトにはてブが付いて増えていく様子を、<a href="http://tophatenar.com/" target="_blank">TopHatenar</a> でグラフを見てほくそ笑んでいたりしたのですが、TopHatenar は更新が遅れることが多く、残念な気持ちになることも度々ありました。<br>
 <br>
 そこで以前、せめて記録だけは残そうと、<a href="/20090716/record-total-hatebu-count-to-csv-file/">自分のサイトの合計はてブ数を淡々と csv に記録し続ける</a>というエントリを書いて、それ以来ずっと記録しています。<br>
 それでまあ、そろそろデータも貯まってきたので予告通り(？)、グラフ化してみる事にしました。<br>
@@ -113,5 +114,6 @@ X 軸についてはシンプルに、最初と最後の日付を載せている
 <h4>追記</h4>
 元データの行数が増えてくると、グラフとして描画するのが苦しくなってくることが予想されます。<br>
 その場合、csv を保存した後に、tail -n 60 hatebulog.csv > hatebulog_tail.csv のようにしておいて、最新の何件かを取り出すようにするといいでしょう。
+    </main>
 </body>
 </html>

@@ -1,10 +1,11 @@
 
 <html>
 <head>
-    <title>JavaScript だけで Shift_JIS/EUC-JP のページから UTF-8 に変換して POST する方法</title>
+    <title>JavaScript だけで Shift_JIS/EUC-JP のページから UTF-8 に変換して POST する方法 - OTCHY.NET</title>
 </head>
 <body>
-<a href="http://www.otchy.net/20090416/bookmarklet-for-twitter/">1 個前のエントリ</a>で、JavaScript だけを用いて、任意の文字コードのページから、UTF-8 エンコーディングで任意のサーバに (クロスドメインして) POST する方法を編み出しました。<br>
+    <main>
+        <a href="http://www.otchy.net/20090416/bookmarklet-for-twitter/">1 個前のエントリ</a>で、JavaScript だけを用いて、任意の文字コードのページから、UTF-8 エンコーディングで任意のサーバに (クロスドメインして) POST する方法を編み出しました。<br>
 その部分だけで需要があるのではないかと思ったので、関数として取り出して公開します。<br>
 <br>
 案外スマートに書けたのでご機嫌です。<br>
@@ -43,5 +44,6 @@ iframe の中身は当初 DOM で構築しようとしたのですが、うま�
 iframe 内で window.onload しているのは、これまた直接 script タグ内で submit しようとすると、その時点では iframe の DOM 構築が完了しておらず、submit 出来ないためです。<br>
 iDoc.close(); しないと、DOM が構築されないのではないかと予想されます。<br>
 
+    </main>
 </body>
 </html>

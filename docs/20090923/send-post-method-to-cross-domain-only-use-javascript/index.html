@@ -1,10 +1,11 @@
 
 <html>
 <head>
-    <title>JavaScript だけでクロスドメインで POST メソッドを送る方法</title>
+    <title>JavaScript だけでクロスドメインで POST メソッドを送る方法 - OTCHY.NET</title>
 </head>
 <body>
-JavaScript のみを使って、クロスドメインを実現しつつ POST メソッドでリクエストを送信する方法について解説します。<br>
+    <main>
+        JavaScript のみを使って、クロスドメインを実現しつつ POST メソッドでリクエストを送信する方法について解説します。<br>
 ここで解説する方法にはこんな特徴があります。<br>
 <strong>(2009-10-30 追記)</strong> iframe の unload のタイミングについて、重大な不具合がある可能性に気づきました。<del>Chrome/</del>Firefox において、2度イベントが発生している可能性が高いです。unload イベントを使わない場合は無関係です。結論が分かったら修正版をこのページで公開します。<br>
 <strong>(2010-01-29 追記)</strong> Chrome は大丈夫そうです。Firefox もカウンタ or フラグを使ってイベントを記録すれば大丈夫ぽいです。ちゃんと直せて無くてすいません。<br>
@@ -102,5 +103,6 @@ IE の場合は未検証ですが、イベント周りの扱いが標準とか�
 具体的には、addEventListener のあたりと、preventDefault のあたりは確実に違います。<br>
 もし IE も視野に入れてどうにかしたいなら、イベントモデルの差異を吸収してくれているラッパ (jQuery やら prototype.js やら) を使うのが賢明かと思います。<br>
 
+    </main>
 </body>
 </html>
