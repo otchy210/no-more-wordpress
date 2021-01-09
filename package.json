@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/otchy210/no-more-wordpress#readme",
   "devDependencies": {
+    "html-minifier": "^4.0.0",
     "jsdom": "^16.4.0",
     "mysql": "^2.18.1"
   }
