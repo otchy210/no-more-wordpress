@@ -2,9 +2,10 @@ import path from 'path';
 import fs from 'fs/promises';
 import config from './config.mjs';
 import template from './template.mjs';
+import { isDevMode } from './common.mjs';
 
 const DATA_ROOT = path.resolve(config.dirs.data);
-const DOCS_ROOT = path.resolve(config.dirs.docs);
+const DOCS_ROOT = path.resolve(isDevMode() ? config.dirs.devDocs : config.dirs.docs);
 
 const main = async () => {
     await fs.mkdir(DOCS_ROOT, {recursive: true});

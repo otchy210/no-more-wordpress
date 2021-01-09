@@ -7,6 +7,7 @@ export default {
     },
     dirs: {
         data: 'data',
-        docs: 'docs'
+        docs: 'docs',
+        devDocs: 'devDocs'
     }
 };

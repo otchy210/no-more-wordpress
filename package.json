@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "convert": "node bin/convert.mjs",
-    "build": "node bin/build.mjs"
+    "build": "node bin/build.mjs --mode=prod",
+    "build:dev": "node bin/build.mjs --mode=dev"
   },
   "repository": {
     "type": "git",
