@@ -1,11 +1,11 @@
 
 <html>
 <head>
-    <title>Twitter ボットの作り方 Perl 編 (3) - OTCHY.NET</title>
+<title>Twitter ボットの作り方 Perl 編 (3) - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        Twitter ボットの作り方解説第 3 弾。特定のワードが含まれたつぶやきに反応して、何らかの返信をするボット作ってみます。<br>
+<main>
+Twitter ボットの作り方解説第 3 弾。特定のワードが含まれたつぶやきに反応して、何らかの返信をするボット作ってみます。<br>
 以下は、第 2 弾までの状態を前提としています。<br>
 <br>
 <h4>ボット作成の方針</h4>
@@ -51,42 +51,42 @@ use YAML::Tiny;
 use Net::Twitter;
 
 # yml ファイルの読み込みと、Twitter モジュールの初期化
-my $config = (YAML::Tiny-&gt;read($FindBin::Bin . '/config.yml'))-&gt;[0];
-my $status = (YAML::Tiny-&gt;read($FindBin::Bin . '/status.yml'))-&gt;[0];
-my $twit = Net::Twitter-&gt;new(username =&gt; $config-&gt;{'username'}, password =&gt; $config-&gt;{'password'});
+my $config = (YAML::Tiny->read($FindBin::Bin . '/config.yml'))->[0];
+my $status = (YAML::Tiny->read($FindBin::Bin . '/status.yml'))->[0];
+my $twit = Net::Twitter->new(username => $config->{'username'}, password => $config->{'password'});
 
 # 各種設定値の取得
-my $username = $config-&gt;{'username'};
-my $query = Encode::encode('utf8', $config-&gt;{'query'});
-my $template = Encode::encode('utf8', $config-&gt;{'template'});
-my $sinceId = $status-&gt;{'sinceId'};
+my $username = $config->{'username'};
+my $query = Encode::encode('utf8', $config->{'query'});
+my $template = Encode::encode('utf8', $config->{'template'});
+my $sinceId = $status->{'sinceId'};
 
 # Twitter 検索。to: オプションでボット宛のつぶやきだけを絞り込み
-my $response = $twit-&gt;search({q =&gt; 'to:' . $username . ' ' . $query, since_id =&gt; $sinceId});
+my $response = $twit->search({q => 'to:' . $username . ' ' . $query, since_id => $sinceId});
 
 # 検索結果を 1 件ずつ処理
 my $result;
-foreach $result ( reverse( @{$response-&gt;{'results'}} ) ) {
-    my $text = Encode::encode('utf8', $result-&gt;{'text'});
-    my $fromUser = $result-&gt;{'from_user'};
-    my $statusId = $result-&gt;{'id'};
+foreach $result ( reverse( @{$response->{'results'}} ) ) {
+    my $text = Encode::encode('utf8', $result->{'text'});
+    my $fromUser = $result->{'from_user'};
+    my $statusId = $result->{'id'};
     my $reply = $template;
     $text =~ s/\s*\@${username}\s*//;
     $reply =~ s/{text}/$text/;
     $reply = '@' . "${fromUser} ${reply}";
-    $twit-&gt;update({status =&gt; $reply, in_reply_to_status_id =&gt; $statusId});
+    $twit->update({status => $reply, in_reply_to_status_id => $statusId});
     $sinceId = $statusId;
 }
 
 # 最後に処理したつぶやきの ID を保存
-YAML::Tiny::DumpFile($FindBin::Bin . '/status.yml', {sinceId =&gt; $sinceId});
+YAML::Tiny::DumpFile($FindBin::Bin . '/status.yml', {sinceId => $sinceId});
 </pre>
 <br>
 さて、ではポイントを絞って解説します。<br>
 <br>
 まず重要なのが Twitter 検索の使い方です。<br>
-パラメータ q に検索文字列を指定して検索しますが、ここでは <a href="http://search.twitter.com/" target="_blank">Twitter検索</a> で使用可能なオプションを指定することが出来ます。<br>
-検索時に指定出来るオプションについては、<a href="http://www.google.co.jp/search?hl=ja&amp;q=twitter+%E6%A4%9C%E7%B4%A2%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3&amp;btnG=" target="_blank">このあたり</a>を参照して下さい。<br>
+パラメータ q に検索文字列を指定して検索しますが、ここでは <a href=http://search.twitter.com/ target=_blank>Twitter検索</a> で使用可能なオプションを指定することが出来ます。<br>
+検索時に指定出来るオプションについては、<a href="http://www.google.co.jp/search?hl=ja&q=twitter+%E6%A4%9C%E7%B4%A2%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3&btnG=" target=_blank>このあたり</a>を参照して下さい。<br>
 <br>
 パラメータ since_id は、つぶやきの id を指定することで、それより後のつぶやきを対象として検索します。<br>
 これがないと、重複返信をしてしまうのでとても重要なオプションです。<br>
@@ -129,12 +129,11 @@ list.yml の内容を配列ではなく、「キーワード：値」のペア�
 さて、だんだんと本格的なボットになってきましたね。<br>
 第 4 弾以降では、ボット内だけで完結せず、外部の情報を読み込んで使用するようなボットを作ってみたいと思います。<br>
 <br>
-<div class="navi">
-<div class="prev"><a href="/20090629/making-of-twitter-bot-2/">前へ</a></div>
-<div class="next"><a href="/20090719/making-of-twitter-bot-4/">次へ</a></div>
-<div class="index"><a href="/20090726/making-of-twitter-bot-index/">目次</a></div>
+<div class=navi>
+<div class=prev><a href=/20090629/making-of-twitter-bot-2/ >前へ</a></div>
+<div class=next><a href=/20090719/making-of-twitter-bot-4/ >次へ</a></div>
+<div class=index><a href=/20090726/making-of-twitter-bot-index/ >目次</a></div>
 </div>
-
-    </main>
+</main>
 </body>
 </html>

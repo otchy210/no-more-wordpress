@@ -1,15 +1,15 @@
 
 <html>
 <head>
-    <title>Google App Engine for Java 開発環境を USB メモリで持ち歩く (2) - OTCHY.NET</title>
+<title>Google App Engine for Java 開発環境を USB メモリで持ち歩く (2) - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        Google App Engine の Java 開発環境を USB メモリに入れてどこでも開発できる環境を作りました。<br>
+<main>
+Google App Engine の Java 開発環境を USB メモリに入れてどこでも開発できる環境を作りました。<br>
 レポート第 2 弾。USB メモリ向け設定を施した Eclipse のインストールから、日本語化を行って Eclipse が起動するまで。<br>
 <br>
 <h4>Eclipse のインストール</h4>
-<a href="http://www.eclipse.org/downloads/" target="_blank">Eclipse 公式ページ</a>から、Eclipse 本体をダウンロードします。最新版である、3.4 系を使用します。<br>
+<a href=http://www.eclipse.org/downloads/ target=_blank>Eclipse 公式ページ</a>から、Eclipse 本体をダウンロードします。最新版である、3.4 系を使用します。<br>
 <blockquote>Eclipse IDE for Java Developers → ミラーサイトを選択</blockquote>
 ダウンロードしたファイルを解凍して、USB メモリにコピーします。<br>
 <blockquote>U:\eclipse</blockquote>
@@ -26,10 +26,10 @@ Set shell = CreateObject("WScript.Shell")
 drive = fso.GetDriveName(WScript.ScriptFullName)
 shell.CurrentDirectory = ".\eclipse"
 
-eclipse = drive &amp; "\eclipse\eclipse.exe"
-javaw = drive &amp; "\jdk\jre\bin\javaw.exe"
-ws = drive &amp; "\workspace"
-cmd = eclipse &amp; " -vm " &amp; javaw &amp; " -data " &amp; ws
+eclipse = drive & "\eclipse\eclipse.exe"
+javaw = drive & "\jdk\jre\bin\javaw.exe"
+ws = drive & "\workspace"
+cmd = eclipse & " -vm " & javaw & " -data " & ws
 
 Call shell.Run(cmd, 1, False)</pre>
 <br>
@@ -39,16 +39,16 @@ Call shell.Run(cmd, 1, False)</pre>
 <h4>Google Plugin for Eclipse のインストール</h4>
 いよいよ、GAE 開発環境のインストールを行います。<br>
 起動した Eclipse 上からネットワークインストールが可能なので、下記の通り実行します。<br>
-参考) <a href="http://code.google.com/intl/ja/appengine/docs/java/gettingstarted/installing.html" target="_blank">Google App Engine - Installing the Java SDK</a><br>
+参考) <a href=http://code.google.com/intl/ja/appengine/docs/java/gettingstarted/installing.html target=_blank>Google App Engine - Installing the Java SDK</a><br>
 <br>
-<blockquote>Help → Software Updates → Available Software タブ → Add site ボタン → Location: http://dl.google.com/eclipse/plugin/3.4 入力 → OK ボタン → http://dl.google.com/eclipse/plugin/3.4  にチェック → Install ボタン → ちょっと待つ → Next ボタン → I accept ... にチェック → Finish ボタン → しばらく待つ → Yes ボタン → Eclipse 再起動</blockquote>
+<blockquote>Help → Software Updates → Available Software タブ → Add site ボタン → Location: http://dl.google.com/eclipse/plugin/3.4 入力 → OK ボタン → http://dl.google.com/eclipse/plugin/3.4 にチェック → Install ボタン → ちょっと待つ → Next ボタン → I accept ... にチェック → Finish ボタン → しばらく待つ → Yes ボタン → Eclipse 再起動</blockquote>
 <br>
 以上で、Google Plugin のインストールは完了ですが、Eclipse にはもう少しプラグインを足しておきます。<br>
 個人的には重要度の高いプラグインを導入していますが、この作業は必須でないので、好みによって飛ばしたり、別のプラグインを追加しても良いでしょう。<br>
 <br>
 <h4>Eclipse の日本語化 (Pleiades)</h4>
 Eclipse が起動していたらいったん落とします。<br>
-<a href="http://mergedoc.sourceforge.jp/index.html#/pleiades.html" target="_blank">Pleiades 公式サイト</a>より、プラグインをダウンロードして、eclipse をインストールしたフォルダ以下に展開します。<br>
+<a href=http://mergedoc.sourceforge.jp/index.html#/pleiades.html target=_blank>Pleiades 公式サイト</a>より、プラグインをダウンロードして、eclipse をインストールしたフォルダ以下に展開します。<br>
 <br>
 <blockquote>Pleiades 本体ダウンロード → 安定版 1.3.0 → pleiades_1.3.0.zip 解凍 → plugins フォルダ、features フォルダを U:\eclipse 以下にコピー</blockquote>
 <br>
@@ -71,10 +71,10 @@ Set shell = CreateObject("WScript.Shell")
 drive = fso.GetDriveName(WScript.ScriptFullName)
 shell.CurrentDirectory = ".\eclipse"
 
-eclipse = drive &amp; "\eclipse\eclipse.exe <span style="color:#00f;">-clean</span>"
-javaw = drive &amp; "\jdk\jre\bin\javaw.exe"
-ws = drive &amp; "\workspace"
-cmd = eclipse &amp; " -vm " &amp; javaw &amp; " -data " &amp; ws
+eclipse = drive & "\eclipse\eclipse.exe <span style=color:#00f>-clean</span>"
+javaw = drive & "\jdk\jre\bin\javaw.exe"
+ws = drive & "\workspace"
+cmd = eclipse & " -vm " & javaw & " -data " & ws
 
 Call shell.Run(cmd, 1, False)</pre>
 <br>
@@ -84,7 +84,7 @@ clean 起動はかなり時間がかかるので、必要時のみ行うよう�
 <br>
 <h4>全角スペース、タブの可視化 (JStyle)</h4>
 Eclipse が起動していたらいったん落とします。<br>
-<a href="http://mergedoc.sourceforge.jp/index.html#/jstyle.html" target="_blank">JStype 公式サイト</a>より、プラグインをダウンロードして、eclipse をインストールしたフォルダ以下に展開します。<br>
+<a href=http://mergedoc.sourceforge.jp/index.html#/jstyle.html target=_blank>JStype 公式サイト</a>より、プラグインをダウンロードして、eclipse をインストールしたフォルダ以下に展開します。<br>
 <br>
 <blockquote>ダウンロード → Eclipse 3.4.2 用 → jstyle_3.4.2.3.zip 解凍 → plugins フォルダを U:\eclipse 以下にコピー</blockquote>
 <br>
@@ -93,11 +93,11 @@ Eclipse が起動していたらいったん落とします。<br>
 <br>
 <blockquote>ウィンドウ → 設定 → 一般 → 外観 → 色とフォント → 基本 → テキスト・フォント→ 変更ボタン → MS ゴシック → 標準 → 9 ポイント → OK ボタン → OK ボタン</blockquote>
 <br>
-<div class="navi">
-<div class="prev"><a href="http://www.otchy.net/20090419/google-app-engine-java-development-in-usb-memory-1/">前へ</a></div>
-<div class="next"><a href="http://www.otchy.net/20090419/google-app-engine-java-development-in-usb-memory-3/">次へ</a></div>
-<div class="bottom"></div>
+<div class=navi>
+<div class=prev><a href=http://www.otchy.net/20090419/google-app-engine-java-development-in-usb-memory-1/ >前へ</a></div>
+<div class=next><a href=http://www.otchy.net/20090419/google-app-engine-java-development-in-usb-memory-3/ >次へ</a></div>
+<div class=bottom></div>
 </div>
-    </main>
+</main>
 </body>
 </html>

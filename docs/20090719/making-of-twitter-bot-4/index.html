@@ -1,11 +1,11 @@
 
 <html>
 <head>
-    <title>Twitter ボットの作り方 Perl 編 (4) - OTCHY.NET</title>
+<title>Twitter ボットの作り方 Perl 編 (4) - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        Twitter ボットの作り方解説第 4 弾。特定の RSS の内容をつぶやき続けるボットを作ってみます。<br>
+<main>
+Twitter ボットの作り方解説第 4 弾。特定の RSS の内容をつぶやき続けるボットを作ってみます。<br>
 以下は、第 3 弾までの状態を前提としています。<br>
 <br>
 <h4>CPAN ライブラリの追加</h4>
@@ -15,11 +15,11 @@
 <br>
 <pre>$ su -
 # perl -MCPAN -e shell
-<u>cpan&gt;</u> install XML::FeedPP
+<u>cpan></u> install XML::FeedPP
 </pre>
 <br>
 Perl 上で RSS を扱うライブラリというと、XML::RSS が有名なのですが、今回は Atom フィードも同等に扱いたかったので XML::FeedPP を採用しました。<br>
-RSS と Atom についての関係は<a href="http://www.google.co.jp/search?hl=ja&amp;q=rss+atom+%E9%81%95%E3%81%84" target="_blank">このあたり</a>を参照してみて下さい。<br>
+RSS と Atom についての関係は<a href="http://www.google.co.jp/search?hl=ja&q=rss+atom+%E9%81%95%E3%81%84" target=_blank>このあたり</a>を参照してみて下さい。<br>
 よく分からなければそんなに気にしなくて構いません。<br>
 (正確に表現するなら RSS と Atom を合わせてフィードと呼称すべきですが、あえてここでは一般的な名称として RSS という呼称を使用しています。)<br>
 <br>
@@ -37,7 +37,7 @@ status.yml<br>
 </pre>
 <br>
 source はもちろん接続先 RSS のアドレスですね。<br>
-lastHash は最後につぶやいた RSS アイテムの<a href="http://www.google.co.jp/search?hl=ja&amp;q=%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5%E5%80%A4&amp;btnG=%E6%A4%9C%E7%B4%A2" target="_blank">ハッシュ値</a>を記録します。<br>
+lastHash は最後につぶやいた RSS アイテムの<a href="http://www.google.co.jp/search?hl=ja&q=%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5%E5%80%A4&btnG=%E6%A4%9C%E7%B4%A2" target=_blank>ハッシュ値</a>を記録します。<br>
 なぜこのようなものが必要になるかというと、RSS や Atom のフォーマットには様々な種類があり、唯一のアイテムを指定する ID のようなものが必ずしも提供されないからです。<br>
 従って、複数の値を組み合わせたハッシュ値を用いて、それを元に最後のつぶやきを管理します。<br>
 <br>
@@ -55,46 +55,46 @@ use XML::FeedPP;
 use Digest::MD5;
 
 # 各種設定値の取得
-my $config = (YAML::Tiny-&gt;read($FindBin::Bin . '/config.yml'))-&gt;[0];
-my $status = (YAML::Tiny-&gt;read($FindBin::Bin . '/status.yml'))-&gt;[0];
-my $twit = Net::Twitter-&gt;new(username =&gt; $config-&gt;{'username'}, password =&gt; $config-&gt;{'password'});
-my $source = $config-&gt;{'source'};
-my $lastHash = $status-&gt;{'lastHash'};
+my $config = (YAML::Tiny->read($FindBin::Bin . '/config.yml'))->[0];
+my $status = (YAML::Tiny->read($FindBin::Bin . '/status.yml'))->[0];
+my $twit = Net::Twitter->new(username => $config->{'username'}, password => $config->{'password'});
+my $source = $config->{'source'};
+my $lastHash = $status->{'lastHash'};
 
 # RSS の読み込み
-my $feed = XML::FeedPP-&gt;new($source);
+my $feed = XML::FeedPP->new($source);
 
 # 最後につぶやいた RSS アイテムより新しい RSS アイテムを調べる
 my @updates;
-for my $item ($feed-&gt;get_item()) {
-    my $hash = &amp;calcHash($item);
+for my $item ($feed->get_item()) {
+    my $hash = &calcHash($item);
     last if $hash eq $lastHash;
     # 配列の頭から詰めていく事で、つぶやきの順番を RSS と逆にする
     unshift(@updates, $item);
 }
 # RSS の内容を順につぶやく
 for my $item (@updates) {
-    my $update = $item-&gt;title() . ' ' . $item-&gt;link();
-    $twit-&gt;update($update);
-    $lastHash = &amp;calcHash($item);
+    my $update = $item->title() . ' ' . $item->link();
+    $twit->update($update);
+    $lastHash = &calcHash($item);
 }
 
 # 最後につぶやいた RSS アイテムのハッシュ値を保存
-YAML::Tiny::DumpFile($FindBin::Bin . '/status.yml', {lastHash =&gt; $lastHash});
+YAML::Tiny::DumpFile($FindBin::Bin . '/status.yml', {lastHash => $lastHash});
 
 # RSS からハッシュ値を計算する
 sub calcHash {
     my $item = shift;
-    my $id = $item-&gt;guid();
-    my $url = $item-&gt;link();
-    my $title = $item-&gt;title();
-    my $pubDate = $item-&gt;pubDate();
+    my $id = $item->guid();
+    my $url = $item->link();
+    my $title = $item->title();
+    my $pubDate = $item->pubDate();
     my $hashKey = '';
     $hashKey .= $id if $id;
     $hashKey .= $url if $url;
     $hashKey .= $title if $title;
     $hashKey .= $pubDate if $pubDate;
-    return Digest::MD5-&gt;md5_hex($hashKey);
+    return Digest::MD5->md5_hex($hashKey);
 }
 </pre>
 <br>
@@ -118,15 +118,14 @@ cron の間隔は、RSS が更新される間隔に合わせて適宜調整し�
 なお、配信される RSS ファイルが UTF-8 であることを前提としています。もし異なる文字コードで配信されていたら、つぶやく前に変換をしないといけないですが、UTF-8 以外の RSS ってあまり聞いたことが無いので大丈夫だと思います。<br>
 <br>
 このくらいまで出来るようになると、かなり実用的なボットが作成可能ですね。<br>
-自分の欲しい RSS だけをマージして、フィルタリングした結果の RSS を <a href="http://pipes.yahoo.com/pipes/" target="_blank">Yahoo! pipes</a> で作ってボットにつぶやかせるとか、応用の幅が広いです。<br>
+自分の欲しい RSS だけをマージして、フィルタリングした結果の RSS を <a href=http://pipes.yahoo.com/pipes/ target=_blank>Yahoo! pipes</a> で作ってボットにつぶやかせるとか、応用の幅が広いです。<br>
 次の 第 5 弾で、一応本連載は完了します。最後は外部のウェブサービスと連携する例として、<del>Google</del> Yahoo 検索をするボットを作ってみます。<br>
 <br>
-<div class="navi">
-<div class="prev"><a href="/20090710/making-of-twitter-bot-3/">前へ</a></div>
-<div class="next"><a href="/20090726/making-of-twitter-bot-5/">次へ</a></div>
-<div class="index"><a href="/20090726/making-of-twitter-bot-index/">目次</a></div>
+<div class=navi>
+<div class=prev><a href=/20090710/making-of-twitter-bot-3/ >前へ</a></div>
+<div class=next><a href=/20090726/making-of-twitter-bot-5/ >次へ</a></div>
+<div class=index><a href=/20090726/making-of-twitter-bot-index/ >目次</a></div>
 </div>
-
-    </main>
+</main>
 </body>
 </html>

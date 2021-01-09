@@ -1,17 +1,16 @@
 
 <html>
 <head>
-    <title>Gmail で未読だけを表示するブックマークレット - OTCHY.NET</title>
+<title>Gmail で未読だけを表示するブックマークレット - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        Gmail のタグとかの表示で、未読のみを表示するボタンがないのは何故だろう？と思ったのでブックマークレット書きました。<br>
+<main>
+Gmail のタグとかの表示で、未読のみを表示するボタンがないのは何故だろう？と思ったのでブックマークレット書きました。<br>
 ただ検索実行まで解析しきれなかったので、検索ボタンにフォーカス移して終わりです。<br>
 ブックマークレット実行後、Enter キーを押す必要があります。<br>
 <a href="javascript:(function(d){var%20q=d.getElementById(':re');q.value=q.value+'%20is:unread';d.getElementById(':rj').focus();})(window.frames['canvas_frame'].contentWindow.document);">未読検索</a><br>
 <pre>javascript:(function(d){var%20q=d.getElementById(':re');q.value=q.value+'%20is:unread';d.getElementById(':rj').focus();})(window.frames['canvas_frame'].contentWindow.document);
 </pre>
-
-    </main>
+</main>
 </body>
 </html>

@@ -1,43 +1,43 @@
 
 <html>
 <head>
-    <title>Simple Shorten URL - OTCHY.NET</title>
+<title>Simple Shorten URL - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        自前で短縮 URL を提供したい場合の、超シンプルな実装です。複雑な機能はいっさいない代わりに、3 つのファイルをアップするだけで DB の設定すら不要で簡単に動きます。<br>
+<main>
+自前で短縮 URL を提供したい場合の、超シンプルな実装です。複雑な機能はいっさいない代わりに、3 つのファイルをアップするだけで DB の設定すら不要で簡単に動きます。<br>
 PHP や .htaccess、サーバへのファイルアップなどについては、あらかじめ知識がある事を前提としています。<br>
 <h4>必須要件</h4>
 <ul>
-	<li>PHP 5</li>
-	<li>.htaccess 有効</li>
-	<li>mod_rewrite 有効</li>
+<li>PHP 5</li>
+<li>.htaccess 有効</li>
+<li>mod_rewrite 有効</li>
 </ul>
 <h4>向いている</h4>
 <ul>
-	<li>自分専用の短縮 URL を簡単に使いたい</li>
-	<li>DB とか用意したくない / 出来ない</li>
-	<li>リンクの解析機能とか要らない</li>
+<li>自分専用の短縮 URL を簡単に使いたい</li>
+<li>DB とか用意したくない / 出来ない</li>
+<li>リンクの解析機能とか要らない</li>
 </ul>
 <h4>向いていない</h4>
 <ul>
-	<li>不特定多数に公開する</li>
-	<li>同一 URL の短縮結果が常に同じであってほしい</li>
-	<li>リンクの解析機能が要る</li>
+<li>不特定多数に公開する</li>
+<li>同一 URL の短縮結果が常に同じであってほしい</li>
+<li>リンクの解析機能が要る</li>
 </ul>
 <h4>インストール</h4>
 下記の 3 つのファイルを用意します。このうち、index.php の冒頭には設定が書いてあるので、その部分の編集は必須です。必要な部分を編集したら、サーバにアップします。<br>
 データファイルを保存するので、アップするディレクトリには書き込み権限を付与しておいて下さい。<br>
-[<a href="//s.otchy.net/zip/ssurl.zip">まとめてダウンロード</a>]<br>
+[<a href=//s.otchy.net/zip/ssurl.zip>まとめてダウンロード</a>]<br>
 <br>
 ≪.htaccess≫<br>
-<pre>&lt;IfModule mod_rewrite.c&gt;
+<pre>&lt;IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /expand.php?key=$1 [L]
-&lt;/IfModule&gt;</pre>
+&lt;/IfModule></pre>
 短縮 URL の任意のパスを受け取り、expand.php に受け渡すための mod_rewrite 向け設定が書いてあります。ドメイン直下にスクリプトが置けない場合、RewriteRule を書き換えて対応する必要があります。<br>
 例えば、http://otchy.net/s/XXX なら以下のようにします。<br>
 <pre>RewriteRule ^s/(.*)$ /s/expand.php?key=$1 [L]</pre>
@@ -53,11 +53,11 @@ if (is_file($file)) {
 } else {
     header('HTTP/1.1 404 File Not Found');
 }
-?&gt;</pre>
+?></pre>
 シンプルにリダイレクトするだけのスクリプトです。<br>
 <br>
 ≪index.php≫<br>
-<pre class="height_middle">&lt;?php
+<pre class=height_middle>&lt;?php
 define('OWN', 'http://otchy.net/');
 define('TARGET', 'http://www.otchy.net/');
 define('LEN', 3);
@@ -84,7 +84,7 @@ function shorten() {
 function nextDir() {
     $dir = 'dat';
     $id = 0;
-    for ($i=LEN-1; $i&gt;=0; $i--) {
+    for ($i=LEN-1; $i>=0; $i--) {
         $num = currentNum($dir);
         $id += $num * pow(EXP, $i);
         $dir .= '/' . substr(CHARS, $num, 1);
@@ -114,10 +114,10 @@ function currentNum($dir) {
     return strpos(CHARS, $char);
 }
 $url = FALSE;
-if ($_GET['submit'] == 'shorten' || strlen($_GET['callback']) &gt; 0) {
+if ($_GET['submit'] == 'shorten' || strlen($_GET['callback']) > 0) {
     $url = shorten();
     $callback = $_GET['callback'];
-    if (strlen($callback) &gt; 0) {
+    if (strlen($callback) > 0) {
         $json = '';
         if ($url === FALSE) {
             $json = '{errmsg:' . "'" . $message . "'" . '}';
@@ -128,25 +128,25 @@ if ($_GET['submit'] == 'shorten' || strlen($_GET['callback']) &gt; 0) {
         exit;
     }
 }
-?&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div style="color:red;"&gt;&lt;?php echo $message ?&gt;&lt;/div&gt;
-&lt;form method="GET"&gt;
-URL&lt;input name="url" value="&lt;?php echo htmlspecialchars($_GET['url']) ?&gt;" /&gt;&lt;input type="submit" name="submit" value="shorten" /&gt;
-&lt;/form&gt;
-&lt;?php if ($url !== FALSE) { ?&gt;
-&lt;div style="color:green;"&gt;
-Success shorten: &lt;?php echo htmlspecialchars($_GET['url']) ?&gt; to &lt;a href="&lt;?php echo $url ?&gt;" target="_blank"&gt;&lt;?php echo $url ?&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;?php } ?&gt;
-&lt;div&gt;
-Bookmarklet:&lt;a href="javascript:(function(w,d,s){if(!w.ssurl){w.ssurl=function(o){if(o.errmsg){alert(o.errmsg);}else{prompt('Shorten!',o.url);}}}s=d.createElement('script');s.src='&lt;?php echo OWN ?&gt;?url='+location.href+'&amp;callback=ssurl';d.getElementsByTagName('head')[0].appendChild(s);})(window,document);"&gt;Shorten!&lt;/a&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+?>
+&lt;html>
+&lt;head>
+&lt;/head>
+&lt;body>
+&lt;div style="color:red;">&lt;?php echo $message ?>&lt;/div>
+&lt;form method="GET">
+URL&lt;input name="url" value="&lt;?php echo htmlspecialchars($_GET['url']) ?>" />&lt;input type="submit" name="submit" value="shorten" />
+&lt;/form>
+&lt;?php if ($url !== FALSE) { ?>
+&lt;div style="color:green;">
+Success shorten: &lt;?php echo htmlspecialchars($_GET['url']) ?> to &lt;a href="&lt;?php echo $url ?>" target="_blank">&lt;?php echo $url ?>&lt;/a>
+&lt;/div>
+&lt;?php } ?>
+&lt;div>
+Bookmarklet:&lt;a href="javascript:(function(w,d,s){if(!w.ssurl){w.ssurl=function(o){if(o.errmsg){alert(o.errmsg);}else{prompt('Shorten!',o.url);}}}s=d.createElement('script');s.src='&lt;?php echo OWN ?>?url='+location.href+'&callback=ssurl';d.getElementsByTagName('head')[0].appendChild(s);})(window,document);">Shorten!&lt;/a>
+&lt;/div>
+&lt;/body>
+&lt;/html>
 &lt;?php</pre>
 冒頭の定数を必要に応じて書き換える必要があります。<br>
 OWN：短縮 URL を提供する URL です。<br>
@@ -172,7 +172,7 @@ otchy.net の例だと、http://otchy.net/?url=http://www.otchy.net/&callback=fu
 ソースを読めば一目瞭然ですが、DB を使わない代わりに、ハッシュの文字を 1 文字ずつに分解したディレクトリ階層に情報を保存しています。<br>
 実際の動作については、ファイルシステムの実装依存ですが、このようにディレクトリを走査するとファイルシステムが一種の DB インデックスのように働く事が期待され、対象の URL の数がかなり大きくなっても高速に動作するはずです。<br>
 <h4>ライセンス</h4>
-ライセンスは <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT License</a> (<a href="http://ja.wikipedia.org/wiki/MIT_License" target="_blank">日本版 wikipedia の項</a>) で公開します。
-    </main>
+ライセンスは <a href=http://www.opensource.org/licenses/mit-license.php target=_blank>MIT License</a> (<a href=http://ja.wikipedia.org/wiki/MIT_License target=_blank>日本版 wikipedia の項</a>) で公開します。
+</html></main>
 </body>
 </html>

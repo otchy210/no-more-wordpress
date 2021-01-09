@@ -1,11 +1,11 @@
 
 <html>
 <head>
-    <title>Twitter ボットの作り方 Perl 編 (5) - OTCHY.NET</title>
+<title>Twitter ボットの作り方 Perl 編 (5) - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        Twitter ボットの作り方解説第 5 弾。ボットに対してのつぶやきを検索して、検索結果を返信するボットを作ってみます。<br>
+<main>
+Twitter ボットの作り方解説第 5 弾。ボットに対してのつぶやきを検索して、検索結果を返信するボットを作ってみます。<br>
 以下は、第 4 弾までの状態を前提としています。<br>
 <br>
 さて、当初の予定だと Google 検索を行った結果を返すボットを作ろうとしていたのですが、Google 検索 API は公開をやめてしまっているのですね。知りませんでした…。<br>
@@ -16,13 +16,13 @@ Yahoo の様々な公開 API 群は、Google の後追いで公開を始めた�
 例によって、Yahoo 検索を便利に実行するためのライブラリが CPAN に登録されているので、インストールしておきます。<br>
 <pre>$ su -
 # perl -MCPAN -e shell
-<u>cpan&gt;</u> install Yahoo::Search
+<u>cpan></u> install Yahoo::Search
 </pre>
 <br>
 <h4>アプリケーション ID の取得</h4>
 Yahoo の検索 API を使うためには、あらかじめアプリケーション ID というものを取得する必要があります。<br>
 Yahoo のアカウントを持っていれば、簡単に取得出来るので、以下のサイトからあらかじめ取得しておきます。<br>
-<a href="http://developer.yahoo.co.jp/" target="_blank">Yahoo! デベロッパーネットワーク</a><br>
+<a href=http://developer.yahoo.co.jp/ target=_blank>Yahoo! デベロッパーネットワーク</a><br>
 <br>
 大手のウェブサービスで API を公開している場合、「API キー」とか、「デベロッパー ID」とか、呼び方はそれぞれですが、大抵はのこアプリケーション ID のようなものが用意されています。<br>
 これらの ID は、各 API が過剰に利用されていないかを監視したり、必要に応じて利用を止めたりする目的で用意されています。<br>
@@ -55,46 +55,46 @@ use Net::Twitter;
 use Yahoo::Search;
 
 # yml ファイルの読み込みと、Twitter モジュールの初期化
-my $config = (YAML::Tiny-&gt;read($FindBin::Bin . '/config.yml'))-&gt;[0];
-my $status = (YAML::Tiny-&gt;read($FindBin::Bin . '/status.yml'))-&gt;[0];
-my $twit = Net::Twitter-&gt;new(username =&gt; $config-&gt;{'username'}, password =&gt; $config-&gt;{'password'});
+my $config = (YAML::Tiny->read($FindBin::Bin . '/config.yml'))->[0];
+my $status = (YAML::Tiny->read($FindBin::Bin . '/status.yml'))->[0];
+my $twit = Net::Twitter->new(username => $config->{'username'}, password => $config->{'password'});
 
 # 各種設定値の取得
-my $username = $config-&gt;{'username'};
-my $appId = $config-&gt;{'appId'};
-my $sinceId = $status-&gt;{'sinceId'};
+my $username = $config->{'username'};
+my $appId = $config->{'appId'};
+my $sinceId = $status->{'sinceId'};
 
 # Twitter 検索。to: オプションでボット宛のつぶやきすべてを取得
-my $response = $twit-&gt;search({q =&gt; 'to:' . $username, since_id =&gt; $sinceId});
+my $response = $twit->search({q => 'to:' . $username, since_id => $sinceId});
 
 # Twitter 検索結果を 1 件ずつ処理
-for my $result ( reverse( @{$response-&gt;{'results'}} ) ) {
-    my $query = Encode::encode('utf8', $result-&gt;{'text'});
-    my $fromUser = $result-&gt;{'from_user'};
-    my $statusId = $result-&gt;{'id'};
+for my $result ( reverse( @{$response->{'results'}} ) ) {
+    my $query = Encode::encode('utf8', $result->{'text'});
+    my $fromUser = $result->{'from_user'};
+    my $statusId = $result->{'id'};
 
     # ボット宛の @ 部分を取り除く
     $query =~ s/\s*\@${username}\s*//;
 
     # Yahoo 検索 (最大5件、日本語圏で検索)
-    my @results = Yahoo::Search-&gt;Results(
-        Doc =&gt; $query,
-        AppId =&gt; $appId,
-        Count =&gt; 5,
-        Language =&gt; 'ja'
+    my @results = Yahoo::Search->Results(
+        Doc => $query,
+        AppId => $appId,
+        Count => 5,
+        Language => 'ja'
     );
 
     # Yahoo 検索結果を 1 件ずつ処理
     for my $page (@results) {
         # ボットに対するつぶやきへの返信
-        my $reply = '@' . $fromUser . ' ' . $page-&gt;Title . ' ' . $page-&gt;Url;
-        $twit-&gt;update({status =&gt; $reply, in_reply_to_status_id =&gt; $statusId});
+        my $reply = '@' . $fromUser . ' ' . $page->Title . ' ' . $page->Url;
+        $twit->update({status => $reply, in_reply_to_status_id => $statusId});
     }
     $sinceId = $statusId;
 }
 
 # 最後に処理したつぶやきの ID を保存
-YAML::Tiny::DumpFile($FindBin::Bin . '/status.yml', {sinceId =&gt; $sinceId});
+YAML::Tiny::DumpFile($FindBin::Bin . '/status.yml', {sinceId => $sinceId});
 </pre>
 <br>
 ここまで作ってきたボットの内容を理解していれば、ほとんど自明のことしか無いかと思います。<br>
@@ -105,15 +105,15 @@ Yahoo 検索についても、Yahoo::Search という優れたライブラリが
 <br>
 連載の終盤で、RSS や外部の API を利用するボットを作成しました。<br>
 今のウェブ上ではこういった情報発信が広く行われており、複数のサービスを組み合わせることで多彩なボットを作成可能です。<br>
-また、<a href="http://www.google.co.jp/search?hl=ja&amp;q=%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%A8%E3%81%AF" target="_blank">スクレイピング</a>等の手法も組み合わせれば、まさにその組み合わせはアイディア次第。無限の可能性があると言っていいでしょう。<br>
+また、<a href="http://www.google.co.jp/search?hl=ja&q=%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%A8%E3%81%AF" target=_blank>スクレイピング</a>等の手法も組み合わせれば、まさにその組み合わせはアイディア次第。無限の可能性があると言っていいでしょう。<br>
 もちろん、一発ネタのボットで注目を集めるというのも面白いそうです。<br>
 <br>
 この連載が、そんな素敵ボットを作ろうとする方の一助となれれば幸いです。<br>
 <br>
-<div class="navi">
-<div class="prev"><a href="http://www.otchy.net/20090719/making-of-twitter-bot-4/">前へ</a></div>
-<div class="index"><a href="/20090726/making-of-twitter-bot-index/">目次</a></div>
+<div class=navi>
+<div class=prev><a href=http://www.otchy.net/20090719/making-of-twitter-bot-4/ >前へ</a></div>
+<div class=index><a href=/20090726/making-of-twitter-bot-index/ >目次</a></div>
 </div>
-    </main>
+</main>
 </body>
 </html>

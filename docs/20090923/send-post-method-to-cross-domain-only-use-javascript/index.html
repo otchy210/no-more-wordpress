@@ -1,11 +1,11 @@
 
 <html>
 <head>
-    <title>JavaScript だけでクロスドメインで POST メソッドを送る方法 - OTCHY.NET</title>
+<title>JavaScript だけでクロスドメインで POST メソッドを送る方法 - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        JavaScript のみを使って、クロスドメインを実現しつつ POST メソッドでリクエストを送信する方法について解説します。<br>
+<main>
+JavaScript のみを使って、クロスドメインを実現しつつ POST メソッドでリクエストを送信する方法について解説します。<br>
 ここで解説する方法にはこんな特徴があります。<br>
 <strong>(2009-10-30 追記)</strong> iframe の unload のタイミングについて、重大な不具合がある可能性に気づきました。<del>Chrome/</del>Firefox において、2度イベントが発生している可能性が高いです。unload イベントを使わない場合は無関係です。結論が分かったら修正版をこのページで公開します。<br>
 <strong>(2010-01-29 追記)</strong> Chrome は大丈夫そうです。Firefox もカウンタ or フラグを使ってイベントを記録すれば大丈夫ぽいです。ちゃんと直せて無くてすいません。<br>
@@ -17,7 +17,7 @@
 <li>必要な HTML は DOM で後から埋め込むので、元になっているページの HTML は修正する必要がない。</li>
 </ul>
 <br>
-さて、話の発端は、<a href="/greasemonkey/hatebu-with-twitter/">はてブ with Twitter</a> になります。<br>
+さて、話の発端は、<a href=/greasemonkey/hatebu-with-twitter/ >はてブ with Twitter</a> になります。<br>
 このスクリプトは、元々 Greasemonkey に搭載されている GM_xmlhttpRequest 関数を使って実装されていました。<br>
 GM_xmlhttpRequest は通常の XMLHttpRequest に存在するクロスドメインの制限がないので (その分危ないとも言えますが)、 「はてブを追加する前に Twitter につぶやいて、その処理が終わってからはてブを追加する」という事がいとも簡単に実現していました。<br>
 ところがこのスクリプトを Google Chrome に対応させるにあたって、Google Chrome では、GM_* 系の関数が存在しないので、それを代替する手段を模索する必要があったのです。<br>
@@ -26,7 +26,7 @@ GM_xmlhttpRequest は通常の XMLHttpRequest に存在するクロスドメイ�
 ただ、この方法には制限があり、script タグによるリクエストは必ず GET メソッドになってしまいます。<br>
 Twitter の API は大半が GET でアクセスできるのですが、つぶやきを送信する API については、POST でのアクセスが必須となっていて、Twitter でつぶやくために JSONP を使う事は出来ません。<br>
 <br>
-単につぶやいてそれっきり、という動きでよければ、以前 <a href="/20090416/bookmarklet-for-twitter/">閲覧中のページについてそこから遷移せずTwitterでつぶやくためのブックマークレット</a>でやったのと同じ方法でいいのですが、はてブへの追加をするにあたっては、Twitter API へのアクセス完了を待たないといけないので、そのあたりを解決したのが、Google Chrome 版スクリプトになります。<br>
+単につぶやいてそれっきり、という動きでよければ、以前 <a href=/20090416/bookmarklet-for-twitter/ >閲覧中のページについてそこから遷移せずTwitterでつぶやくためのブックマークレット</a>でやったのと同じ方法でいいのですが、はてブへの追加をするにあたっては、Twitter API へのアクセス完了を待たないといけないので、そのあたりを解決したのが、Google Chrome 版スクリプトになります。<br>
 <br>
 以下では、はてブ with Twitter (for Google Chrome) のソースから一部を抜粋して、どうやってその動作を実現したかを解説してきます。<br>
 <br>
@@ -55,10 +55,10 @@ b.addEventListener('click', function (e) {
     // クロスドメインへの POST メソッド送信
     var iDoc = i.contentWindow.document;
     iDoc.open();
-    iDoc.write('&lt;form method="POST" action="http://twitter.com/statuses/update.xml" target="postresult"&gt;');
-    iDoc.write('&lt;input type="hidden" name="status" value="ポストしたい内容" /&gt;');
-    iDoc.write('&lt;/form&gt;');
-    iDoc.write('&lt;script&gt;window.onload = function(){document.forms[0].submit();}&lt;/script&gt;');
+    iDoc.write('&lt;form method="POST" action="http://twitter.com/statuses/update.xml" target="postresult">');
+    iDoc.write('&lt;input type="hidden" name="status" value="ポストしたい内容" />');
+    iDoc.write('&lt;/form>');
+    iDoc.write('&lt;script>window.onload = function(){document.forms[0].submit();}&lt;/script>');
     iDoc.close();
 
     // サブミットボタン本来の動作をキャンセル
@@ -102,7 +102,6 @@ Twitter API が返すのが xml だからなのか、クロスドメインの制
 IE の場合は未検証ですが、イベント周りの扱いが標準とかけ離れているので、上記のソースがそのまま動く事はないです。<br>
 具体的には、addEventListener のあたりと、preventDefault のあたりは確実に違います。<br>
 もし IE も視野に入れてどうにかしたいなら、イベントモデルの差異を吸収してくれているラッパ (jQuery やら prototype.js やら) を使うのが賢明かと思います。<br>
-
-    </main>
+</main>
 </body>
 </html>

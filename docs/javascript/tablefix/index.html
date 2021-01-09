@@ -1,11 +1,11 @@
 
 <html>
 <head>
-    <title>jquery.tablefix.js - OTCHY.NET</title>
+<title>jquery.tablefix.js - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        <p style="text-align: right;">»<a href="//s.otchy.net/js/jquery.tablefix_1.0.1.js">Download </a></p>
+<main>
+<p style=text-align:right>»<a href=//s.otchy.net/js/jquery.tablefix_1.0.1.js>Download </a></p>
 <br>
 jquery.tablefix.js は、Excel のウィンドウ枠固定のように、テーブルのヘッダや左側を固定して、残りの部分をスクロールさせるための、jQuery プラグインです。<br>
 <br>
@@ -14,9 +14,9 @@ JavaScript 無効時はただのテーブルとして普通にそのまま表示
 <br>
 <h4>使い方</h4><h4>
 <ol>
-    <li>普通にテーブルをデザインする</li>
-    <li>jQuery とプラグインを読み込む</li>
-    <li>jQuery のセレクタでテーブルを選択して、プラグインを呼び出す</li>
+<li>普通にテーブルをデザインする</li>
+<li>jQuery とプラグインを読み込む</li>
+<li>jQuery のセレクタでテーブルを選択して、プラグインを呼び出す</li>
 </ol>
 これだけで、あとはプラグインがよかれにやってくれます。<br>
 <br>
@@ -25,14 +25,14 @@ JavaScript 無効時はただのテーブルとして普通にそのまま表示
 </pre>
 指定可能なオプション<br>
 <dl>
-    <dt>width</dt>
-    <dd>テーブル全体がこの横幅に収まるようにします。</dd>
-    <dt>height</dt>
-    <dd>テーブル全体がこの縦の長さに収まるようにします。</dd>
-    <dt>fixRows</dt>
-    <dd>テーブル上部で固定するヘッダの行数を指定します。</dd>
-    <dt>fixCols</dt>
-    <dd>テーブルの左側で固定する列数を指定します。</dd>
+<dt>width</dt>
+<dd>テーブル全体がこの横幅に収まるようにします。</dd>
+<dt>height</dt>
+<dd>テーブル全体がこの縦の長さに収まるようにします。</dd>
+<dt>fixRows</dt>
+<dd>テーブル上部で固定するヘッダの行数を指定します。</dd>
+<dt>fixCols</dt>
+<dd>テーブルの左側で固定する列数を指定します。</dd>
 </dl>
 オプションは全てを設定する必要はありません。<br>
 例えば height と fixCols を指定しなければ、縦の長さは元のテーブルのまま横スクロールだけが発生し、固定列は無くテーブル全体が横スクロールします。<br>
@@ -40,141 +40,141 @@ JavaScript 無効時はただのテーブルとして普通にそのまま表示
 <br>
 <h4>サンプル</h4>
 HTML<br>
-<pre class="height_middle">&lt;table id="tablefix1"&gt;
-    &lt;thead&gt;
-    &lt;tr&gt;
-        &lt;th rowspan="2"&gt;ヘッダA&lt;/th&gt;
-        &lt;th rowspan="2"&gt;ヘッダB&lt;/th&gt;
-        &lt;th colspan="2"&gt;ヘッダC&lt;/th&gt;
-        &lt;th rowspan="2"&gt;ヘッダD&lt;/th&gt;
-        &lt;th rowspan="2"&gt;ヘッダE&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;th&gt;ヘッダ C-1&lt;/th&gt;
-        &lt;th&gt;ヘッダ C-2&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-    &lt;tr&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;br /&gt;
-&lt;table id="tablefix2"&gt;
-    &lt;thead&gt;
-    &lt;tr&gt;
-        &lt;th rowspan="2"&gt;ヘッダA&lt;/th&gt;
-        &lt;th rowspan="2"&gt;ヘッダB&lt;/th&gt;
-        &lt;th colspan="2"&gt;ヘッダC&lt;/th&gt;
-        &lt;th rowspan="2"&gt;ヘッダD&lt;/th&gt;
-        &lt;th rowspan="2"&gt;ヘッダE&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;th&gt;ヘッダ C-1&lt;/th&gt;
-        &lt;th&gt;ヘッダ C-2&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-    &lt;tr&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;br /&gt;
-&lt;table id="tablefix3"&gt;
-    &lt;thead&gt;
-    &lt;tr&gt;
-        &lt;th rowspan="2"&gt;ヘッダA&lt;/th&gt;
-        &lt;th rowspan="2"&gt;ヘッダB&lt;/th&gt;
-        &lt;th colspan="2"&gt;ヘッダC&lt;/th&gt;
-        &lt;th rowspan="2"&gt;ヘッダD&lt;/th&gt;
-        &lt;th rowspan="2"&gt;ヘッダE&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;th&gt;ヘッダ C-1&lt;/th&gt;
-        &lt;th&gt;ヘッダ C-2&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-    &lt;tr&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;/tbody&gt;
-&lt;/table&gt;
+<pre class=height_middle>&lt;table id="tablefix1">
+    &lt;thead>
+    &lt;tr>
+        &lt;th rowspan="2">ヘッダA&lt;/th>
+        &lt;th rowspan="2">ヘッダB&lt;/th>
+        &lt;th colspan="2">ヘッダC&lt;/th>
+        &lt;th rowspan="2">ヘッダD&lt;/th>
+        &lt;th rowspan="2">ヘッダE&lt;/th>
+    &lt;/tr>
+    &lt;tr>
+        &lt;th>ヘッダ C-1&lt;/th>
+        &lt;th>ヘッダ C-2&lt;/th>
+    &lt;/tr>
+    &lt;/thead>
+    &lt;tbody>
+    &lt;tr>
+        &lt;td>データ&lt;/td>
+        &lt;td>データ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+        &lt;td>データ&lt;/td>
+        &lt;td>データ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+        &lt;td>データ&lt;/td>
+        &lt;td>データ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+        &lt;td>データ&lt;/td>
+        &lt;td>データ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+        &lt;td>データ&lt;/td>
+        &lt;td>データ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+    &lt;/tr>
+    &lt;/tbody>
+&lt;/table>
+&lt;br />
+&lt;table id="tablefix2">
+    &lt;thead>
+    &lt;tr>
+        &lt;th rowspan="2">ヘッダA&lt;/th>
+        &lt;th rowspan="2">ヘッダB&lt;/th>
+        &lt;th colspan="2">ヘッダC&lt;/th>
+        &lt;th rowspan="2">ヘッダD&lt;/th>
+        &lt;th rowspan="2">ヘッダE&lt;/th>
+    &lt;/tr>
+    &lt;tr>
+        &lt;th>ヘッダ C-1&lt;/th>
+        &lt;th>ヘッダ C-2&lt;/th>
+    &lt;/tr>
+    &lt;/thead>
+    &lt;tbody>
+    &lt;tr>
+        &lt;td>データ&lt;/td>
+        &lt;td>データ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+        &lt;td>データ&lt;/td>
+        &lt;td>データ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+        &lt;td>データ&lt;/td>
+        &lt;td>データ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+    &lt;/tr>
+    &lt;/tbody>
+&lt;/table>
+&lt;br />
+&lt;table id="tablefix3">
+    &lt;thead>
+    &lt;tr>
+        &lt;th rowspan="2">ヘッダA&lt;/th>
+        &lt;th rowspan="2">ヘッダB&lt;/th>
+        &lt;th colspan="2">ヘッダC&lt;/th>
+        &lt;th rowspan="2">ヘッダD&lt;/th>
+        &lt;th rowspan="2">ヘッダE&lt;/th>
+    &lt;/tr>
+    &lt;tr>
+        &lt;th>ヘッダ C-1&lt;/th>
+        &lt;th>ヘッダ C-2&lt;/th>
+    &lt;/tr>
+    &lt;/thead>
+    &lt;tbody>
+    &lt;tr>
+        &lt;td>データ&lt;/td>
+        &lt;td>データ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+        &lt;td>データ&lt;/td>
+        &lt;td>データ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+        &lt;td>データ&lt;/td>
+        &lt;td>データ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+    &lt;/tr>
+    &lt;/tbody>
+&lt;/table>
 </pre>
 <br>
 JavaScript<br>
@@ -186,225 +186,200 @@ JavaScript<br>
 </pre>
 <br>
 実行結果<br>
-<style>
-.tablefix {
-    width: 800px;
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-.tablefix thead th {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-}
-#tablefix1, #tablefix2 {
-    width: 800px;
-}
-#tablefix3 {
-    width: 500px;
-}
-</style><br>
-<table id="tablefix1" class="tablefix">
-    <thead>
-    <tr>
-        <th rowspan="2">ヘッダA</th>
-        <th rowspan="2">ヘッダB</th>
-        <th colspan="2">ヘッダC</th>
-        <th rowspan="2">ヘッダD</th>
-        <th rowspan="2">ヘッダE</th>
-    </tr>
-    <tr>
-        <th>ヘッダ C-1</th>
-        <th>ヘッダ C-2</th>
-    </tr>
-    </thead><br>
-    <tbody>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    </tbody><br>
+<style>.tablefix{width:800px;border-collapse:collapse;border-spacing:0}.tablefix thead th{background-color:#333;color:#fff;text-align:center;vertical-align:middle;white-space:nowrap}#tablefix1,#tablefix2{width:800px}#tablefix3{width:500px}</style><br>
+<table id=tablefix1 class=tablefix>
+<thead>
+<tr>
+<th rowspan=2>ヘッダA</th>
+<th rowspan=2>ヘッダB</th>
+<th colspan=2>ヘッダC</th>
+<th rowspan=2>ヘッダD</th>
+<th rowspan=2>ヘッダE</th>
+</tr>
+<tr>
+<th>ヘッダ C-1</th>
+<th>ヘッダ C-2</th>
+</tr>
+</thead><br>
+<tbody>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+</tbody><br>
 </table>
 <br><br>
-<table id="tablefix2" class="tablefix">
-    <thead>
-    <tr>
-        <th rowspan="2">ヘッダA</th>
-        <th rowspan="2">ヘッダB</th>
-        <th colspan="2">ヘッダC</th>
-        <th rowspan="2">ヘッダD</th>
-        <th rowspan="2">ヘッダE</th>
-    </tr>
-    <tr>
-        <th>ヘッダ C-1</th>
-        <th>ヘッダ C-2</th>
-    </tr>
-    </thead><br>
-    <tbody>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    </tbody><br>
+<table id=tablefix2 class=tablefix>
+<thead>
+<tr>
+<th rowspan=2>ヘッダA</th>
+<th rowspan=2>ヘッダB</th>
+<th colspan=2>ヘッダC</th>
+<th rowspan=2>ヘッダD</th>
+<th rowspan=2>ヘッダE</th>
+</tr>
+<tr>
+<th>ヘッダ C-1</th>
+<th>ヘッダ C-2</th>
+</tr>
+</thead><br>
+<tbody>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+</tbody><br>
 </table>
 <br><br>
-<table id="tablefix3" class="tablefix">
-    <thead>
-    <tr>
-        <th rowspan="2">ヘッダA</th>
-        <th rowspan="2">ヘッダB</th>
-        <th colspan="2">ヘッダC</th>
-    </tr>
-    <tr>
-        <th>ヘッダ C-1</th>
-        <th>ヘッダ C-2</th>
-    </tr>
-    </thead><br>
-    <tbody>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    </tbody><br>
+<table id=tablefix3 class=tablefix>
+<thead>
+<tr>
+<th rowspan=2>ヘッダA</th>
+<th rowspan=2>ヘッダB</th>
+<th colspan=2>ヘッダC</th>
+</tr>
+<tr>
+<th>ヘッダ C-1</th>
+<th>ヘッダ C-2</th>
+</tr>
+</thead><br>
+<tbody>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+</tbody><br>
 </table>
-<script src="//s.otchy.net/js/jquery.tablefix.js"></script><br>
-<script>
-$(function() {
-    $('#tablefix1').tablefix({width: 500, height: 200, fixRows: 2, fixCols: 2});
-    $('#tablefix2').tablefix({width: 500, fixCols: 2});
-    $('#tablefix3').tablefix({height: 200, fixRows: 2});
-});
-</script><br>
+<script src=//s.otchy.net/js/jquery.tablefix.js></script><br>
+<script>$(function(){$("#tablefix1").tablefix({width:500,height:200,fixRows:2,fixCols:2}),$("#tablefix2").tablefix({width:500,fixCols:2}),$("#tablefix3").tablefix({height:200,fixRows:2})})</script><br>
 <br>
 <h4>制限事項</h4>
 <ul>
-    <li>テーブルの中にフォームが含まれるとフォーム自体が誤動作する可能性があります。</li>
-    <li>テーブルに colspan や rowspan が含まれる場合、その位置によっては正しく動作しない場合があります。</li>
-    <li>jQuery 1.2 系では動作しません。1.3 系、1.4 系で動作するはずです。</li>
+<li>テーブルの中にフォームが含まれるとフォーム自体が誤動作する可能性があります。</li>
+<li>テーブルに colspan や rowspan が含まれる場合、その位置によっては正しく動作しない場合があります。</li>
+<li>jQuery 1.2 系では動作しません。1.3 系、1.4 系で動作するはずです。</li>
 </ul>
 <br>
 <h4>技術的な話</h4>
 既存の様々な実装を参考にしつつ、固定スクロールを実現するために、以下のような方法を使っています。<br>
 細かい部分は省いていますが、概ねこんな感じです。<br>
 <ol>
-    <li>元のテーブルから、スクロールさせる原点となる座標を求める。</li>
-    <li>テーブルを 3 つコピーして、全部で 4 つの全く同じテーブルを用意。</li>
-    <li>全体を 1 つの div で囲い、さらに 4 つのテーブルの周りをそれぞれまた div で囲う。</li>
-    <li>全体の div に対しては、"relative"、4 つの div は "absolute" に position を指定。</li>
-    <li>4 つの div がそれぞれ、左上固定部 / 上固定行 / 左固定列 / スクロール部 になるよう、スクロール原点に合わせて、left と top を動かす。</li>
-    <li>4 つの div それぞれに、画面上に見せたい範囲の width と height を設定する。</li>
-    <li>上固定行 / 左固定列 / スクロール部 については、見えてはいけない部分を隠すため、ネガティブマージンを設定する。</li>
-    <li>上固定行 / 左固定列は、overflow を hidden にして、スクロールをスクロール部と同期させる。</li>
+<li>元のテーブルから、スクロールさせる原点となる座標を求める。</li>
+<li>テーブルを 3 つコピーして、全部で 4 つの全く同じテーブルを用意。</li>
+<li>全体を 1 つの div で囲い、さらに 4 つのテーブルの周りをそれぞれまた div で囲う。</li>
+<li>全体の div に対しては、"relative"、4 つの div は "absolute" に position を指定。</li>
+<li>4 つの div がそれぞれ、左上固定部 / 上固定行 / 左固定列 / スクロール部 になるよう、スクロール原点に合わせて、left と top を動かす。</li>
+<li>4 つの div それぞれに、画面上に見せたい範囲の width と height を設定する。</li>
+<li>上固定行 / 左固定列 / スクロール部 については、見えてはいけない部分を隠すため、ネガティブマージンを設定する。</li>
+<li>上固定行 / 左固定列は、overflow を hidden にして、スクロールをスクロール部と同期させる。</li>
 </ol>
 <br>
 <h4>更新履歴</h4>
 <dl>
-  <dt>2010-03-08 [Ver 1.0.0]</dt><dd>初版リリース</dd>
-  <dt>2013-06-13 [Ver 1.0.1]</dt><dd>複数のエレメントに対して適用した際に、width と height が少しずつずれていく問題を修正。</dd>
+<dt>2010-03-08 [Ver 1.0.0]</dt><dd>初版リリース</dd>
+<dt>2013-06-13 [Ver 1.0.1]</dt><dd>複数のエレメントに対して適用した際に、width と height が少しずつずれていく問題を修正。</dd>
 </dl>
 <br>
 <h4>ライセンス</h4>
-ライセンスは <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT License</a> (<a href="http://ja.wikipedia.org/wiki/MIT_License" target="_blank">日本版 wikipedia の項</a>) で公開します。
-    </main>
+ライセンスは <a href=http://www.opensource.org/licenses/mit-license.php target=_blank>MIT License</a> (<a href=http://ja.wikipedia.org/wiki/MIT_License target=_blank>日本版 wikipedia の項</a>) で公開します。
+</main>
 </body>
 </html>

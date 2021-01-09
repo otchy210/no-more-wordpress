@@ -1,26 +1,26 @@
 
 <html>
 <head>
-    <title>Greasemonkey で 超お手軽に jQuery を使うスニペット - OTCHY.NET</title>
+<title>Greasemonkey で 超お手軽に jQuery を使うスニペット - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        <div style="margin:0 5px; padding: 5px; border: solid 1px #f00">
+<main>
+<div style="margin:0 5px;padding:5px;border:solid 1px red">
 【2011-06-07 追記】<br>
 下記の手法は Chrome の Greasemoneky では無効なため、Firefox / Chrome 両対応としたい場合は <br>
-<a href="/20110607/use-jquery-on-greasemonkey-for-chrome/">Greasemonkey で 超お手軽に jQuery を使うスニペット [Chrome 対応版]</a> を参照してください。<br>
+<a href=/20110607/use-jquery-on-greasemonkey-for-chrome/ >Greasemonkey で 超お手軽に jQuery を使うスニペット [Chrome 対応版]</a> を参照してください。<br>
 </div>
 <br>
 タイトルの通りです。<br>
 <br>
 <h4>特徴</h4>
 <ul>
-	<li>script タグ追加型の読み込み</li>
-	<li>$ 関数として利用可能</li>
-	<li>該当ページですでに jQuery が読み込まれていればそれを利用</li>
-	<li>jQuery スクリプト自体のアップは不要 (Gogole の CDN を利用)</li>
-	<li>ローカルのキャッシュも多分有効 (CDN が適切なヘッダを返してれば)</li>
-	<li>jQuery 読み込み完了を待ってから実行される</li>
+<li>script タグ追加型の読み込み</li>
+<li>$ 関数として利用可能</li>
+<li>該当ページですでに jQuery が読み込まれていればそれを利用</li>
+<li>jQuery スクリプト自体のアップは不要 (Gogole の CDN を利用)</li>
+<li>ローカルのキャッシュも多分有効 (CDN が適切なヘッダを返してれば)</li>
+<li>jQuery 読み込み完了を待ってから実行される</li>
 </ul>
 <br>
 <h4>作成動機</h4>
@@ -55,13 +55,12 @@ Greasemonkey で jQuery を使う方法検索してみると、GM_xmlhttpRequest
 </pre>
 <br>
 重たい処理は必要ないぞ、っていう場合はこちらも参考にどうぞ。<br>
-<a href="/20090120/first-five-lines-of-greasemonkey/">Greasemonkey スクリプトの冒頭に書く 5 行</a><br>
+<a href=/20090120/first-five-lines-of-greasemonkey/ >Greasemonkey スクリプトの冒頭に書く 5 行</a><br>
 <blockquote>
 Greasemonkey を書く時に頻繁に利用する関数をまとめたので、公開してみます。<br>
 外部の JavaScript ライブラリを読み込む方法を解説したサイトもありますが、そこまで大げさな機能が必要でもなく、軽く動作させたいときに便利です。<br>
 特に共通ライブラリを利用すると、Firefox 以外のブラウザの対応も無駄に読み込む事になるので、スマートじゃないなぁと思います。<br>
 </blockquote>
-
-    </main>
+</main>
 </body>
 </html>

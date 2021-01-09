@@ -1,75 +1,75 @@
 
 <html>
 <head>
-    <title>テーブルのヘッダを固定してスクロールする jQuery プラグイン - OTCHY.NET</title>
+<title>テーブルのヘッダを固定してスクロールする jQuery プラグイン - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        Excel のウィンドウ枠の固定のように、テーブルのヘッダや左側を固定して、残りの部分をスクロールさせるための jQuery プラグインを書きました。<br>
+<main>
+Excel のウィンドウ枠の固定のように、テーブルのヘッダや左側を固定して、残りの部分をスクロールさせるための jQuery プラグインを書きました。<br>
 マークアップはシンプルで、普通にテーブルを書いたら、jQuery の作法でプラグインを呼び出すだけです。<br>
 <br>
 jQuery のおれおれプラグインはいくつか書いた事がありましたが、こうやって公開するのは初めてです。ごてごての機能が欲しいんじゃなくて、単に既存のテーブルを固定スクロール化したいだけの時に、いいのが見つからなくて書いたので、けっこうニーズがあるんじゃないかと思ってます。<br>
 <br>
-下記は簡単なサンプルです。詳細は<a href="/javascript/tablefix/">専用ページ</a>を見てみて下さい。<br>
+下記は簡単なサンプルです。詳細は<a href=/javascript/tablefix/ >専用ページ</a>を見てみて下さい。<br>
 <br>
 HTML<br>
-<pre class="height_middle">&lt;table id="tablefix"&gt;
-    &lt;thead&gt;
-    &lt;tr&gt;
-        &lt;th rowspan="2"&gt;ヘッダA&lt;/th&gt;
-        &lt;th rowspan="2"&gt;ヘッダB&lt;/th&gt;
-        &lt;th colspan="2"&gt;ヘッダC&lt;/th&gt;
-        &lt;th rowspan="2"&gt;ヘッダD&lt;/th&gt;
-        &lt;th rowspan="2"&gt;ヘッダE&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;th&gt;ヘッダ C-1&lt;/th&gt;
-        &lt;th&gt;ヘッダ C-2&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-    &lt;tr&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-        &lt;td&gt;データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;/tbody&gt;
-&lt;/table&gt;
+<pre class=height_middle>&lt;table id="tablefix">
+    &lt;thead>
+    &lt;tr>
+        &lt;th rowspan="2">ヘッダA&lt;/th>
+        &lt;th rowspan="2">ヘッダB&lt;/th>
+        &lt;th colspan="2">ヘッダC&lt;/th>
+        &lt;th rowspan="2">ヘッダD&lt;/th>
+        &lt;th rowspan="2">ヘッダE&lt;/th>
+    &lt;/tr>
+    &lt;tr>
+        &lt;th>ヘッダ C-1&lt;/th>
+        &lt;th>ヘッダ C-2&lt;/th>
+    &lt;/tr>
+    &lt;/thead>
+    &lt;tbody>
+    &lt;tr>
+        &lt;td>データ&lt;/td>
+        &lt;td>データ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+        &lt;td>データ&lt;/td>
+        &lt;td>データ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+        &lt;td>データ&lt;/td>
+        &lt;td>データ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+        &lt;td>データ&lt;/td>
+        &lt;td>データ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+        &lt;td>データ&lt;/td>
+        &lt;td>データ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+        &lt;td>データデータデータデータデータデータデータデータデータデータデータデータ&lt;/td>
+    &lt;/tr>
+    &lt;/tbody>
+&lt;/table>
 </pre>
 <br>
 JavaScript<br>
@@ -79,84 +79,66 @@ JavaScript<br>
 </pre>
 <br>
 実行結果<br>
-<style>
-#tablefix {
-    width: 800px;
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-#tablefix thead th {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-}
-</style><br>
-<table id="tablefix" class="tablefix">
-    <thead>
-    <tr>
-        <th rowspan="2">ヘッダA</th>
-        <th rowspan="2">ヘッダB</th>
-        <th colspan="2">ヘッダC</th>
-        <th rowspan="2">ヘッダD</th>
-        <th rowspan="2">ヘッダE</th>
-    </tr>
-    <tr>
-        <th>ヘッダ C-1</th>
-        <th>ヘッダ C-2</th>
-    </tr>
-    </thead><br>
-    <tbody>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-        <td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
-    </tr>
-    </tbody><br>
+<style>#tablefix{width:800px;border-collapse:collapse;border-spacing:0}#tablefix thead th{background-color:#333;color:#fff;text-align:center;vertical-align:middle;white-space:nowrap}</style><br>
+<table id=tablefix class=tablefix>
+<thead>
+<tr>
+<th rowspan=2>ヘッダA</th>
+<th rowspan=2>ヘッダB</th>
+<th colspan=2>ヘッダC</th>
+<th rowspan=2>ヘッダD</th>
+<th rowspan=2>ヘッダE</th>
+</tr>
+<tr>
+<th>ヘッダ C-1</th>
+<th>ヘッダ C-2</th>
+</tr>
+</thead><br>
+<tbody>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>データ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+<td>データデータデータデータデータデータデータデータデータデータデータデータ</td>
+</tr>
+</tbody><br>
 </table>
-<script src="//s.otchy.net/js/jquery.tablefix.js"></script><br>
-<script>
-$(function() {
-    $('#tablefix').tablefix({width: 500, height: 200, fixRows: 2, fixCols: 2});
-});
-</script><br>
-
-    </main>
+<script src=//s.otchy.net/js/jquery.tablefix.js></script><br>
+<script>$(function(){$("#tablefix").tablefix({width:500,height:200,fixRows:2,fixCols:2})})</script><br>
+</main>
 </body>
 </html>

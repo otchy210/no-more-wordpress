@@ -1,22 +1,22 @@
 
 <html>
 <head>
-    <title>右下または左下においた画像に文字列を回り込ませるHTML/CSS - OTCHY.NET</title>
+<title>右下または左下においた画像に文字列を回り込ませるHTML/CSS - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        <p>
+<main>
+<p>
 普通、HTML で画像の回り込みというと、右上か左上に画像があって、そこに文字列が回り込むという感じです。これは簡単です。画像に対して float: left; すれば OK です。<br>
 しかし、右下か左下に画像を固定して、文字列がそこにたどり着いたら回り込むという動作は一筋縄ではいきません。<br>
-<a href="http://h2ham.seesaa.net/article/102886385.html" target="_blank">画像をブロックの左下に配置してテキストを回り込ませる方法を考える</a> というページで色々と考察されていて、ふむふむと思ったのですが、この方法では、テキストの量が変わるたびに調整が必要になってしまうので、テキストの量が動的に変わる場合には対応しにくいです。<br>
+<a href=http://h2ham.seesaa.net/article/102886385.html target=_blank>画像をブロックの左下に配置してテキストを回り込ませる方法を考える</a> というページで色々と考察されていて、ふむふむと思ったのですが、この方法では、テキストの量が変わるたびに調整が必要になってしまうので、テキストの量が動的に変わる場合には対応しにくいです。<br>
 何より、文章をぶった切って画像を入れるというのはどうもスマートではありません。<br>
 </p>
 <br>
 <p>色々と試行錯誤してみたところ、以下の方法で実現できそうだったので、公開してみます。</p>
 <br>
-<pre class="height_narrow">&lt;html&gt;
-&lt;head&gt;
-&lt;style&gt;
+<pre class=height_narrow>&lt;html>
+&lt;head>
+&lt;style>
 #block {
     width: 200px;
     height: 200px;
@@ -38,52 +38,30 @@
     height: 100px;
     background-color: blue;
 }
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div id="block"&gt;
-&lt;div id="bar"&gt;&lt;/div&gt;
-&lt;div id="img"&gt;&lt;/div&gt;
+&lt;/style>
+&lt;/head>
+&lt;body>
+&lt;div id="block">
+&lt;div id="bar">&lt;/div>
+&lt;div id="img">&lt;/div>
 ああああああああああああああああああああああああああああ
 ああああああああああああああああああああああああああああ
 ああああああああああああああああああああああああああああ
 ああああああああああああああああああああああああああああ
 ああああああああああああああああああああああああああああ
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
+&lt;/div>
+&lt;/body>
+&lt;/html></pre>
 <br>
 <p>
 このソースを保存して開くと、以下のような見た目になります。<br>
 わかりやすいように色分けした div で表現していますが、赤線は実際には透明、青い四角は実際には画像だと思って下さい。<br>
 </p>
 <br>
-<style>
-#block {
-    width: 200px;
-    height: 200px;
-    overflow: hidden;
-    font-size: 10pt;
-    border: solid 1px #666;
-    padding: 0.5em;
-}
-#bar {
-    float: right;
-    width: 1px;
-    height: 100px;
-    background-color: red;
-}
-#img {
-    float: right;
-    clear: both;
-    width: 100px;
-    height: 100px;
-    background-color: blue;
-}
-</style><br>
-<div id="block">
-<div id="bar"></div>
-<div id="img"></div>
+<style>#block{width:200px;height:200px;overflow:hidden;font-size:10pt;border:solid 1px #666;padding:.5em}#bar{float:right;width:1px;height:100px;background-color:red}#img{float:right;clear:both;width:100px;height:100px;background-color:#00f}</style><br>
+<div id=block>
+<div id=bar></div>
+<div id=img></div>
 ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ<br>
 </div>
 <br>
@@ -91,7 +69,6 @@
 #bar の部分とか美しいマークアップとは言えないですし、画像に文字が被ったりとかしてますが、微調整してやれば十分使い物になるかと思います。<br>
 最初は絶対実現できないんじゃないかと思ったので、出来た時は嬉しかったですね～。<br>
 </p>
-
-    </main>
+</main>
 </body>
 </html>

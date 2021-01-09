@@ -1,11 +1,11 @@
 
 <html>
 <head>
-    <title>Twitter ボットの作り方 Perl 編 (1) - OTCHY.NET</title>
+<title>Twitter ボットの作り方 Perl 編 (1) - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        Twitter ボットの作り方解説第 1 弾。前提条件と、下準備までを解説します。<br>
+<main>
+Twitter ボットの作り方解説第 1 弾。前提条件と、下準備までを解説します。<br>
 <br>
 <h4>前書き</h4>
 Twitter をある程度使っていると、突然見ず知らずのアカウントから reply をもらったりして、それがボットだという事は良くあります。<br>
@@ -52,11 +52,11 @@ Twitter のボットを作成するにあたっては、当然 twitter サーバ
 <br>
 <pre>$ su -
 # perl -MCPAN -e shell
-<u>cpan&gt;</u> install YAML::Tiny
-<u>cpan&gt;</u> install Net::Twitter
+<u>cpan></u> install YAML::Tiny
+<u>cpan></u> install Net::Twitter
 </pre>
 <br>
-※ CPAN の利用について不明な点があれば<a href="http://www.google.co.jp/search?hl=ja&amp;q=cpan+%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB&amp;ie=UTF-8" target="_blank">こういったところ</a>を参照して下さい。<br>
+※ CPAN の利用について不明な点があれば<a href="http://www.google.co.jp/search?hl=ja&q=cpan+%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB&ie=UTF-8" target=_blank>こういったところ</a>を参照して下さい。<br>
 <br>
 CPAN モジュールの追加が完了したら、とりあえず簡単に動作確認をしておきましょう。<br>
 まず、config.yml というファイルを作成します。内容は以下のような感じです。<br>
@@ -74,10 +74,10 @@ use warnings;
 use YAML::Tiny;
 use Net::Twitter;
 
-my $config = (YAML::Tiny-&gt;read('config.yml'))-&gt;[0];
-my $twit = Net::Twitter-&gt;new(username =&gt; $config-&gt;{'username'}, password =&gt; $config-&gt;{'password'});
+my $config = (YAML::Tiny->read('config.yml'))->[0];
+my $twit = Net::Twitter->new(username => $config->{'username'}, password => $config->{'password'});
 
-$twit-&gt;update('Perl から Twiitter を更新するテストですよー');
+$twit->update('Perl から Twiitter を更新するテストですよー');
 </pre>
 これを UTF-8 で保存し、実行属性を与えます。perl のパスは環境に合わせて修正して下さい。<br>
 <br>
@@ -92,11 +92,10 @@ config.yml の指定が相対パスになっているので、カレントディ
 さあ、ここまで出来れば下準備は完了です。<br>
 いよいよ次から、実際のボットを作っていきます。<br>
 <br>
-<div class="navi">
-<div class="next"><a href="/20090629/making-of-twitter-bot-2/">次へ</a></div>
-<div class="index"><a href="/20090726/making-of-twitter-bot-index/">目次</a></div>
+<div class=navi>
+<div class=next><a href=/20090629/making-of-twitter-bot-2/ >次へ</a></div>
+<div class=index><a href=/20090726/making-of-twitter-bot-index/ >目次</a></div>
 </div>
-
-    </main>
+</main>
 </body>
 </html>

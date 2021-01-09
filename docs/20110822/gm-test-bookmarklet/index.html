@@ -1,11 +1,11 @@
 
 <html>
 <head>
-    <title>Greasemonkey をインストールせずに試すブックマークレット - OTCHY.NET</title>
+<title>Greasemonkey をインストールせずに試すブックマークレット - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        Gresemonkey (など) のスクリプトをインストールすることなく任意のサイトでちょこっと試すためのブックマークレット。<br>
+<main>
+Gresemonkey (など) のスクリプトをインストールすることなく任意のサイトでちょこっと試すためのブックマークレット。<br>
 起動すると、user.js の URL を聞いてくるので、入力すると今開いているページにそのスクリプトを読み込みます。<br>
 単にその user.js をそのページに追加するだけの単純な仕組みなので、GM_* 等への対応はありません。<br>
 <br>
@@ -14,7 +14,6 @@
 <a href="javascript:(function(d){var%20a=prompt('Enter%20script%20URL.');if(a){var%20s=d.createElement('script');s.src=a;d.getElementsByTagName('head')[0].appendChild(s);}})(document);">GM Test</a><br>
 <pre>javascript:(function(d){var%20a=prompt('Enter%20script%20URL.');if(a){var%20s=d.createElement('script');s.src=a;d.getElementsByTagName('head')[0].appendChild(s);}})(document);
 </pre>
-
-    </main>
+</main>
 </body>
 </html>

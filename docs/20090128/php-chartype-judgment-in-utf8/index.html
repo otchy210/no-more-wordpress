@@ -1,11 +1,11 @@
 
 <html>
 <head>
-    <title>PHP で日本語のひらがなとカタカナと漢字を判別する方法 [UTF-8編] - OTCHY.NET</title>
+<title>PHP で日本語のひらがなとカタカナと漢字を判別する方法 [UTF-8編] - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        ちょっと思うところあって調べたのでメモしておきます。<br>
+<main>
+ちょっと思うところあって調べたのでメモしておきます。<br>
 結局使わない事になったんですが。<br>
 <pre>mb_regex_encoding('UTF-8');
 if (preg_match("/^[ぁ-んー]+$/u", $str)) {
@@ -20,9 +20,9 @@ php.ini がいじれる環境なら、[mbstring] セクションに、mbstring.i
 <br>
 [あ-ん] 等の指定は、Unicode 上でひらがなやカタカナを表す文字コードの最初と最後の文字を、範囲指定しています。<br>
 また、厳密に言うと漢字の最後は "龠" では無いのですが、一般的に漢字と見なされる範囲の中で、最後にある JIS 第二水準の漢字であるため、この字を採用しています。(この漢字の範囲には、中国の漢字やハングルなどが含まれます)<br>
-全然異なる文脈ですが、<a href="http://www.tanimoto.to/comp/bm.html" target="_blank">このページ</a>で詳しく考察されています。<br>
+全然異なる文脈ですが、<a href=http://www.tanimoto.to/comp/bm.html target=_blank>このページ</a>で詳しく考察されています。<br>
 <br>
 preg_match の u フラグは、UTF-8 を正しく扱えるようにするためのフラグです。これがないと、文字コードの範囲指定などが正しく動作しないようです。
-    </main>
+</main>
 </body>
 </html>

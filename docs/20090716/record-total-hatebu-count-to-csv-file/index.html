@@ -1,21 +1,21 @@
 
 <html>
 <head>
-    <title>自分のサイトの合計はてブ数を淡々と csv に記録し続ける - OTCHY.NET</title>
+<title>自分のサイトの合計はてブ数を淡々と csv に記録し続ける - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        <a href="http://www.otchy.net/20090629/making-of-twitter-bot-1/">Twitter ボットの作り方 Perl 編</a> 連載中ですが、ちょっとお休みして、さっき思い立って書いたスクリプトを紹介します。<br>
+<main>
+<a href=http://www.otchy.net/20090629/making-of-twitter-bot-1/ >Twitter ボットの作り方 Perl 編</a> 連載中ですが、ちょっとお休みして、さっき思い立って書いたスクリプトを紹介します。<br>
 <br>
-最近、<a href="http://tophatenar.com/" target="_blank">TopHatenar</a> の更新が止まってしまっていて悲しいので、自分のサイトのトータルはてブ数を記録して、自分でグラフを書くことにしました。<br>
+最近、<a href=http://tophatenar.com/ target=_blank>TopHatenar</a> の更新が止まってしまっていて悲しいので、自分のサイトのトータルはてブ数を記録して、自分でグラフを書くことにしました。<br>
 といっても、自分が見る専用で問題ないので、csv を出力しておくだけです。適宜 Excel とかで加工してグラフ化します。<br>
 <br>
 まず必要になる CPAN モジュールをインストールします。root 権限必須です。<br>
 <br>
 <pre>$ su -
 # cpan
-<u>cpan&gt;</u> force install XMLRPC::Lite
-<u>cpan&gt;</u> install DateTime
+<u>cpan></u> force install XMLRPC::Lite
+<u>cpan></u> install DateTime
 </pre>
 <br>
 XMLRPC::Lite は自分の環境だとテストで引っかかって上手く入らなかったので、force install してます。<br>
@@ -35,12 +35,12 @@ use DateTime;
 my $url = 'http://www.otchy.net';
 
 my $count = XMLRPC::Lite
-    -&gt;proxy('http://b.hatena.ne.jp/xmlrpc')
-    -&gt;call('bookmark.getTotalCount', $url)
-    -&gt;result;
+    ->proxy('http://b.hatena.ne.jp/xmlrpc')
+    ->call('bookmark.getTotalCount', $url)
+    ->result;
 
-my $now = DateTime-&gt;now(time_zone =&gt; 'Asia/Tokyo');
-print $now-&gt;strftime('%Y-%m-%d') . ',' . $count . "\n";
+my $now = DateTime->now(time_zone => 'Asia/Tokyo');
+print $now->strftime('%Y-%m-%d') . ',' . $count . "\n";
 </pre>
 <br>
 $url の値はカウント対象の URL ですが、もちろん変更して下さい。<br>
@@ -51,18 +51,18 @@ $url の値はカウント対象の URL ですが、もちろん変更して下�
 <br>
 毎日の記録を残すのであれば、例えば下記のように cron に登録すればいいです。<br>
 <br>
-<pre>00 00 * * * /home/your_id/hatebulog/hatebulog.pl &gt;&gt; /home/your_id/hatebulog/hatebulog.csv
+<pre>00 00 * * * /home/your_id/hatebulog/hatebulog.pl >> /home/your_id/hatebulog/hatebulog.csv
 </pre>
 <br>
 今のところ日次で記録する前提で日付しか出力していませんが、はてブ数が多くもっと頻繁に記録するのであれば、出力を下記のように変える事で実行時間も記録されます。<br>
 <br>
-<pre>print $now-&gt;strftime('%Y-%m-%d %H:%M:%S') . ',' . $count . "\n";
+<pre>print $now->strftime('%Y-%m-%d %H:%M:%S') . ',' . $count . "\n";
 </pre>
 <br>
 最初に自分専用とはいったものの、いったん csv に落としてしまえば、PHP ＋ Google Chart API でグラフ化して Web から見れるようにするとかもありですね。<br>
 <br>
 <h4>追記(2009-08-04)</h4>
-<a href="/20090804/total-hatebu-count-with-google-chart-api/">グラフ化してみました！</a>
-    </main>
+<a href=/20090804/total-hatebu-count-with-google-chart-api/ >グラフ化してみました！</a>
+</main>
 </body>
 </html>

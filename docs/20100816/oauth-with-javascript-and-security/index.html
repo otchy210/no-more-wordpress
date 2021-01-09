@@ -1,11 +1,11 @@
 
 <html>
 <head>
-    <title>JavaScript による OAuth 認証とそのセキュリティ - OTCHY.NET</title>
+<title>JavaScript による OAuth 認証とそのセキュリティ - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        <a href="/twitmgr/" target="_blank">TwitMgr</a> のバージョンアップを行いました。<br>
+<main>
+<a href=/twitmgr/ target=_blank>TwitMgr</a> のバージョンアップを行いました。<br>
 OAuth 対応がメインではありますが、地味に日本語の表現を修正して、初見でもやれることが分かりやすくなっているかと思います。<br>
 <br>
 BASIC 認証から、OAuth 認証へ変更するにあたっては、どうしても使い勝手が低下してしまうのは避けようがないところで、そこが残念ではあります。<br>
@@ -13,7 +13,7 @@ BASIC 認証から、OAuth 認証へ変更するにあたっては、どうし�
 <br>
 というのは前置きでして、JavaScript による OAuth 認証について突っ込んで考えたので、以下本論。<br>
 <br>
-<a href="/javascript/twitter-api2/">TwitterAPI2.js</a> (というか実質は、<a href="/javascript/twit-api/">TwitAPI.js</a>) を使った OAuth 認証では、js ファイルを読み込むたびに、毎回必ず OAuth 認証の確認画面を表示する仕様としています。<br>
+<a href=/javascript/twitter-api2/ >TwitterAPI2.js</a> (というか実質は、<a href=/javascript/twit-api/ >TwitAPI.js</a>) を使った OAuth 認証では、js ファイルを読み込むたびに、毎回必ず OAuth 認証の確認画面を表示する仕様としています。<br>
 プロキシサーバで OAuth 認証を行う構成なので、やろうと思えば、初回アクセス時のみ確認を取る、という事も可能なのですが、そのようにしていないのにはセキュリティ上の理由があります。<br>
 <br>
 TwitAPI.js では、同ライブラリで公式のプロキシサーバを用意していて、公式プロキシサーバに対して許可した OAuth 認証については、その情報がプロキシサーバ側に残ります。<br>
@@ -31,6 +31,6 @@ JavaScript で簡単に OAuth を利用したいという要求と、セキュ�
 <br>
 JavaScript による OAuth 認証で、初回のみ認証画面が表示されるような実装のアプリがあった場合、原理的にその OAuth 認証は、他のアプリから悪用されうるのではないかと考えています。<br>
 この点、もっとスマートに解決するやり方があれば、是非、識者の意見を伺いたいです。
-    </main>
+</main>
 </body>
 </html>

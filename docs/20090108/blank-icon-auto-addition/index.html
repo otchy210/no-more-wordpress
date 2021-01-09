@@ -1,19 +1,19 @@
 
 <html>
 <head>
-    <title>外部リンクに自動でアイコンを付与 - OTCHY.NET</title>
+<title>外部リンクに自動でアイコンを付与 - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        WordPress のテーマファイルをちょこちょこいじって、外部向けリンク (正確には、target="_blank" を付けたリンク) に、自動でアイコンが付くようにしてみました。<br>
+<main>
+WordPress のテーマファイルをちょこちょこいじって、外部向けリンク (正確には、target="_blank" を付けたリンク) に、自動でアイコンが付くようにしてみました。<br>
 おそらく他のサイトなどでも紹介されているであろうテクニックですが、OTCHY.NET で採用した方法を簡単に説明してみます。<br>
 <br>
 下記は、WordPress を前提として書いていますが、その他の CMS や通常のウェブサイトであっても、css や html、JavaScript が自由になるのであればどこでも設定可能です。<br>
 <h4>用意するもの</h4>
 <ul>
-	<li><a href="http://jquery.com/" target="_blank">jQuery</a></li>
-	<li>WordPress のテーマを編集する知識</li>
-	<li>ファイルをアップロードする知識</li>
+<li><a href=http://jquery.com/ target=_blank>jQuery</a></li>
+<li>WordPress のテーマを編集する知識</li>
+<li>ファイルをアップロードする知識</li>
 </ul>
 <h4>アイコン画像を用意する</h4>
 任意のアイコン画像を用意して下さい。どんな背景であってもある程度見栄えをよくするためには、透過 GIF などが良いでしょう。<br>
@@ -42,8 +42,8 @@ header.php を編集し、作成した 2 つの JavaScirpt ファイルにパス
 js ファイルをアップロードした場所と整合性を取るように、script タグを追加して下さい。<br>
 <br>
 Otchy の場合、js ファイルはドメイン直下の js ディレクトリに保存するため下記のような記述になります。<br>
-<pre>&lt;script type="text/javascript" src="/js/jquery.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="/js/common.js"&gt;&lt;/script&gt;</pre>
+<pre>&lt;script type="text/javascript" src="/js/jquery.js">&lt;/script>
+&lt;script type="text/javascript" src="/js/common.js">&lt;/script></pre>
 <h4>用意したファイルのアップロード</h4>
 あとは、作成した各ファイルをアップロードすれば完了です。<br>
 追加した記述はわずか 9 行。これだけで、全てのページの外部リンクに自動でアイコンがつくようになります。<br>
@@ -59,6 +59,6 @@ css による指定では、a タグの右側にアイコン画像分の幅を�
 jQuery による指定では、html 内の a タグのうち、target="_blank" となっているものを対象として、css で設定したクラスを追加しています。<br>
 <br>
 これだけの処理を簡単に書く事が出来るのは、jQuery の力によるところが大きいですね。
-    </main>
+</main>
 </body>
 </html>

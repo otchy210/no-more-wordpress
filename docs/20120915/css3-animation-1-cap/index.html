@@ -1,38 +1,38 @@
 
 <html>
 <head>
-    <title>そろそろ本気で CSS3 アニメーション [その1 - Cap] - OTCHY.NET</title>
+<title>そろそろ本気で CSS3 アニメーション [その1 - Cap] - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        <p>
+<main>
+<p>
 ブラウザ上でのちょっとしたアニメーション、っていうと長い間 jQuery がそのデファクトの座にいたわけですが、モバイルだと重いし、各ブラウザの CSS3 実装も進んできたし、そろそろ CSS3 だよね！<br><br>
 というわけで、重い腰を上げて本気で CSS3 アニメーション書いてみました。いろいろ調べながら書いているので、ダメな所とか突っ込み歓迎です。<br><br>
 <br><br>
 今回は連載の第 1 回目、"Cap" と題して、アイコンに蓋をかぶせてみたいと思います。<br><br>
 </p>
 <br>
-<p style="border: solid 1px #c00; background-color: #c99; color: #c00; padding: 0.5em;">
+<p style="border:solid 1px #c00;background-color:#c99;color:#c00;padding:.5em">
 ※注意！<br><br>
 ページの下の方にループしているアニメーションがありますが、そのせいで長時間ページを開いたままにしていると、Chrome / Firefox 共に少しずつ重たくなってきます。特に Firefox の方が顕著です。<br><br>
 おそらく何らかのバグではないかと思うのですが、将来的に解消されるまでは、ページが重たくなったらタブを閉じて開きなおして下さい。リロードでも解消するかと思いきや、Chrome の場合リロードだけでは解消しない事があるようです。<br><br>
 </p>
 <br>
-<a href="#step6" style="font-size: 60%;">とりあえず完成品を見てみる場合はこちら。</a><br>
+<a href=#step6 style=font-size:60%>とりあえず完成品を見てみる場合はこちら。</a><br>
 <br>
-<h4 id="base">BASE</h4>
+<h4 id=base>BASE</h4>
 <br>
 <p>
 まずはベースとなる HTML です。本連載を通じて、この HTML の基本は変えずに行こうと思います。<br>
 </p>
 <br>
-<pre>&lt;ul class="css3anime"&gt;
-	&lt;li&gt;&lt;/li&gt;
-	&lt;li&gt;&lt;/li&gt;
-	&lt;li&gt;&lt;/li&gt;
-	&lt;li&gt;&lt;/li&gt;
-	&lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;
+<pre>&lt;ul class="css3anime">
+	&lt;li>&lt;/li>
+	&lt;li>&lt;/li>
+	&lt;li>&lt;/li>
+	&lt;li>&lt;/li>
+	&lt;li>&lt;/li>
+&lt;/ul>
 </pre>
 <br>
 <p>
@@ -71,12 +71,12 @@ ul.css3anime li:nth-child(5) {background-position: -512px 0;}
 ここで詰まってしまった方は、「clearfix」「float レイアウト」「CSS スプライト」「nth-child 疑似クラス」でググると幸せになれます。<br>
 </p>
 <br>
-<ul class="css3anime">
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
+<ul class=css3anime>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
 </ul>
 <br>
 <p>
@@ -91,21 +91,21 @@ ul.css3anime li:nth-child(5) {background-position: -512px 0;}
 まずは、アイコンを丸く切り取りました。<br>
 </p>
 <br>
-<ul class="css3anime" id="css3-cap-1">
-	<li><span></span></li>
-	<li><span></span></li>
-	<li><span></span></li>
+<ul class=css3anime id=css3-cap-1>
+<li><span></span></li>
+<li><span></span></li>
+<li><span></span></li>
 </ul>
 <br>
 <p>
 HTML の基本を変えないと言いつつ、いきなり変えてしまっています。<br>
 </p>
 <br>
-<pre>&lt;ul class="css3anime"&gt;
-	&lt;li&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
-	&lt;li&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
-	&lt;li&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;
+<pre>&lt;ul class="css3anime">
+	&lt;li>&lt;span>&lt;/span>&lt;/li>
+	&lt;li>&lt;span>&lt;/span>&lt;/li>
+	&lt;li>&lt;span>&lt;/span>&lt;/li>
+&lt;/ul>
 </pre>
 <br>
 <p>
@@ -134,10 +134,10 @@ CSS についてはこの先、追加の差分だけ記載していきます。<
 アイコンに蓋をしました。<br>
 </p>
 <br>
-<ul class="css3anime" id="css3-cap-2">
-	<li><span></span></li>
-	<li><span></span></li>
-	<li><span></span></li>
+<ul class=css3anime id=css3-cap-2>
+<li><span></span></li>
+<li><span></span></li>
+<li><span></span></li>
 </ul>
 <br>
 <p>
@@ -166,10 +166,10 @@ HTML は変えず、span にスタイルを適用しただけです。<br>
 蓋をちょっと傾けました。<br>
 </p>
 <br>
-<ul class="css3anime" id="css3-cap-3">
-	<li><span></span></li>
-	<li><span></span></li>
-	<li><span></span></li>
+<ul class=css3anime id=css3-cap-3>
+<li><span></span></li>
+<li><span></span></li>
+<li><span></span></li>
 </ul>
 <br>
 <p>
@@ -216,10 +216,10 @@ transform: rotate で、要素の傾きを指定することが出来ます。�
 あれ？蓋が閉じてしまいました。大丈夫。オンマウスで蓋が傾きます。<br><br>
 </p>
 <br>
-<ul class="css3anime" id="css3-cap-4">
-	<li><span></span></li>
-	<li><span></span></li>
-	<li><span></span></li>
+<ul class=css3anime id=css3-cap-4>
+<li><span></span></li>
+<li><span></span></li>
+<li><span></span></li>
 </ul>
 <br>
 <p>
@@ -269,10 +269,10 @@ z-index の指定は、蓋がずれて隣の蓋の上に重なったときの上
 おお、なにやら最初から動いていますね！これぞアニメーションです。<br><br>
 </p>
 <br>
-<ul class="css3anime" id="css3-cap-5">
-	<li><span></span></li>
-	<li><span></span></li>
-	<li><span></span></li>
+<ul class=css3anime id=css3-cap-5>
+<li><span></span></li>
+<li><span></span></li>
+<li><span></span></li>
 </ul>
 <br>
 <p>
@@ -329,24 +329,24 @@ ul.css3anime li:hover span {
 Firefox はちゃんと動いています。<br><br>
 </p>
 <br>
-<h4 id="step6">STEP6</h4>
-<a href="#base" style="font-size: 60%;">最初に戻る場合はこちら。</a><br>
+<h4 id=step6>STEP6</h4>
+<a href=#base style=font-size:60%>最初に戻る場合はこちら。</a><br>
 <br>
 <p>
 これで完成です。デザインが殺風景だったのでグラデーションとか影とか付けてみました。<br><br>
 </p>
 <br>
-<ul class="css3anime" id="css3-cap-6">
-	<li><span></span></li>
-	<li><span></span></li>
-	<li><span></span></li>
+<ul class=css3anime id=css3-cap-6>
+<li><span></span></li>
+<li><span></span></li>
+<li><span></span></li>
 </ul>
 <br>
 <p>
 見た目の問題なので詳しくは解説しません。最後に CSS の全体をまとめておくので興味のある方は読み下してみてください。<br><br>
 </p>
 <br>
-<pre style="height: 400px; overflow: auto;">ul.css3anime {
+<pre style=height:400px;overflow:auto>ul.css3anime {
 	display: inline-block;
 	margin: 0;
 	padding: 10px;
@@ -452,7 +452,6 @@ ul#css3-cap-6 li:after {
 <br><br>
 興味を持ってもらえたら期待を込めてシェア！よろしくお願いします。<br><br>
 </p>
-
-    </main>
+</main>
 </body>
 </html>

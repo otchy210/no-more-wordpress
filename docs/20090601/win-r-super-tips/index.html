@@ -1,14 +1,14 @@
 
 <html>
 <head>
-    <title>「ファイル名を指定して実行」超活用法 - OTCHY.NET</title>
+<title>「ファイル名を指定して実行」超活用法 - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        Windows OS を使用しているのであれば、是非活用したい機能に「ファイル名を指定して実行」があります。<br>
+<main>
+Windows OS を使用しているのであれば、是非活用したい機能に「ファイル名を指定して実行」があります。<br>
 デフォルトの状態でもなかなか便利に使う事が出来るのですが、ここを拡張する事でもう手放せないツールになります。<br>
 <br>
-まず基本として、<a href="http://www.speed-xp.com/windows-topics/31/run-commands.html" target="_blank">ファイル名を指定して実行 まとめ</a> で紹介されているものを押さえましょう。<br>
+まず基本として、<a href=http://www.speed-xp.com/windows-topics/31/run-commands.html target=_blank>ファイル名を指定して実行 まとめ</a> で紹介されているものを押さえましょう。<br>
 システムでパスが通ってるショートカットや実行ファイルの他、*.msc や *.cpl などを直接起動できるので覚えておくと便利なものが多いです。<br>
 <br>
 そしてこれ以降、前述の記事では触れられていない強力な活用法について色々と紹介します。<br>
@@ -51,7 +51,7 @@ InternetExploere → ie、Firefox → fx、Excel → xl、Powerpoint → ppt 等
 別の PC 環境へ移行する際も、アプリのインストール先を合わせておけば、ショートカットフォルダをコピーしてパスを通せば、あっという間に元と同じ環境です。<br>
 よけいなランチャなどを導入して一生懸命環境を移す必要はありません。<br>
 <br>
-(参考) <a href="http://www.google.co.jp/search?hl=ja&amp;q=%8A%C2%8B%AB%95%CF%90%94+%83p%83X+%92%C7%89%C1&amp;btnG=" target="_blank">パスの追加方法</a><br>
+(参考) <a href="http://www.google.co.jp/search?hl=ja&q=%8A%C2%8B%AB%95%CF%90%94+%83p%83X+%92%C7%89%C1&btnG=" target=_blank>パスの追加方法</a><br>
 <br>
 <h4>バッチファイルを起動</h4>
 ショートカットフォルダにパスが通ったら、そこにはショートカット以外のものを置く事も出来ます。<br>
@@ -72,11 +72,11 @@ InternetExploere → ie、Firefox → fx、Excel → xl、Powerpoint → ppt 等
 イマジネーションを広げて色々と活用してみて下さい。<br>
 <br>
 <h4>(おまけ) keisan.pl</h4>
-<a href="http://www.activestate.com/activeperl/" target="_blank">ActivePerl</a> を利用した、コマンドライン計算機をおまけで公開してみます。<br>
+<a href=http://www.activestate.com/activeperl/ target=_blank>ActivePerl</a> を利用した、コマンドライン計算機をおまけで公開してみます。<br>
 「ファイル名を指定して実行」から使う事を想定した電卓です。<br>
 <br>
 (keisan.pl)<br>
-<pre class="height_narrow">@prefix = ('h', 'k', 'M', 'G', 'T', 'P', 'd', 'c', 'm', 'u', 'n', 'p', 'f');
+<pre class=height_narrow>@prefix = ('h', 'k', 'M', 'G', 'T', 'P', 'd', 'c', 'm', 'u', 'n', 'p', 'f');
 $shisu{'h'} =   2;
 $shisu{'k'} =   3;
 $shisu{'M'} =   6;
@@ -134,7 +134,7 @@ foreach $exp (@ARGV) {
 (keisan.bat)<br>
 <pre>@ECHO OFF
 keisan.pl %1 %2 %3 %4 %5 %6 %7 %8 %9
-PAUSE &gt;&gt; NUL</pre>
+PAUSE >> NUL</pre>
 <br>
 この内容の 2 ファイルにパスを通しておくと、以下のような事が可能になります。<br>
 <pre>(ファイル名を指定して実行)
@@ -147,14 +147,13 @@ keisan 10*10*10+1000 #1+1M -k #2 -M #3**2
 <br>
 簡単に解説すると、<br>
 <ul>
-	<li>引数に与えた計算式を計算する</li>
-	<li>#n で第 n 引数の結果を引用できる</li>
-	<li>数値の中に、k でキロ、M でメガ、m でミリ、u でマイクロのような単位が使える</li>
-	<li>計算式の前にオプションで -k 等とすると結果に単位を付けて返す</li>
+<li>引数に与えた計算式を計算する</li>
+<li>#n で第 n 引数の結果を引用できる</li>
+<li>数値の中に、k でキロ、M でメガ、m でミリ、u でマイクロのような単位が使える</li>
+<li>計算式の前にオプションで -k 等とすると結果に単位を付けて返す</li>
 </ul>
 といった感じです。詳しくはソースを読んで下さい。;P<br>
 <br>
-
-    </main>
+</main>
 </body>
 </html>

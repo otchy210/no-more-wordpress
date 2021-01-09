@@ -1,11 +1,11 @@
 
 <html>
 <head>
-    <title>Zen Coding の Perl 実装書きました - OTCHY.NET</title>
+<title>Zen Coding の Perl 実装書きました - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        今、最高にアツい Zen Coding (ソースは自分) の Perl 実装を書きました。<br>
+<main>
+今、最高にアツい Zen Coding (ソースは自分) の Perl 実装を書きました。<br>
 これがあれば、(今すぐではありませんが) 手に馴染んだ任意のエディタ全てで、Zen Coding を使用することが出来るようになります。<br>
 何故かって…？<br>
 <br>
@@ -19,18 +19,18 @@ print SSSCoding::expand('a') . "\n";
 print SSSCoding::expand('a:mail') . "\n";
 print SSSCoding::expand('div#id.class1.class2') . "\n";
 print SSSCoding::expand('#head+#body+#foot') . "\n";
-print SSSCoding::expand('div#id&gt;ul&gt;li') . "\n";
-print SSSCoding::expand('ul&gt;li#id$*5') . "\n";
+print SSSCoding::expand('div#id>ul>li') . "\n";
+print SSSCoding::expand('ul>li#id$*5') . "\n";
 </pre>
 <br>
 こう出力されます！<br>
-<pre>&lt;div&gt;&lt;/div&gt;
-&lt;a href=""&gt;&lt;/a&gt;
-&lt;a href="mailto:"&gt;&lt;/a&gt;
-&lt;div id="id" class="class1 class2"&gt;&lt;/div&gt;
-&lt;div id="head"&gt;&lt;/div&gt;&lt;div id="body"&gt;&lt;/div&gt;&lt;div id="foot"&gt;&lt;/div&gt;
-&lt;div id="id"&gt;&lt;ul&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
-&lt;ul&gt;&lt;li id="id1"&gt;&lt;/li&gt;&lt;li id="id2"&gt;&lt;/li&gt;&lt;li id="id3"&gt;&lt;/li&gt;&lt;li id="id4"&gt;&lt;/li&gt;&lt;li id="id5"&gt;&lt;/li&gt;&lt;/ul&gt;
+<pre>&lt;div>&lt;/div>
+&lt;a href="">&lt;/a>
+&lt;a href="mailto:">&lt;/a>
+&lt;div id="id" class="class1 class2">&lt;/div>
+&lt;div id="head">&lt;/div>&lt;div id="body">&lt;/div>&lt;div id="foot">&lt;/div>
+&lt;div id="id">&lt;ul>&lt;li>&lt;/li>&lt;/ul>&lt;/div>
+&lt;ul>&lt;li id="id1">&lt;/li>&lt;li id="id2">&lt;/li>&lt;li id="id3">&lt;/li>&lt;li id="id4">&lt;/li>&lt;li id="id5">&lt;/li>&lt;/ul>
 </pre>
 <br>
 本来の Zen Coding には色々な機能がありますが、とりあえず CSS っぽい記述を HTML に展開する機能のみ実装しています。<br>
@@ -45,7 +45,7 @@ print SSSCoding::expand('ul&gt;li#id$*5') . "\n";
 <br>
 <h4>任意のエディタで Zen Coding を使う</h4>
 さあ、ここが本来の目的です。<br>
-種明かしをすると、この Perl モジュールを使って、<a href="http://www.atok.com/useful/developer/api/plugin.html" target="_blank">ATOK のプラグイン</a>を作ればいいのです。<br>
+種明かしをすると、この Perl モジュールを使って、<a href=http://www.atok.com/useful/developer/api/plugin.html target=_blank>ATOK のプラグイン</a>を作ればいいのです。<br>
 そうすれば、任意のエディタで Zen Coding が利用可能になりますね。<br>
 <br>
 br とか a とか頻繁に使うタグを、辞書登録したことがある人は多いんじゃないでしょうか？<br>
@@ -61,10 +61,10 @@ br とか a とか頻繁に使うタグを、辞書登録したことがある�
 まだ ATOK 16 を使っていてプラグインが使えないので、まずは ATOK のバージョンを上げないと…。<br>
 <br>
 <h4>ダウンロード</h4>
-<a href="/pm/SSSCoding.pm">SSSCoding.pm</a><br>
+<a href=/pm/SSSCoding.pm>SSSCoding.pm</a><br>
 <br>
 <h4>ライセンス</h4>
-ライセンスは <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT License</a> (<a href="http://ja.wikipedia.org/wiki/MIT_License" target="_blank">日本版 wikipedia の項</a>) で公開します。<br>
+ライセンスは <a href=http://www.opensource.org/licenses/mit-license.php target=_blank>MIT License</a> (<a href=http://ja.wikipedia.org/wiki/MIT_License target=_blank>日本版 wikipedia の項</a>) で公開します。<br>
 <br>
 <h4>その他</h4>
 Perl で実装しているので CGI にもしやすいかと思います。ウェブサービスを作ってみてもいいですね。<br>
@@ -76,7 +76,6 @@ SSSCoding.pm の中で、閉じタグを使わないエレメントは、%SSSCod
 <h4>モジュール名について</h4>
 Zen Coding を名乗るには実装が中途半端ですし、名前がぶつかって何らか問題になるのも嫌だったので、モジュール名自体は全く別の名前にしました。<br>
 "Style Sheet" Style Coding の略で、SSSCoding としています。<br>
-
-    </main>
+</main>
 </body>
 </html>

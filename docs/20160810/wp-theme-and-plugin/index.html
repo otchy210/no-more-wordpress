@@ -1,20 +1,20 @@
 
 <html>
 <head>
-    <title>このブログで使ってる WP テーマと追加したプラグインの話 - OTCHY.NET</title>
+<title>このブログで使ってる WP テーマと追加したプラグインの話 - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        1つ前のポスト、<a href="/20160808/migration-from-sub-directory-to-sub-domain/">サブディレクトリごとに運用されてたサイトをごっそりとサブドメインに移行した話</a>の続きの話です。<br>
+<main>
+1つ前のポスト、<a href=/20160808/migration-from-sub-directory-to-sub-domain/ >サブディレクトリごとに運用されてたサイトをごっそりとサブドメインに移行した話</a>の続きの話です。<br>
 <h4>WP テーマ選び</h4>
 最後に残ったのは WP のテーマやプラグインなどをどうするかです。WP のテーマを選ぶにあたっては、下記の内容を勘案して選びました。<br>
 <ul>
- 	<li>当初から予定していた通りレスポンシブである事</li>
- 	<li>WP の作法に沿ってない野良テーマを避ける事</li>
- 	<li>なるべくシンプルで飽きの来ないデザインである事</li>
- 	<li>ブログっぽい普通のデザインである事 (商業サイト的なデザイン<strong>でない</strong>事)</li>
+<li>当初から予定していた通りレスポンシブである事</li>
+<li>WP の作法に沿ってない野良テーマを避ける事</li>
+<li>なるべくシンプルで飽きの来ないデザインである事</li>
+<li>ブログっぽい普通のデザインである事 (商業サイト的なデザイン<strong>でない</strong>事)</li>
 </ul>
-<a href="https://wordpress.org/themes/" target="_blank">WP 公式のディレクトリ</a>でフィルタリングしながらいくつか探してみて、最終的に今使っている　<a href="https://wordpress.org/themes/dustland-express/" target="_blank">Dustland Express</a> というテーマに落ち着きました。他の比較対象になったテーマと比べて、幅を狭めたときにメニューの挙動が自然だったこと、うるさいアニメーションなどが無かったこと、などが決め手になっています。<br>
+<a href=https://wordpress.org/themes/ target=_blank>WP 公式のディレクトリ</a>でフィルタリングしながらいくつか探してみて、最終的に今使っている　<a href=https://wordpress.org/themes/dustland-express/ target=_blank>Dustland Express</a> というテーマに落ち着きました。他の比較対象になったテーマと比べて、幅を狭めたときにメニューの挙動が自然だったこと、うるさいアニメーションなどが無かったこと、などが決め手になっています。<br>
 <br>
 ただ、例によって GAE の制限のため WP の管理画面からテーマをインストールして保存することは出来ないので、テーマの追加についてはローカルにいったん追加したものを、手動でアップロードしてやる必要があります。アップロードさえ終われば、後は普通通り WP 管理画面で選択し有効にするだけです。<br>
 <h4>WP テーマの修正部分</h4>
@@ -28,24 +28,24 @@ CSS では例えば、際限なく長く伸びてしまう下部のウィジェ�
 <h4>追加した WP プラグイン</h4>
 デフォルトの日本語 WP に入っているプラグイン以外に、現在、下記のものを追加しています。<br>
 <ul>
- 	<li><a href="https://ja.wordpress.org/plugins/disable-responsive-images/" target="_blank">Disable Responsive Images</a><br>
+<li><a href=https://ja.wordpress.org/plugins/disable-responsive-images/ target=_blank>Disable Responsive Images</a><br>
 <ul>
- 	<li>s.otchy.net に置いて読み込んでた画像が最初はことごとく404 で謎すぎたので調べてみたところ、WP の少し前のバージョンからポストに含まれる "全ての" img タグをフックして、レティナ向けの srcset を挿入するというかなり荒ぶった仕様が追加されたらしく、それがまた、外部に置いた画像の読み込みに対して正しく動作しない (当たり前。@2x 画像とか用意してないし) ので、それを無効にするプラグインです。なんだこれ、設定で元々オンオフ可能であるべきだろ…。</li>
+<li>s.otchy.net に置いて読み込んでた画像が最初はことごとく404 で謎すぎたので調べてみたところ、WP の少し前のバージョンからポストに含まれる "全ての" img タグをフックして、レティナ向けの srcset を挿入するというかなり荒ぶった仕様が追加されたらしく、それがまた、外部に置いた画像の読み込みに対して正しく動作しない (当たり前。@2x 画像とか用意してないし) ので、それを無効にするプラグインです。なんだこれ、設定で元々オンオフ可能であるべきだろ…。</li>
 </ul>
 </li>
- 	<li><a href="https://ja.wordpress.org/plugins/favicon-rotator/" target="_blank">Favicon Rotator</a><br>
+<li><a href=https://ja.wordpress.org/plugins/favicon-rotator/ target=_blank>Favicon Rotator</a><br>
 <ul>
- 	<li>実は新サーバへの移行後に favicon の設定を忘れてた事に気づいたので、favicon を管理するプラグインを導入しました。これはちゃんとしてて、GAE プラグインとの相性も良く、管理画面からアップロードした favicon ファイルでそのまま動作しています。</li>
+<li>実は新サーバへの移行後に favicon の設定を忘れてた事に気づいたので、favicon を管理するプラグインを導入しました。これはちゃんとしてて、GAE プラグインとの相性も良く、管理画面からアップロードした favicon ファイルでそのまま動作しています。</li>
 </ul>
 </li>
- 	<li><a href="https://ja.wordpress.org/plugins/google-analytics-for-wordpress/" target="_blank">Google Analytics by MonsterInsights</a><br>
+<li><a href=https://ja.wordpress.org/plugins/google-analytics-for-wordpress/ target=_blank>Google Analytics by MonsterInsights</a><br>
 <ul>
- 	<li>これも同じく、新サーバへの移行後に Google Analytics の設定を忘れていたことに気づいたので、それを管理するプラグインを導入しました。有料版を購入するとかなり色んな事が出来るようになるようなのですが、単に全ページに決まったスニペットを挿入するだけなら無料版で十分でした。</li>
+<li>これも同じく、新サーバへの移行後に Google Analytics の設定を忘れていたことに気づいたので、それを管理するプラグインを導入しました。有料版を購入するとかなり色んな事が出来るようになるようなのですが、単に全ページに決まったスニペットを挿入するだけなら無料版で十分でした。</li>
 </ul>
 </li>
- 	<li><a href="https://ja.wordpress.org/plugins/short-bio-widget/" target="_blank">Short Bio Widget</a><br>
+<li><a href=https://ja.wordpress.org/plugins/short-bio-widget/ target=_blank>Short Bio Widget</a><br>
 <ul>
- 	<li>メニューに Bio を出すためのプラグイン。まあそれだけっていう感じです。デザイン自体はすこし独自の CSS でいじって拡張しています。</li>
+<li>メニューに Bio を出すためのプラグイン。まあそれだけっていう感じです。デザイン自体はすこし独自の CSS でいじって拡張しています。</li>
 </ul>
 </li>
 </ul>
@@ -58,8 +58,8 @@ CSS では例えば、際限なく長く伸びてしまう下部のウィジェ�
 テキストタイプのウィジェットとして追加したのは、右メニュー途中にあるはてブ人気エントリと最上部のソーシャルボタン領域です。それぞれ下記のようなコードになっています。<br>
 <br>
 はてブ人気エントリ<br>
-<pre>&lt;script language="javascript" type="text/javascript" src="//b.hatena.ne.jp/js/widget.js" charset="utf-8"&gt;&lt;/script&gt;
-&lt;script language="javascript" type="text/javascript"&gt;
+<pre>&lt;script language="javascript" type="text/javascript" src="//b.hatena.ne.jp/js/widget.js" charset="utf-8">&lt;/script>
+&lt;script language="javascript" type="text/javascript">
 Hatena.BookmarkWidget.url = "http://www.otchy.net/";
 Hatena.BookmarkWidget.title = "はてブ人気エントリ";
 Hatena.BookmarkWidget.sort = "count";
@@ -67,53 +67,53 @@ Hatena.BookmarkWidget.width = "";
 Hatena.BookmarkWidget.num = 12;
 Hatena.BookmarkWidget.theme = "notheme";
 Hatena.BookmarkWidget.load();
-&lt;/script&gt;
+&lt;/script>
 </pre>
 まあ、これはシンプルでした。単にはてブで提供されているスニペットを貼り付けるだけです。ポイントとしては、提供されているテーマは一切使わないようにして自力でデザインを調整したり、生成された HTML で不要な部分を隠したりしている所でしょうか。<br>
 <br>
 ソーシャルボタン領域<br>
-<pre>&lt;div class="social-buttons"&gt;
-&lt;!-- hatebu --&gt;
-&lt;script&gt;
+<pre>&lt;div class="social-buttons">
+&lt;!-- hatebu -->
+&lt;script>
 document.write(
-'&lt;a href="http://b.hatena.ne.jp/entry/' + location.href + '" class="hatena-bookmark-button" data-hatena-bookmark-title="' + document.title + '" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"&gt;&lt;img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /&gt;&lt;/a&gt;'
+'&lt;a href="http://b.hatena.ne.jp/entry/' + location.href + '" class="hatena-bookmark-button" data-hatena-bookmark-title="' + document.title + '" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加">&lt;img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />&lt;/a>'
 );
-&lt;/script&gt;
-&lt;script src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"&gt;&lt;/script&gt;
-&lt;!-- twitter --&gt;
-&lt;a href="https://twitter.com/share" class="twitter-share-button" data-via="otchy"&gt;Tweet&lt;/a&gt; &lt;script&gt;!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');&lt;/script&gt;
-&lt;/div&gt;
-&lt;div class="social-buttons"&gt;
-&lt;!-- facebook --&gt;
-&lt;div id="fb-root"&gt;&lt;/div&gt;
-&lt;script&gt;(function(d, s, id) {
+&lt;/script>
+&lt;script src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async">&lt;/script>
+&lt;!-- twitter -->
+&lt;a href="https://twitter.com/share" class="twitter-share-button" data-via="otchy">Tweet&lt;/a> &lt;script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');&lt;/script>
+&lt;/div>
+&lt;div class="social-buttons">
+&lt;!-- facebook -->
+&lt;div id="fb-root">&lt;/div>
+&lt;script>(function(d, s, id) {
 var js, fjs = d.getElementsByTagName(s)[0];
 if (d.getElementById(id)) return;
 js = d.createElement(s); js.id = id;
-js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&amp;version=v2.7&amp;appId=241048042598563";
+js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.7&appId=241048042598563";
 fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));&lt;/script&gt;
-&lt;script&gt;
+}(document, 'script', 'facebook-jssdk'));&lt;/script>
+&lt;script>
 document.write(
-'&lt;div class="fb-like" data-href="' + location.href + '" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"&gt;&lt;/div&gt;'
+'&lt;div class="fb-like" data-href="' + location.href + '" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false">&lt;/div>'
 );
-&lt;/script&gt;
-&lt;!-- line --&gt;
-&lt;span&gt;
-&lt;script src="//media.line.me/js/line-button.js?v=20140411" &gt;&lt;/script&gt;
-&lt;script&gt;new media_line_me.LineButton({"pc":false,"lang":"ja","type":"a"});&lt;/script&gt;
-&lt;/span&gt;
-&lt;/div&gt;
+&lt;/script>
+&lt;!-- line -->
+&lt;span>
+&lt;script src="//media.line.me/js/line-button.js?v=20140411" >&lt;/script>
+&lt;script>new media_line_me.LineButton({"pc":false,"lang":"ja","type":"a"});&lt;/script>
+&lt;/span>
+&lt;/div>
 </pre>
 これはちょっと工夫が要るところです。まず各社から提供されているスニペットを貼り付けるのですが、全ページ共通のコードになるので、これらのスニペットは全て「今開いているページ」に対して動作して欲しいところです。Twitter や LINE (PC でページを開いている人には表示されていません) はそういう挙動が最初から選べるのですが、はてブや Facebook では、URL を指定してコードを生成する方法しか公式で提供されておらず、その部分には少し細工をしました。<br>
 <br>
 具体的に言うと、それらのソーシャルボタンのスニペットの中で、ページ情報を指定している部分については、その都度 document.write で今開いているページの URL だったりタイトルだったりをオンザフライで出力してやることでどうにかしています。下記の Facebook のスニペットを改造した部分なんかがわかりやすいんじゃないでしょうか。<br>
 <pre>document.write(
-'&lt;div class="fb-like" data-href="' + location.href + '" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"&gt;&lt;/div&gt;'
+'&lt;div class="fb-like" data-href="' + location.href + '" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false">&lt;/div>'
 );</pre>
 さて、ここまで来たらもう何の問題もありません。最終的に DNS の向き先を旧サーバから新サーバに変えて、世界中の　DNS キャッシュがクリアされるのを待つだけです。ようやくサーバの移行が完了しました。めでたしめでたし…といきたいところだったのですが、最後の最後に GAE 特有の (というかクラウド環境特有の) 注意点がありました。<br>
 <br>
 長かったこのシリーズも次で最終回、GAE でうっかり発生してしまう微妙な課金をゼロにする方法を解説して終わりにしたいと思います。
-    </main>
+</main>
 </body>
 </html>

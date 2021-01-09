@@ -1,27 +1,26 @@
 
 <html>
 <head>
-    <title>amazon のページからワンクリックでアフェリエイトリンクを作るブックマークレット - OTCHY.NET</title>
+<title>amazon のページからワンクリックでアフェリエイトリンクを作るブックマークレット - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        タイトルの通りです。何となく需要がありそうな気がしたので作ってみました。<br>
+<main>
+タイトルの通りです。何となく需要がありそうな気がしたので作ってみました。<br>
 いずれも、AffiliateID 部分をご自分のアフェリエイト ID に置き換えて使って下さい。<br>
-(<a href="http://www.google.co.jp/search?q=%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88+%E4%BD%BF%E3%81%84%E6%96%B9" target="_blank">ブックマークレットの使い方</a>)<br>
+(<a href="http://www.google.co.jp/search?q=%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88+%E4%BD%BF%E3%81%84%E6%96%B9" target=_blank>ブックマークレットの使い方</a>)<br>
 <br>
 URL のみ<br>
 <pre>javascript:void(function(a,l){if(a){l='http://amz.ly/jp/'+encodeURIComponent(a.value)+'/AffiliateID';prompt('Copy%20it!',l)}})(document.getElementById('ASIN'))
 </pre>
 <br>
 a タグ付き<br>
-<pre>javascript:void(function(a,t,l){if(a){l='&lt;a%20href=%22http://amz.ly/jp/'+encodeURIComponent(a.value)+'/AffiliateID%22&gt;'+t.firstChild.nodeValue+'&lt;/a&gt;';prompt('Copy%20it!',l)}})(document.getElementById('ASIN'),document.getElementById('btAsinTitle'))
+<pre>javascript:void(function(a,t,l){if(a){l='&lt;a%20href=%22http://amz.ly/jp/'+encodeURIComponent(a.value)+'/AffiliateID%22>'+t.firstChild.nodeValue+'&lt;/a>';prompt('Copy%20it!',l)}})(document.getElementById('ASIN'),document.getElementById('btAsinTitle'))
 </pre>
 <br>
 こちらの記事を参考にさせてもらいました。<br>
-<a href="http://d.hatena.ne.jp/rikuo/20091107#p2009110701" target="_blank">Amazonのページからamz.lyで短縮してTwitterに移動するBookmarklet</a><br>
+<a href=http://d.hatena.ne.jp/rikuo/20091107#p2009110701 target=_blank>Amazonのページからamz.lyで短縮してTwitterに移動するBookmarklet</a><br>
 <br>
 amazon アフェリエイトやってないんですけどね。<br>
-
-    </main>
+</main>
 </body>
 </html>

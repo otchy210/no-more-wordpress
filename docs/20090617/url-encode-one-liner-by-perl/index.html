@@ -1,16 +1,16 @@
 
 <html>
 <head>
-    <title>テキストファイルを URL エンコードして保存する perl のワンライナー - OTCHY.NET</title>
+<title>テキストファイルを URL エンコードして保存する perl のワンライナー - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        <pre>cat list.txt | perl -ne 's/([^\w ])/"%".unpack("H2",$1)/eg;s/ /\+/g;print;print "\n";' &gt; result.txt</pre>
+<main>
+<pre>cat list.txt | perl -ne 's/([^\w ])/"%".unpack("H2",$1)/eg;s/ /\+/g;print;print "\n";' > result.txt</pre>
 <br>
 上記の例は、タイトル通り list.txt の内容を result.txt として保存する例ですが、標準入力の内容を URL エンコードして標準出力に吐いているので、他にも応用が利くかと思います。<br>
 <br>
 Linux で使う事がほとんどだと思うので、Linux 版です。<br>
 Windows の場合、引数をダブルクォートでくくったほうがうまくいったのですが、Linux 上では、逆にシングルクォートじゃないとダメでした。
-    </main>
+</main>
 </body>
 </html>

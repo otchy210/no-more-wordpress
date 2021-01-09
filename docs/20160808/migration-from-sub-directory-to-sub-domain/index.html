@@ -1,20 +1,20 @@
 
 <html>
 <head>
-    <title>サブディレクトリごとに運用されてたサイトをごっそりとサブドメインに移行した話 - OTCHY.NET</title>
+<title>サブディレクトリごとに運用されてたサイトをごっそりとサブドメインに移行した話 - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        1つ前のポスト、<a href="/20160805/static-files-hosting-server-migration/">このドメインで使っている静的ファイルのホスト先を別ドメインに移行した話</a>の続きの話です。<br>
+<main>
+1つ前のポスト、<a href=/20160805/static-files-hosting-server-migration/ >このドメインで使っている静的ファイルのホスト先を別ドメインに移行した話</a>の続きの話です。<br>
 <h4>必要な数だけサブドメインのサイトを立ち上げる</h4>
 これまでの作業で、GAE 上で新しく WP は動作するようになっていたのですが、旧サーバ (この作業時点ではまだ現役で動いていたサーバ) では、www.otchy.net 配下にいくつもサブディレクトリを作り、それぞれごとに色んなサイトを運営していました。全部同じドメインに置いた方が、www.otchy.net 自体の SEO にも効果があるし、何よりサブドメとかを追加する度に、apache の設定をいじったりするのが面倒だったからですね。新サーバでは WP 単体で動作せせるようにせざるを得なかったし、今ならサブドメをそれぞれに準備するのもさして面倒では無いので、サブディレクトリで運用されてた各サイトはそれぞれ全部、サブドメインに移すことにしました。<br>
 <br>
 具体的な数字で言うと、元々サブディレクトリで運用されてたのは全部で 16 ほどありました。とは言え、作りかけ放置系・すでに動いていない系・目的達成系・そもそもテンポラリ系、を整理してみると、実質パブリックなのが 4 つ、プライベートなのが 1 つだけ残る形でした。パブリックなのは、この新デザインでも右下にリンクを設置してある以下の 4 つです。<br>
 <ul>
- 	<li><a href="http://cronbuilder.otchy.net/" target="_blank">Cron Builder</a></li>
- 	<li><a href="http://nut.otchy.net/" target="_blank">数値単位変換</a></li>
- 	<li><a href="http://tacj2011.otchy.net/" target="_blank">Tech Advent Calendar Japan 2011</a></li>
- 	<li><a href="http://selectart.otchy.net/" target="_blank">Select Art</a></li>
+<li><a href=http://cronbuilder.otchy.net/ target=_blank>Cron Builder</a></li>
+<li><a href=http://nut.otchy.net/ target=_blank>数値単位変換</a></li>
+<li><a href=http://tacj2011.otchy.net/ target=_blank>Tech Advent Calendar Japan 2011</a></li>
+<li><a href=http://selectart.otchy.net/ target=_blank>Select Art</a></li>
 </ul>
 このうち、始めの 3 つについては、完全な静的サイト。HTML/CSS/JS さえホストできればそれで動くので、GAE で新しいプロジェクトを 4 つ作り、前述のスクリプトを走らせて、必要なファイルをアップしたらそれだけで簡単に動く…はずでした。ところが、個人の Google アカウントで作成可能な GAE プロジェクトの数は、デフォルトで合計 10 までに制限されているらしく、途中でこれ以上プロジェクトが作れないという事態に陥ってしまいました。過去に GAE/j + Slim3 で遊んでいたときの残骸などもあり、途中で上限に達してしまったのです。<br>
 <br>
@@ -26,19 +26,19 @@
 <br>
 というわけで、これらの GAE プロジェクトに新しくサブドメインを割り当ててやって、新しいサブドメインでサイトが稼働し始めました。<br>
 <br>
-唯一 <a href="http://selectart.otchy.net/" target="_blank">Select Art</a> だけは、PHP アプリだったので、GAE/py で静的ファイルだけホストするわけに行かず、GAE/php で動かす必要がありました。しかも Select Art はローカルファイルにファイルを書き込む仕様になっていたので、ここを GAE 対応に書き直すのはさすがに面倒くさく、リードオンリーのメンテモードにしてしまう決断をしました。まあ、一発ネタ的要素が強く、ここ数年は新規で作成される作品もほぼ無い、という状況だったので妥当かなと思ってます。一応、過去作品の閲覧だけは問題ないようにスクリプトを修正したのはエンジニアの矜恃と言ったところです。<br>
+唯一 <a href=http://selectart.otchy.net/ target=_blank>Select Art</a> だけは、PHP アプリだったので、GAE/py で静的ファイルだけホストするわけに行かず、GAE/php で動かす必要がありました。しかも Select Art はローカルファイルにファイルを書き込む仕様になっていたので、ここを GAE 対応に書き直すのはさすがに面倒くさく、リードオンリーのメンテモードにしてしまう決断をしました。まあ、一発ネタ的要素が強く、ここ数年は新規で作成される作品もほぼ無い、という状況だったので妥当かなと思ってます。一応、過去作品の閲覧だけは問題ないようにスクリプトを修正したのはエンジニアの矜恃と言ったところです。<br>
 <h4>サブディレクトリからサブドメインへのリダイレクト</h4>
 この段階で、従来のサブディレクトリのサイトと新しく作ったサブドメインのサイトが、全く同じコンテンツで 2 つ存在している状況という形になってしまいます。これは SEO 的にペナルティを受ける可能性がありますし、これまでの "ページランク" については新サイトに移したいです。またそれ以前の問題で、サブディレクトリを削除したタイミングで、旧 URL が得ていたリンク全てをリンク切れにしてしまうのはダサいです。<br>
 <br>
 なのでまず旧サーバで動いている apache 上で下記の設定をしました。<br>
-<pre>&lt;IfModule mod_rewrite.c&gt;
+<pre>&lt;IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
 RewriteRule ^cronbuilder/$ http://cronbuilder.otchy.net/ [R=301,L]
 RewriteRule ^number-unit-translator/$ http://nut.otchy.net/ [R=301,L]
 RewriteRule ^tacj2011/(.*)$ http://tacj2011.otchy.net/$1 [R=301,L]
 RewriteRule ^selectart/$ http://selectart.otchy.net/ [R=301,L]
-&lt;/IfModule&gt;
+&lt;/IfModule>
 </pre>
 これによって、www.otchy.net/<sub-directory>/ 向けのアクセスが、<sub-domain>.otchy.net に　301 でリダイレクトされます。この時点で、前述の 3 つの問題、「重複コンテンツ」「ページランク移行」「リンク切れ」が全て解決です。ページランクの移行には、Google のボットが 301 を認識するまでの時間が必要なので、検索結果に表示されるリンクが、旧 URL から 新 URL に変わるまで、少し待ちました。とは言え、1 日もかからなかったと思います。<br>
 <br>
@@ -60,10 +60,10 @@ handlers の項目で、サブドメにリダイレクトしたいディレク�
 <br>
 redirect.php<br>
 <pre>&lt;?php
-$domains = array("/cronbuilder/" =&gt; "http://cronbuilder.otchy.net/",
-    "/number-unit-translator/" =&gt; "http://nut.otchy.net/",
-    "/tacj2011/" =&gt; "http://tacj2011.otchy.net/",
-    "/selectart/" =&gt; "http://selectart.otchy.net/"
+$domains = array("/cronbuilder/" => "http://cronbuilder.otchy.net/",
+    "/number-unit-translator/" => "http://nut.otchy.net/",
+    "/tacj2011/" => "http://tacj2011.otchy.net/",
+    "/selectart/" => "http://selectart.otchy.net/"
 );
 $uri = $_SERVER['REQUEST_URI'];
 $parsed = parse_url($uri);
@@ -82,9 +82,9 @@ header("HTTP/1.1 301 Moved Permanently");
 header("Location: http://s.otchy.net" . $_SERVER['REQUEST_URI']);
 exit();
 </pre>
-久々に、スクラッチから PHP 書きました。書きました、と言える程のものではないですが (PHP の array ってハッシュマップだったんでしたっけ。これは、そうか、どうなんだ？)。とまあ、このシンプルなスクリプトで 301 リダイレクトは実現します。<a href="https://cpplover.blogspot.com/2013/10/blog-post_20.html" target="_blank">チューリング完全の噂</a>もあり、黒魔術的な扱いをよく受ける mod_rewrite ですが、そこまでのものを用意しなくてもシンプルに、分かりやすく解決できる、という事ですね。<br>
+久々に、スクラッチから PHP 書きました。書きました、と言える程のものではないですが (PHP の array ってハッシュマップだったんでしたっけ。これは、そうか、どうなんだ？)。とまあ、このシンプルなスクリプトで 301 リダイレクトは実現します。<a href=https://cpplover.blogspot.com/2013/10/blog-post_20.html target=_blank>チューリング完全の噂</a>もあり、黒魔術的な扱いをよく受ける mod_rewrite ですが、そこまでのものを用意しなくてもシンプルに、分かりやすく解決できる、という事ですね。<br>
 <br>
 そろそろこのシリーズも大詰めに近づいてきました。次は、WP の中で何をしたか、について話を進めていこうと思います。
-    </main>
+</sub-domain></sub-directory></main>
 </body>
 </html>

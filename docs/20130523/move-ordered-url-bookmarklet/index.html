@@ -1,11 +1,11 @@
 
 <html>
 <head>
-    <title>連番で終わっている URL の前後に移動するブックマークレット - OTCHY.NET</title>
+<title>連番で終わっている URL の前後に移動するブックマークレット - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        URL が連番で終わっているような構成のサイトでは、その前後にも類似した有用なページがある場合が多いです。<br>
+<main>
+URL が連番で終わっているような構成のサイトでは、その前後にも類似した有用なページがある場合が多いです。<br>
 にも関わらず、前後に移動するリンクが用意されていないことがあるので、そういう時に便利なブックマークレットを書きました。<br>
 <br>
 例えば、以下のような URL で、その前後の番号に移動することが出来ます。<br>
@@ -17,7 +17,7 @@ http://www.example.com/123.456-00789/<br>
 <br>
 以下のリンクをブックマークバーにドラッグして使って下さい。<br>
 前へ：<a href="javascript:(function(h,a,s,d,l){a=h.match(/[^\d]*(\d+)[^/\d]*\/?$/);if(!a)return;s=a[1];d=(parseInt(s)-1)+'';if(s.charAt(0)=='0'){l=s.length;d=((new%20Array(l).join('0'))+d).slice(-l)}location.href=h.replace(a[0],a[0].replace(s,d))})(location.href);">&lt;</a><br>
-後ろへ：<a href="javascript:(function(h,a,s,d,l){a=h.match(/[^\d]*(\d+)[^/\d]*\/?$/);if(!a)return;s=a[1];d=(parseInt(s)+1)+'';if(s.charAt(0)=='0'){l=s.length;d=((new%20Array(l).join('0'))+d).slice(-l)}location.href=h.replace(a[0],a[0].replace(s,d))})(location.href);">&gt;</a><br>
+後ろへ：<a href="javascript:(function(h,a,s,d,l){a=h.match(/[^\d]*(\d+)[^/\d]*\/?$/);if(!a)return;s=a[1];d=(parseInt(s)+1)+'';if(s.charAt(0)=='0'){l=s.length;d=((new%20Array(l).join('0'))+d).slice(-l)}location.href=h.replace(a[0],a[0].replace(s,d))})(location.href);">></a><br>
 <br>
 <h4>ソース</h4>
 <pre>前に移動
@@ -28,9 +28,9 @@ javascript:(function(h,a,s,d,l){a=h.match(/[^\d]*(\d+)[^/\d]*\/?$/);if(!a)return
 </pre>
 <br>
 これだけだと面白くないので、ちゃんと整形してソースコードを解説してみます。ここで紹介するのは前に移動する例ですが、後ろに移動するのはプラスとマイナスが違うだけで他は同じです。<br>
-<table class="layout">
+<table class=layout>
 <tbody><tr>
-<td><pre style="line-height: 1.2em; font-size: 110%;">01
+<td><pre style=line-height:1.2em;font-size:110%>01
 02
 03
 04
@@ -42,7 +42,7 @@ javascript:(function(h,a,s,d,l){a=h.match(/[^\d]*(\d+)[^/\d]*\/?$/);if(!a)return
 10
 11</pre>
 </td>
-<td><pre style="line-height: 1.2em; font-size: 110%;">(function(h, a, s, d, l) {
+<td><pre style=line-height:1.2em;font-size:110%>(function(h, a, s, d, l) {
     a = h.match(/[^\d]*(\d+)[^/\d]*\/?$/);
     if (!a) return;
     s = a[1];
@@ -82,7 +82,7 @@ new Array(l) で、l の長さの空の配列を作り、join('0') する事で�
 その後ろに d を連結して、最後に slice(-l) すると、後ろ側 (右側) から l 文字切り取られるので、最終的には s と同じ桁数で 0 埋めした数字が手に入ります。<br>
 <br>
 ややこしいので具体例として、l が 4 で d が '10' の場合を考えると以下のようになります。<br>
-<pre style="line-height: 1.2em; font-size: 110%">new Array(4) → [undefined, undefined, undefined, undefined]
+<pre style=line-height:1.2em;font-size:110%>new Array(4) → [undefined, undefined, undefined, undefined]
 (new Array(4)).join('0') → '000'
 (new Array(4)).join('0') + '10' → '00010'
 ((new Array(4)).join('0') + '10').slice(-4) → '0010'
@@ -101,6 +101,6 @@ http://www.year2013.com/2013/article13.html<br>
 引数として location.href を渡して、匿名関数を実行します。<br>
 <br>
 以上！面白かったでしょうか？
-    </main>
+</main>
 </body>
 </html>

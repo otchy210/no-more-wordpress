@@ -1,11 +1,11 @@
 
 <html>
 <head>
-    <title>東京とそれ以外の道府県における学習環境格差について都道府県別に図書館と博物館の数をビジュアライズして論じる - OTCHY.NET</title>
+<title>東京とそれ以外の道府県における学習環境格差について都道府県別に図書館と博物館の数をビジュアライズして論じる - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        <p>
+<main>
+<p>
 以前から、日本国内において東京とそれ以外の地域では学習の環境に大きな違いがあるという持論を持っています。現代ではネットを利用することで地理的な制限無しに様々な情報を得ることが出来るようになりましたが、博物館・科学館・美術館のような文化施設は東京に偏在しているように感じます。東京に住みそれらへの平易なアクセスを得るというのは、学習環境としては大きなアドバンテージではないでしょうか。<br>
 </p>
 <p>
@@ -33,7 +33,7 @@
 <h4>都道府県別 100km<sup>2</sup> 当たりの図書館数</h4>
 <br>
 <p>
-</p><div id="lib-area"></div>
+</p><div id=lib-area></div>
 <p></p>
 <br>
 <p>
@@ -43,7 +43,7 @@
 <h4>都道府県別人口 10 万人当たりの図書館数</h4>
 <br>
 <p>
-</p><div id="lib-people"></div>
+</p><div id=lib-people></div>
 <p></p>
 <br>
 <p>
@@ -59,7 +59,7 @@
 <h4>都道府県別 100km<sup>2</sup> 当たりの博物館数</h4>
 <br>
 <p>
-</p><div id="museum-area"></div>
+</p><div id=museum-area></div>
 <p></p>
 <br>
 <p>
@@ -70,14 +70,14 @@
 <h4>都道府県別人口 10 万人当たりの博物館数</h4>
 <br>
 <p>
-</p><div id="museum-people"></div>
+</p><div id=museum-people></div>
 <p></p>
 <br>
 <p>
 博物館数を人口比で見ると、面積比で見た場合とは全く異なった様相になります。東京など極端に人口が多いところで数値が小さくなるのは理解しやすいとして、長野、福井、島根など誤解を恐れずに言えばマイナーな県で人口の割に多くの博物館が作られているのは何故でしょうか？これに関しては、公共事業としてハコモノのひとつとして建てられているのではないかと分析している記事がありましたが、真相は分かりません。<br><br>
 </p><blockquote>
 公共事業費とも正の相関があり、公共事業が盛んなところで博物館が多いことから、ハコモノのひとつとして博物館が建てられている可能性も考えられる。<br><br>
-<small><a href="https://todo-ran.com/t/kiji/14222" target="_blank">博物館数 [ 2015年第一位 長野県 ]｜都道府県別統計とランキングで見る県民性 [とどラン]</a></small><br>
+<small><a href=https://todo-ran.com/t/kiji/14222 target=_blank>博物館数 [ 2015年第一位 長野県 ]｜都道府県別統計とランキングで見る県民性 [とどラン]</a></small><br>
 </blockquote>
 <p></p>
 <br>
@@ -90,240 +90,18 @@
 <br>
 <h3>データ</h3>
 <dl>
-  <dt>図書館</dt><dt></dt><dd><a href="https://www.e-stat.go.jp/stat-search/files?page=1&amp;layout=datalist&amp;toukei=00400004&amp;tstat=000001017254&amp;cycle=0&amp;tclass1=000001132027&amp;tclass2=000001132043&amp;tclass3=000001132048&amp;stat_infid=000031850064" target="_blank">平成30年度 社会教育調査 設置者別所管別図書館数</a></dd>
-  <dt>博物館</dt>
-  <dd><a href="https://www.e-stat.go.jp/stat-search/files?page=1&amp;layout=datalist&amp;toukei=00400004&amp;tstat=000001017254&amp;cycle=0&amp;tclass1=000001132027&amp;tclass2=000001132043&amp;tclass3=000001132049&amp;stat_infid=000031850073" target="_blank">平成30年度 社会教育調査 設置者別博物館数</a><br><a href="https://www.e-stat.go.jp/stat-search/files?page=1&amp;layout=datalist&amp;toukei=00400004&amp;tstat=000001017254&amp;cycle=0&amp;tclass1=000001132027&amp;tclass2=000001132043&amp;tclass3=000001132050&amp;stat_infid=000031850082" target="_blank">平成30年度 社会教育調査 設置者別博物館類似施設数</a><br>※博物館には博物館法の適用を受ける登録博物館と、文部科学省の統計で博物館類似施設と呼ばれる法定外の博物館が存在するが、一般感覚で両者は区別しないのでここでは合算した値を扱う。</dd>
-  <dt>面積</dt>
-  <dd><a href="https://www.e-stat.go.jp/stat-search/files?page=1&amp;layout=datalist&amp;toukei=00200502&amp;tstat=000001124677&amp;cycle=0&amp;year=20190&amp;month=0&amp;tclass1=000001124955&amp;stat_infid=000031788972" target="_blank">2019年 社会・人口統計体系 自然環境</a><br><a href="https://www.e-stat.go.jp/stat-search/files?page=1&amp;layout=datalist&amp;toukei=00500215&amp;tstat=000001013427&amp;cycle=7&amp;tclass1=000001032270&amp;tclass2=000001032271&amp;tclass3=000001125355&amp;stat_infid=000031796557" target="_blank">平成30年 作物統計調査 田畑別耕地面積</a></dd>
-  <dt>人口</dt>
-  <dd><a href="https://www.e-stat.go.jp/stat-search/database?page=1&amp;layout=dataset&amp;toukei=00200524&amp;year=20180&amp;month=24101210&amp;statdisp_id=0003312315&amp;metadata=1&amp;data=1" target="_blank">平成30年10月1日現在人口推計</a></dd>
-  <dt>集計</dt>
-  <dd><a href="https://docs.google.com/spreadsheets/d/1649X7T-ieCF_BYRj-It1Oe5q6dKI4lMpRtINkqThts0/edit?usp=sharing" target="_blank">Google スプレッドシート</a></dd><a href="https://docs.google.com/spreadsheets/d/1649X7T-ieCF_BYRj-It1Oe5q6dKI4lMpRtINkqThts0/edit?usp=sharing" target="_blank">
-</a></dl><a href="https://docs.google.com/spreadsheets/d/1649X7T-ieCF_BYRj-It1Oe5q6dKI4lMpRtINkqThts0/edit?usp=sharing" target="_blank">
-
-<script src="https://www.gstatic.com/charts/loader.js"></script>
-<script>
-google.charts.load('current', {
-    'packages':['geochart']
-});
-google.charts.setOnLoadCallback(function() {
-    var libAreaRaw = [
-        ["都道府県","図書館数"],
-        ["北海道", 1.23],
-        ["青森", 2.04],
-        ["岩手", 2.13],
-        ["宮城", 1.87],
-        ["秋田", 2.79],
-        ["山形", 2.36],
-        ["福島", 2.43],
-        ["茨城", 2.78],
-        ["栃木", 3.16],
-        ["群馬", 3.6],
-        ["埼玉", 9.38],
-        ["千葉", 6.27],
-        ["東京", 29.42],
-        ["神奈川", 6.64],
-        ["新潟", 2.8],
-        ["富山", 4.53],
-        ["石川", 4.1],
-        ["福井", 5.49],
-        ["山梨", 7.39],
-        ["長野", 5.85],
-        ["岐阜", 4.31],
-        ["静岡", 4.6],
-        ["愛知", 4.39],
-        ["三重", 3.2],
-        ["滋賀", 6.37],
-        ["京都", 7.82],
-        ["大阪", 12.24],
-        ["兵庫", 5.25],
-        ["奈良", 5.1],
-        ["和歌山", 3.3],
-        ["鳥取", 5.39],
-        ["島根", 4.29],
-        ["岡山", 4.48],
-        ["広島", 4.77],
-        ["山口", 4.48],
-        ["徳島", 3.9],
-        ["香川", 4.28],
-        ["愛媛", 3.81],
-        ["高知", 4.61],
-        ["福岡", 5.89],
-        ["佐賀", 3.68],
-        ["長崎", 3.16],
-        ["熊本", 3.1],
-        ["大分", 2.65],
-        ["宮崎", 2.71],
-        ["鹿児島", 2.96],
-        ["沖縄", 5.06]
-    ];
-    var libPeopleRaw = [
-        ["都道府県","図書館数"],
-        ["北海道", 2.88],
-        ["青森", 2.77],
-        ["岩手", 3.79],
-        ["宮城", 1.51],
-        ["秋田", 4.89],
-        ["山形", 3.67],
-        ["福島", 3.65],
-        ["茨城", 2.22],
-        ["栃木", 2.83],
-        ["群馬", 2.92],
-        ["埼玉", 2.35],
-        ["千葉", 2.3],
-        ["東京", 2.88],
-        ["神奈川", 0.93],
-        ["新潟", 3.52],
-        ["富山", 5.43],
-        ["石川", 3.5],
-        ["福井", 4.78],
-        ["山梨", 6.49],
-        ["長野", 6.11],
-        ["岐阜", 3.56],
-        ["静岡", 2.62],
-        ["愛知", 1.3],
-        ["三重", 2.62],
-        ["滋賀", 3.54],
-        ["京都", 2.62],
-        ["大阪", 1.67],
-        ["兵庫", 1.95],
-        ["奈良", 2.46],
-        ["和歌山", 2.78],
-        ["鳥取", 5.36],
-        ["島根", 5.88],
-        ["岡山", 3.69],
-        ["広島", 2.98],
-        ["山口", 4.01],
-        ["徳島", 3.8],
-        ["香川", 3.12],
-        ["愛媛", 3.33],
-        ["高知", 5.81],
-        ["福岡", 2.23],
-        ["佐賀", 3.66],
-        ["長崎", 2.83],
-        ["熊本", 2.96],
-        ["大分", 2.88],
-        ["宮崎", 2.96],
-        ["鹿児島", 3.9],
-        ["沖縄", 2.76]
-    ];
-    var museumAreaRaw = [
-        ["都道府県","博物館数"],
-        ["北海道", 2.69],
-        ["青森", 5.53],
-        ["岩手", 4.71],
-        ["宮城", 6.93],
-        ["秋田", 5.3],
-        ["山形", 4.77],
-        ["福島", 4.75],
-        ["茨城", 4.48],
-        ["栃木", 8.85],
-        ["群馬", 5.75],
-        ["埼玉", 7.09],
-        ["千葉", 5.01],
-        ["東京", 23.06],
-        ["神奈川", 13.91],
-        ["新潟", 7.37],
-        ["富山", 8.9],
-        ["石川", 13.75],
-        ["福井", 13.2],
-        ["山梨", 13.66],
-        ["長野", 16.01],
-        ["岐阜", 10.51],
-        ["静岡", 9.33],
-        ["愛知", 9.63],
-        ["三重", 6.67],
-        ["滋賀", 9.81],
-        ["京都", 16.55],
-        ["大阪", 8.99],
-        ["兵庫", 9.52],
-        ["奈良", 7.72],
-        ["和歌山", 4.95],
-        ["鳥取", 8.09],
-        ["島根", 9.02],
-        ["岡山", 7.99],
-        ["広島", 7.66],
-        ["山口", 7.98],
-        ["徳島", 6.4],
-        ["香川", 7.85],
-        ["愛媛", 7.88],
-        ["高知", 4.61],
-        ["福岡", 7.02],
-        ["佐賀", 7],
-        ["長崎", 7.49],
-        ["熊本", 5.55],
-        ["大分", 6.43],
-        ["宮崎", 4.66],
-        ["鹿児島", 5.6],
-        ["沖縄", 8.1]
-    ];
-    var museumPeopleRaw = [
-        ["都道府県","博物館数"],
-        ["北海道", 6.28],
-        ["青森", 7.52],
-        ["岩手", 8.38],
-        ["宮城", 5.61],
-        ["秋田", 9.28],
-        ["山形", 7.43],
-        ["福島", 7.14],
-        ["茨城", 3.58],
-        ["栃木", 7.91],
-        ["群馬", 4.66],
-        ["埼玉", 1.77],
-        ["千葉", 1.84],
-        ["東京", 2.26],
-        ["神奈川", 1.94],
-        ["新潟", 9.26],
-        ["富山", 10.67],
-        ["石川", 11.72],
-        ["福井", 11.5],
-        ["山梨", 12],
-        ["長野", 16.72],
-        ["岐阜", 8.66],
-        ["静岡", 5.33],
-        ["愛知", 2.85],
-        ["三重", 5.47],
-        ["滋賀", 5.45],
-        ["京都", 5.56],
-        ["大阪", 1.23],
-        ["兵庫", 3.54],
-        ["奈良", 3.73],
-        ["和歌山", 4.17],
-        ["鳥取", 8.04],
-        ["島根", 12.35],
-        ["岡山", 6.59],
-        ["広島", 4.79],
-        ["山口", 7.15],
-        ["徳島", 6.25],
-        ["香川", 5.72],
-        ["愛媛", 6.88],
-        ["高知", 5.81],
-        ["福岡", 2.66],
-        ["佐賀", 6.96],
-        ["長崎", 6.71],
-        ["熊本", 5.29],
-        ["大分", 6.99],
-        ["宮崎", 5.09],
-        ["鹿児島", 7.37],
-        ["沖縄", 4.42]
-    ];
-    var libArea = google.visualization.arrayToDataTable(libAreaRaw);
-    var libPeople = google.visualization.arrayToDataTable(libPeopleRaw);
-    var museumArea = google.visualization.arrayToDataTable(museumAreaRaw);
-    var museumPeople = google.visualization.arrayToDataTable(museumPeopleRaw);
-    var options = {
-        region: 'JP',
-        displayMode: 'regions',
-        backgroundColor: '#ebf7fe',
-        resolution: 'provinces',
-        colors:['white','blue']
-    };
-    new google.visualization.GeoChart(document.getElementById('lib-area')).draw(libArea, options);
-    new google.visualization.GeoChart(document.getElementById('lib-people')).draw(libPeople, options);
-    new google.visualization.GeoChart(document.getElementById('museum-area')).draw(museumArea, options);
-    new google.visualization.GeoChart(document.getElementById('museum-people')).draw(museumPeople, options);
-});
-</script></a>
-    </main>
+<dt>図書館</dt><dt></dt><dd><a href="https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00400004&tstat=000001017254&cycle=0&tclass1=000001132027&tclass2=000001132043&tclass3=000001132048&stat_infid=000031850064" target=_blank>平成30年度 社会教育調査 設置者別所管別図書館数</a></dd>
+<dt>博物館</dt>
+<dd><a href="https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00400004&tstat=000001017254&cycle=0&tclass1=000001132027&tclass2=000001132043&tclass3=000001132049&stat_infid=000031850073" target=_blank>平成30年度 社会教育調査 設置者別博物館数</a><br><a href="https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00400004&tstat=000001017254&cycle=0&tclass1=000001132027&tclass2=000001132043&tclass3=000001132050&stat_infid=000031850082" target=_blank>平成30年度 社会教育調査 設置者別博物館類似施設数</a><br>※博物館には博物館法の適用を受ける登録博物館と、文部科学省の統計で博物館類似施設と呼ばれる法定外の博物館が存在するが、一般感覚で両者は区別しないのでここでは合算した値を扱う。</dd>
+<dt>面積</dt>
+<dd><a href="https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00200502&tstat=000001124677&cycle=0&year=20190&month=0&tclass1=000001124955&stat_infid=000031788972" target=_blank>2019年 社会・人口統計体系 自然環境</a><br><a href="https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00500215&tstat=000001013427&cycle=7&tclass1=000001032270&tclass2=000001032271&tclass3=000001125355&stat_infid=000031796557" target=_blank>平成30年 作物統計調査 田畑別耕地面積</a></dd>
+<dt>人口</dt>
+<dd><a href="https://www.e-stat.go.jp/stat-search/database?page=1&layout=dataset&toukei=00200524&year=20180&month=24101210&statdisp_id=0003312315&metadata=1&data=1" target=_blank>平成30年10月1日現在人口推計</a></dd>
+<dt>集計</dt>
+<dd><a href="https://docs.google.com/spreadsheets/d/1649X7T-ieCF_BYRj-It1Oe5q6dKI4lMpRtINkqThts0/edit?usp=sharing" target=_blank>Google スプレッドシート</a></dd><a href="https://docs.google.com/spreadsheets/d/1649X7T-ieCF_BYRj-It1Oe5q6dKI4lMpRtINkqThts0/edit?usp=sharing" target=_blank>
+</a></dl><a href="https://docs.google.com/spreadsheets/d/1649X7T-ieCF_BYRj-It1Oe5q6dKI4lMpRtINkqThts0/edit?usp=sharing" target=_blank>
+<script src=https://www.gstatic.com/charts/loader.js></script>
+<script>google.charts.load("current",{packages:["geochart"]}),google.charts.setOnLoadCallback(function(){var a=google.visualization.arrayToDataTable([["都道府県","図書館数"],["北海道",1.23],["青森",2.04],["岩手",2.13],["宮城",1.87],["秋田",2.79],["山形",2.36],["福島",2.43],["茨城",2.78],["栃木",3.16],["群馬",3.6],["埼玉",9.38],["千葉",6.27],["東京",29.42],["神奈川",6.64],["新潟",2.8],["富山",4.53],["石川",4.1],["福井",5.49],["山梨",7.39],["長野",5.85],["岐阜",4.31],["静岡",4.6],["愛知",4.39],["三重",3.2],["滋賀",6.37],["京都",7.82],["大阪",12.24],["兵庫",5.25],["奈良",5.1],["和歌山",3.3],["鳥取",5.39],["島根",4.29],["岡山",4.48],["広島",4.77],["山口",4.48],["徳島",3.9],["香川",4.28],["愛媛",3.81],["高知",4.61],["福岡",5.89],["佐賀",3.68],["長崎",3.16],["熊本",3.1],["大分",2.65],["宮崎",2.71],["鹿児島",2.96],["沖縄",5.06]]),e=google.visualization.arrayToDataTable([["都道府県","図書館数"],["北海道",2.88],["青森",2.77],["岩手",3.79],["宮城",1.51],["秋田",4.89],["山形",3.67],["福島",3.65],["茨城",2.22],["栃木",2.83],["群馬",2.92],["埼玉",2.35],["千葉",2.3],["東京",2.88],["神奈川",.93],["新潟",3.52],["富山",5.43],["石川",3.5],["福井",4.78],["山梨",6.49],["長野",6.11],["岐阜",3.56],["静岡",2.62],["愛知",1.3],["三重",2.62],["滋賀",3.54],["京都",2.62],["大阪",1.67],["兵庫",1.95],["奈良",2.46],["和歌山",2.78],["鳥取",5.36],["島根",5.88],["岡山",3.69],["広島",2.98],["山口",4.01],["徳島",3.8],["香川",3.12],["愛媛",3.33],["高知",5.81],["福岡",2.23],["佐賀",3.66],["長崎",2.83],["熊本",2.96],["大分",2.88],["宮崎",2.96],["鹿児島",3.9],["沖縄",2.76]]),o=google.visualization.arrayToDataTable([["都道府県","博物館数"],["北海道",2.69],["青森",5.53],["岩手",4.71],["宮城",6.93],["秋田",5.3],["山形",4.77],["福島",4.75],["茨城",4.48],["栃木",8.85],["群馬",5.75],["埼玉",7.09],["千葉",5.01],["東京",23.06],["神奈川",13.91],["新潟",7.37],["富山",8.9],["石川",13.75],["福井",13.2],["山梨",13.66],["長野",16.01],["岐阜",10.51],["静岡",9.33],["愛知",9.63],["三重",6.67],["滋賀",9.81],["京都",16.55],["大阪",8.99],["兵庫",9.52],["奈良",7.72],["和歌山",4.95],["鳥取",8.09],["島根",9.02],["岡山",7.99],["広島",7.66],["山口",7.98],["徳島",6.4],["香川",7.85],["愛媛",7.88],["高知",4.61],["福岡",7.02],["佐賀",7],["長崎",7.49],["熊本",5.55],["大分",6.43],["宮崎",4.66],["鹿児島",5.6],["沖縄",8.1]]),l=google.visualization.arrayToDataTable([["都道府県","博物館数"],["北海道",6.28],["青森",7.52],["岩手",8.38],["宮城",5.61],["秋田",9.28],["山形",7.43],["福島",7.14],["茨城",3.58],["栃木",7.91],["群馬",4.66],["埼玉",1.77],["千葉",1.84],["東京",2.26],["神奈川",1.94],["新潟",9.26],["富山",10.67],["石川",11.72],["福井",11.5],["山梨",12],["長野",16.72],["岐阜",8.66],["静岡",5.33],["愛知",2.85],["三重",5.47],["滋賀",5.45],["京都",5.56],["大阪",1.23],["兵庫",3.54],["奈良",3.73],["和歌山",4.17],["鳥取",8.04],["島根",12.35],["岡山",6.59],["広島",4.79],["山口",7.15],["徳島",6.25],["香川",5.72],["愛媛",6.88],["高知",5.81],["福岡",2.66],["佐賀",6.96],["長崎",6.71],["熊本",5.29],["大分",6.99],["宮崎",5.09],["鹿児島",7.37],["沖縄",4.42]]),t={region:"JP",displayMode:"regions",backgroundColor:"#ebf7fe",resolution:"provinces",colors:["white","blue"]};new google.visualization.GeoChart(document.getElementById("lib-area")).draw(a,t),new google.visualization.GeoChart(document.getElementById("lib-people")).draw(e,t),new google.visualization.GeoChart(document.getElementById("museum-area")).draw(o,t),new google.visualization.GeoChart(document.getElementById("museum-people")).draw(l,t)})</script></a>
+</main>
 </body>
 </html>

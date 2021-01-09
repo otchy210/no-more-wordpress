@@ -1,15 +1,15 @@
 
 <html>
 <head>
-    <title>サーバサイド高機能エディタ ecoder インストール方法 - OTCHY.NET</title>
+<title>サーバサイド高機能エディタ ecoder インストール方法 - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        <h4>ecoder って何？</h4>
-<a href="http://phpspot.org/blog/archives/2009/03/ecoder.html" target="_blank">ブラウザ上でソースコード編集が可能な開発環境を提供「ecoder」:phpspot開発日誌</a> で紹介されている、激しく便利そうなエディタです。<br>
+<main>
+<h4>ecoder って何？</h4>
+<a href=http://phpspot.org/blog/archives/2009/03/ecoder.html target=_blank>ブラウザ上でソースコード編集が可能な開発環境を提供「ecoder」:phpspot開発日誌</a> で紹介されている、激しく便利そうなエディタです。<br>
 ブラウザ上から、こんな感じでサーバ上のファイルを直接編集することができます。<br>
 <br>
-<a href="//s.otchy.net/uploads/2009/03/edit_html.gif"><img src="//s.otchy.net/uploads/2009/03/edit_html-150x150.gif" alt="HTML の編集" title="HTML の編集" width="150" height="150" class="alignnone size-thumbnail wp-image-443"></a><a href="//s.otchy.net/uploads/2009/03/edit_css.gif"><img src="//s.otchy.net/uploads/2009/03/edit_css-150x150.gif" alt="CSS の編集" title="CSS の編集" width="150" height="150" class="alignnone size-thumbnail wp-image-444"></a><a href="//s.otchy.net/uploads/2009/03/edit_js.gif"><img src="//s.otchy.net/uploads/2009/03/edit_js-150x150.gif" alt="JavaScript の編集" title="JavaScript の編集" width="150" height="150" class="alignnone size-thumbnail wp-image-445"></a><a href="//s.otchy.net/uploads/2009/03/edit_php.gif"><img src="//s.otchy.net/uploads/2009/03/edit_php-150x150.gif" alt="PHP の編集" title="PHP の編集" width="150" height="150" class="alignnone size-thumbnail wp-image-446"></a><br>
+<a href=//s.otchy.net/uploads/2009/03/edit_html.gif><img src=//s.otchy.net/uploads/2009/03/edit_html-150x150.gif alt="HTML の編集" title="HTML の編集" width=150 height=150 class="alignnone size-thumbnail wp-image-443"></a><a href=//s.otchy.net/uploads/2009/03/edit_css.gif><img src=//s.otchy.net/uploads/2009/03/edit_css-150x150.gif alt="CSS の編集" title="CSS の編集" width=150 height=150 class="alignnone size-thumbnail wp-image-444"></a><a href=//s.otchy.net/uploads/2009/03/edit_js.gif><img src=//s.otchy.net/uploads/2009/03/edit_js-150x150.gif alt="JavaScript の編集" title="JavaScript の編集" width=150 height=150 class="alignnone size-thumbnail wp-image-445"></a><a href=//s.otchy.net/uploads/2009/03/edit_php.gif><img src=//s.otchy.net/uploads/2009/03/edit_php-150x150.gif alt="PHP の編集" title="PHP の編集" width=150 height=150 class="alignnone size-thumbnail wp-image-446"></a><br>
 <br>
 順に、HTML / CSS / JavaScript / PHP を編集している様子です。これらのファイルが、色分けされた状態でブラウザで編集できるなんて、よだれが止まりません。<br>
 <br>
@@ -17,13 +17,13 @@
 <br>
 <h4>対象者</h4>
 <ul>
-	<li>PHP の動作するサーバを使用できる</li>
-	<li>Linux 設定について基本的な事を理解している or 自分で調べられる</li>
-	<li>Apache の設定について基本的な事を理解している or 自分で調べられる</li>
+<li>PHP の動作するサーバを使用できる</li>
+<li>Linux 設定について基本的な事を理解している or 自分で調べられる</li>
+<li>Apache の設定について基本的な事を理解している or 自分で調べられる</li>
 </ul>
 <br>
 <h4>ファイルのダウンロードと展開</h4>
-<a href="http://ecoder.gmeditor.com/">ecoder のウェブサイト</a>から、tar.gz ファイルをダウンロードして、ecoder を配置したい場所に展開します。<br>
+<a href=http://ecoder.gmeditor.com/ >ecoder のウェブサイト</a>から、tar.gz ファイルをダウンロードして、ecoder を配置したい場所に展開します。<br>
 現在の最新版 (ver 0.3.2) の直 DL は http://downloads.sourceforge.net/ecoder/ecoder_0.3.2.tar.gz?use_mirror=jaist&filesize=406946 ですが、まだベータ版の状態なので、インストール時点での最新版を調べて DL した方が良いです。<br>
 <br>
 Windows で作業をする場合は、ブラウザから DL して展開したファイルに対して、後述の設定変更を行った後に、FTP なりでアップすると良いでしょう。<br>
@@ -33,7 +33,7 @@ DL するパスとか展開するパスは、それぞれの環境に合わせ�
 # cd /usr/local/src/
 # mkdir ecoder_0.3.2
 # cd ecoder_0.3.2
-# wget http://downloads.sourceforge.net/ecoder/ecoder_0.3.2.tar.gz?use_mirror=jaist&amp;filesize=406946
+# wget http://downloads.sourceforge.net/ecoder/ecoder_0.3.2.tar.gz?use_mirror=jaist&filesize=406946
 # tar xfvz ecoder_0.3.2.tar.gz
 # mv ecoder_0.3.2.tar.gz ../
 # cd ../
@@ -94,11 +94,11 @@ DL するパスとか展開するパスは、それぞれの環境に合わせ�
 以上を踏まえた、.htaccess の編集箇所は以下の通りです。<br>
 <br>
 ログファイルの出力先の権限を設定<br>
-<pre>&lt;Files /var/log/ecoder/error.log&gt;
+<pre>&lt;Files /var/log/ecoder/error.log>
   Order allow,deny
   Deny from all
   Satisfy All
-&lt;/Files&gt;</pre>
+&lt;/Files></pre>
 ログファイルの出力先を設定<br>
 <pre>php_value error_log /var/log/ecoder/error.log</pre>
 BASIC 認証を追加<br>
@@ -108,10 +108,10 @@ AuthName "ecoder login"
 AuthType Basic
 require valid-user
 
-&lt;Files .htpasswd&gt;
+&lt;Files .htpasswd>
   order allow,deny
   deny from all
-&lt;/Files&gt;</pre>
+&lt;/Files></pre>
 <br>
 さらに、.htpasswd ファイルを作成する必要がありますが、ここでは詳しく説明しません。<br>
 Apache 同梱の htpasswd コマンドを使うのが一番楽かと思います。<br>
@@ -121,8 +121,8 @@ Apache 同梱の htpasswd コマンドを使うのが一番楽かと思います
 ファイル一式を配置したフォルダをブラウザから開けば、高機能なエディタが利用できます。<br>
 もし何らかの設定が間違っている場合、ecoder 側で結構丁寧なエラーメッセージを表示してくれるので、それを元に修正していけば大丈夫です。<br>
 <br>
-この ecoder と <a href="http://www.ajaxplorer.info/" target="_blank">AjaXplorer</a> を組み合わせて使えば、簡単な開発はもう Web 上で完結できるんじゃないかという気がしてきますね。<br>
+この ecoder と <a href=http://www.ajaxplorer.info/ target=_blank>AjaXplorer</a> を組み合わせて使えば、簡単な開発はもう Web 上で完結できるんじゃないかという気がしてきますね。<br>
 すばらしい時代になったものです。
-    </main>
+</main>
 </body>
 </html>

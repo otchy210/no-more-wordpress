@@ -1,22 +1,22 @@
 
 <html>
 <head>
-    <title>Google Chart API を使って自サイトの合計はてブ数をグラフ化する - OTCHY.NET</title>
+<title>Google Chart API を使って自サイトの合計はてブ数をグラフ化する - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        日頃、自サイトにはてブが付いて増えていく様子を、<a href="http://tophatenar.com/" target="_blank">TopHatenar</a> でグラフを見てほくそ笑んでいたりしたのですが、TopHatenar は更新が遅れることが多く、残念な気持ちになることも度々ありました。<br>
+<main>
+日頃、自サイトにはてブが付いて増えていく様子を、<a href=http://tophatenar.com/ target=_blank>TopHatenar</a> でグラフを見てほくそ笑んでいたりしたのですが、TopHatenar は更新が遅れることが多く、残念な気持ちになることも度々ありました。<br>
 <br>
-そこで以前、せめて記録だけは残そうと、<a href="/20090716/record-total-hatebu-count-to-csv-file/">自分のサイトの合計はてブ数を淡々と csv に記録し続ける</a>というエントリを書いて、それ以来ずっと記録しています。<br>
+そこで以前、せめて記録だけは残そうと、<a href=/20090716/record-total-hatebu-count-to-csv-file/ >自分のサイトの合計はてブ数を淡々と csv に記録し続ける</a>というエントリを書いて、それ以来ずっと記録しています。<br>
 それでまあ、そろそろデータも貯まってきたので予告通り(？)、グラフ化してみる事にしました。<br>
 ブログパーツのようにして、このサイトの右メニューにも貼り付けてあります。<br>
 <br>
 大きく出すとこんな感じです。<br>
-<iframe src="/hatebulog/hatebulog_big.php" style="width:400px;height:300px;border:0;margin:10px;"></iframe><br>
+<iframe src=/hatebulog/hatebulog_big.php style=width:400px;height:300px;border:0;margin:10px></iframe><br>
 <br>
 当初、PHP で何らかのライブラリを使用して楽をしようと思ったのですが、自分の希望を全て満たすものが見あたらなかったので、自力で Google Chart API を使用しています。<br>
 <br>
-グラフの元になるデータは、<a href="/20090716/record-total-hatebu-count-to-csv-file/">自分のサイトの合計はてブ数を淡々と csv に記録し続ける</a>で取得したものです。<br>
+グラフの元になるデータは、<a href=/20090716/record-total-hatebu-count-to-csv-file/ >自分のサイトの合計はてブ数を淡々と csv に記録し続ける</a>で取得したものです。<br>
 下記のようなファイルになっています。<br>
 <pre>2009-07-16,204
 2009-07-17,205
@@ -29,7 +29,7 @@
 これを元に、Google Chart API のパラメータを生成して、グラフを表示しています。<br>
 以下にソースを載せておきます。<br>
 <br>
-<pre class="height_middle">&lt;?php
+<pre class=height_middle>&lt;?php
 
 /* グラフ設定 */
 $api = 'http://chart.apis.google.com/chart?'; // Google Chart API の URL
@@ -79,27 +79,27 @@ $yDiv = number_format((100.0 / (count($yAxis)-1)-0.1), 1); // Y 軸の分割
 
 /* タグ を生成 */
 $url = $api . 'chs=' . $width . 'x' . $height .
-	'&amp;amp;cht=' . $type .
-	'&amp;amp;chd=t:' . implode(',', $normalizeData) .
-	'&amp;amp;chxt=x,y&amp;amp;chxl=0:|' . $firstDate . '|' . $lastDate . '|1:|' . implode('|', $yAxis) .
-	'&amp;amp;chg=0,' . $yDiv
+	'&ampamp;cht=' . $type .
+	'&ampamp;chd=t:' . implode(',', $normalizeData) .
+	'&ampamp;chxt=x,y&ampamp;chxl=0:|' . $firstDate . '|' . $lastDate . '|1:|' . implode('|', $yAxis) .
+	'&ampamp;chg=0,' . $yDiv
 ;
-$tag = '&lt;img src="' . $url . '" width="' . $width . '" height="' . $height . '" alt="" /&gt;'
-?&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;style&gt;
+$tag = '&lt;img src="' . $url . '" width="' . $width . '" height="' . $height . '" alt="" />'
+?>
+&lt;html>
+&lt;head>
+&lt;style>
 * {
 	margin: 0;
 	padding: 0;
 	border: 0;
 }
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;?php echo $tag ?&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+&lt;/style>
+&lt;/head>
+&lt;body>
+&lt;?php echo $tag ?>
+&lt;/body>
+&lt;/html>
 </pre>
 <br>
 ソース中にざっくりとコメントを書いておきましたが、ポイントになるのは、Google Chaart API の線グラフでは、Y 軸の値が、0.0～100.0 と固定されていて、グラフを描画する値をその範囲の値に正規化しないといけない点です。<br>
@@ -108,12 +108,12 @@ $tag = '&lt;img src="' . $url . '" width="' . $width . '" height="' . $height . 
 <br>
 X 軸についてはシンプルに、最初と最後の日付を載せているだけです。<br>
 <br>
-<del datetime="2009-08-04T14:01:17+00:00">また、今回は元データが整数値なのですが、汎用性を考えて、仮に小数の値が元データになっても問題なく動作するように書いたつもりなので、小数のデータであってもきっと上手く動作するでしょう。</del><br>
+<del datetime=2009-08-04T14:01:17+00:00>また、今回は元データが整数値なのですが、汎用性を考えて、仮に小数の値が元データになっても問題なく動作するように書いたつもりなので、小数のデータであってもきっと上手く動作するでしょう。</del><br>
 整数値前提となっている部分がありました…。<br>
 <br>
 <h4>追記</h4>
 元データの行数が増えてくると、グラフとして描画するのが苦しくなってくることが予想されます。<br>
 その場合、csv を保存した後に、tail -n 60 hatebulog.csv > hatebulog_tail.csv のようにしておいて、最新の何件かを取り出すようにするといいでしょう。
-    </main>
+</main>
 </body>
 </html>

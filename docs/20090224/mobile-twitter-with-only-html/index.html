@@ -1,16 +1,16 @@
 
 <html>
 <head>
-    <title>HTML のみで携帯から Twitter する - OTCHY.NET</title>
+<title>HTML のみで携帯から Twitter する - OTCHY.NET</title>
 </head>
 <body>
-    <main>
-        ちょっと携帯から Twitter に投稿してみたいと思って、色々と方法を調べてみました。<br>
+<main>
+ちょっと携帯から Twitter に投稿してみたいと思って、色々と方法を調べてみました。<br>
 携帯用の Web インターフェースや、メールから投稿できるもの、専用アプリなどいろいろあったのですが、どれもいまいち自分のニーズにしっくりきません。<br>
 <ul>
-	<li>よく分からんサービスに ID とかパスワードを預けたり送ったりするのは不安だ</li>
-	<li>単につぶやきたいだけだから、多機能である必要はない</li>
-	<li>そもそもパケホじゃないので、なるべく無駄なパケットは使いたくない</li>
+<li>よく分からんサービスに ID とかパスワードを預けたり送ったりするのは不安だ</li>
+<li>単につぶやきたいだけだから、多機能である必要はない</li>
+<li>そもそもパケホじゃないので、なるべく無駄なパケットは使いたくない</li>
 </ul>
 なので、自分のニーズにしっくりくるものを自作することにしました。<br>
 もちろん、PHP やら Perl やらを使ってごりごりやることも出来るんですが、簡単に (x)HTML だけで事が済みそうだったので、HTML だけで作成することに決定。<br>
@@ -22,30 +22,30 @@
 ひたすら軽く軽くシンプルにをモットーとして作られているので、投稿結果の処理が入っていません。(というか、HTML だけでそこまで出来ません。)<br>
 投稿後は端末上で「未対応のフォーマット」的なエラーになるかと思います。<br>
 アップしたページを画面メモなりお気に入りなりで携帯に保存しておけば、必要最小限のパケットで、Twitter に投稿することが可能です。<br>
-<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
-&lt;html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"&gt;
-&lt;head&gt;
-    &lt;meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" /&gt;
-    &lt;title&gt;モバT&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div&gt;モバT&lt;/div&gt;
-&lt;form action="http://twitter.com/statuses/update.xml" method="POST"&gt;
-&lt;input type="text" name="status" /&gt;&lt;input type="submit" value="投稿" /&gt;
-&lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+&lt;html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+&lt;head>
+    &lt;meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    &lt;title>モバT&lt;/title>
+&lt;/head>
+&lt;body>
+&lt;div>モバT&lt;/div>
+&lt;form action="http://twitter.com/statuses/update.xml" method="POST">
+&lt;input type="text" name="status" />&lt;input type="submit" value="投稿" />
+&lt;/form>
+&lt;/body>
+&lt;/html></pre>
 <h4>制限事項</h4>
 UTF-8 ＋xhtml が読めない端末だと使用できません。最近の 3G 携帯なら特に問題ないでしょう。<br>
 BASIC 認証に対応していない端末では使用できません。これも最近のものなら特に問題ないようです。<br>
 au では使用できません。ページのエンコードが UTF-8 であっても、フォームの送信は Shift_JIS で行うという謎仕様のせいです。<br>
 <h4>参考ページ</h4>
 <ul>
-	<li><a href="http://watcher.moe-nifty.com/memo/2007/04/twitter_api.html" target="_blank">Twitter API 仕様書 (勝手に日本語訳シリーズ)</a></li>
-	<li><a href="http://www.marguerite.jp/Nihongo/WWW/Mobile/BasicAuthentication.html" target="_blank">携帯電話でのベーシック認証</a></li>
-	<li><a href="http://muneto.murakami.biz/mobile/xhtml-css-5.php" target="_blank">【携帯サイト制作】第五回 auでutf-8のページからformで日本語を渡すと文字化けorz</a></li>
+<li><a href=http://watcher.moe-nifty.com/memo/2007/04/twitter_api.html target=_blank>Twitter API 仕様書 (勝手に日本語訳シリーズ)</a></li>
+<li><a href=http://www.marguerite.jp/Nihongo/WWW/Mobile/BasicAuthentication.html target=_blank>携帯電話でのベーシック認証</a></li>
+<li><a href=http://muneto.murakami.biz/mobile/xhtml-css-5.php target=_blank>【携帯サイト制作】第五回 auでutf-8のページからformで日本語を渡すと文字化けorz</a></li>
 </ul>
-    </main>
+</main>
 </body>
 </html>
