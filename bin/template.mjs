@@ -36,16 +36,29 @@ const minifyIfNeeded = (html) => {
     return minify(html, minifyOptions);
 };
 
-const page = ({title, body, category, time, tags}) => {
+const page = ({title, body, category, time, tags, prev, next}) => {
     return minifyIfNeeded(`
 <html>
 <head>
     <title>${title ? `${title} - ` : ''}OTCHY.NET</title>
 </head>
 <body>
+    <header>
+        <a href="/">HOME</a>
+    </header>
+    <nav>
+    </nav>
     <main>
         ${body}
+        ${prev ? `<div class="prev">
+            <a href="${prev.path}">${prev.title}</a>
+        </div>` : ''}
+        ${next ? `<div class="next">
+            <a href="${next.path}">${next.title}</a>
+        </div>` : ''}
     </main>
+    <footer>
+    </footer>
 </body>
 </html>
 `);
@@ -54,7 +67,7 @@ const page = ({title, body, category, time, tags}) => {
 const article = ({title, body, path}) => {
     return `
 <article>
-    <h1><a href="/${path}">${title}</a></h1>
+    <h1><a href="${path}">${title}</a></h1>
     <p>
         ${body}
     </p>

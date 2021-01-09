@@ -6,7 +6,9 @@
   "scripts": {
     "convert": "node bin/convert.mjs",
     "build": "node bin/build.mjs --mode=prod",
-    "build:dev": "node bin/build.mjs --mode=dev"
+    "build:dev": "node bin/build.mjs --mode=dev",
+    "start": "node bin/start.mjs --mode=prod",
+    "start:dev": "node bin/start.mjs --mode=dev"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   },
   "homepage": "https://github.com/otchy210/no-more-wordpress#readme",
   "devDependencies": {
+    "express": "^4.17.1",
     "html-minifier": "^4.0.0",
     "jsdom": "^16.4.0",
     "mysql": "^2.18.1"

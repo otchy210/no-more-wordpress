@@ -34,9 +34,9 @@ const handleDir = async (dirPaths, posts) => {
 };
 
 const handlePost = async (dirPaths) => {
-    const path = dirPaths.join('/');
-    const dataDir = `${DATA_ROOT}/${path}`;
-    const contentPath = `${dataDir}/content.html`;
+    const path = `/${dirPaths.join('/')}/`;
+    const dataDir = `${DATA_ROOT}${path}`;
+    const contentPath = `${dataDir}content.html`;
     const stat = await fs.lstat(contentPath).catch(() => {/* ignore */});
     if (!stat || !stat.isFile()) {
         return false;
@@ -95,17 +95,32 @@ const buildBlogLists = async (blogPosts) => {
         }
         offset += 5;
         const page = offset / 5;
-        const html = template.page({
-            body: articles.join('\n')
-        });
+        const hasPrev = offset <= blogPosts.length;
+        const prev = hasPrev ? {
+            path: getBlogListPath(page + 1),
+            title: '古い投稿'
+        } : null;
+        const next = page !== 1 ? {
+            path: getBlogListPath(page - 1),
+            title: '新しい投稿'
+        } : null;
         const htmlDir = page === 1 ? DOCS_ROOT : `${DOCS_ROOT}/page/${page}`;
+        const html = template.page({
+            body: articles.join('\n'),
+            prev,
+            next
+        });
         await fs.mkdir(htmlDir, {recursive: true});
         const htmlPath = `${htmlDir}/index.html`;
         await fs.writeFile(htmlPath, html);
-        if (offset > blogPosts.length) {
+        if (!hasPrev) {
             break;
         }
     }
+};
+
+const getBlogListPath = (page) => {
+    return page === 1 ? '/' : `/page/${page}/`;
 };
 
 main().catch(err => {
