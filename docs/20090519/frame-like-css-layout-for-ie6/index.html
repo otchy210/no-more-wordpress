@@ -4,6 +4,11 @@
 <title>css による疑似フレーム IE6 標準準拠モード完全対応版 (CSS ハック / JavaScript未使用) - OTCHY.NET</title>
 </head>
 <body>
+<header>
+<a href=/ >HOME</a>
+</header>
+<nav>
+</nav>
 <main>
 css のみを使って、ヘッダ / メニュー / フッタをスクロールしないように固定して疑似フレームを表現する手法は position: fixed による方法が広く知られています。<br>
 この方法は、手軽に疑似フレームを表現できる一方で、IE6 が対応していないという非常に残念な現実があり、対象ブラウザから IE6 を完全に外してしまえるような状況ならともかく、(特に仕事の上などでは) IE6 を対象から外せない事も多いので頭痛の種でした。<br>
@@ -119,5 +124,7 @@ expression は、filter 関数などと同様の IE 独自拡張で、任意の 
 ソースの全容は<a href=http://www.otchy.net/sample/ie6fixed.html target=_blank>サンプル</a>をダウンロードして確認して下さい。<br>
 また、実際に使用する時はもちろん、css を直接 HTML に書かず、外部ファイルに切り出した方がよいです。<br>
 </main>
+<footer>
+</footer>
 </body>
 </html>

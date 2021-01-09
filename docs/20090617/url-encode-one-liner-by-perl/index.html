@@ -4,6 +4,11 @@
 <title>テキストファイルを URL エンコードして保存する perl のワンライナー - OTCHY.NET</title>
 </head>
 <body>
+<header>
+<a href=/ >HOME</a>
+</header>
+<nav>
+</nav>
 <main>
 <pre>cat list.txt | perl -ne 's/([^\w ])/"%".unpack("H2",$1)/eg;s/ /\+/g;print;print "\n";' > result.txt</pre>
 <br>
@@ -12,5 +17,7 @@
 Linux で使う事がほとんどだと思うので、Linux 版です。<br>
 Windows の場合、引数をダブルクォートでくくったほうがうまくいったのですが、Linux 上では、逆にシングルクォートじゃないとダメでした。
 </main>
+<footer>
+</footer>
 </body>
 </html>
