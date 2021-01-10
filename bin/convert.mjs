@@ -59,7 +59,10 @@ const getTerms = async (conn) => {
                 if (!terms.posts[id]) {
                     terms.posts[id] = {};
                 }
-                terms.posts[id].category = slug;
+                if (!terms.posts[id].categories) {
+                    terms.posts[id].categories = [];
+                }
+                terms.posts[id].categories.push(slug);
                 if (terms.categories[slug]) {
                     return;
                 }
