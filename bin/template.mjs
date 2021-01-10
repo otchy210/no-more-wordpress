@@ -64,12 +64,12 @@ const page = ({title, body, category, time, tags, prev, next}) => {
 `);
 };
 
-const article = ({title, body, path}) => {
+const article = ({title, truncatedBody, path}) => {
     return `
 <article>
     <h1><a href="${path}">${title}</a></h1>
     <p>
-        ${body}
+        ${truncatedBody}
     </p>
 </article>
 `;
