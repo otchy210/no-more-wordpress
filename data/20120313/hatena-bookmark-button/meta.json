@@ -1,5 +1,7 @@
 {
-  "category": "info",
+  "categories": [
+    "info"
+  ],
   "tags": [
     "hatebu"
   ],

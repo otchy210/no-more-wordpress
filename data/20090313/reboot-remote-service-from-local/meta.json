@@ -1,5 +1,8 @@
 {
-  "category": "dev",
+  "categories": [
+    "tech",
+    "dev"
+  ],
   "tags": [
     "synergy",
     "%e3%83%aa%e3%83%a2%e3%83%bc%e3%83%88%e3%82%b3%e3%83%b3%e3%83%94%e3%83%a5%e3%83%bc%e3%82%bf",

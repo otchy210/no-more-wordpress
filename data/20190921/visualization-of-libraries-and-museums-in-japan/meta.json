@@ -1,5 +1,7 @@
 {
-  "category": "lifestyle",
+  "categories": [
+    "lifestyle"
+  ],
   "type": "post",
   "time": 1569030651000
 }

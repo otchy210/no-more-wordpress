@@ -1,5 +1,7 @@
 {
-  "category": "english",
+  "categories": [
+    "english"
+  ],
   "type": "post",
   "time": 1413214577000
 }

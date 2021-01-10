@@ -1,5 +1,7 @@
 {
-  "category": "info",
+  "categories": [
+    "info"
+  ],
   "tags": [
     "%e9%a2%a8%e9%82%aa"
   ],

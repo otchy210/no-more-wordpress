@@ -1,5 +1,8 @@
 {
-  "category": "business",
+  "categories": [
+    "tech",
+    "business"
+  ],
   "tags": [
     "google",
     "facebook"

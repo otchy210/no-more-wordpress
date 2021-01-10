@@ -1,5 +1,7 @@
 {
-  "category": "info",
+  "categories": [
+    "info"
+  ],
   "type": "post",
   "time": 1240328858000
 }

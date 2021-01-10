@@ -1,5 +1,7 @@
 {
-  "category": "tech",
+  "categories": [
+    "tech"
+  ],
   "type": "post",
   "time": 1324351823000
 }

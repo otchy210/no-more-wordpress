@@ -1,5 +1,7 @@
 {
-  "category": "info",
+  "categories": [
+    "info"
+  ],
   "tags": [
     "javascript",
     "bookmarklet"

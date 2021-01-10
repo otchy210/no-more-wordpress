@@ -1,5 +1,7 @@
 {
-  "category": "science",
+  "categories": [
+    "science"
+  ],
   "tags": [
     "jojo",
     "dio"

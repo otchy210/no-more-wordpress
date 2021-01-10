@@ -1,5 +1,7 @@
 {
-  "category": "business",
+  "categories": [
+    "business"
+  ],
   "tags": [
     "eco"
   ],

@@ -1,5 +1,7 @@
 {
-  "category": "dev",
+  "categories": [
+    "dev"
+  ],
   "tags": [
     "utf-8",
     "javascript"

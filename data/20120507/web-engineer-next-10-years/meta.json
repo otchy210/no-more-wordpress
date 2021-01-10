@@ -1,5 +1,8 @@
 {
-  "category": "business",
+  "categories": [
+    "tech",
+    "business"
+  ],
   "type": "post",
   "time": 1336341139000
 }

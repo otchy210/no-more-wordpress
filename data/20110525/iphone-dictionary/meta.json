@@ -1,5 +1,8 @@
 {
-  "category": "lifehack",
+  "categories": [
+    "tech",
+    "lifehack"
+  ],
   "tags": [
     "iphone"
   ],
