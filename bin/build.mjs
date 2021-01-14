@@ -12,16 +12,16 @@ const main = async () => {
     const postData = await loadPostData();
     const metaData = await loadMetaData();
     await fs.mkdir(DOCS_ROOT, {recursive: true});
-    await handleBlogPosts(postData);
+    await handleBlogPosts(postData, metaData);
     await handlePagePosts(postData);
     await handleCategories(postData, metaData);
     await handleTags(postData, metaData);
 };
 
-const handleBlogPosts = async ({ blogPosts }) => {
+const handleBlogPosts = async ({ blogPosts }, metaData) => {
     for (let i = 0; i < blogPosts.length; i++) {
         const post = blogPosts[i];
-        await writePost(post, blogPosts[i+1], blogPosts[i-1]);
+        await writePost(post, blogPosts[i+1], blogPosts[i-1], metaData);
     }
     writeArchivePages(
         '/',
@@ -71,8 +71,8 @@ const handleTags = async ({ posts, tags: postTags }, { tags }) => {
     });
 };
 
-const writePost = async (post, prev, next) => {
-    const html = template.page({...post, prev, next});
+const writePost = async (post, prev, next, metaData) => {
+    const html = template.page({...post, prev, next}, metaData);
     const htmlDir = `${DOCS_ROOT}${post.path}`;
     await fs.mkdir(htmlDir, {recursive: true});
     const htmlPath = `${htmlDir}/index.html`;

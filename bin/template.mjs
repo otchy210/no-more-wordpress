@@ -36,7 +36,7 @@ const minifyIfNeeded = (html) => {
     return minify(html, minifyOptions);
 };
 
-const page = ({title, description, body, categories, time, tags, prev, next}) => {
+const page = ({title, description, body, categories, time, tags, prev, next}, metaData) => {
     return minifyIfNeeded(`
 <html>
 <head>
@@ -62,10 +62,40 @@ const page = ({title, description, body, categories, time, tags, prev, next}) =>
         </div>` : ''}
     </main>
     <footer>
+        ${getCategories(categories, metaData)}
+        ${getTags(tags, metaData)}
     </footer>
 </body>
 </html>
 `);
+};
+
+const getCategories = (categories, metaData) => {
+    if (!categories || categories.length === 0 || !metaData) {
+        return '';
+    }
+    return `
+        <p class="categories">
+            ${categories.map(slug => {
+                const category = metaData.categories[slug];
+                return `<a href="/category/${slug}/">${category.label}</a>`;
+            }).join('\n')}
+        </p>
+    `;
+};
+
+const getTags = (tags, metaData) => {
+    if (!tags || tags.length === 0 || !metaData) {
+        return '';
+    }
+    return `
+        <p class="categories">
+            ${tags.map(slug => {
+                const tag = metaData.tags[slug];
+                return `<a href="/tag/${slug}/">${tag.label}</a>`;
+            }).join('\n')}
+        </p>
+    `;
 };
 
 const article = ({title, truncatedBody, path}) => {
