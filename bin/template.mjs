@@ -36,7 +36,7 @@ const minifyIfNeeded = (html) => {
     return minify(html, minifyOptions);
 };
 
-const page = ({title, description, body, category, time, tags, prev, next}) => {
+const page = ({title, description, body, categories, time, tags, prev, next}) => {
     return minifyIfNeeded(`
 <html>
 <head>
@@ -47,7 +47,7 @@ const page = ({title, description, body, category, time, tags, prev, next}) => {
     <a href="/">HOME</a>
     </nav>
     <header>
-        <h1>${title}</h1>
+        ${title ? `<h1>${title}</h1>` : ''}
         ${description ? `<p>
             ${description}
         </p>` : ''}

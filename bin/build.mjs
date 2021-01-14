@@ -19,57 +19,28 @@ const main = async () => {
 };
 
 const handleBlogPosts = async ({ blogPosts }) => {
-    let offset = 0;
-    while (true) {
-        const articles = [];
-        for (let i = 0; i < 5 ; i++) {
-            const j = offset + i;
-            if (j >= blogPosts.length) {
-                break;
-            }
-            const post = blogPosts[j];
-            await writePost(post, blogPosts[j+1], blogPosts[j-1]);
-            const article = template.article(post);
-            articles.push(article);
-        }
-        offset += 5;
-        const page = offset / 5;
-        const hasPrev = offset <= blogPosts.length;
-        const prev = hasPrev ? {
-            path: getBlogListPath(page + 1),
-            title: '古い投稿'
-        } : null;
-        const next = page !== 1 ? {
-            path: getBlogListPath(page - 1),
-            title: '新しい投稿'
-        } : null;
-        const htmlDir = page === 1 ? DOCS_ROOT : `${DOCS_ROOT}/page/${page}`;
-        const html = template.page({
-            body: articles.join('\n'),
-            prev,
-            next
-        });
-        await fs.mkdir(htmlDir, {recursive: true});
-        const htmlPath = `${htmlDir}/index.html`;
-        await fs.writeFile(htmlPath, html);
-        if (!hasPrev) {
-            break;
-        }
+    for (let i = 0; i < blogPosts.length; i++) {
+        const post = blogPosts[i];
+        await writePost(post, blogPosts[i+1], blogPosts[i-1]);
     }
-};
-
-const getBlogListPath = (page) => {
-    return page === 1 ? '/' : `/page/${page}/`;
+    writeArchivePages(
+        '/',
+        null,
+        null,
+        blogPosts
+    );
 };
 
 const handlePagePosts = async ({ pagePosts }) => {
-    pagePosts.forEach(post => writePost(post));
+    for (let post of pagePosts) {
+        await writePost(post);
+    }
 };
 
 const handleCategories = async ({ posts, categories: postCategories }, { categories }) => {
     Object.entries(postCategories).forEach(([slug, paths]) => {
         const category = categories[slug];
-        const rootPath = `/category/${slug}`;
+        const rootPath = `/category/${slug}/`;
         const categoryPosts = [];
         paths.forEach(path => {
             categoryPosts.push(posts[path]);
@@ -86,7 +57,7 @@ const handleCategories = async ({ posts, categories: postCategories }, { categor
 const handleTags = async ({ posts, tags: postTags }, { tags }) => {
     Object.entries(postTags).forEach(([slug, paths]) => {
         const tag = tags[slug];
-        const rootPath = `/tag/${slug}`;
+        const rootPath = `/tag/${slug}/`;
         const tagPosts = [];
         paths.forEach(path => {
             tagPosts.push(posts[path]);
@@ -138,13 +109,13 @@ const writeArchivePages = async (rootPath, title, description, posts) => {
             next
         });
         await fs.mkdir(htmlDir, {recursive: true});
-        const htmlPath = `${htmlDir}/index.html`;
+        const htmlPath = `${htmlDir}index.html`;
         await fs.writeFile(htmlPath, html);
     }
 };
 
 const getArchivePagePath = (rootPath, page) => {
-    return page === 1 ? rootPath : `${rootPath}/page/${page}`;
+    return page === 1 ? rootPath : `${rootPath}page/${page}/`;
 };
 
 main().catch(err => {
