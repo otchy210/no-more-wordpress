@@ -8,11 +8,34 @@ class PostData {
     async load() {
         const posts = [];
         await handleDir([], posts);
+
+        this.posts = {};
+        posts.forEach(post => {
+            this.posts[post.path] = post;
+        });
         this.blogPosts = posts
             .filter(post => post.type === 'post')
             .sort((left, right) => right.time - left.time);
         this.pagePosts = posts
             .filter(post => post.type === 'page');
+
+        this.categories = {};
+        this.tags = {};
+        this.blogPosts.forEach(post => {
+            const { path } = post;
+            post?.categories?.forEach(category => {
+                if (!this.categories[category]) {
+                    this.categories[category] = [];
+                }
+                this.categories[category].push(path);
+            });
+            post?.tags?.forEach(tag => {
+                if (!this.tags[tag]) {
+                    this.tags[tag] = [];
+                }
+                this.tags[tag].push(path);
+            });
+        });
     }
 }
 
@@ -71,7 +94,7 @@ const truncate = (content) => {
 };
 
 export const loadPostData = async () => {
-    const postLoader = new PostData();
-    await postLoader.load();
-    return postLoader;
+    const postData = new PostData();
+    await postData.load();
+    return postData;
 }
