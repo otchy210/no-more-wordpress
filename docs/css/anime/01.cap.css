@@ -1,0 +1,263 @@
+ul.css3anime {
+	display: inline-block;
+	margin: 0;
+	padding: 10px;
+	border: solid 1px #666;
+	border-radius: 10px;
+	background-color: #333;
+}
+ul.css3anime:after {
+	display: block;
+	content: "";
+	clear: both;
+}
+ul.css3anime li {
+	list-style-type: none;
+	width: 128px;
+	height: 128px;
+	background-image: url(http://www.otchy.net/img/browser_logo_128.png);
+	float: left;
+}
+ul.css3anime li:nth-child(2) {background-position: -128px 0;}
+ul.css3anime li:nth-child(3) {background-position: -256px 0;}
+ul.css3anime li:nth-child(4) {background-position: -384px 0;}
+ul.css3anime li:nth-child(5) {background-position: -512px 0;}
+
+ul.css3anime li:nth-child(1) span {z-index: 3;}
+ul.css3anime li:nth-child(2) span {z-index: 2;}
+ul.css3anime li:nth-child(3) span {z-index: 1;}
+
+ul#css3-cap-1 li {
+	background-color: #fff;
+	margin-right: 5px;
+	border: solid 1px #666;
+	border-radius: 64px;
+}
+
+ul#css3-cap-2 li {
+	background-color: #fff;
+	margin-right: 5px;
+	border: solid 1px #666;
+	border-radius: 64px;
+}
+ul#css3-cap-2 li span {
+	display: block;
+	width: 128px;
+	height: 128px;
+	border: 1px solid #333;
+	border-radius: 64px;
+	background-image: -webkit-linear-gradient(bottom, #999 49%, #333 50%, #999 51%);
+	background-image: -moz-linear-gradient(bottom, #999 49%, #333 50%, #999 51%);
+}
+
+ul#css3-cap-3 li {
+	background-color: #fff;
+	margin-right: 5px;
+	border: solid 1px #666;
+	border-radius: 64px;
+}
+ul#css3-cap-3 li span {
+	display: block;
+	position: absolute;
+	width: 128px;
+	height: 128px;
+	border: 1px solid #333;
+	border-radius: 64px;
+	background-image: -webkit-linear-gradient(bottom, #999 49%, #333 50%, #999 51%);
+	background-image: -moz-linear-gradient(bottom, #999 49%, #333 50%, #999 51%);
+	-webkit-transform: rotate(-30deg);
+	-moz-transform: rotate(-30deg);
+	-webkit-transform-origin: 50% 8px; 
+	-moz-transform-origin: 50% 8px;
+}
+ul#css3-cap-3 li:after {
+	display: block;
+	position: absolute;
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 4px;
+	background-color: #333;
+	margin-top: 4px;
+	margin-left: 60px;
+	z-index: 9;
+}
+
+ul#css3-cap-4 li {
+	background-color: #fff;
+	margin-right: 5px;
+	border: solid 1px #666;
+	border-radius: 64px;
+	cursor: pointer;
+}
+ul#css3-cap-4 li span {
+	display: block;
+	position: absolute;
+	width: 128px;
+	height: 128px;
+	border: 1px solid #333;
+	border-radius: 64px;
+	background-image: -webkit-linear-gradient(bottom, #999 49%, #333 50%, #999 51%);
+	background-image: -moz-linear-gradient(bottom, #999 49%, #333 50%, #999 51%);
+	-webkit-transform: rotate(0);
+	-moz-transform: rotate(0);
+	-webkit-transform-origin: 50% 8px; 
+	-moz-transform-origin: 50% 8px;
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+}
+ul#css3-cap-4 li:hover span {
+	-webkit-transform: rotate(-30deg);
+	-moz-transform: rotate(-30deg);
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+}
+ul#css3-cap-4 li:after {
+	display: block;
+	position: absolute;
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 4px;
+	background-color: #333;
+	margin-top: 4px;
+	margin-left: 60px;
+	z-index: 9;
+}
+
+ul#css3-cap-5 li {
+	background-color: #fff;
+	margin-right: 5px;
+	border: solid 1px #666;
+	border-radius: 64px;
+	cursor: pointer;
+}
+ul#css3-cap-5 li span {
+	display: block;
+	position: absolute;
+	width: 128px;
+	height: 128px;
+	border: 1px solid #333;
+	border-radius: 64px;
+	background-image: -webkit-linear-gradient(bottom, #999 49%, #333 50%, #999 51%);
+	background-image: -moz-linear-gradient(bottom, #999 49%, #333 50%, #999 51%);
+	-webkit-transform: rotate(0);
+	-moz-transform: rotate(0);
+	-webkit-transform-origin: 50% 8px; 
+	-moz-transform-origin: 50% 8px;
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+
+	-webkit-animation-name: css3-cap-5-kf;
+	-moz-animation-name: css3-cap-5-kf;
+	-webkit-animation-duration: 2s;
+	-moz-animation-duration: 2s;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-iteration-count: infinite;
+}
+ul#css3-cap-5 li:hover span {
+	-webkit-transform: rotate(-135deg);
+	-moz-transform: rotate(-135deg);
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-webkit-animation-name: none;
+	-moz-animation-name: none;
+}
+ul#css3-cap-5 li:after {
+	display: block;
+	position: absolute;
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 4px;
+	background-color: #333;
+	margin-top: 4px;
+	margin-left: 60px;
+	z-index: 9;
+}
+@-webkit-keyframes css3-cap-5-kf {
+	  0% { -webkit-transform: rotate(0); }
+	 40% { -webkit-transform: rotate(0); }
+	 50% { -webkit-transform: rotate(-15deg); }
+	 60% { -webkit-transform: rotate(0); }
+	100% { -webkit-transform: rotate(0); }
+}
+@-moz-keyframes css3-cap-5-kf {
+	  0% { -moz-transform: rotate(0); }
+	 40% { -moz-transform: rotate(0); }
+	 50% { -moz-transform: rotate(-15deg); }
+	 60% { -moz-transform: rotate(0); }
+	100% { -moz-transform: rotate(0); }
+}
+
+ul#css3-cap-6 li {
+	background-color: #fff;
+	margin-right: 5px;
+	border: solid 1px #666;
+	border-radius: 64px;
+	box-shadow: 0 10px 10px rgba(64, 64, 64, 0.5) inset, 0 2px 3px rgba(192, 192, 192, 0.8);
+	cursor: pointer;
+}
+ul#css3-cap-6 li span {
+	display: block;
+	position: absolute;
+	width: 128px;
+	height: 128px;
+	border: 1px solid #333;
+	border-radius: 64px;
+	background-image: -webkit-linear-gradient(bottom, #666 0%, #ccc 100%);
+	background-image: -moz-linear-gradient(bottom, #666 0%, #ccc 100%);
+	box-shadow: 0 0 3px rgba(64, 64, 64, 0.8), 0 -5px 3px rgba(64, 64, 64, 0.8) inset, 0 -7px 2px rgba(255, 255, 255, 0.5) inset, 0 1px 2px #666 inset, 0px 8px 5px rgba(255, 255, 255, 0.7) inset;
+	-webkit-transform: rotate(0);
+	-moz-transform: rotate(0);
+	-webkit-transform-origin: 50% 8px; 
+	-moz-transform-origin: 50% 8px;
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+
+	-webkit-animation-name: css3-cap-6-kf;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: infinite;
+
+	-moz-animation-name: css3-cap-6-kf;
+	-moz-animation-duration: 2s;
+	-moz-animation-iteration-count: infinite;
+}
+ul#css3-cap-6 li:hover span {
+	-webkit-transform: rotate(-135deg);
+	-moz-transform: rotate(-135deg);
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+
+	-webkit-animation-name: none;
+	-moz-animation-name: none;
+}
+ul#css3-cap-6 li:after {
+	display: block;
+	position: absolute;
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 4px;
+	background-color: #333;
+	margin-top: 4px;
+	margin-left: 60px;
+	background-image: -webkit-linear-gradient(bottom, #333 0%, #999 60%, #fff 80%, #fff 100%);
+	background-image: -moz-linear-gradient(bottom, #333 0%, #999 60%, #fff 80%, #fff 100%);
+	box-shadow: 0 1px 2px #333 inset, 0 1px 4px rgba(255, 255, 255, 0.7), 0 -1px 1px rgba(0, 0, 0, 0.7);
+	z-index: 9;
+}
+@-webkit-keyframes css3-cap-6-kf {
+	  0% { -webkit-transform: rotate(0); }
+	 40% { -webkit-transform: rotate(0); }
+	 50% { -webkit-transform: rotate(-15deg); }
+	 60% { -webkit-transform: rotate(0); }
+	100% { -webkit-transform: rotate(0); }
+}
+@-moz-keyframes css3-cap-6-kf {
+	  0% { -moz-transform: rotate(0); }
+	 40% { -moz-transform: rotate(0); }
+	 50% { -moz-transform: rotate(-15deg); }
+	 60% { -moz-transform: rotate(0); }
+	100% { -moz-transform: rotate(0); }
+}

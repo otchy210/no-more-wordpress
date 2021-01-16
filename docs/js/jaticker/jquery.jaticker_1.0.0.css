@@ -1,0 +1,17 @@
+/*
+ * jQuery jaTicker ver 1.0.0
+ * Copyright (c) 2011 Otchy
+ * This source file is subject to the MIT license.
+ * http://www.otchy.net
+ */
+.jaticker-cursor {
+	font-weight: bold;
+}
+.jaticker-input {
+	color: blue;
+	text-decoration: underline;
+}
+.jaticker-convert {
+	color: black;
+	background-color: cyan;
+}

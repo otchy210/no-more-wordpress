@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS" />
+<title>TwitterAPI TEST</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+<script type="text/javascript" src="twitterapi_0.9.4.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('#gettl').submit(function() {
+		var user = $('#user').select().val();
+		TwitterAPI.statuses.user_timeline(function(arr){
+			var str = '';
+			for (var i=0; i<arr.length; i++) {
+				var obj = arr[i];
+				str += obj.user.screen_name + ':' + obj.text + '<br />';
+			}
+			$('#tl').html(str);
+		}, user, 'count=10');
+		return false;
+	});
+	$('#tweet').submit(function(){
+		var status = $('#status').select().val();
+		TwitterAPI.statuses.update(status, function() {
+			alert('DONE!');
+		});
+		return false;
+	});
+	$('#relogin').click(function(){
+		TwitterAPI.relogin();
+	});
+});
+</script>
+<style type="text/css">
+* {
+	font-size: 10pt;
+}
+body {
+	margin: 0;
+	padding: 10px;
+}
+#tl {
+	height: 8em;
+	overflow: auto;
+	border: solid 1px #999;
+}
+#status {
+	width: 600px;
+}
+</style>
+</head>
+<body>
+Shift_JIS バージョン
+<form id="gettl">
+USER:<input id="user" /><input type="submit" value="GET TL" />
+<pre id="tl">
+</pre>
+</form>
+<form id="tweet">
+<input id="status" /><input type="submit" value="TWEET"/>
+</form>
+<form id="relogin">
+<input type="button" value="RELOGIN"/>
+</form>
+</body>
+</html>

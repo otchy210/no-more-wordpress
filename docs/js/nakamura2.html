@@ -1,0 +1,90 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script>
+$(function() {
+	$(window).resize(function() {
+		var height = $(document.body).height();
+		height -= $('#header').height();
+		height -= $('#footer').height();
+		$('#content').height(height);
+	}).resize();
+});
+</script>
+<style>
+body {
+	overflow: hidden;
+}
+body, div {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+#header {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100px;
+	background: #eef;
+}
+#content {
+	margin-top: 100px;
+	margin-bottom: -100px;
+	height: 0;
+	overflow: auto;
+}
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	background: #efe;
+}
+</style>
+</head>
+<body>
+<div id="header">header</div>
+<div id="content">
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+なかみ<br />
+</div>
+<div id="footer">footer</div>
+</body>
+</html>

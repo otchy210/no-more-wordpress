@@ -1,0 +1,203 @@
+<html>
+<head>
+<style>
+h4 {
+	clear: both;
+}
+ul.css3anime {
+	margin: 0;
+	padding: 0;
+	clear: both;
+}
+ul.css3anime li {
+	list-style-type: none;
+	width: 128px;
+	height: 128px;
+	background-image: url(http://paulirish.com/lovesyou/new-browser-logos/all-browser_logos/browser_logos-128.png);
+	float: left;
+}
+ul.css3anime li:nth-child(1) {background-position:  -10px 0;}
+ul.css3anime li:nth-child(2) {background-position: -155px 0;}
+ul.css3anime li:nth-child(3) {background-position: -295px 0;}
+ul.css3anime li:nth-child(4) {background-position: -430px 0;}
+ul.css3anime li:nth-child(5) {background-position: -570px 0;}
+ul.css3anime li:nth-child(1):before {z-index: 5;}
+ul.css3anime li:nth-child(2):before {z-index: 4;}
+ul.css3anime li:nth-child(3):before {z-index: 3;}
+ul.css3anime li:nth-child(4):before {z-index: 2;}
+ul.css3anime li:nth-child(5):before {z-index: 1;}
+/* Base */
+ul#css3-base li {
+	border: solid 1px #666;
+}
+/* Cap1 */
+ul#css3-cap-1 li {
+	border: solid 1px #666;
+	border-radius: 64px;
+}
+/* Cap2 */
+ul#css3-cap-2 li {
+	border: solid 1px #666;
+	border-radius: 64px;
+}
+ul#css3-cap-2 li:before {
+	display: block;
+	content: "";
+	width: 128px;
+	height: 128px;
+	background-color: #999;
+	border: 1px solid #333;
+	border-radius: 64px;
+	background-image: -webkit-linear-gradient(bottom, #999 49%, #333 50%, #999 51%);
+	background-image: -moz-linear-gradient(bottom, #999 49%, #333 50%, #999 51%);
+}
+/* Cap3 */
+ul#css3-cap-3 li {
+	border: solid 1px #666;
+	border-radius: 64px;
+}
+ul#css3-cap-3 li:before {
+	display: block;
+	position: absolute;
+	content: "";
+	width: 128px;
+	height: 128px;
+	background-color: #999;
+	border: 1px solid #333;
+	border-radius: 64px;
+	background-image: -webkit-linear-gradient(bottom, #999 49%, #333 50%, #999 51%);
+	background-image: -moz-linear-gradient(bottom, #999 49%, #333 50%, #999 51%);
+	/*
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	*/
+}
+ul#css3-cap-3 li:hover:before {
+	-webkit-transform: rotate(-30deg);
+	-moz-transform: rotate(-30deg);
+	-webkit-transform-origin: 50% 0; 
+	-moz-transform-origin: 50% 0;
+	/*
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	*/
+}
+ul#css3-cap-3 li:after {
+	display: block;
+	position: absolute;
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 4px;
+	background-color: #333;
+	margin-top: 4px;
+	margin-left: 60px;
+	z-index: 9;
+}
+/* Cap4 */
+ul#css3-cap-4 li {
+	border: solid 1px #666;
+	border-radius: 64px;
+}
+@-webkit-keyframes css3-cap4-kf {
+	0% {
+		width: 128px;
+	}
+	50% {
+		width: 512px;
+	}
+	100% {
+		width: 128px;
+	}
+}
+ul#css3-cap-4 li:before {
+	display: block;
+	position: absolute;
+	content: "";
+	width: 128px;
+	height: 128px;
+	background-color: #999;
+	border: 1px solid #333;
+	border-radius: 64px;
+	background-image: -webkit-linear-gradient(bottom, #999 49%, #333 50%, #999 51%);
+	background-image: -moz-linear-gradient(bottom, #999 49%, #333 50%, #999 51%);
+	-webkit-animation-name: css3-cap4-kf;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: infinite;
+}
+ul#css3-cap-4 li:hover:before {
+	-webkit-transform: rotate(-30deg);
+	-moz-transform: rotate(-30deg);
+	-webkit-transform-origin: 50% 0; 
+	-moz-transform-origin: 50% 0;
+}
+ul#css3-cap-4 li:after {
+	display: block;
+	position: absolute;
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 4px;
+	background-color: #333;
+	margin-top: 4px;
+	margin-left: 60px;
+	z-index: 9;
+}
+</style>
+</head>
+<body>
+
+<h4>Cap</h4>
+
+<ul class="css3anime" id="css3-cap-4">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+
+<ul class="css3anime" id="css3-cap-3">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+
+<ul class="css3anime" id="css3-cap-2">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+
+<ul class="css3anime" id="css3-cap-1">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+
+<h4>Base</h4>
+
+<ul class="css3anime" id="css3-base">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+
+<h4>Dock</h4>
+
+<h4>3D Cube</h4>
+
+<h4>Cover Flow</h4>
+
+<h3>そろそろ本気で css3 アニメ</h3>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="jquery.tablefix_1.0.1.js"></script>
+<script>
+$(function() {
+	$('table').tablefix({width: 150});
+});
+</script>
+<style>
+table {
+	border: solid 1px #000;
+}
+td {
+	border: solid 1px #000;
+}
+</style>
+</head>
+<body>
+<table class="test" style="width: 400px;">
+<tr><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td></tr>
+<tr><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td></tr>
+<tr><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td></tr>
+<tr><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td></tr>
+</table>
+
+<table class="test" style="width: 200px;">
+<tr><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td></tr>
+<tr><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td></tr>
+<tr><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td></tr>
+<tr><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td></tr>
+</table>
+
+<table class="test" style="width: 300px;">
+<tr><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td></tr>
+<tr><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td></tr>
+<tr><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td></tr>
+<tr><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td></tr>
+</table>
+</body>
+</html>

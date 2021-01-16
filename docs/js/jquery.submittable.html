@@ -1,0 +1,70 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="jquery.submittable.js"></script>
+<script>
+$(function() {
+	$('#a1').submittable();
+	$('#a2').submittable({
+		action: 'http://search.yahoo.co.jp/search',
+		method: 'POST',
+		target: 'w2'
+	});
+	$('#a3').submittable({
+		autoDisabled: true,
+		confirm: 'sumit form ?'
+	});
+	$('#a4').submittable({
+		form: '#f1',
+		onconfirm: function(a) {
+			return confirm(a.id);
+		},
+		onbeforesubmit: function(a) {
+			alert(a.id);
+		}
+	});
+	$('#s1').submittable({
+		on: 'change',
+		autoDisabled: true
+	});
+	$('#c1').submittable({
+		on: 'change',
+		onconfirm: function(e) {
+			return e.checked;
+		}
+	});
+	$('#b1').submittable({
+		autoDisabled: true,
+		action: 'http://www.yahoo.com',
+		target: 'w3'
+	});
+});
+</script>
+<style>
+.disabled {
+	color: #999;
+	text-decoration: none;
+	cursor: default;
+}
+</style>
+</head>
+<body>
+
+<form action="http://www.google.com/" target="w1" id="f1">
+<input type="hidden" name="p" value="query" />
+<input type="submit" />
+<a href="#" id="a1">a1</a>
+<a href="#" id="a2">a2</a>
+<a href="#" id="a3">a3</a>
+<select id="s1">
+<option>A</option>
+<option>B</option>
+<option>C</option>
+</select>
+<input type="checkbox" id="c1" />
+<input type="submit" id="b1" />
+</form>
+<a href="#" id="a4">a4</a>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<html>
+<head>
+<script src="pjson.js"></script>
+<script>
+window.onload = function() {
+//PJSON.push(['あ']);
+//PJSON.push(['あ','i','Ⅲ']);
+/*
+PJSON.push(
+	[
+		['あいうえお','かきくけこ','さしすせそ','たちつてと','なにぬねの','はひふへほ','まみむめも','やゆよ','らりるれろ','わをん'],
+		['あいうえお','かきくけこ','さしすせそ','たちつてと','なにぬねの','はひふへほ','まみむめも','やゆよ','らりるれろ','わをん'],
+		['あいうえお','かきくけこ','さしすせそ','たちつてと','なにぬねの','はひふへほ','まみむめも','やゆよ','らりるれろ','わをん'],
+		['あいうえお','かきくけこ','さしすせそ','たちつてと','なにぬねの','はひふへほ','まみむめも','やゆよ','らりるれろ','わをん'],
+		['あいうえお','かきくけこ','さしすせそ','たちつてと','なにぬねの','はひふへほ','まみむめも','やゆよ','らりるれろ','わをん'],
+		['あいうえお','かきくけこ','さしすせそ','たちつてと','なにぬねの','はひふへほ','まみむめも','やゆよ','らりるれろ','わをん'],
+		['あいうえお','かきくけこ','さしすせそ','たちつてと','なにぬねの','はひふへほ','まみむめも','やゆよ','らりるれろ','わをん'],
+		['あいうえお','かきくけこ','さしすせそ','たちつてと','なにぬねの','はひふへほ','まみむめも','やゆよ','らりるれろ','わをん'],
+		['あいうえお','かきくけこ','さしすせそ','たちつてと','なにぬねの','はひふへほ','まみむめも','やゆよ','らりるれろ','わをん'],
+		['あいうえお','かきくけこ','さしすせそ','たちつてと','なにぬねの','はひふへほ','まみむめも','やゆよ','らりるれろ','わをん'],
+		['あいうえお','かきくけこ','さしすせそ','たちつてと','なにぬねの','はひふへほ','まみむめも','やゆよ','らりるれろ','わをん'],
+		['あいうえお','かきくけこ','さしすせそ','たちつてと','なにぬねの','はひふへほ','まみむめも','やゆよ','らりるれろ','わをん'],
+		['あいうえお','かきくけこ','さしすせそ','たちつてと','なにぬねの','はひふへほ','まみむめも','やゆよ','らりるれろ','わをん'],
+		['あいうえお','かきくけこ','さしすせそ','たちつてと','なにぬねの','はひふへほ','まみむめも','やゆよ','らりるれろ','わをん'],
+		['あいうえお','かきくけこ','さしすせそ','たちつてと','なにぬねの','はひふへほ','まみむめも','やゆよ','らりるれろ','わをん'],
+		['あいうえお','かきくけこ','さしすせそ','たちつてと','なにぬねの','はひふへほ','まみむめも','やゆよ','らりるれろ','わをん'],
+		['0123456789','abcdefghij','klmnopqrst','uvwxyzABCD','EFGHIJKLMN','OPQRSTUVWX','YZ'],
+		['0123456789','abcdefghij','klmnopqrst','uvwxyzABCD','EFGHIJKLMN','OPQRSTUVWX','YZ'],
+		['0123456789','abcdefghij','klmnopqrst','uvwxyzABCD','EFGHIJKLMN','OPQRSTUVWX','YZ'],
+		['0123456789','abcdefghij','klmnopqrst','uvwxyzABCD','EFGHIJKLMN','OPQRSTUVWX','YZ'],
+		['0123456789','abcdefghij','klmnopqrst','uvwxyzABCD','EFGHIJKLMN','OPQRSTUVWX','YZ'],
+		['0123456789','abcdefghij','klmnopqrst','uvwxyzABCD','EFGHIJKLMN','OPQRSTUVWX','YZ'],
+		['0123456789','abcdefghij','klmnopqrst','uvwxyzABCD','EFGHIJKLMN','OPQRSTUVWX','YZ'],
+		['0123456789','abcdefghij','klmnopqrst','uvwxyzABCD','EFGHIJKLMN','OPQRSTUVWX','YZ'],
+		['0123456789','abcdefghij','klmnopqrst','uvwxyzABCD','EFGHIJKLMN','OPQRSTUVWX','YZ'],
+		['0123456789','abcdefghij','klmnopqrst','uvwxyzABCD','EFGHIJKLMN','OPQRSTUVWX','YZ'],
+		['0123456789','abcdefghij','klmnopqrst','uvwxyzABCD','EFGHIJKLMN','OPQRSTUVWX','YZ'],
+		['0123456789','abcdefghij','klmnopqrst','uvwxyzABCD','EFGHIJKLMN','OPQRSTUVWX','YZ'],
+	]
+);
+*/
+PJSON.droppable(document.getElementById('drop'), function(obj) {
+	console.log(obj);
+});
+}
+</script>
+<style>
+#drop {
+	width: 200px;
+	height: 200px;
+	border: solid 1px #000;
+}
+.pjson-hover {
+	background-color: #ffe;
+}
+</style>
+</head>
+<body>
+<div id="drop">
+</div>
+</body>
+</html>
