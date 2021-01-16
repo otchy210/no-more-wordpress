@@ -1,5 +1,6 @@
 import path from 'path';
 import fs from 'fs/promises';
+import rcopy from 'recursive-copy';
 import config from './config.mjs';
 import template from './template.mjs';
 import { isDevMode } from './common.mjs';
@@ -9,12 +10,37 @@ import { useMetaData } from './MetaData.mjs';
 const DOCS_ROOT = path.resolve(isDevMode() ? config.dirs.devDocs : config.dirs.docs);
 
 const main = async () => {
+    if (isDevMode()) {
+        copyStaticFiles();
+    }
     const postData = await loadPostData();
     await fs.mkdir(DOCS_ROOT, {recursive: true});
     await handleBlogPosts(postData);
     await handlePagePosts(postData);
     await handleCategories(postData);
     await handleTags(postData);
+};
+
+const copyStaticFiles = async () => {
+    const dataRoot = path.resolve(config.dirs.data);
+    const docsRoot = path.resolve(config.dirs.docs);
+    const paths = await fs.readdir(docsRoot);
+    paths.forEach(async (path) => {
+        if (['page', 'category', 'tag'].some(d => d === path)) {
+            return;
+        }
+        const docPath = `${docsRoot}/${path}`;
+        const docStat = await fs.lstat(docPath);
+        if (!docStat.isDirectory()) {
+            return;
+        }
+        const dataPath = `${dataRoot}/${path}`;
+        const dataStat = await fs.lstat(dataPath).catch(e=>{});
+        if (dataStat?.isDirectory()) {
+            return;
+        }
+        await rcopy(docPath, `${DOCS_ROOT}/${path}`);
+    })
 };
 
 const handleBlogPosts = async ({ blogPosts }) => {
