@@ -1,5 +1,6 @@
 import { isDevMode } from './common.mjs';
 import { minify } from 'html-minifier';
+import { useMetaData } from './MetaData.mjs';
 
 const minifyOptions = {
     collapseBooleanAttributes: true,
@@ -36,7 +37,8 @@ const minifyIfNeeded = (html) => {
     return minify(html, minifyOptions);
 };
 
-const page = ({title, description, body, categories, time, tags, prev, next}, metaData) => {
+const page = async ({title, description, body, categories, time, tags, prev, next}) => {
+    const metaData = await useMetaData();
     return minifyIfNeeded(`
 <html>
 <head>

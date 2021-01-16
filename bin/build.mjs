@@ -4,24 +4,23 @@ import config from './config.mjs';
 import template from './template.mjs';
 import { isDevMode } from './common.mjs';
 import { loadPostData } from './PostData.mjs';
-import { loadMetaData } from './MetaData.mjs';
+import { useMetaData } from './MetaData.mjs';
 
 const DOCS_ROOT = path.resolve(isDevMode() ? config.dirs.devDocs : config.dirs.docs);
 
 const main = async () => {
     const postData = await loadPostData();
-    const metaData = await loadMetaData();
     await fs.mkdir(DOCS_ROOT, {recursive: true});
-    await handleBlogPosts(postData, metaData);
+    await handleBlogPosts(postData);
     await handlePagePosts(postData);
-    await handleCategories(postData, metaData);
-    await handleTags(postData, metaData);
+    await handleCategories(postData);
+    await handleTags(postData);
 };
 
-const handleBlogPosts = async ({ blogPosts }, metaData) => {
+const handleBlogPosts = async ({ blogPosts }) => {
     for (let i = 0; i < blogPosts.length; i++) {
         const post = blogPosts[i];
-        await writePost(post, blogPosts[i+1], blogPosts[i-1], metaData);
+        await writePost(post, blogPosts[i+1], blogPosts[i-1]);
     }
     writeArchivePages(
         '/',
@@ -37,7 +36,8 @@ const handlePagePosts = async ({ pagePosts }) => {
     }
 };
 
-const handleCategories = async ({ posts, categories: postCategories }, { categories }) => {
+const handleCategories = async ({ posts, categories: postCategories }) => {
+    const { categories } = await useMetaData();
     Object.entries(postCategories).forEach(([slug, paths]) => {
         const category = categories[slug];
         const rootPath = `/category/${slug}/`;
@@ -54,7 +54,8 @@ const handleCategories = async ({ posts, categories: postCategories }, { categor
     });
 };
 
-const handleTags = async ({ posts, tags: postTags }, { tags }) => {
+const handleTags = async ({ posts, tags: postTags }) => {
+    const { tags } = await useMetaData();
     Object.entries(postTags).forEach(([slug, paths]) => {
         const tag = tags[slug];
         const rootPath = `/tag/${slug}/`;
@@ -71,8 +72,8 @@ const handleTags = async ({ posts, tags: postTags }, { tags }) => {
     });
 };
 
-const writePost = async (post, prev, next, metaData) => {
-    const html = template.page({...post, prev, next}, metaData);
+const writePost = async (post, prev, next) => {
+    const html = await template.page({...post, prev, next});
     const htmlDir = `${DOCS_ROOT}${post.path}`;
     await fs.mkdir(htmlDir, {recursive: true});
     const htmlPath = `${htmlDir}/index.html`;
@@ -101,7 +102,7 @@ const writeArchivePages = async (rootPath, title, description, posts) => {
             title: '新しい投稿'
         } : null;
         const htmlDir = `${DOCS_ROOT}${getArchivePagePath(rootPath, page)}`;
-        const html = template.page({
+        const html = await template.page({
             body: articles.join('\n'),
             title,
             description,

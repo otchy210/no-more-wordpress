@@ -127,6 +127,10 @@ const handlePost = async (post, terms) => {
         type,
         time: date.getTime(),
     };
+    if (type === 'page') {
+        delete meta.categories;
+        delete meta.tags;
+    }
     await fs.writeFile(metaPath, prettyStringify(meta));
 
     const contentPath = `${dataDir}/content.html`;

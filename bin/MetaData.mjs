@@ -13,8 +13,12 @@ class MetaData {
     }
 }
 
-export const loadMetaData = async () => {
-    const metaData = new MetaData();
+let metaData;
+export const useMetaData = async () => {
+    if (metaData) {
+        return metaData;
+    }
+    metaData = new MetaData();
     await metaData.load();
     return metaData;
 };
