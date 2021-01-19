@@ -44,6 +44,7 @@ const page = async ({title, description, body, categories, time, tags, prev, nex
 <html>
 <head>
     <title>${title ? `${title} - ` : ''}OTCHY.NET</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
     ${await importStatic.css('/s/css/style.css')}
 </head>
 <body>
