@@ -38,8 +38,10 @@ const minifyIfNeeded = (html) => {
     return minify(html, minifyOptions);
 };
 
+let totalPages = 0;
 const page = async ({title, description, body, categories, time, tags, prev, next}) => {
     const metaData = await useMetaData();
+    totalPages++;
     return minifyIfNeeded(`
 <html>
 <head>
@@ -74,6 +76,10 @@ const page = async ({title, description, body, categories, time, tags, prev, nex
 </html>
 `);
 };
+
+const getTotalPages = () => {
+    return totalPages;
+}
 
 const getCategories = (categories, metaData) => {
     if (!categories || categories.length === 0 || !metaData) {
@@ -116,5 +122,6 @@ const article = ({title, truncatedBody, path}) => {
 
 export default {
     page,
+    getTotalPages,
     article
 };

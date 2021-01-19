@@ -10,6 +10,8 @@ import { useMetaData } from './MetaData.mjs';
 const DOCS_ROOT = path.resolve(isDevMode() ? config.dirs.devDocs : config.dirs.docs);
 
 const main = async () => {
+    const startTime = Date.now();
+    console.log('Start writing HTML files.');
     if (isDevMode()) {
         copyStaticFiles();
     }
@@ -19,6 +21,7 @@ const main = async () => {
     await handlePagePosts(postData);
     await handleCategories(postData);
     await handleTags(postData);
+    console.log(`Done! (Built ${template.getTotalPages()} pages in ${Date.now() - startTime} msecs)`);
 };
 
 const copyStaticFiles = async () => {
