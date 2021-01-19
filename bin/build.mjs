@@ -39,7 +39,7 @@ const copyStaticFiles = async () => {
         if (dataStat?.isDirectory()) {
             return;
         }
-        await rcopy(docPath, `${DOCS_ROOT}/${path}`);
+        await rcopy(docPath, `${DOCS_ROOT}/${path}`, {overwrite: true});
     })
 };
 
