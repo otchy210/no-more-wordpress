@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>プログラマにも書ける！画像を使わずCSS3でつくる今風のタブ＋ツールバー - OTCHY.NET</title>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
+<style></style>
 </head>
 <body>
 <nav>
@@ -15,7 +17,89 @@
 <br>
 <h4>完成品</h4>
 こんな感じのタブとツールバーを、CSS 3 だけで書いていきます。<br>
-<style>.finish .tab{margin:10px 5px 0 0;padding:5px 7px;float:left;height:14px;color:#383;border-style:solid;border-color:#383;border-width:1px 1px 0 1px;-webkit-border-top-left-radius:5px;-moz-border-radius-topleft:5px;border-top-left-radius:5px;cursor:pointer}.finish .tab:hover{padding-top:7px;margin-top:8px}.finish .selected{height:16px;margin-bottom:-2px;background-color:#5a5;border-color:#373;border-bottom:1px #5a5;padding-right:8px;-webkit-box-shadow:1px 1px 0 #9c9 inset;-moz-box-shadow:1px 1px 0 #9c9 inset;box-shadow:1px 1px 0 #9c9 inset;color:#fff;text-shadow:0 1px 0 #333}.finish .toolbar{clear:both;background-color:#5a5;background:-webkit-linear-gradient(top,#5a5 1%,#383 100%);background:-moz-linear-gradient(top,#5a5 1%,#383 100%);background:linear-gradient(top,#5a5 1%,#383 100%);border:solid 1px #373;-webkit-box-shadow:1px 1px 0 #9c9 inset;-moz-box-shadow:1px 1px 0 #9c9 inset;box-shadow:1px 1px 0 #9c9 inset;height:30px}.finish .toolbar .pager{display:block;float:right;margin:6px}.finish .toolbar .pager li{display:block;float:left;margin-left:2px;text-align:center;font-size:90%;color:#fff}.finish .toolbar .pager li.button{width:20px;padding:1px;border:solid 1px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}.finish .toolbar .pager li.enable{cursor:pointer;border-color:rgba(255,255,255,.5)}.finish .toolbar .pager li.enable:hover{background-color:rgba(255,255,255,.3)}.finish .toolbar .pager li.current{border-color:rgba(255,255,255,.5);background-color:rgba(255,255,255,.3);text-shadow:0 1px 0 #333}.finish .toolbar .pager li.period{width:auto;padding:1px 2px;border:0}</style><br>
+<style>
+.finish .tab {
+	margin: 10px 5px 0 0;
+	padding: 5px 7px;
+	float: left;
+	height: 14px;
+	color: #383;
+	border-style: solid;
+	border-color: #383;
+	border-width: 1px 1px 0 1px;
+	-webkit-border-top-left-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	border-top-left-radius: 5px;
+	cursor: pointer;
+}
+.finish .tab:hover {
+	padding-top: 7px;
+	margin-top: 8px;
+}
+.finish .selected {
+	height: 16px;
+	margin-bottom: -2px;
+	background-color: #5a5;
+	border-color: #373;
+	border-bottom: 1px #5a5;
+	padding-right: 8px;
+	-webkit-box-shadow: 1px 1px 0 #9c9 inset;
+	-moz-box-shadow: 1px 1px 0 #9c9 inset;
+	box-shadow: 1px 1px 0 #9c9 inset;
+	color: #fff;
+	text-shadow: 0 1px 0 #333;
+}
+.finish .toolbar {
+	clear: both;
+	background-color: #5a5;
+	background: -webkit-linear-gradient(top, #5a5 1%, #383 100%);
+	background: -moz-linear-gradient(top, #5a5 1%, #383 100%);
+	background: linear-gradient(top, #5a5 1%,#383 100%);
+	border: solid 1px #373;
+	-webkit-box-shadow: 1px 1px 0 #9c9 inset;
+	-moz-box-shadow: 1px 1px 0 #9c9 inset;
+	box-shadow: 1px 1px 0 #9c9 inset;
+	height: 30px;
+}
+.finish .toolbar .pager {
+	display: block;
+	float: right;
+	margin: 6px;
+}
+.finish .toolbar .pager li {
+	display: block;
+	float: left;
+	margin-left: 2px;
+	text-align: center;
+	font-size: 90%;
+	color: #fff;
+}
+.finish .toolbar .pager li.button {
+	width: 20px;
+	padding: 1px;
+	border: solid 1px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.finish .toolbar .pager li.enable {
+	cursor: pointer;
+	border-color: rgba(255, 255, 255, 0.5);
+}
+.finish .toolbar .pager li.enable:hover {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+.finish .toolbar .pager li.current {
+	border-color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.3);
+	text-shadow: 0 1px 0 #333;
+}
+.finish .toolbar .pager li.period {
+	width: auto;
+	padding: 1px 2px;
+	border: 0;
+}
+</style><br>
 <div class=finish>
 <div class="tab selected">フォローしている</div><div class=tab>フォローされている</div>
 <div class=toolbar>
@@ -64,7 +148,37 @@
 <br>
 <h4>レイアウト</h4>
 各部品の場所を決めていきます。位置関係が分かりやすいよう、仮で青のボーダーを入れました。ここはあまり特筆する点がありませんね。display と float を使って、適切な位置に要素を配置していくだけです。<br>
-<style>.step2 *{border:solid 1px #00f}.step2 .tab{margin:10px 5px 0 0;padding:5px 7px;float:left;height:14px}.step2 .toolbar{clear:both;height:30px}.step2 .toolbar .pager{display:block;float:right;margin:6px}.step2 .toolbar .pager li{display:block;float:left;margin-left:2px}.step2 .toolbar .pager li.button{width:20px;padding:1px}.step2 .toolbar .pager li.period{width:auto;padding:1px 2px}</style><br>
+<style>
+.step2 * {border: solid 1px blue;}
+.step2 .tab {
+  margin: 10px 5px 0 0;
+  padding: 5px 7px;
+  float: left;
+  height: 14px;
+}
+.step2 .toolbar {
+  clear: both;
+  height: 30px;
+}
+.step2 .toolbar .pager {
+  display: block;
+  float: right;
+  margin: 6px;
+}
+.step2 .toolbar .pager li {
+  display: block;
+  float: left;
+  margin-left: 2px;
+}
+.step2 .toolbar .pager li.button {
+  width: 20px;
+  padding: 1px;
+}
+.step2 .toolbar .pager li.period {
+  width: auto;
+  padding: 1px 2px;
+}
+</style><br>
 <pre class=height_narrow>.tab {
   margin: 10px 5px 0 0;
   padding: 5px 7px;
@@ -112,7 +226,46 @@
 <h4>色の指定</h4>
 文字の色と背景色を指定しました。普通に color と background-color を指定しただけですが、css3 らしい事としては、選択中のページを表す li.current に半透明の白色を指定する事で、その部分がハイライトされたような効果を出しています。<br>
 このようにする事で、背景色が変わったとしてもハイライト色を変える必要が無くなります。<br>
-<style>.step3 .tab{margin:10px 5px 0 0;padding:5px 7px;float:left;height:14px;color:#383}.step3 .selected{background-color:#5a5;color:#fff}.step3 .toolbar{clear:both;height:30px;background-color:#5a5}.step3 .toolbar .pager{display:block;float:right;margin:6px}.step3 .toolbar .pager li{display:block;float:left;margin-left:2px;color:#fff}.step3 .toolbar .pager li.button{width:20px;padding:1px}.step3 .toolbar .pager li.current{background-color:rgba(255,255,255,.3)}.step3 .toolbar .pager li.period{width:auto;padding:1px 2px}</style><br>
+<style>
+.step3 .tab {
+	margin: 10px 5px 0 0;
+	padding: 5px 7px;
+	float: left;
+	height: 14px;
+	color: #383;
+}
+.step3 .selected {
+	background-color: #5a5;
+	color: #fff;
+}
+.step3 .toolbar {
+	clear: both;
+	height: 30px;
+	background-color: #5a5;
+}
+.step3 .toolbar .pager {
+	display: block;
+	float: right;
+	margin: 6px;
+}
+.step3 .toolbar .pager li {
+	display: block;
+	float: left;
+	margin-left: 2px;
+	color: #fff;
+}
+.step3 .toolbar .pager li.button {
+	width: 20px;
+	padding: 1px;
+}
+.step3 .toolbar .pager li.current {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+.step3 .toolbar .pager li.period {
+	width: auto;
+	padding: 1px 2px;
+}
+</style><br>
 <br>
 <pre class=height_narrow>.tab {
   margin: 10px 5px 0 0;
@@ -146,7 +299,7 @@
   padding: 1px;
 }
 .toolbar .pager li.current {
-<span style=color:#00f>  background-color: rgba(255, 255, 255, 0.3);</span>
+<span style=color:blue;>  background-color: rgba(255, 255, 255, 0.3);</span>
 }
 .toolbar .pager li.period {
   width: auto;
@@ -178,7 +331,64 @@
 <br>
 ただ、この状態では当たり前なのですが、選択中のタブとツールバーの間にも線が見えてしまっていますね。ここは綺麗に繋がってくれないと困ります。この問題は後で解決します。<br>
 <br>
-<style>.step4 .tab{margin:10px 5px 0 0;padding:5px 7px;float:left;height:14px;color:#383;border-style:solid;border-color:#383;border-width:1px 1px 0 1px;-webkit-border-top-left-radius:5px;-moz-border-radius-topleft:5px;border-top-left-radius:5px}.step4 .selected{background-color:#5a5;color:#fff;border-color:#373;border-bottom:1px #5a5}.step4 .toolbar{clear:both;height:30px;background-color:#5a5;border:solid 1px #373}.step4 .toolbar .pager{display:block;float:right;margin:6px}.step4 .toolbar .pager li{display:block;float:left;margin-left:2px;color:#fff}.step4 .toolbar .pager li.button{width:20px;padding:1px;border:solid 1px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}.step4 .toolbar .pager li.enable{border-color:rgba(255,255,255,.5)}.step4 .toolbar .pager li.current{background-color:rgba(255,255,255,.3);border-color:rgba(255,255,255,.5)}.step4 .toolbar .pager li.period{width:auto;padding:1px 2px;border:0}</style><br>
+<style>
+.step4 .tab {
+  margin: 10px 5px 0 0;
+  padding: 5px 7px;
+  float: left;
+  height: 14px;
+  color: #383;
+  border-style: solid;
+  border-color: #383;
+  border-width: 1px 1px 0 1px;
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  border-top-left-radius: 5px;
+}
+.step4 .selected {
+  background-color: #5a5;
+  color: #fff;
+  border-color: #373;
+  border-bottom: 1px #5a5;
+}
+.step4 .toolbar {
+  clear: both;
+  height: 30px;
+  background-color: #5a5;
+  border: solid 1px #373;
+}
+.step4 .toolbar .pager {
+  display: block;
+  float: right;
+  margin: 6px;
+}
+.step4 .toolbar .pager li {
+  display: block;
+  float: left;
+  margin-left: 2px;
+  color: #fff;
+}
+.step4 .toolbar .pager li.button {
+  width: 20px;
+  padding: 1px;
+  border: solid 1px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.step4 .toolbar .pager li.enable {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.step4 .toolbar .pager li.current {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.step4 .toolbar .pager li.period {
+  width: auto;
+  padding: 1px 2px;
+  border: 0;
+}
+</style><br>
 <pre class=height_narrow>.tab {
   margin: 10px 5px 0 0;
   padding: 5px 7px;
@@ -188,9 +398,9 @@
   border-style: solid;
   border-color: #383;
   border-width: 1px 1px 0 1px;
-<span style=color:#00f>  -webkit-border-top-left-radius: 5px;</span>
-<span style=color:#00f>  -moz-border-radius-topleft: 5px;</span>
-<span style=color:#00f>  border-top-left-radius: 5px;</span>
+<span style=color:blue;>  -webkit-border-top-left-radius: 5px;</span>
+<span style=color:blue;>  -moz-border-radius-topleft: 5px;</span>
+<span style=color:blue;>  border-top-left-radius: 5px;</span>
 }
 .selected {
   background-color: #5a5;
@@ -224,11 +434,11 @@
   border-radius: 3px;
 }
 .toolbar .pager li.enable {
-<span style=color:#00f>  border-color: rgba(255, 255, 255, 0.5);</span>
+<span style=color:blue;>  border-color: rgba(255, 255, 255, 0.5);</span>
 }
 .toolbar .pager li.current {
   background-color: rgba(255, 255, 255, 0.3);
-<span style=color:#00f>  border-color: rgba(255, 255, 255, 0.5);</span>
+<span style=color:blue;>  border-color: rgba(255, 255, 255, 0.5);</span>
 }
 .toolbar .pager li.period {
   width: auto;
@@ -255,7 +465,67 @@
 ツールバー部分にグラデーションをかけました。グラデーションの上端の色を選択中のタブの色と合わせる事で、シームレスに繋がるようにします。<br>
 このグラデーションの指定ですが、手作業で書くにはちょっと辛いので、<a href=http://www.colorzilla.com/gradient-editor/ target=_blank>Ultimate CSS Gradient Generator</a> のようなジェネレータを使って書くのが良いかと思います。<br>
 ベンダープレフィックス付きの css を出力してくれるので、そのまま貼り付けるだけになります。<br>
-<style>.step5 .tab{margin:10px 5px 0 0;padding:5px 7px;float:left;height:14px;color:#383;border-style:solid;border-color:#383;border-width:1px 1px 0 1px;-webkit-border-top-left-radius:5px;-moz-border-radius-topleft:5px;border-top-left-radius:5px}.step5 .selected{background-color:#5a5;color:#fff;border-color:#373;border-bottom:1px #5a5}.step5 .toolbar{clear:both;height:30px;background-color:#5a5;border:solid 1px #373;background:-webkit-linear-gradient(top,#5a5 1%,#383 100%);background:-moz-linear-gradient(top,#5a5 1%,#383 100%);background:linear-gradient(top,#5a5 1%,#383 100%)}.step5 .toolbar .pager{display:block;float:right;margin:6px}.step5 .toolbar .pager li{display:block;float:left;margin-left:2px;color:#fff}.step5 .toolbar .pager li.button{width:20px;padding:1px;border:solid 1px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}.step5 .toolbar .pager li.enable{border-color:rgba(255,255,255,.5)}.step5 .toolbar .pager li.current{background-color:rgba(255,255,255,.3);border-color:rgba(255,255,255,.5)}.step5 .toolbar .pager li.period{width:auto;padding:1px 2px;border:0}</style><br>
+<style>
+.step5 .tab {
+  margin: 10px 5px 0 0;
+  padding: 5px 7px;
+  float: left;
+  height: 14px;
+  color: #383;
+  border-style: solid;
+  border-color: #383;
+  border-width: 1px 1px 0 1px;
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  border-top-left-radius: 5px;
+}
+.step5 .selected {
+  background-color: #5a5;
+  color: #fff;
+  border-color: #373;
+  border-bottom: 1px #5a5;
+}
+.step5 .toolbar {
+  clear: both;
+  height: 30px;
+  background-color: #5a5;
+  border: solid 1px #373;
+  background: -webkit-linear-gradient(top, #5a5 1%, #383 100%);
+  background: -moz-linear-gradient(top, #5a5 1%, #383 100%);
+  background: linear-gradient(top, #5a5 1%,#383 100%);
+}
+.step5 .toolbar .pager {
+  display: block;
+  float: right;
+  margin: 6px;
+}
+.step5 .toolbar .pager li {
+  display: block;
+  float: left;
+  margin-left: 2px;
+  color: #fff;
+}
+.step5 .toolbar .pager li.button {
+  width: 20px;
+  padding: 1px;
+  border: solid 1px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.step5 .toolbar .pager li.enable {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.step5 .toolbar .pager li.current {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.step5 .toolbar .pager li.period {
+  width: auto;
+  padding: 1px 2px;
+  border: 0;
+}
+</style><br>
 <pre class=height_narrow>.tab {
   margin: 10px 5px 0 0;
   padding: 5px 7px;
@@ -280,9 +550,9 @@
   height: 30px;
   background-color: #5a5;
   border: solid 1px #373;
-<span style=color:#00f>  background: -webkit-linear-gradient(top, #5a5 1%, #383 100%);</span>
-<span style=color:#00f>  background: -moz-linear-gradient(top, #5a5 1%, #383 100%);</span>
-<span style=color:#00f>  background: linear-gradient(top, #5a5 1%,#383 100%);</span>
+<span style=color:blue;>  background: -webkit-linear-gradient(top, #5a5 1%, #383 100%);</span>
+<span style=color:blue;>  background: -moz-linear-gradient(top, #5a5 1%, #383 100%);</span>
+<span style=color:blue;>  background: linear-gradient(top, #5a5 1%,#383 100%);</span>
 }
 .toolbar .pager {
   display: block;
@@ -334,7 +604,74 @@
 <h4>1px ラインの追加</h4>
 デザイン系の記事で良く取り上げられる、1px の魔法を css で追加します。<br>
 具体的には右に 1px、下に 1px、ぼかし無しの状態で、要素の内側にボックスシャドウをかけます。こうするとちょうど、左上に 1px のラインを引いたような効果が出せます。<br>
-<style>.step6 .tab{margin:10px 5px 0 0;padding:5px 7px;float:left;height:14px;color:#383;border-style:solid;border-color:#383;border-width:1px 1px 0 1px;-webkit-border-top-left-radius:5px;-moz-border-radius-topleft:5px;border-top-left-radius:5px}.step6 .selected{background-color:#5a5;color:#fff;border-color:#373;border-bottom:1px #5a5;padding-right:8px;-webkit-box-shadow:1px 1px 0 #9c9 inset;-moz-box-shadow:1px 1px 0 #9c9 inset;box-shadow:1px 1px 0 #9c9 inset}.step6 .toolbar{clear:both;height:30px;background-color:#5a5;border:solid 1px #373;background:-webkit-linear-gradient(top,#5a5 1%,#383 100%);background:-moz-linear-gradient(top,#5a5 1%,#383 100%);background:linear-gradient(top,#5a5 1%,#383 100%);-webkit-box-shadow:1px 1px 0 #9c9 inset;-moz-box-shadow:1px 1px 0 #9c9 inset;box-shadow:1px 1px 0 #9c9 inset}.step6 .toolbar .pager{display:block;float:right;margin:6px}.step6 .toolbar .pager li{display:block;float:left;margin-left:2px;color:#fff}.step6 .toolbar .pager li.button{width:20px;padding:1px;border:solid 1px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}.step6 .toolbar .pager li.enable{border-color:rgba(255,255,255,.5)}.step6 .toolbar .pager li.current{background-color:rgba(255,255,255,.3);border-color:rgba(255,255,255,.5)}.step6 .toolbar .pager li.period{width:auto;padding:1px 2px;border:0}</style><br>
+<style>
+.step6 .tab {
+  margin: 10px 5px 0 0;
+  padding: 5px 7px;
+  float: left;
+  height: 14px;
+  color: #383;
+  border-style: solid;
+  border-color: #383;
+  border-width: 1px 1px 0 1px;
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  border-top-left-radius: 5px;
+}
+.step6 .selected {
+  background-color: #5a5;
+  color: #fff;
+  border-color: #373;
+  border-bottom: 1px #5a5;
+  padding-right: 8px;
+  -webkit-box-shadow: 1px 1px 0 #9c9 inset;
+  -moz-box-shadow: 1px 1px 0 #9c9 inset;
+  box-shadow: 1px 1px 0 #9c9 inset;
+}
+.step6 .toolbar {
+  clear: both;
+  height: 30px;
+  background-color: #5a5;
+  border: solid 1px #373;
+  background: -webkit-linear-gradient(top, #5a5 1%, #383 100%);
+  background: -moz-linear-gradient(top, #5a5 1%, #383 100%);
+  background: linear-gradient(top, #5a5 1%,#383 100%);
+  -webkit-box-shadow: 1px 1px 0 #9c9 inset;
+  -moz-box-shadow: 1px 1px 0 #9c9 inset;
+  box-shadow: 1px 1px 0 #9c9 inset;
+}
+.step6 .toolbar .pager {
+  display: block;
+  float: right;
+  margin: 6px;
+}
+.step6 .toolbar .pager li {
+  display: block;
+  float: left;
+  margin-left: 2px;
+  color: #fff;
+}
+.step6 .toolbar .pager li.button {
+  width: 20px;
+  padding: 1px;
+  border: solid 1px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.step6 .toolbar .pager li.enable {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.step6 .toolbar .pager li.current {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.step6 .toolbar .pager li.period {
+  width: auto;
+  padding: 1px 2px;
+  border: 0;
+}
+</style><br>
 <pre class=height_narrow>.tab {
   margin: 10px 5px 0 0;
   padding: 5px 7px;
@@ -354,9 +691,9 @@
   border-color: #373;
   border-bottom: 1px #5a5;
   padding-right: 8px;
-<span style=color:#00f>  -webkit-box-shadow: 1px 1px 0 #9c9 inset;</span>
-<span style=color:#00f>  -moz-box-shadow: 1px 1px 0 #9c9 inset;</span>
-<span style=color:#00f>  box-shadow: 1px 1px 0 #9c9 inset;</span>
+<span style=color:blue;>  -webkit-box-shadow: 1px 1px 0 #9c9 inset;</span>
+<span style=color:blue;>  -moz-box-shadow: 1px 1px 0 #9c9 inset;</span>
+<span style=color:blue;>  box-shadow: 1px 1px 0 #9c9 inset;</span>
 }
 .toolbar {
   clear: both;
@@ -366,9 +703,9 @@
   background: -webkit-linear-gradient(top, #5a5 1%, #383 100%);
   background: -moz-linear-gradient(top, #5a5 1%, #383 100%);
   background: linear-gradient(top, #5a5 1%,#383 100%);
-<span style=color:#00f>  -webkit-box-shadow: 1px 1px 0 #9c9 inset;</span>
-<span style=color:#00f>  -moz-box-shadow: 1px 1px 0 #9c9 inset;</span>
-<span style=color:#00f>  box-shadow: 1px 1px 0 #9c9 inset;</span>
+<span style=color:blue;>  -webkit-box-shadow: 1px 1px 0 #9c9 inset;</span>
+<span style=color:blue;>  -moz-box-shadow: 1px 1px 0 #9c9 inset;</span>
+<span style=color:blue;>  box-shadow: 1px 1px 0 #9c9 inset;</span>
 }
 .toolbar .pager {
   display: block;
@@ -423,12 +760,81 @@
 そのままだと、非選択のタブと選択中のタブの高さが変わって、片方が浮いてしまう感じになるので、さらに margin-bottom を -2px にします。<br>
 <br>
 こうする事で選択中のタブが占める高さは非選択のタブと同じ高さになるものの、背景の描画自体は 2px 分下に伸びる形になるので、ツールバーとの間にあった線を隠す事ができます。<br>
-<style>.step7 .tab{margin:10px 5px 0 0;padding:5px 7px;float:left;height:14px;color:#383;border-style:solid;border-color:#383;border-width:1px 1px 0 1px;-webkit-border-top-left-radius:5px;-moz-border-radius-topleft:5px;border-top-left-radius:5px}.step7 .selected{height:16px;margin-bottom:-2px;background-color:#5a5;color:#fff;border-color:#373;border-bottom:1px #5a5;padding-right:8px;-webkit-box-shadow:1px 1px 0 #9c9 inset;-moz-box-shadow:1px 1px 0 #9c9 inset;box-shadow:1px 1px 0 #9c9 inset}.step7 .toolbar{clear:both;height:30px;background-color:#5a5;border:solid 1px #373;background:-webkit-linear-gradient(top,#5a5 1%,#383 100%);background:-moz-linear-gradient(top,#5a5 1%,#383 100%);background:linear-gradient(top,#5a5 1%,#383 100%);-webkit-box-shadow:1px 1px 0 #9c9 inset;-moz-box-shadow:1px 1px 0 #9c9 inset;box-shadow:1px 1px 0 #9c9 inset}.step7 .toolbar .pager{display:block;float:right;margin:6px}.step7 .toolbar .pager li{display:block;float:left;margin-left:2px;color:#fff}.step7 .toolbar .pager li.button{width:20px;padding:1px;border:solid 1px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}.step7 .toolbar .pager li.enable{border-color:rgba(255,255,255,.5)}.step7 .toolbar .pager li.current{background-color:rgba(255,255,255,.3);border-color:rgba(255,255,255,.5)}.step7 .toolbar .pager li.period{width:auto;padding:1px 2px;border:0}</style><br>
+<style>
+.step7 .tab {
+  margin: 10px 5px 0 0;
+  padding: 5px 7px;
+  float: left;
+  height: 14px;
+  color: #383;
+  border-style: solid;
+  border-color: #383;
+  border-width: 1px 1px 0 1px;
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  border-top-left-radius: 5px;
+}
+.step7 .selected {
+  height: 16px;
+  margin-bottom: -2px;
+  background-color: #5a5;
+  color: #fff;
+  border-color: #373;
+  border-bottom: 1px #5a5;
+  padding-right: 8px;
+  -webkit-box-shadow: 1px 1px 0 #9c9 inset;
+  -moz-box-shadow: 1px 1px 0 #9c9 inset;
+  box-shadow: 1px 1px 0 #9c9 inset;
+}
+.step7 .toolbar {
+  clear: both;
+  height: 30px;
+  background-color: #5a5;
+  border: solid 1px #373;
+  background: -webkit-linear-gradient(top, #5a5 1%, #383 100%);
+  background: -moz-linear-gradient(top, #5a5 1%, #383 100%);
+  background: linear-gradient(top, #5a5 1%,#383 100%);
+  -webkit-box-shadow: 1px 1px 0 #9c9 inset;
+  -moz-box-shadow: 1px 1px 0 #9c9 inset;
+  box-shadow: 1px 1px 0 #9c9 inset;
+}
+.step7 .toolbar .pager {
+  display: block;
+  float: right;
+  margin: 6px;
+}
+.step7 .toolbar .pager li {
+  display: block;
+  float: left;
+  margin-left: 2px;
+  color: #fff;
+}
+.step7 .toolbar .pager li.button {
+  width: 20px;
+  padding: 1px;
+  border: solid 1px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.step7 .toolbar .pager li.enable {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.step7 .toolbar .pager li.current {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.step7 .toolbar .pager li.period {
+  width: auto;
+  padding: 1px 2px;
+  border: 0;
+}
+</style><br>
 <pre class=height_narrow>.tab {
   margin: 10px 5px 0 0;
   padding: 5px 7px;
   float: left;
-<span style=color:#00f>  height: 14px;</span>
+<span style=color:blue;>  height: 14px;</span>
   color: #383;
   border-style: solid;
   border-color: #383;
@@ -438,8 +844,8 @@
   border-top-left-radius: 5px;
 }
 .selected {
-<span style=color:#00f>  height: 16px;</span>
-<span style=color:#00f>  margin-bottom: -2px;</span>
+<span style=color:blue;>  height: 16px;</span>
+<span style=color:blue;>  margin-bottom: -2px;</span>
   background-color: #5a5;
   color: #fff;
   border-color: #373;
@@ -518,7 +924,80 @@
 <br>
 ところでこのテキストシャドウ、本当は 1px 程度はぼかした方が見た目が柔らかくなっていいのですが、XP 上の Chrome 限定で、「本来アンチエイリアスがかかっていないフォントに、テキストシャドウをぼかして適用するとアンチエイリアスがかかる」という仕様 (バグ？) があって、隣のシャドウ無しのフォントと見た目が変わってしまうので、あえてぼかし無しにしています。<br>
 自分が XP 上で Chrome を使っていて気になるというだけなので、気にせずぼかしを適用しても良いかも知れません。<br>
-<style>.step8 .tab{margin:10px 5px 0 0;padding:5px 7px;float:left;height:14px;color:#383;border-style:solid;border-color:#383;border-width:1px 1px 0 1px;-webkit-border-top-left-radius:5px;-moz-border-radius-topleft:5px;border-top-left-radius:5px}.step8 .selected{height:16px;margin-bottom:-2px;background-color:#5a5;color:#fff;border-color:#373;border-bottom:1px #5a5;padding-right:8px;-webkit-box-shadow:1px 1px 0 #9c9 inset;-moz-box-shadow:1px 1px 0 #9c9 inset;box-shadow:1px 1px 0 #9c9 inset;text-shadow:0 1px 0 #333}.step8 .toolbar{clear:both;height:30px;background-color:#5a5;border:solid 1px #373;background:-webkit-linear-gradient(top,#5a5 1%,#383 100%);background:-moz-linear-gradient(top,#5a5 1%,#383 100%);background:linear-gradient(top,#5a5 1%,#383 100%);-webkit-box-shadow:1px 1px 0 #9c9 inset;-moz-box-shadow:1px 1px 0 #9c9 inset;box-shadow:1px 1px 0 #9c9 inset}.step8 .toolbar .pager{display:block;float:right;margin:6px}.step8 .toolbar .pager li{display:block;float:left;margin-left:2px;color:#fff;text-align:center;font-size:90%}.step8 .toolbar .pager li.button{width:20px;padding:1px;border:solid 1px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}.step8 .toolbar .pager li.enable{border-color:rgba(255,255,255,.5)}.step8 .toolbar .pager li.current{background-color:rgba(255,255,255,.3);border-color:rgba(255,255,255,.5);text-shadow:0 1px 0 #333}.step8 .toolbar .pager li.period{width:auto;padding:1px 2px;border:0}</style><br>
+<style>
+.step8 .tab {
+  margin: 10px 5px 0 0;
+  padding: 5px 7px;
+  float: left;
+  height: 14px;
+  color: #383;
+  border-style: solid;
+  border-color: #383;
+  border-width: 1px 1px 0 1px;
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  border-top-left-radius: 5px;
+}
+.step8 .selected {
+  height: 16px;
+  margin-bottom: -2px;
+  background-color: #5a5;
+  color: #fff;
+  border-color: #373;
+  border-bottom: 1px #5a5;
+  padding-right: 8px;
+  -webkit-box-shadow: 1px 1px 0 #9c9 inset;
+  -moz-box-shadow: 1px 1px 0 #9c9 inset;
+  box-shadow: 1px 1px 0 #9c9 inset;
+  text-shadow: 0 1px 0 #333;
+}
+.step8 .toolbar {
+  clear: both;
+  height: 30px;
+  background-color: #5a5;
+  border: solid 1px #373;
+  background: -webkit-linear-gradient(top, #5a5 1%, #383 100%);
+  background: -moz-linear-gradient(top, #5a5 1%, #383 100%);
+  background: linear-gradient(top, #5a5 1%,#383 100%);
+  -webkit-box-shadow: 1px 1px 0 #9c9 inset;
+  -moz-box-shadow: 1px 1px 0 #9c9 inset;
+  box-shadow: 1px 1px 0 #9c9 inset;
+}
+.step8 .toolbar .pager {
+  display: block;
+  float: right;
+  margin: 6px;
+}
+.step8 .toolbar .pager li {
+  display: block;
+  float: left;
+  margin-left: 2px;
+  color: #fff;
+  text-align: center;
+  font-size: 90%;
+}
+.step8 .toolbar .pager li.button {
+  width: 20px;
+  padding: 1px;
+  border: solid 1px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.step8 .toolbar .pager li.enable {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.step8 .toolbar .pager li.current {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  text-shadow: 0 1px 0 #333;
+}
+.step8 .toolbar .pager li.period {
+  width: auto;
+  padding: 1px 2px;
+  border: 0;
+}
+</style><br>
 <pre class=height_narrow>.tab {
   margin: 10px 5px 0 0;
   padding: 5px 7px;
@@ -543,7 +1022,7 @@
   -webkit-box-shadow: 1px 1px 0 #9c9 inset;
   -moz-box-shadow: 1px 1px 0 #9c9 inset;
   box-shadow: 1px 1px 0 #9c9 inset;
-<span style=color:#00f>  text-shadow: 0 1px 0 #333;</span>
+<span style=color:blue;>  text-shadow: 0 1px 0 #333;</span>
 }
 .toolbar {
   clear: both;
@@ -584,7 +1063,7 @@
 .toolbar .pager li.current {
   background-color: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 0.5);
-<span style=color:#00f>  text-shadow: 0 1px 0 #333;</span>
+<span style=color:blue;>  text-shadow: 0 1px 0 #333;</span>
 }
 .toolbar .pager li.period {
   width: auto;
@@ -629,11 +1108,11 @@
   -webkit-border-top-left-radius: 5px;
   -moz-border-radius-topleft: 5px;
   border-top-left-radius: 5px;
-<span style=color:#00f>  cursor: pointer;</span>
+<span style=color:blue;>  cursor: pointer;</span>
 }
 .tab:hover {
-<span style=color:#00f>  padding-top: 7px;</span>
-<span style=color:#00f>  margin-top: 8px;</span>
+<span style=color:blue;>  padding-top: 7px;</span>
+<span style=color:blue;>  margin-top: 8px;</span>
 }
 .selected {
   height: 16px;
@@ -683,10 +1162,10 @@
 }
 .toolbar .pager li.enable {
   border-color: rgba(255, 255, 255, 0.5);
-<span style=color:#00f>  cursor: pointer;</span>
+<span style=color:blue;>  cursor: pointer;</span>
 }
 .toolbar .pager li.enable:hover {
-<span style=color:#00f>  background-color: rgba(255, 255, 255, 0.3);</span>
+<span style=color:blue;>  background-color: rgba(255, 255, 255, 0.3);</span>
 }
 .toolbar .pager li.current {
   background-color: rgba(255, 255, 255, 0.3);

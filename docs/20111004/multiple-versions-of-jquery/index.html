@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>複数のバージョンの jQuery を共存させる方法 - OTCHY.NET</title>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
+<style></style>
 </head>
 <body>
 <nav>
@@ -23,7 +25,7 @@ jQuery には $ の競合を避けるための jQuery.noConflict という funct
 $(function() {
     var func = function() {
         <span style=color:green>// 実際に動作させたい部分</span>
-        var $16 = jQuery.noConflict(<span style=color:#00f>true</span>);
+        var $16 = jQuery.noConflict(<span style=color:blue>true</span>);
         alert($.fn.jquery);  <span style=color:green>// old version</span>
         alert($16.fn.jquery);  <span style=color:green>// ver 1.6</span>
     }

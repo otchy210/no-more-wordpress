@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>Google App Engine for Java 開発環境を USB メモリで持ち歩く (2) - OTCHY.NET</title>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
+<style></style>
 </head>
 <body>
 <nav>
@@ -77,7 +79,7 @@ Set shell = CreateObject("WScript.Shell")
 drive = fso.GetDriveName(WScript.ScriptFullName)
 shell.CurrentDirectory = ".\eclipse"
 
-eclipse = drive & "\eclipse\eclipse.exe <span style=color:#00f>-clean</span>"
+eclipse = drive & "\eclipse\eclipse.exe <span style=color:#00f;>-clean</span>"
 javaw = drive & "\jdk\jre\bin\javaw.exe"
 ws = drive & "\workspace"
 cmd = eclipse & " -vm " & javaw & " -data " & ws

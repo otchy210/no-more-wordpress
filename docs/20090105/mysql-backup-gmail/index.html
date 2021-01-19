@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>MySQL のダンプを Gmail でお手軽に定期バックアップ - OTCHY.NET</title>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
+<style></style>
 </head>
 <body>
 <nav>
@@ -18,7 +20,7 @@
 <li>sendmail (もしくは sendmail ラッパを持った他の MTA)</li>
 <li>zip</li>
 <li>Gmail アカウント</li>
-<li><span style=text-decoration:line-through><a href=http://srekcah.org/jcode/ target=_blank>jcode.pl</a></span></li>
+<li><span style="text-decoration: line-through;"><a href=http://srekcah.org/jcode/ target=_blank>jcode.pl</a></span></li>
 <li><a href=http://www.cc.rim.or.jp/~ikuta/mime_pls/document.html#mimew.pl target=_blank>mimew.pl</a></li>
 </ul>
 <h4>対象者</h4>
@@ -33,7 +35,7 @@
 ※cron から動かすためにパスは全てフルパスで。<br>
 <pre class=height_middle>#!/usr/bin/perl
 
-<span style=text-decoration:line-through>require "/path/to/library/jcode.pl";
+<span style="text-decoration: line-through;">require "/path/to/library/jcode.pl";
 </span>require "/path/to/library/mimew.pl";
 
 #### Setting
@@ -121,7 +123,7 @@ zip コマンドを工夫すれば、複数ファイルのバックアップも�
 Gmail のアドレスは、userid+suffix@gmail.com の様に、任意のサフィックスを付けても同じメールボックスで受け取る事が出来ます。<br>
 たとえば、userid+dbbackup@gmail.com 宛にバックアップを送信するようにして、userid+dbbackup でフィルタすれば、バックアップメールだけ受信トレイに入れずにそのままアーカイブ出来るので、バックアップメールも邪魔にならずに済みます。<br>
 <h4>備考</h4>
-<span style=text-decoration:line-through>今更、jcode.pl ？と思われるかもしれませんが、「おけば動く」という事と、昔からお世話になっていて慣れている、という理由で選択してます。
+<span style="text-decoration: line-through;">今更、jcode.pl ？と思われるかもしれませんが、「おけば動く」という事と、昔からお世話になっていて慣れている、という理由で選択してます。
 </span> 特に必要性を感じなかったので Subject の日本語化には対応してません。<br>
 <br>
 <strong>[追記]</strong>すごい事に気がついた！jcode.pl 使ってない！途中で日本語使うのやめちゃったんだな＜過去のおれ<br>

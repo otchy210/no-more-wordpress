@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>日本語をタイピングして変換しているようにアニメーションできる jQuery プラグイン jaTicker をリリース！ - OTCHY.NET</title>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
+<style></style>
 </head>
 <body>
 <nav>
@@ -13,7 +15,11 @@
 <main>
 <pre id=jaticker-intro style=white-space:normal><ruby>jquery.jaticker.js は<rt>jquery.jaticker.js は</rt></ruby><ruby>日本語の<rt>にほんごの</rt></ruby><ruby>変換アニメーションに<rt>へんかんあにめーしょんに</rt></ruby><ruby>対応した、<rt>たいおうした、</rt></ruby><ruby>ティッカーの<rt>てぃっかーの</rt></ruby> jQuery <ruby>プラグインです。<rt>ぷらぐいんです。</rt></ruby><ruby>文字列を<rt>もじれつを</rt></ruby><ruby>タイプしている風に<rt>たいぷしているふうに</rt></ruby><ruby>順に表示する事が<rt>じゅんにひょうじすることが</rt></ruby><ruby>出来ます。<rt>できます。</rt></ruby>
 </pre>
-<script>$(function(){$("#jaticker-intro").jaticker()})</script><br>
+<script>
+$(function() {
+  $('#jaticker-intro').jaticker();
+});
+</script><br>
 <br>
 <a href=http://phpspot.org/blog/archives/2011/11/jqueryjticker.html target=_blank>画面上で誰かがタイピングしているようにアニメーションできるjQueryプラグイン「jticker」:phpspot開発日誌</a> で紹介されていた <a href=http://webdev.stephband.info/jticker/ target=_blank>jticker</a> を見た時に、<br>
 <br>

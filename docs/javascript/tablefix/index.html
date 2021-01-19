@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>jquery.tablefix.js - OTCHY.NET</title>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
+<style></style>
 </head>
 <body>
 <nav>
@@ -11,7 +13,7 @@
 <h1>jquery.tablefix.js</h1>
 </header>
 <main>
-<p style=text-align:right>»<a href=//s.otchy.net/js/jquery.tablefix_1.0.1.js>Download </a></p>
+<p style="text-align: right;">»<a href=//s.otchy.net/js/jquery.tablefix_1.0.1.js>Download </a></p>
 <br>
 jquery.tablefix.js は、Excel のウィンドウ枠固定のように、テーブルのヘッダや左側を固定して、残りの部分をスクロールさせるための、jQuery プラグインです。<br>
 <br>
@@ -192,7 +194,26 @@ JavaScript<br>
 </pre>
 <br>
 実行結果<br>
-<style>.tablefix{width:800px;border-collapse:collapse;border-spacing:0}.tablefix thead th{background-color:#333;color:#fff;text-align:center;vertical-align:middle;white-space:nowrap}#tablefix1,#tablefix2{width:800px}#tablefix3{width:500px}</style><br>
+<style>
+.tablefix {
+    width: 800px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.tablefix thead th {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+#tablefix1, #tablefix2 {
+    width: 800px;
+}
+#tablefix3 {
+    width: 500px;
+}
+</style><br>
 <table id=tablefix1 class=tablefix>
 <thead>
 <tr>
@@ -355,7 +376,13 @@ JavaScript<br>
 </tbody><br>
 </table>
 <script src=//s.otchy.net/js/jquery.tablefix.js></script><br>
-<script>$(function(){$("#tablefix1").tablefix({width:500,height:200,fixRows:2,fixCols:2}),$("#tablefix2").tablefix({width:500,fixCols:2}),$("#tablefix3").tablefix({height:200,fixRows:2})})</script><br>
+<script>
+$(function() {
+    $('#tablefix1').tablefix({width: 500, height: 200, fixRows: 2, fixCols: 2});
+    $('#tablefix2').tablefix({width: 500, fixCols: 2});
+    $('#tablefix3').tablefix({height: 200, fixRows: 2});
+});
+</script><br>
 <br>
 <h4>制限事項</h4>
 <ul>

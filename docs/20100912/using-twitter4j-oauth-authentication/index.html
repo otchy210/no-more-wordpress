@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>Twitter4J から OAuth 認証部分だけを利用する方法 - OTCHY.NET</title>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
+<style></style>
 </head>
 <body>
 <nav>
@@ -33,7 +35,7 @@ Twitter API を OAuth で使用する際に、開発者側で必要な ConsumerK
 下記の疑似コードでは捨ててますが、consumerKey と consumerSecret から、requestToken と requestTokenSecret を取得するまでがポイントです。この時点ではまだユーザには何も提示しておらず、ここで取得した requestToken を次に使います。また、requestTokenSecret も必ずペアで保持しておきます。<br>
 <br>
 <pre>Configuration conf = ConfigurationContext.getInstance();
-OAuthAuthorization oauth = new OAuthAuthorization(conf, <span style=color:#00f>consumerKey</span>, <span style=color:#00f>consumerSecret</span>);
+OAuthAuthorization oauth = new OAuthAuthorization(conf, <span style=color:blue;>consumerKey</span>, <span style=color:blue;>consumerSecret</span>);
 HttpClientWrapper http = new HttpClientWrapper(conf);
 try {
     HttpResponse res = http.post(conf.getOAuthRequestTokenURL(), oauth);
@@ -43,8 +45,8 @@ try {
         return false;
     }
     Map&lt;String, String> results = OAuthUtil.parseResult(result);
-    String <span style=color:#00f>requestToken</span> = results.get("oauth_token");
-    String <span style=color:#00f>requestTokenSecret</span> = results.get("oauth_token_secret");
+    String <span style=color:blue;>requestToken</span> = results.get("oauth_token");
+    String <span style=color:blue;>requestTokenSecret</span> = results.get("oauth_token_secret");
 } catch (TwitterException e) {
     e.printStackTrace();
     return false;
@@ -82,8 +84,8 @@ return true;
 <h4>OAuth 認証の要求</h4>
 単に以下の URL をユーザに表示して (通常、ブラウザであればリダイレクト) ユーザからの認証許可を待ちます。<br>
 認証が許可されると、ConsumerKey を取得した際に登録したコールバック URL に結果が返ってきます。<br>
-<pre>https://twitter.com/oauth/authorize?oauth_token=<span style=color:#00f>requestToken</span>
-https://twitter.com/oauth/authenticate?oauth_token=<span style=color:#00f>requestToken</span>
+<pre>https://twitter.com/oauth/authorize?oauth_token=<span style=color:blue;>requestToken</span>
+https://twitter.com/oauth/authenticate?oauth_token=<span style=color:blue;>requestToken</span>
 </pre>
 ここで、authorize は、必ず毎回ユーザの手動による認証が必要になります。<br>
 authenticate の場合、初回のみ認証が必要なだけで、一回認証してしまえば次回からは自動的にコールバックが呼ばれるようになります。大半のウェブサービスではこちらを使ってますね。<br>
@@ -96,7 +98,7 @@ authenticate の場合、初回のみ認証が必要なだけで、一回認証�
 ただ、screen_name に関してはユーザ設定で変更も可能なので、もしアプリ側でユーザごとの情報を何か保存する場合、user_id に関連づけて保存しておく必要があります。<br>
 <br>
 <pre>Configuration conf = ConfigurationContext.getInstance();
-AccessToken accessToken = new AccessToken(<span style=color:#00f>requestToken</span>, <span style=color:#00f>requestTokenSecret</span>);
+AccessToken accessToken = new AccessToken(<span style=color:blue;>requestToken</span>, <span style=color:blue;>requestTokenSecret</span>);
 OAuthAuthorization oauth = new OAuthAuthorization(conf, consumerKey, consumerSecret, accessToken);
 HttpClientWrapper http = new HttpClientWrapper(conf);
 try {
@@ -107,10 +109,10 @@ try {
         return false;
     }
     Map&lt;String, String> results = OAuthUtil.parseResult(result);
-    String <span style=color:#00f>accessToken</span> = results.get("oauth_token");
-    String <span style=color:#00f>accessTokenSecret</span> = results.get("oauth_token_secret");
-    String <span style=color:#00f>userId</span> = results.get("user_id");
-    String <span style=color:#00f>screenName</span> = results.get("screen_name");
+    String <span style=color:blue;>accessToken</span> = results.get("oauth_token");
+    String <span style=color:blue;>accessTokenSecret</span> = results.get("oauth_token_secret");
+    String <span style=color:blue;>userId</span> = results.get("user_id");
+    String <span style=color:blue;>screenName</span> = results.get("screen_name");
 } catch (TwitterException e) {
     e.printStackTrace();
     return false;
@@ -131,10 +133,10 @@ accessToken と accessTokenSecret が得られれば、後はそれを使って�
 Twitter API は使用する HTTP メソッドにより効果が異なるので GET/POST/DELETE に応じて、使用する Java のメソッドが異なります。<br>
 <br>
 <pre>Configuration conf = ConfigurationContext.getInstance();
-AccessToken accessToken = new AccessToken(<span style=color:#00f>accessToken</span>, <span style=color:#00f>accessTokenSecret</span>);
+AccessToken accessToken = new AccessToken(<span style=color:blue;>accessToken</span>, <span style=color:blue;>accessTokenSecret</span>);
 OAuthAuthorization oauth = new OAuthAuthorization(conf, consumerKey, consumerSecret, accessToken);
 HttpClientWrapper http = new HttpClientWrapper(conf);
-String <span style=color:#00f>url</span> = "https://twitter.com/some_api_path.json";
+String <span style=color:blue;>url</span> = "https://twitter.com/some_api_path.json";
 HttpParameter[] parameters = new HttpParameter[]{new HttpParameter(name1, value1), new HttpParameter(name2, value2)};
 
 try {

@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>テーブルのヘッダを固定してスクロールする jQuery プラグイン - OTCHY.NET</title>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
+<style></style>
 </head>
 <body>
 <nav>
@@ -85,7 +87,20 @@ JavaScript<br>
 </pre>
 <br>
 実行結果<br>
-<style>#tablefix{width:800px;border-collapse:collapse;border-spacing:0}#tablefix thead th{background-color:#333;color:#fff;text-align:center;vertical-align:middle;white-space:nowrap}</style><br>
+<style>
+#tablefix {
+    width: 800px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+#tablefix thead th {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+</style><br>
 <table id=tablefix class=tablefix>
 <thead>
 <tr>
@@ -144,7 +159,11 @@ JavaScript<br>
 </tbody><br>
 </table>
 <script src=//s.otchy.net/js/jquery.tablefix.js></script><br>
-<script>$(function(){$("#tablefix").tablefix({width:500,height:200,fixRows:2,fixCols:2})})</script><br>
+<script>
+$(function() {
+    $('#tablefix').tablefix({width: 500, height: 200, fixRows: 2, fixCols: 2});
+});
+</script><br>
 <div class=prev>
 <a href=/20100225/zen-coding-for-perl/ >Zen Coding の Perl 実装書きました</a>
 </div>

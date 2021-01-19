@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>TwitterAPI.js - OTCHY.NET</title>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
+<style></style>
 </head>
 <body>
 <nav>
@@ -11,16 +13,16 @@
 <h1>TwitterAPI.js</h1>
 </header>
 <main>
-<p style="border:solid 1px #999;background:#fee;margin:0 20px;padding:10px">
-<strong style=color:#c00>【2010-06-17 追記】<br>従来と同じ使い方のまま OAuth に対応した、TwitterAPI2.js を公開しました。</strong><br>
+<p style="border: solid 1px #999; background: #fee; margin: 0 20px; padding: 10px;">
+<strong style=color:#c00;>【2010-06-17 追記】<br>従来と同じ使い方のまま OAuth に対応した、TwitterAPI2.js を公開しました。</strong><br>
 下記、TwitAPI.js に対するラッパになります。<br>
 詳細は、<a href=/javascript/twitter-api2/ >TwitterAPI2.js</a> を参照して下さい。<br>
-<strong style=color:#c00>【2010-06-12 追記】OAuth 対応版を公開しました</strong><br>
+<strong style=color:#c00;>【2010-06-12 追記】OAuth 対応版を公開しました</strong><br>
 まだ完成度は低いですが、基本的な動作は可能になったので公開しました。インターフェースなどが変更になっていますが、基本的な使用感は変わりません。<br>
 <a href=/javascript/twit-api/ >TwitAPI.js</a><br>
 </p>
 <br>
-<p style="border:solid 1px #999;background:#fee;margin:10px 20px 0 20px;padding:10px"><strong style=color:#c00>現状の TwitterAPI.js は <del>2010-06-30</del> 2010-08-31 をもって利用できなくなります。</strong><br>
+<p style="border: solid 1px #999; background: #fee; margin: 10px 20px 0 20px; padding: 10px;"><strong style=color:#c00;>現状の TwitterAPI.js は <del>2010-06-30</del> 2010-08-31 をもって利用できなくなります。</strong><br>
 Twitter の BASIC 認証による API 提供が、6月末に終了することが<a href=http://www.itmedia.co.jp/news/articles/1004/27/news063.html target=_blank>正式発表され</a>、BASIC 認証を利用している現状の TwitterAPI.js はそれと同時に利用できなくなります。TwitterAPI.js の OAuth への対応も検討していますが、現時点での予定は未定です。<br>
 従って、これから新しく何かを作成するのに、TwitterAPI.js を選択するのはお勧めしません。Twitter 公式の JavaScript ライブラリ @anywhere も、<a href=http://internet.watch.impress.co.jp/docs/news/20100415_361350.html target=_blank>開発者向けに公開</a>されているので、あわせてご検討下さい。<br>
 【追記】<br>
@@ -29,8 +31,8 @@ BASIC 認証が不要な API については、7 月以降も TwitterAPI.js で�
 移行期限を 8 月 16 日まで延長し、8 月 31 日にかけて段階的に終了することが<a href=http://blog.twitter.jp/2010/06/twitter-api-oauth.html target=_blank>アナウンス</a>されました。<br>
 </p>
 <br>
-<p style=text-align:right>»<a href=//s.otchy.net/js/twitterapi_0.9.4.js>Download </a></p>
-<p style=text-align:right>»<a href=//s.otchy.net/js/twitterapi_0.9.2.js>Download (Ver 0.9.2)</a></p>
+<p style="text-align: right;">»<a href=//s.otchy.net/js/twitterapi_0.9.4.js>Download </a></p>
+<p style="text-align: right;">»<a href=//s.otchy.net/js/twitterapi_0.9.2.js>Download (Ver 0.9.2)</a></p>
 <br>
 <script src=//s.otchy.net/js/twitterapi_0.9.4.js></script> <script src=//s.otchy.net/js/twitterapi_sample.js></script><br>
 <br>
@@ -59,14 +61,14 @@ TwitterAPI.js を使うと、例えば以下のような事が出来ます。 �
 <pre>&lt;script type="text/javascript">
   function post(f) {
     var status = f.status.value;
-    <span style=color:#00f>TwitterAPI.statuses.update(status);</span>
+    <span style="color: #0000ff;">TwitterAPI.statuses.update(status);</span>
   }
 &lt;/script>
 ：
 &lt;form>
 &lt;input type="text" name="status" style="width:300px" />&lt;input type="button" onclick="post(this.form);" value="UPDATE" />
 &lt;/form></pre>
-<form action=#> <input style=width:300px name=status> <input onclick=post(this.form) type=button value=UPDATE> </form>≪特定のユーザのタイムラインを取得する≫<br>
+<form action=#> <input style="width: 300px;" name=status> <input onclick=post(this.form); type=button value=UPDATE> </form>≪特定のユーザのタイムラインを取得する≫<br>
 <pre>&lt;script type="text/javascript">
   function callback(arr) {
     var str = '';
@@ -79,7 +81,7 @@ TwitterAPI.js を使うと、例えば以下のような事が出来ます。 �
   function getTl() {
     var id = document.getElementById('id').value;
     var param = 'count=10';
-    <span style=color:#00f>TwitterAPI.statuses.user_timeline(callback, id, param)</span>;
+    <span style="color: #0000ff;">TwitterAPI.statuses.user_timeline(callback, id, param)</span>;
   }
 &lt;/script>
 ：
@@ -89,21 +91,21 @@ ID &lt;input type="text" id="id" />&lt;input type="button" onclick="getTl();" va
 &lt;/form></pre>
 <form action=#> ID <br>
 <br>
-<input id=id> <input onclick=getTl() type=button value="GET TL"><br>
-<div id=result style="border:1px solid #999;background:#ffe none repeat scroll 0 0;overflow:auto;height:200px">ここに結果が表示される</div>
+<input id=id> <input onclick=getTl(); type=button value="GET TL"><br>
+<div id=result style="border: 1px solid #999999; background: #ffffee none repeat scroll 0% 0%; overflow: auto; height: 200px;">ここに結果が表示される</div>
 </form>
 <h4>API ドキュメント</h4>
 基本的には本家の API ドキュメントの記述をほぼそのまま使用する事が出来ます。<br>
 TwitterAPI.js を使用する場合の基本的な書き方は以下のような形です。<br>
-<pre><strong>TwitterAPI</strong>.<span style=color:#00f><em>MethodName</em></span>(callback, id, params);</pre>
+<pre><strong>TwitterAPI</strong>.<span style="color: #0000ff;"><em>MethodName</em></span>(callback, id, params);</pre>
 このように書くと、MethodName に該当する同一名の API が実行され、callback で指定した関数に、結果の JSON オブジェクトが渡されます。<br>
 Twitter API については、日本語訳を公開して下さっている方がいるので参考にして下さい。<br>
 <a href=http://watcher.moe-nifty.com/memo/2007/04/twitter_api.html target=_blank>Twitter API 仕様書 (勝手に日本語訳シリーズ)</a><br>
 <br>
 例えば、サンプルで使用した特定のユーザのタイムラインを取得するメソッドですが、Twitter API だと、以下のような URL です。<br>
-<pre>http://twitter.com/<span style=color:#00f>statuses</span>/<span style=color:#00f>user_timeline</span>/id.format?param</pre>
+<pre>http://twitter.com/<span style="color: #0000ff;">statuses</span>/<span style="color: #0000ff;">user_timeline</span>/id.format?param</pre>
 これに対応したメソッドは、以下のようになります。(format は json で固定)<br>
-<pre>TwitterAPI.<span style=color:#00f>statuses</span>.<span style=color:#00f>user_timeline</span>(callback, id, param)</pre>
+<pre>TwitterAPI.<span style="color: #0000ff;">statuses</span>.<span style="color: #0000ff;">user_timeline</span>(callback, id, param)</pre>
 このように、ほぼ全ての API はそれと同名の専用のメソッドが用意されています。<br>
 従って、TwitterAPI.js で使えるメソッドのドキュメントとしては、Twitter API のドキュメントをそのまま参照して下さい。<br>
 また、callback に何も指定しなければ、実行結果はそのまま捨てられ、id、param を設定しても無効な API の場合、それらの値は無視されます。<br>

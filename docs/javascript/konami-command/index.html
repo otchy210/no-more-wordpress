@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>コナミコマンド.js - OTCHY.NET</title>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
+<style></style>
 </head>
 <body>
 <nav>
@@ -11,14 +13,14 @@
 <h1>コナミコマンド.js</h1>
 </header>
 <main>
-<p style=text-align:right>»<a href=//s.otchy.net/js/konamicommand.js>Download</a></p>
+<p style="text-align: right;">»<a href=//s.otchy.net/js/konamicommand.js>Download</a></p>
 <br>
 あの懐かしい「上上下下…」の響き。伝説のコナミコマンドを、あなたのウェブページに簡単に導入する事が出来るスクリプトです。<br>
 <br>
 Google Reader がコナミコマンドに対応しているというニュースを読んだらいても立ってもいられなくなり、条件反射のように作成してしまいました。<br>
 <br>
 さて、とりあえずこのページ自体がサンプルになっているので、コナミコマンドを入力してみて下さい。<br>
-<span style=text-decoration:line-through>スクリプトの作成時間よりこの説明ページの作成時間の方が長かった事は秘密だ。</span><br>
+<span style="text-decoration: line-through;">スクリプトの作成時間よりこの説明ページの作成時間の方が長かった事は秘密だ。</span><br>
 <h4>動作条件</h4>
 下記のブラウザで動作確認しています。他のブラウザでも動くかも知れませんが、分かりません。<br>
 IE6、IE7、Firefox1、Firefox1.5、Firefox2.0、Safari3、Opera9<br>
@@ -88,7 +90,28 @@ konamicommand(powerUp);</pre>
 このページ自体にも、通常のコナミコマンド以外の隠しコマンドが…<br>
 <br>
 <script src=//s.otchy.net/js/konamicommand.js></script><br>
-<script>konamicommand(function(o){var n=document.body;o%2==0?(alert("パワーアップ"),n.style.backgroundColor="#006"):n.style.backgroundColor="#fff",window.scrollTo(0,0)}),konamicommand(function(o){var n=document.body;o%2==0?(alert("自爆"),n.style.backgroundColor="#600"):n.style.backgroundColor="#fff",window.scrollTo(0,0)},"|38|38|40|40|76|82|76|82|66|65|")</script>
+<script><!--
+	konamicommand(function(count){
+		var b = document.body;
+		if (count % 2 == 0) {
+			alert('パワーアップ');
+			b.style.backgroundColor = '#006';
+		} else {
+			b.style.backgroundColor = '#fff';
+		}
+		window.scrollTo(0,0);
+	});
+	konamicommand(function(count){
+		var b = document.body;
+		if (count % 2 == 0) {
+			alert('自爆');
+			b.style.backgroundColor = '#600';
+		} else {
+			b.style.backgroundColor = '#fff';
+		}
+		window.scrollTo(0,0);
+	}, '|38|38|40|40|76|82|76|82|66|65|');
+// --></script>
 </main>
 <footer>
 </footer>

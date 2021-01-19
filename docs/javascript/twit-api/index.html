@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>TwitAPI.js - OTCHY.NET</title>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
+<style></style>
 </head>
 <body>
 <nav>
@@ -11,7 +13,7 @@
 <h1>TwitAPI.js</h1>
 </header>
 <main>
-<p style=text-align:right>≫<a href=//s.otchy.net/js/twitapi_0.2.1.js>Download</a></p>
+<p style="text-align: right;">≫<a href=//s.otchy.net/js/twitapi_0.2.1.js>Download</a></p>
 <br>
 <h4>概要</h4>
 Twitter の API を JavaScript から簡単に使うためのライブラリです。 上部の Download リンクより、js ファイルをダウンロードして読み込む事で、専用のプロキシサーバを通じて Twitter API を呼び出す事が出来るようになります。<br>
@@ -72,15 +74,15 @@ Twitter API については、日本語訳を公開して下さっている方�
 <a href="http://www.google.co.jp/search?q=Twitter+API+%E4%BB%95%E6%A7%98%E6%9B%B8+%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%A8%B3" target=_blank>Twitter API 仕様書 日本語訳</a><br>
 <br>
 例えば、サンプルで使用した Twitter に投稿する API ですが、Twitter API だと、以下のような URL です。<br>
-<pre>http://twitter.com/<span style=color:#00f>statuses/update</span>?status=[Tweet message]</pre>
+<pre>http://twitter.com/<span style="color: #0000ff;">statuses/update</span>?status=[Tweet message]</pre>
 この URL に対して、POST でアクセスする事になっています。<br>
 この場合、TwitAPI.js では下記のように呼び出す事が出来ます。<br>
 <pre>var api = new TwitAPI();
-api.call('<span style=color:#00f>post</span>', '<span style=color:#00f>statuses/update</span>', callback, {status: 'Tweet message'});
+api.call('<span style="color: #0000ff;">post</span>', '<span style="color: #0000ff;">statuses/update</span>', callback, {status: 'Tweet message'});
 </pre>
 <br>
 このように、TwitAPI.js での API 呼び出しは、本家の API の書式にそのまま対応します。<br>
-<pre>api.call(<span style=color:#00f>[get|post|delete]</span>, <span style=color:#00f>[api path]</span>, callback, {param1:value1, param2:value2, ...});
+<pre>api.call(<span style="color: #0000ff;">[get|post|delete]</span>, <span style="color: #0000ff;">[api path]</span>, callback, {param1:value1, param2:value2, ...});
 </pre>
 <br>
 なお、callback に何も指定しなければ、実行結果はそのまま捨てられます。<br>
@@ -97,7 +99,7 @@ TwitAPI.js はその仕組み上、どのメソッドを使用した時でも JS
 自分でプロキシサーバを構築してそれを利用する場合、TwitAPI.js 上で、そのプロキシサーバを指定する必要があります。<br>
 プロキシサーバにはサーバのドメインと、ドメインごとに複数設定可能なアプリケーションパスがあるので、それらを指定して TwitAPI オブジェクトを生成します。<br>
 <br>
-<pre>var api = new TwitAPI(<span style=color:#00f>[server url]</span>, <span style=color:#00f>[app path]</span>);
+<pre>var api = new TwitAPI(<span style="color: #0000ff;">[server url]</span>, <span style="color: #0000ff;">[app path]</span>);
 </pre>
 <br>
 デフォルトの設定では下記のように指定したのと同じ状態になっています。<br>

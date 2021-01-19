@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>連番で終わっている URL の前後に移動するブックマークレット - OTCHY.NET</title>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
+<style></style>
 </head>
 <body>
 <nav>
@@ -36,7 +38,7 @@ javascript:(function(h,a,s,d,l){a=h.match(/[^\d]*(\d+)[^/\d]*\/?$/);if(!a)return
 これだけだと面白くないので、ちゃんと整形してソースコードを解説してみます。ここで紹介するのは前に移動する例ですが、後ろに移動するのはプラスとマイナスが違うだけで他は同じです。<br>
 <table class=layout>
 <tbody><tr>
-<td><pre style=line-height:1.2em;font-size:110%>01
+<td><pre style="line-height: 1.2em; font-size: 110%;">01
 02
 03
 04
@@ -48,7 +50,7 @@ javascript:(function(h,a,s,d,l){a=h.match(/[^\d]*(\d+)[^/\d]*\/?$/);if(!a)return
 10
 11</pre>
 </td>
-<td><pre style=line-height:1.2em;font-size:110%>(function(h, a, s, d, l) {
+<td><pre style="line-height: 1.2em; font-size: 110%;">(function(h, a, s, d, l) {
     a = h.match(/[^\d]*(\d+)[^/\d]*\/?$/);
     if (!a) return;
     s = a[1];
@@ -88,7 +90,7 @@ new Array(l) で、l の長さの空の配列を作り、join('0') する事で�
 その後ろに d を連結して、最後に slice(-l) すると、後ろ側 (右側) から l 文字切り取られるので、最終的には s と同じ桁数で 0 埋めした数字が手に入ります。<br>
 <br>
 ややこしいので具体例として、l が 4 で d が '10' の場合を考えると以下のようになります。<br>
-<pre style=line-height:1.2em;font-size:110%>new Array(4) → [undefined, undefined, undefined, undefined]
+<pre style="line-height: 1.2em; font-size: 110%">new Array(4) → [undefined, undefined, undefined, undefined]
 (new Array(4)).join('0') → '000'
 (new Array(4)).join('0') + '10' → '00010'
 ((new Array(4)).join('0') + '10').slice(-4) → '0010'

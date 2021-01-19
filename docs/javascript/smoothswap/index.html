@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>jquery.smoothswap.js - OTCHY.NET</title>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
+<style></style>
 </head>
 <body>
 <nav>
@@ -11,13 +13,13 @@
 <h1>jquery.smoothswap.js</h1>
 </header>
 <main>
-<p style=text-align:right>≫<a href=//s.otchy.net/js/jquery.smoothswap_1.0.0.js>Download </a></p>
+<p style="text-align: right;">≫<a href=//s.otchy.net/js/jquery.smoothswap_1.0.0.js>Download </a></p>
 <br>
 ぬるっと動いて、2つのパネルの位置が入れ替わる jQuery プラグインです。<br>
 <br>
 <h4>デモ</h4>
-<div id=smoothswap style="width:400px;padding:10px;border:solid 1px #99f;background-color:#eef">
-<div class=smoothswap-panel style="margin:10px;padding:10px;border:solid 1px #999;background-color:#fff">
+<div id=smoothswap style="width:400px;padding:10px;border: solid 1px #99f;background-color:#eef;">
+<div class=smoothswap-panel style="margin:10px;padding:10px;border:solid 1px #999;background-color:#fff;">
 <div style=text-align:right><button class=smoothswap-up>▲</button><button class=smoothswap-down>▼</button></div>
 <div>
 1つめのパネル。<br><br>
@@ -26,13 +28,13 @@
 1つめのパネル。<br><br>
 </div>
 </div>
-<div class=smoothswap-panel style="margin:10px;padding:10px;border:solid 1px #999;background-color:#fff">
+<div class=smoothswap-panel style="margin:10px;padding:10px;border:solid 1px #999;background-color:#fff;">
 <div style=text-align:right><button class=smoothswap-up>▲</button><button class=smoothswap-down>▼</button></div>
 <div>
 2つめのパネル。<br><br>
 </div>
 </div>
-<div class=smoothswap-panel style="margin:10px;padding:10px;border:solid 1px #999;background-color:#fff">
+<div class=smoothswap-panel style="margin:10px;padding:10px;border:solid 1px #999;background-color:#fff;">
 <div style=text-align:right><button class=smoothswap-up>▲</button><button class=smoothswap-down>▼</button></div>
 <div>
 3つめのパネル。<br><br>
@@ -47,15 +49,23 @@
 </div>
 </div>
 <script src=//s.otchy.net/js/jquery.smoothswap.js></script><br>
-<script>$(function(){$("#smoothswap").smoothswap({opacity:"0.6",duration:"normal",marginHeight:10})})</script><br>
+<script>// <![CDATA[
+$(function(){
+  $('#smoothswap').smoothswap({
+    'opacity': '0.6',
+    'duration': 'normal',
+    'marginHeight': 10
+  });
+});
+// ]]></script><br>
 <h4>使い方</h4>
 まず始めに、上部の Download リンクよりダウンロードしたプラグインを、jQuery 本体と一緒に読み込んで下さい。<br>
 ≪HTML≫<br>
 入れ替えたい単位をパネルとしてパネル用のクラス "smoothswap-panel" を指定します。<br>
 そのパネルの中で、上に動かすための要素のクラス"smoothswap-up" と、下に動かすための要素のクラス "smoothswap-down" を指定します。<br>
 <pre>&lt;div id="smoothswap" style="width:400px;padding:10px;border: solid 1px #99f;background-color:#eef;">
-&lt;div <span style=color:#00f>class="smoothswap-panel"</span> style="margin:10px;padding:10px;border:solid 1px #999;background-color:#fff;">
-  &lt;div style="text-align:right">&lt;button <span style=color:#00f>class="smoothswap-up"></span>▲&lt;/button>&lt;button <span style=color:#00f>class="smoothswap-down"</span>>▼&lt;/button>&lt;/div>
+&lt;div <span style=color:blue>class="smoothswap-panel"</span> style="margin:10px;padding:10px;border:solid 1px #999;background-color:#fff;">
+  &lt;div style="text-align:right">&lt;button <span style=color:blue>class="smoothswap-up"></span>▲&lt;/button>&lt;button <span style=color:blue>class="smoothswap-down"</span>>▼&lt;/button>&lt;/div>
   &lt;div>
     1つめのパネル。&lt;br />
     1つめのパネル。&lt;br />
@@ -63,14 +73,14 @@
     1つめのパネル。&lt;br />
   &lt;/div>
 &lt;/div>
-&lt;div <span style=color:#00f>class="smoothswap-panel"</span> style="margin:10px;padding:10px;border:solid 1px #999;background-color:#fff;">
-  &lt;div style="text-align:right">&lt;button <span style=color:#00f>class="smoothswap-up"></span>▲&lt;/button>&lt;button <span style=color:#00f>class="smoothswap-down"</span>>▼&lt;/button>&lt;/div>
+&lt;div <span style=color:blue>class="smoothswap-panel"</span> style="margin:10px;padding:10px;border:solid 1px #999;background-color:#fff;">
+  &lt;div style="text-align:right">&lt;button <span style=color:blue>class="smoothswap-up"></span>▲&lt;/button>&lt;button <span style=color:blue>class="smoothswap-down"</span>>▼&lt;/button>&lt;/div>
   &lt;div>
     2つめのパネル。&lt;br />
   &lt;/div>
 &lt;/div>
-&lt;div <span style=color:#00f>class="smoothswap-panel"</span> style="margin:10px;padding:10px;border:solid 1px #999;background-color:#fff;">
-  &lt;div style="text-align:right">&lt;button <span style=color:#00f>class="smoothswap-up"></span>▲&lt;/button>&lt;button <span style=color:#00f>class="smoothswap-down"</span>>▼&lt;/button>&lt;/div>
+&lt;div <span style=color:blue>class="smoothswap-panel"</span> style="margin:10px;padding:10px;border:solid 1px #999;background-color:#fff;">
+  &lt;div style="text-align:right">&lt;button <span style=color:blue>class="smoothswap-up"></span>▲&lt;/button>&lt;button <span style=color:blue>class="smoothswap-down"</span>>▼&lt;/button>&lt;/div>
   &lt;div>
     3つめのパネル。&lt;br />
     3つめのパネル。&lt;br />

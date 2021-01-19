@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>右下または左下においた画像に文字列を回り込ませるHTML/CSS - OTCHY.NET</title>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
+<style></style>
 </head>
 <body>
 <nav>
@@ -64,7 +66,29 @@
 わかりやすいように色分けした div で表現していますが、赤線は実際には透明、青い四角は実際には画像だと思って下さい。<br>
 </p>
 <br>
-<style>#block{width:200px;height:200px;overflow:hidden;font-size:10pt;border:solid 1px #666;padding:.5em}#bar{float:right;width:1px;height:100px;background-color:red}#img{float:right;clear:both;width:100px;height:100px;background-color:#00f}</style><br>
+<style>
+#block {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    font-size: 10pt;
+    border: solid 1px #666;
+    padding: 0.5em;
+}
+#bar {
+    float: right;
+    width: 1px;
+    height: 100px;
+    background-color: red;
+}
+#img {
+    float: right;
+    clear: both;
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+}
+</style><br>
 <div id=block>
 <div id=bar></div>
 <div id=img></div>
