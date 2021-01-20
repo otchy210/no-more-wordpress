@@ -119,7 +119,7 @@ const writeArchivePages = async (rootPath, title, description, posts) => {
             if (!post) {
                 break;
             }
-            const article = template.article(post);
+            const article = template.article(post, i === 0);
             articles.push(article);
         }
         const prev = (offset + 1) * 5 < posts.length ? {

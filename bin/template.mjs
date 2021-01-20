@@ -47,31 +47,63 @@ const page = async ({title, description, body, categories, time, tags, prev, nex
 <head>
     <title>${title ? `${title} - ` : ''}OTCHY.NET</title>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     ${await importStatic.css('/s/css/style.css')}
 </head>
 <body>
-    <nav>
-    <a href="/">HOME</a>
-    </nav>
-    <header>
-        ${title ? `<h1>${title}</h1>` : ''}
-        ${description ? `<p>
-            ${description}
-        </p>` : ''}
-    </header>
-    <main>
-        ${body}
-        ${prev ? `<div class="prev">
-            <a href="${prev.path}">${prev.title}</a>
-        </div>` : ''}
-        ${next ? `<div class="next">
-            <a href="${next.path}">${next.title}</a>
-        </div>` : ''}
-    </main>
-    <footer>
-        ${getCategories(categories, metaData)}
-        ${getTags(tags, metaData)}
-    </footer>
+
+<header class="sticky row">
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <a href="/" class="button">Home</a>
+        <a href="/javascript/" class="button">JavaScript</a>
+        <a href="/greasemonkey/" class="button">Greasemonkey</a>
+        <a href="/php/" class="button">PHP</a>
+    </div>
+</header>
+
+<main class="container">
+    ${title || description ? `<div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            ${title ? `<h1>${title}</h1>` : ''}
+            ${description ? `<p>
+                ${description}
+            </p>` : ''}
+            <hr>
+        </div>
+    </div>` : '' }
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            ${body}
+        </div>
+    </div>
+    ${showCategoriesOrTags(categories, tags, metaData) ? `
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <hr>
+            ${getCategories(categories, metaData)}
+            ${getTags(tags, metaData)}
+        </div>
+    </div>` : ''}
+    ${prev || next ? `
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <hr>
+        </div>
+        <div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1${prev ? ' prev' : ''}">
+            ${prev ? `<a href="${prev.path}">${prev.title}</a>` : ''}
+        </div>
+        <div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0${next ? ' next' : ''}">
+            ${next ? `<a href="${next.path}">${next.title}</a>` : ''}
+        </div>
+    </div>` : ''}
+</main>
+
+<footer>
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+        Copyright © OTCHY.NET authored by <a href="https://twitter.com/otchy" target="_blank">@otchy</a>
+    </div>
+</footer>
+
 </body>
 </html>
 `);
@@ -81,38 +113,49 @@ const getTotalPages = () => {
     return totalPages;
 }
 
+const showCategories = (categories, metaData) => {
+    return categories && categories.length > 0 && metaData;
+};
+
+const showTags = (tags, metaData) => {
+    return tags && tags.length > 0 && metaData;
+}
+
+const showCategoriesOrTags = (categories, tags, metaData) => {
+    return showCategories(categories, metaData) || showTags(tags, metaData);
+}
+
 const getCategories = (categories, metaData) => {
-    if (!categories || categories.length === 0 || !metaData) {
+    if (!showCategories(categories, metaData)) {
         return '';
     }
     return `
-        <p class="categories">
-            ${categories.map(slug => {
-                const category = metaData.categories[slug];
-                return `<a href="/category/${slug}/">${category.label}</a>`;
-            }).join('\n')}
-        </p>
+        カテゴリ: 
+        ${categories.map(slug => {
+            const category = metaData.categories[slug];
+            return `<a href="/category/${slug}/">${category.label}</a>`;
+        }).join('\n')}
     `;
 };
 
 const getTags = (tags, metaData) => {
-    if (!tags || tags.length === 0 || !metaData) {
+    if (!showTags(tags, metaData)) {
         return '';
     }
     return `
-        <p class="categories">
-            ${tags.map(slug => {
-                const tag = metaData.tags[slug];
-                return `<a href="/tag/${slug}/">${tag.label}</a>`;
-            }).join('\n')}
-        </p>
+        タグ: 
+        ${tags.map(slug => {
+            const tag = metaData.tags[slug];
+            return `<a href="/tag/${slug}/">${tag.label}</a>`;
+        }).join('\n')}
     `;
 };
 
-const article = ({title, truncatedBody, path}) => {
+const article = ({title, truncatedBody, path}, isFirst) => {
     return `
 <article>
-    <h1><a href="${path}">${title}</a></h1>
+    ${isFirst ? '' : '<hr>'}
+    <h2><a href="${path}">${title}</a></h2>
     <p>
         ${truncatedBody}
     </p>
