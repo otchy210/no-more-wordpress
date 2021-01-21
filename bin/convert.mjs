@@ -134,7 +134,7 @@ const handlePost = async (post, terms) => {
     await fs.writeFile(metaPath, prettyStringify(meta));
 
     const contentPath = `${dataDir}/content.html`;
-    const contentBody = `${title}\n----------------\n${addBr(content)}`;
+    const contentBody = `${title}\n----------------\n${addBr(content.replace(/\/\/s\.otchy\.net\//g, '/wp/'))}`;
     await fs.writeFile(contentPath, contentBody);
 };
 
