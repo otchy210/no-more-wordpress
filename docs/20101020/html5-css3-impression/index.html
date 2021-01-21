@@ -3,16 +3,27 @@
 <head>
 <title>HTML5＋CSS3 使ってみた感想 - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>HTML5＋CSS3 使ってみた感想</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>HTML5＋CSS3 使ってみた感想</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <a href=http://www.otchy.net/cronbuilder/ target=_blank>Cron Builder</a> を作るにあたって、初めてちゃんと HTML5＋CSS3 を使ってみたので、その雑感などをメモ程度に書いてみます。<br>
 <br>
 <h4>HTML5</h4>
@@ -92,21 +103,34 @@ IE では一切動作確認していません。恐らく動作しません。
 &lt;/div>
 &lt;![endif]-->
 </pre>
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/css/ >css</a>
+<a href=/tag/html/ >html</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20101019/cron-builder-had-released/ >GUI で簡単に cron 書式を組み立てる Cron Builder をリリース</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20101117/googlefloatingform-had-released/ >GoogleFloatingForm 修正版を公開</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/css/ >css</a>
-<a href=/tag/html/ >html</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

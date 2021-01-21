@@ -3,16 +3,27 @@
 <head>
 <title>Simple Shorten URL - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>Simple Shorten URL</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>Simple Shorten URL</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 自前で短縮 URL を提供したい場合の、超シンプルな実装です。複雑な機能はいっさいない代わりに、3 つのファイルをアップするだけで DB の設定すら不要で簡単に動きます。<br>
 PHP や .htaccess、サーバへのファイルアップなどについては、あらかじめ知識がある事を前提としています。<br>
 <h4>必須要件</h4>
@@ -36,7 +47,7 @@ PHP や .htaccess、サーバへのファイルアップなどについては、
 <h4>インストール</h4>
 下記の 3 つのファイルを用意します。このうち、index.php の冒頭には設定が書いてあるので、その部分の編集は必須です。必要な部分を編集したら、サーバにアップします。<br>
 データファイルを保存するので、アップするディレクトリには書き込み権限を付与しておいて下さい。<br>
-[<a href=//s.otchy.net/zip/ssurl.zip>まとめてダウンロード</a>]<br>
+[<a href=/wp/zip/ssurl.zip>まとめてダウンロード</a>]<br>
 <br>
 ≪.htaccess≫<br>
 <pre>&lt;IfModule mod_rewrite.c>
@@ -181,8 +192,13 @@ otchy.net の例だと、http://otchy.net/?url=http://www.otchy.net/&callback=fu
 実際の動作については、ファイルシステムの実装依存ですが、このようにディレクトリを走査するとファイルシステムが一種の DB インデックスのように働く事が期待され、対象の URL の数がかなり大きくなっても高速に動作するはずです。<br>
 <h4>ライセンス</h4>
 ライセンスは <a href=http://www.opensource.org/licenses/mit-license.php target=_blank>MIT License</a> (<a href=http://ja.wikipedia.org/wiki/MIT_License target=_blank>日本版 wikipedia の項</a>) で公開します。
-</html></main>
+</html></div>
+</div>
+</main>
 <footer>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

@@ -3,16 +3,27 @@
 <head>
 <title>日本語をタイピングして変換しているようにアニメーションできる jQuery プラグイン jaTicker をリリース！ - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>日本語をタイピングして変換しているようにアニメーションできる jQuery プラグイン jaTicker をリリース！</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>日本語をタイピングして変換しているようにアニメーションできる jQuery プラグイン jaTicker をリリース！</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <pre id=jaticker-intro style=white-space:normal><ruby>jquery.jaticker.js は<rt>jquery.jaticker.js は</rt></ruby><ruby>日本語の<rt>にほんごの</rt></ruby><ruby>変換アニメーションに<rt>へんかんあにめーしょんに</rt></ruby><ruby>対応した、<rt>たいおうした、</rt></ruby><ruby>ティッカーの<rt>てぃっかーの</rt></ruby> jQuery <ruby>プラグインです。<rt>ぷらぐいんです。</rt></ruby><ruby>文字列を<rt>もじれつを</rt></ruby><ruby>タイプしている風に<rt>たいぷしているふうに</rt></ruby><ruby>順に表示する事が<rt>じゅんにひょうじすることが</rt></ruby><ruby>出来ます。<rt>できます。</rt></ruby>
 </pre>
 <script>
@@ -29,20 +40,33 @@ $(function() {
 <br>
 色々とオプションも用意してあるので、使いやすいんじゃないかと思います。<br>
 詳しくは、<a href=/javascript/jaticker/ >jaTicker</a> を参照して下さい！
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/jquery/ >jquery</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20111207/gsmall/ >Gmail 新デザインのフォントサイズを小さくするスクリプト</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20111220/tacj-2011/ >個別記事リンク付き！技術系アドベントカレンダー総まとめ 2011</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/jquery/ >jquery</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

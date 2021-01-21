@@ -3,16 +3,27 @@
 <head>
 <title>はてブエントリーページ旧仕様化 - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>はてブエントリーページ旧仕様化</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>はてブエントリーページ旧仕様化</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <p style="text-align: right;">»<a href=/gm/hatebu_entry_page_downgrader_1.0.1.user.js>Install</a></p>
 <br>
 はてブのエントリーページを旧仕様っぽく表示する Greasemonkey スクリプトです。<br>
@@ -34,18 +45,18 @@ Chrome / Firefox 両対応。上部 Install リンクからインストールし
 <br>
 <h4>スクリーンショット</h4>
 【BEFORE】<br>
-<a href=//s.otchy.net/uploads/2011/06/before_01.png><img src=//s.otchy.net/uploads/2011/06/before_01-280x300.png alt="" title=before_01 width=280 height=300 class="aligncenter size-medium wp-image-1342"></a><br>
+<a href=/wp/uploads/2011/06/before_01.png><img src=/wp/uploads/2011/06/before_01-280x300.png alt="" title=before_01 width=280 height=300 class="aligncenter size-medium wp-image-1342"></a><br>
 【AFTER】アイコンを小さく<br>
-<a href=//s.otchy.net/uploads/2011/06/after_01.png><img src=//s.otchy.net/uploads/2011/06/after_01-280x300.png alt="" title=after_01 width=280 height=300 class="aligncenter size-medium wp-image-1343"></a><br>
+<a href=/wp/uploads/2011/06/after_01.png><img src=/wp/uploads/2011/06/after_01-280x300.png alt="" title=after_01 width=280 height=300 class="aligncenter size-medium wp-image-1343"></a><br>
 【BEFORE】<br>
-<a href=//s.otchy.net/uploads/2011/06/before_02.png><img src=//s.otchy.net/uploads/2011/06/before_02-280x300.png alt="" title=before_02 width=280 height=300 class="aligncenter size-medium wp-image-1344"></a><br>
+<a href=/wp/uploads/2011/06/before_02.png><img src=/wp/uploads/2011/06/before_02-280x300.png alt="" title=before_02 width=280 height=300 class="aligncenter size-medium wp-image-1344"></a><br>
 【AFTER】人気のブックマークコメントを開閉<br>
-<a href=//s.otchy.net/uploads/2011/06/after_02a.png><img src=//s.otchy.net/uploads/2011/06/after_02a-280x300.png alt="" title=after_02a width=280 height=300 class="aligncenter size-medium wp-image-1345"></a><br>
-<a href=//s.otchy.net/uploads/2011/06/after_02b.png><img src=//s.otchy.net/uploads/2011/06/after_02b-280x300.png alt="" title=after_02b width=280 height=300 class="aligncenter size-medium wp-image-1346"></a><br>
+<a href=/wp/uploads/2011/06/after_02a.png><img src=/wp/uploads/2011/06/after_02a-280x300.png alt="" title=after_02a width=280 height=300 class="aligncenter size-medium wp-image-1345"></a><br>
+<a href=/wp/uploads/2011/06/after_02b.png><img src=/wp/uploads/2011/06/after_02b-280x300.png alt="" title=after_02b width=280 height=300 class="aligncenter size-medium wp-image-1346"></a><br>
 【BEFORE】<br>
-<a href=//s.otchy.net/uploads/2011/06/before_03.png><img src=//s.otchy.net/uploads/2011/06/before_03-280x300.png alt="" title=before_03 width=280 height=300 class="aligncenter size-medium wp-image-1347"></a><br>
+<a href=/wp/uploads/2011/06/before_03.png><img src=/wp/uploads/2011/06/before_03-280x300.png alt="" title=before_03 width=280 height=300 class="aligncenter size-medium wp-image-1347"></a><br>
 【AFTER】全てのブックマーク (スクロールバーの幅にも注目！) とグラフ<br>
-<a href=//s.otchy.net/uploads/2011/06/after_03.png><img src=//s.otchy.net/uploads/2011/06/after_03-280x300.png alt="" title=after_03 width=280 height=300 class="aligncenter size-medium wp-image-1348"></a><br>
+<a href=/wp/uploads/2011/06/after_03.png><img src=/wp/uploads/2011/06/after_03-280x300.png alt="" title=after_03 width=280 height=300 class="aligncenter size-medium wp-image-1348"></a><br>
 <br>
 <h4>動作確認</h4>
 Google Chrome 12 と Firefox 3.6＋Greasemonkey 0.9.5 で動作確認しています。恐らく他のブラウザでも動くだろうとは思います。<br>
@@ -64,8 +75,13 @@ Google Chrome 12 と Firefox 3.6＋Greasemonkey 0.9.5 で動作確認してい�
 <h4>免責事項</h4>
 例によって、作者の Otchy はこのスクリプトの利用に際して一切の保証を行いません。<br>
 また、改造・改変大歓迎です。何か面白いものが出来たら是非連絡を下さい。
+</div>
+</div>
 </main>
 <footer>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

@@ -3,16 +3,27 @@
 <head>
 <title>このドメインで使っている静的ファイルのホスト先を別ドメインに移行した話 - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>このドメインで使っている静的ファイルのホスト先を別ドメインに移行した話</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>このドメインで使っている静的ファイルのホスト先を別ドメインに移行した話</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 1つ前のポスト、<a href=/20160801/blog-migration-from-centos-to-gae/ >このブログを CentOS + apache + mod_php + MySQL から GAE/php に移行した話</a>の続きの話です。<br>
 <h4>静的ファイルを別サーバでホストする</h4>
 前回まででいったん新しい WP で元々のデータが表示できるようになったものの、静的ファイルのリンクがことごとく切れている状況でした。というのも、元々 WP でブログを作っている時に、WP の作法でファイルをアップロードする代わりに、好き勝手に色んなファイルをアップロードし、好き勝手に色々読み込むというのをやっていたのが主だった理由でした。簡単に言うと、/js/ とか /css/ とか以下に色々静的ファイルを置いて、それを適当に読んでた、という事です。<br>
@@ -25,7 +36,7 @@
 </ul>
 </li>
 <li>既存のサーバにある静的ファイルを同じパスで s.otchy.net にコピーする</li>
-<li>既存のサイトで例えば /js/script.js となっている HTML 内の記述を //s.otchy.net/js/script.js という風に書き換える<br>
+<li>既存のサイトで例えば /js/script.js となっている HTML 内の記述を /wp/js/script.js という風に書き換える<br>
 <ul>
 <li>ほぼほぼマニュアル操作 (面倒！)</li>
 </ul>
@@ -98,20 +109,33 @@ app.yaml に関しては、特定のディレクトリ以下で静的ファイ�
 何度も GAE/py のサイトを立ち上げるのに、マニュアル作業は極力減らしたかったので、そういうスクリプトを用意しました。自分用テンプレから簡単なスクリプトでスケルトンを作ってくれるようなやつです。テンプレの中には app.yaml や main.py を含む複数のファイルが入っていて、GAE のアプリケーション ID や動かす予定のドメイン名がプレースホルダになってます。そして、その初期化スクリプトを叩くときに今から作りたいドメインを引数として渡すと、いい感じにプレースホルダを置換しつつ、新しいディレクトリにファイルをコピーしてくれます。いいですね。楽をするための努力は惜しまない姿勢は忘れずにいたいです。<br>
 <br>
 さて、このスクリプトが大活躍する話は、また次のポストにまとめます。
-<div class=prev>
+</application-id></div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/gae/ >gae</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20160801/blog-migration-from-centos-to-gae/ >このブログを CentOS + apache + mod_php + MySQL から GAE/php に移行した話</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20160808/migration-from-sub-directory-to-sub-domain/ >サブディレクトリごとに運用されてたサイトをごっそりとサブドメインに移行した話</a>
 </div>
-</application-id></main>
+</div>
+</main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/gae/ >gae</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

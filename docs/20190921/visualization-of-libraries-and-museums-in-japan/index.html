@@ -3,16 +3,27 @@
 <head>
 <title>東京とそれ以外の道府県における学習環境格差について都道府県別に図書館と博物館の数をビジュアライズして論じる - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>東京とそれ以外の道府県における学習環境格差について都道府県別に図書館と博物館の数をビジュアライズして論じる</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>東京とそれ以外の道府県における学習環境格差について都道府県別に図書館と博物館の数をビジュアライズして論じる</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <p>
 以前から、日本国内において東京とそれ以外の地域では学習の環境に大きな違いがあるという持論を持っています。現代ではネットを利用することで地理的な制限無しに様々な情報を得ることが出来るようになりましたが、博物館・科学館・美術館のような文化施設は東京に偏在しているように感じます。東京に住みそれらへの平易なアクセスを得るというのは、学習環境としては大きなアドバンテージではないでしょうか。<br>
 </p>
@@ -331,14 +342,30 @@ google.charts.setOnLoadCallback(function() {
     new google.visualization.GeoChart(document.getElementById('museum-people')).draw(museumPeople, options);
 });
 </script></a>
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/lifestyle/ >Lifestyle</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20161231/feedly-hatebu-chrome-extension-edition/ >Feedly をはてブ対応させる Chrome エクステンション</a>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0">
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/lifestyle/ >Lifestyle</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

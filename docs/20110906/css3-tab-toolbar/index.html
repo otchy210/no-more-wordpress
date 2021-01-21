@@ -3,16 +3,27 @@
 <head>
 <title>プログラマにも書ける！画像を使わずCSS3でつくる今風のタブ＋ツールバー - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>プログラマにも書ける！画像を使わずCSS3でつくる今風のタブ＋ツールバー</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>プログラマにも書ける！画像を使わずCSS3でつくる今風のタブ＋ツールバー</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <a href=/twitmgr/ target=_blank>TwitMgr</a>のリニューアルに際して、今風のタブとツールバーを CSS3 だけで書いたので、その内容を順を追って説明してみます。<br>
 <br>
 <h4>完成品</h4>
@@ -1199,25 +1210,38 @@ CSS3 を使う時は、ついつい派手に使いたくなるのですが、さ
 また、例によって IE のようなレガシーブラウザでは、意図したとおりの見た目にはなりません。<br>
 IE6 でのキャプチャは以下のようになります。<br>
 <br>
-<a href=//s.otchy.net/uploads/2011/09/ie6.png><img src=//s.otchy.net/uploads/2011/09/ie6-300x41.png alt="" title=IE6 width=300 height=41 class="aligncenter size-medium wp-image-1448"></a><br>
+<a href=/wp/uploads/2011/09/ie6.png><img src=/wp/uploads/2011/09/ie6-300x41.png alt="" title=IE6 width=300 height=41 class="aligncenter size-medium wp-image-1448"></a><br>
 <br>
 このままだと厳しそうですが、選択中のページの背景色を半透明以外にも指定しておけば、ぎりぎり意図は伝えられるレベルですね。<br>
 プログレッシブエンハンスメント (長すぎ！略称募集) も意識したデザインをやっていければいいなと思います。
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/css/ >css</a>
+<a href=/tag/html/ >html</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20110831/twitmgr-ver-200-had-released/ >TwitMgr Ver.2.0.0 をリリース</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20110926/twitmgr-210-had-released/ >スパム報告に対応した TwitMgr Ver 2.1.0 公開</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/css/ >css</a>
-<a href=/tag/html/ >html</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

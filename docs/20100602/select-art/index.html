@@ -3,16 +3,27 @@
 <head>
 <title>選択反転すると画像が出てくるジェネレータ - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>選択反転すると画像が出てくるジェネレータ</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>選択反転すると画像が出てくるジェネレータ</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <a href=http://www.ideaxidea.com/archives/2010/06/selection_art.html target=_blank>【微18禁】 なにげないテキストに隠されたアート… - IDEA*IDEA ～ 百式管理人のライフハックブログ</a> っていう記事で紹介されている選択反転で絵が出てくるのが面白かったので、勢いでジェネレータを作ってみました。<br>
 <br>
 <del>中身のテキストが変えられないのでとりあえず暫定公開。</del><br>
@@ -36,17 +47,31 @@
 </ul>
 <br>
 とりあえずこんなもんです。実装のアイディアは出し切りました。<br>
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20100321/technology-books-review/ >これまでに読んだ技術書レビュー</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20100612/twitapi-js-010-had-published/ >TwitAPI.js Ver 0.1.0 公開</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

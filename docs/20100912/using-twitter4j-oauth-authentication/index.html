@@ -3,16 +3,27 @@
 <head>
 <title>Twitter4J から OAuth 認証部分だけを利用する方法 - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>Twitter4J から OAuth 認証部分だけを利用する方法</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>Twitter4J から OAuth 認証部分だけを利用する方法</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 ※前置き長いです。<a href=#start_main>本題はここ</a>から。<br>
 <br>
 9/6 ごろから 9/9 にかけて、<a href=/twitmgr/ target=_blank>TwitMgr</a> と <a href=/splitwit/ target=_blank>Splitwit</a> の OAuth 認証が正しく動作しなくなってしまっていました。<br>
@@ -174,21 +185,34 @@ return true;
 Twitter4J を使用するほとんどの人は、最初から用意されている便利メソッドで十分事足りると思うので、OAuth 部分のみ使用するといった用途は限定的かと思います。例えば、Twitter4J 未対応の新 API を使いたい場合や、今回のケースのように独自のアプリで変わったことをしたい場合などでしょうか。<br>
 ただ、そういった用途を想定したかのように、Twitter4J のクラス郡は非常によくできていて、とても使いやすいので助かりました。<br>
 改めて、Twitter4J の作者様には謝辞を述べたいと思います。
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/twitter/ >twitter</a>
+<a href=/tag/java/ >java</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20100825/splitwit-ver-120-release/ >Splitwit Ver 1.2.0 リリース。OAuth＋逆順投稿。</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20100928/auto-redirect-from-tumblr/ >Tumblr の引用元を一発で開く方法</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/twitter/ >twitter</a>
-<a href=/tag/java/ >java</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

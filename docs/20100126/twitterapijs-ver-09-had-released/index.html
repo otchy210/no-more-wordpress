@@ -3,16 +3,27 @@
 <head>
 <title>TwitterAPI.js Ver 0.9.4 リリース。Firefox 3.6 に対応。 - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>TwitterAPI.js Ver 0.9.4 リリース。Firefox 3.6 に対応。</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>TwitterAPI.js Ver 0.9.4 リリース。Firefox 3.6 に対応。</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <a href=/javascript/twitter-api/ >TwitterAPI.js</a> の Ver 0.9.4 をリリースしました。<br>
 <br>
 一部、不具合の修正もありますが、メインは Firefox 3.6 に対する対応です。<br>
@@ -24,21 +35,34 @@ document.createElement('iframe') した iframe は、元のページのエンコ
 <br>
 meta タグで Content-Type を指定してみたり、document.open で、Content-Type を指定してみたりしたのですが上手くいかず挫折です。<br>
 誰か Chrome 上で元のページのエンコードにかかわらず、UTF-8 の iframe を生成するいい方法を知っていたら教えて下さい。
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/twitter/ >twitter</a>
+<a href=/tag/javascript/ >javascript</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20100103/blog-entry-ranking-2009/ >2009年ブログ記事アクセス数ランキング</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20100127/twitmgr-151-hadreleased/ >TwitMgr Ver 1.5.1 リリース</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/twitter/ >twitter</a>
-<a href=/tag/javascript/ >javascript</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

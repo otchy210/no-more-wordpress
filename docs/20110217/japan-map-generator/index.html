@@ -3,16 +3,27 @@
 <head>
 <title>日本地図ジェネレーター - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>日本地図ジェネレーター</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>日本地図ジェネレーター</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <a href=http://chalow.net/2011-02-16-3.html target=_blank>[を] Google Chart API で日本の都道府県に自由に色が塗れる！すごい！</a> っていう記事で、Google Map API で日本地図が作れるらしい事を知ったので、さっそくジェネレータを作ってみました。<br>
 <br>
 色を指定した都道府県がその色で塗られた地図を、Google Chart API で作り出します。<br>
@@ -25,24 +36,37 @@
 <br>
 それにしても Google Chart API すげーなー。<br>
 <br>
-<link rel=stylesheet media=screen href=//s.otchy.net/colorpicker/css/colorpicker.css><br>
-<script src=//s.otchy.net/colorpicker/js/colorpicker.js></script><br>
-<script src=//s.otchy.net/js/mapjapan.js></script><br>
-<div class=prev>
+<link rel=stylesheet media=screen href=/wp/colorpicker/css/colorpicker.css><br>
+<script src=/wp/colorpicker/js/colorpicker.js></script><br>
+<script src=/wp/js/mapjapan.js></script><br>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/javascript/ >javascript</a>
+<a href=/tag/google/ >google</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20110121/number-unit-translator/ >「数値単位変換」ツール、リリース</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20110218/jquery-smoothswap-js-had-released/ >上下の要素をぬるっとスワップする jQuery プラグイン</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/javascript/ >javascript</a>
-<a href=/tag/google/ >google</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

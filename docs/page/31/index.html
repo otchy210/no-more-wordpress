@@ -3,53 +3,73 @@
 <head>
 <title>OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <article>
-<h1><a href=/20090111/site-moving-for-search-engine/ >検索エンジンに優しいサイト移行</a></h1>
+<h2><a href=/20090111/site-moving-for-search-engine/ >検索エンジンに優しいサイト移行</a></h2>
 <p>
 OTCHY.COM から、OTCHY.NET へのコンテンツ移行第一弾として、 はてブ with Twitter を移行しました。 [旧 URL] http://www.otchy.com/lab/hatebuwithtwitter.htm…
 </p>
 </article>
 <article>
-<h1><a href=/20090108/blank-icon-auto-addition/ >外部リンクに自動でアイコンを付与</a></h1>
+<hr>
+<h2><a href=/20090108/blank-icon-auto-addition/ >外部リンクに自動でアイコンを付与</a></h2>
 <p>
 WordPress のテーマファイルをちょこちょこいじって、外部向けリンク (正確には、target="_blank" を付けたリンク) に、自動でアイコンが付くようにしてみました。 おそらく他のサイトなどでも紹介されているであろうテクニッ…
 </p>
 </article>
 <article>
-<h1><a href=/20090106/wordpress-with-twitter-%e5%85%ac%e9%96%8b/ >WordPress with Twitter 公開</a></h1>
+<hr>
+<h2><a href=/20090106/wordpress-with-twitter-%e5%85%ac%e9%96%8b/ >WordPress with Twitter 公開</a></h2>
 <p>
 WordPress に記事やページを投稿すると同時に、その内容を Twitter にもクロスポストする、Greasemonkey を書いたので公開しました。 詳細は、 WordPress with Twitter を参照して下さい。 同じよ…
 </p>
 </article>
 <article>
-<h1><a href=/20090105/mysql-backup-gmail/ >MySQL のダンプを Gmail でお手軽に定期バックアップ</a></h1>
+<hr>
+<h2><a href=/20090105/mysql-backup-gmail/ >MySQL のダンプを Gmail でお手軽に定期バックアップ</a></h2>
 <p>
 用意するもの perl cron sendmail (もしくは sendmail ラッパを持った他の MTA) zip Gmail アカウント jcode.pl mimew.pl 対象者 「用意するもの」に書かれているものの意味が分かる …
 </p>
 </article>
 <article>
-<h1><a href=/20081231/dio-the-world-2/ >ディオはザ・ワールドを発動した瞬間に自滅する[後編]</a></h1>
+<hr>
+<h2><a href=/20081231/dio-the-world-2/ >ディオはザ・ワールドを発動した瞬間に自滅する[後編]</a></h2>
 <p>
 &lt;&lt;前編 普段の生活の中ではまず意識する事はないと思いますが、私たちは空気と呼ばれる混合気体に囲まれて生活しています。 この気体はミクロに見れば様々な分子や原子が超高速で飛び交う非常にエキサイティングな世界です。これらの分子や…
 </p>
 </article>
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/page/32/ >古い投稿</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/page/30/ >新しい投稿</a>
+</div>
 </div>
 </main>
 <footer>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

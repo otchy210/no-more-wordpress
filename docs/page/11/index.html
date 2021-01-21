@@ -3,53 +3,73 @@
 <head>
 <title>OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <article>
-<h1><a href=/20110831/twitmgr-ver-200-had-released/ >TwitMgr Ver.2.0.0 をリリース</a></h1>
+<h2><a href=/20110831/twitmgr-ver-200-had-released/ >TwitMgr Ver.2.0.0 をリリース</a></h2>
 <p>
 Twitter API の仕様変更により動作しなくなっていた TwitMgr をフルスクラッチで書き直して Ver.2.0.0 としてリリースしました。 Ver.2 を名乗る割に、機能的には Ver.1 を踏襲しただけというのが残念ではあり…
 </p>
 </article>
 <article>
-<h1><a href=/20110826/twitapi-js-ver-020-taj-proxy-build5/ >TwitAPI.js Ver.0.2.0 リリース／taj-proxy build5 リリース</a></h1>
+<hr>
+<h2><a href=/20110826/twitapi-js-ver-020-taj-proxy-build5/ >TwitAPI.js Ver.0.2.0 リリース／taj-proxy build5 リリース</a></h2>
 <p>
 JavaScript から気軽に Twitter API を利用するためのライブラリ、 TwitAPI.js の Ver.0.2.0 をリリースしました。 TwitAPI.js はその仕組み上、プロキシサーバを経由して Twitter AP…
 </p>
 </article>
 <article>
-<h1><a href=/20110822/gm-test-bookmarklet/ >Greasemonkey をインストールせずに試すブックマークレット</a></h1>
+<hr>
+<h2><a href=/20110822/gm-test-bookmarklet/ >Greasemonkey をインストールせずに試すブックマークレット</a></h2>
 <p>
 Gresemonkey (など) のスクリプトをインストールすることなく任意のサイトでちょこっと試すためのブックマークレット。 起動すると、user.js の URL を聞いてくるので、入力すると今開いているページにそのスクリプトを読み込み…
 </p>
 </article>
 <article>
-<h1><a href=/20110801/gmail-unread-bookmarklet/ >Gmail で未読だけを表示するブックマークレット</a></h1>
+<hr>
+<h2><a href=/20110801/gmail-unread-bookmarklet/ >Gmail で未読だけを表示するブックマークレット</a></h2>
 <p>
 Gmail のタグとかの表示で、未読のみを表示するボタンがないのは何故だろう？と思ったのでブックマークレット書きました。 ただ検索実行まで解析しきれなかったので、検索ボタンにフォーカス移して終わりです。 ブックマークレット実行後、Enter…
 </p>
 </article>
 <article>
-<h1><a href=/20110722/googlefloatingform-110-released/ >GoogleFloatingForm Ver.1.1.0 を公開</a></h1>
+<hr>
+<h2><a href=/20110722/googlefloatingform-110-released/ >GoogleFloatingForm Ver.1.1.0 を公開</a></h2>
 <p>
 現在の Google の SERPs に対応した GoogleFloatingForm を公開しました。 検索結果をスクロールしても検索窓がついてくるっていう例のアレです。 旧版までは、アニメーションとか使ってそれらしく見せていたんですが、…
 </p>
 </article>
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/page/12/ >古い投稿</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/page/10/ >新しい投稿</a>
+</div>
 </div>
 </main>
 <footer>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

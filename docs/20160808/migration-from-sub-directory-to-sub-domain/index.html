@@ -3,16 +3,27 @@
 <head>
 <title>サブディレクトリごとに運用されてたサイトをごっそりとサブドメインに移行した話 - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>サブディレクトリごとに運用されてたサイトをごっそりとサブドメインに移行した話</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>サブディレクトリごとに運用されてたサイトをごっそりとサブドメインに移行した話</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 1つ前のポスト、<a href=/20160805/static-files-hosting-server-migration/ >このドメインで使っている静的ファイルのホスト先を別ドメインに移行した話</a>の続きの話です。<br>
 <h4>必要な数だけサブドメインのサイトを立ち上げる</h4>
 これまでの作業で、GAE 上で新しく WP は動作するようになっていたのですが、旧サーバ (この作業時点ではまだ現役で動いていたサーバ) では、www.otchy.net 配下にいくつもサブディレクトリを作り、それぞれごとに色んなサイトを運営していました。全部同じドメインに置いた方が、www.otchy.net 自体の SEO にも効果があるし、何よりサブドメとかを追加する度に、apache の設定をいじったりするのが面倒だったからですね。新サーバでは WP 単体で動作せせるようにせざるを得なかったし、今ならサブドメをそれぞれに準備するのもさして面倒では無いので、サブディレクトリで運用されてた各サイトはそれぞれ全部、サブドメインに移すことにしました。<br>
@@ -93,20 +104,33 @@ exit();
 久々に、スクラッチから PHP 書きました。書きました、と言える程のものではないですが (PHP の array ってハッシュマップだったんでしたっけ。これは、そうか、どうなんだ？)。とまあ、このシンプルなスクリプトで 301 リダイレクトは実現します。<a href=https://cpplover.blogspot.com/2013/10/blog-post_20.html target=_blank>チューリング完全の噂</a>もあり、黒魔術的な扱いをよく受ける mod_rewrite ですが、そこまでのものを用意しなくてもシンプルに、分かりやすく解決できる、という事ですね。<br>
 <br>
 そろそろこのシリーズも大詰めに近づいてきました。次は、WP の中で何をしたか、について話を進めていこうと思います。
-<div class=prev>
+</sub-domain></sub-directory></div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/gae/ >gae</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20160805/static-files-hosting-server-migration/ >このドメインで使っている静的ファイルのホスト先を別ドメインに移行した話</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20160810/wp-theme-and-plugin/ >このブログで使ってる WP テーマと追加したプラグインの話</a>
 </div>
-</sub-domain></sub-directory></main>
+</div>
+</main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/gae/ >gae</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

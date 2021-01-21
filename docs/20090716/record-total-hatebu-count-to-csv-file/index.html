@@ -3,16 +3,27 @@
 <head>
 <title>自分のサイトの合計はてブ数を淡々と csv に記録し続ける - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>自分のサイトの合計はてブ数を淡々と csv に記録し続ける</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>自分のサイトの合計はてブ数を淡々と csv に記録し続ける</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <a href=http://www.otchy.net/20090629/making-of-twitter-bot-1/ >Twitter ボットの作り方 Perl 編</a> 連載中ですが、ちょっとお休みして、さっき思い立って書いたスクリプトを紹介します。<br>
 <br>
 最近、<a href=http://tophatenar.com/ target=_blank>TopHatenar</a> の更新が止まってしまっていて悲しいので、自分のサイトのトータルはてブ数を記録して、自分でグラフを書くことにしました。<br>
@@ -71,21 +82,34 @@ $url の値はカウント対象の URL ですが、もちろん変更して下�
 <br>
 <h4>追記(2009-08-04)</h4>
 <a href=/20090804/total-hatebu-count-with-google-chart-api/ >グラフ化してみました！</a>
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/%e3%81%af%e3%81%a6%e3%83%96/ >はてブ</a>
+<a href=/tag/perl/ >perl</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20090710/making-of-twitter-bot-3/ >Twitter ボットの作り方 Perl 編 (3)</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20090719/making-of-twitter-bot-4/ >Twitter ボットの作り方 Perl 編 (4)</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/%e3%81%af%e3%81%a6%e3%83%96/ >はてブ</a>
-<a href=/tag/perl/ >perl</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

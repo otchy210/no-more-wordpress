@@ -3,57 +3,82 @@
 <head>
 <title>カテゴリ: Development - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
+</header>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <h1>カテゴリ: Development</h1>
 <p>
 アプリケーション開発に関連するもの。
 </p>
-</header>
-<main>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <article>
-<h1><a href=/20090617/url-encode-one-liner-by-perl/ >テキストファイルを URL エンコードして保存する perl のワンライナー</a></h1>
+<h2><a href=/20090617/url-encode-one-liner-by-perl/ >テキストファイルを URL エンコードして保存する perl のワンライナー</a></h2>
 <p>
 cat list.txt | perl -ne 's/([^\w ])/"%".unpack("H2",$1)/eg;s/ /\+/g;print;print "\n";' > result.txt 上記の例は、タイトル通り lis…
 </p>
 </article>
 <article>
-<h1><a href=/20090604/dosei3-on-twitter-released/ >Twitter 上のどせいさんの素敵なお言葉をいつものフォントで表示するグリモン</a></h1>
+<hr>
+<h2><a href=/20090604/dosei3-on-twitter-released/ >Twitter 上のどせいさんの素敵なお言葉をいつものフォントで表示するグリモン</a></h2>
 <p>
 今日 RT で Twitter 上にどせいさんがいる事が判明したので、さっそくグリモンを書いてみました。 ごちゃごちゃ難しい事は言いません。 下のスクリーンショットを見て下さい。 インストールはこちらから。 どせいさん on Twitter…
 </p>
 </article>
 <article>
-<h1><a href=/20090601/win-r-super-tips/ >「ファイル名を指定して実行」超活用法</a></h1>
+<hr>
+<h2><a href=/20090601/win-r-super-tips/ >「ファイル名を指定して実行」超活用法</a></h2>
 <p>
 Windows OS を使用しているのであれば、是非活用したい機能に「ファイル名を指定して実行」があります。 デフォルトの状態でもなかなか便利に使う事が出来るのですが、ここを拡張する事でもう手放せないツールになります。 まず基本として、 フ…
 </p>
 </article>
 <article>
-<h1><a href=/20090525/answer-of-greasemoneky-javascript-beginner/ >「Greasemoneky(JavaScript)入門」への回答</a></h1>
+<hr>
+<h2><a href=/20090525/answer-of-greasemoneky-javascript-beginner/ >「Greasemoneky(JavaScript)入門」への回答</a></h2>
 <p>
 JavaScript を初めて書いたという奮闘記なのですが、 Greasemonkey(JavaScript)入門 という記事がありまして、「JavaScript いいよー、面白いよー」と勧めた者の責任としてこの中のいくつかの疑問に答えてみ…
 </p>
 </article>
 <article>
-<h1><a href=/20090521/twitmgr-analyze-function-released/ >TwitMgr に分析機能を追加しました！</a></h1>
+<hr>
+<h2><a href=/20090521/twitmgr-analyze-function-released/ >TwitMgr に分析機能を追加しました！</a></h2>
 <p>
 某フォロワの方に教えてもらった、 Your Twitter Karma に触発されて、 TwitMgr に新しく「分析」機能を追加しました。 本当は分析した後に一括処理を可能にしたいのですが (そこまでやって始めて Karma を超えたと言…
 </p>
 </article>
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/category/dev/page/18/ >古い投稿</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/category/dev/page/16/ >新しい投稿</a>
+</div>
 </div>
 </main>
 <footer>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

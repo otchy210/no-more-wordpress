@@ -3,16 +3,27 @@
 <head>
 <title>css による疑似フレーム IE6 標準準拠モード完全対応版 (CSS ハック / JavaScript未使用) - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>css による疑似フレーム IE6 標準準拠モード完全対応版 (CSS ハック / JavaScript未使用)</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>css による疑似フレーム IE6 標準準拠モード完全対応版 (CSS ハック / JavaScript未使用)</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 css のみを使って、ヘッダ / メニュー / フッタをスクロールしないように固定して疑似フレームを表現する手法は position: fixed による方法が広く知られています。<br>
 この方法は、手軽に疑似フレームを表現できる一方で、IE6 が対応していないという非常に残念な現実があり、対象ブラウザから IE6 を完全に外してしまえるような状況ならともかく、(特に仕事の上などでは) IE6 を対象から外せない事も多いので頭痛の種でした。<br>
 <br>
@@ -126,22 +137,35 @@ expression は、filter 関数などと同様の IE 独自拡張で、任意の 
 <br>
 ソースの全容は<a href=http://www.otchy.net/sample/ie6fixed.html target=_blank>サンプル</a>をダウンロードして確認して下さい。<br>
 また、実際に使用する時はもちろん、css を直接 HTML に書かず、外部ファイルに切り出した方がよいです。<br>
-<div class=prev>
-<a href=/20090509/chanto-yomechau-generator-list/ >ちんゃと よゃちめう？系ジェネレータまとめ</a>
 </div>
-<div class=next>
-<a href=/20090521/twitmgr-analyze-function-released/ >TwitMgr に分析機能を追加しました！</a>
 </div>
-</main>
-<footer>
-<p class=categories>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
 <a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
+タグ:
 <a href=/tag/css/ >css</a>
 <a href=/tag/html/ >html</a>
 <a href=/tag/ie6/ >ie6</a>
-</p>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
+<a href=/20090509/chanto-yomechau-generator-list/ >ちんゃと よゃちめう？系ジェネレータまとめ</a>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
+<a href=/20090521/twitmgr-analyze-function-released/ >TwitMgr に分析機能を追加しました！</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

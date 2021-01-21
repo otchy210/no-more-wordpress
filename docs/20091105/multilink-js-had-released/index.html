@@ -3,16 +3,27 @@
 <head>
 <title>1つのリンクで複数サイトにリンク出来る MultiLink.js 公開 - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>1つのリンクで複数サイトにリンク出来る MultiLink.js 公開</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>1つのリンクで複数サイトにリンク出来る MultiLink.js 公開</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <a href=http://phpspot.org/blog/archives/2009/11/javascriptplura.html target=_blank>１つのリンクで複数サイトにリンクできる便利JavaScriptライブラリ「Pluralink」</a> で紹介されていた、<a href=http://pluralink.com/category/news/ target=_blank>Pluralink</a> というライブラリですが、JavaScript 無効時の事は考慮されていないし、必要なファイルがいっぱいあって面倒くさいし、マークアップが HTML 的にアレだったりしたので、その辺を解決したライブラリを作ってみました。<br>
 <br>
 こう書くと、<br>
@@ -35,20 +46,33 @@
 <br>
 気になったら是非！<br>
 <a href=/javascript/multi-link/ >MultiLink.js</a>
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/info/ >Information</a>
+タグ:
+<a href=/tag/javascript/ >javascript</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20091104/use-jquery-on-greasemonkey/ >Greasemonkey で 超お手軽に jQuery を使うスニペット</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20091113/small-change-technic/ >お釣りの小銭を減らすように支払う裏ワザ(暗算不要)</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/info/ >Information</a>
-</p>
-<p class=categories>
-<a href=/tag/javascript/ >javascript</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

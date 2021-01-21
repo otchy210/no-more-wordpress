@@ -3,16 +3,27 @@
 <head>
 <title>デバッガの条件ブレークポイントで変数値を書き換えるとデバッグが捗る話 - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>デバッガの条件ブレークポイントで変数値を書き換えるとデバッグが捗る話</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>デバッガの条件ブレークポイントで変数値を書き換えるとデバッグが捗る話</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 自分がよく使う言語が Java と JavaScript というだけで、とりあえず Java と JavaScript にタグ付けしていますが、たぶんそれ以外の言語でも大抵有効なんじゃ無いかという Tips です。<br>
 <br>
 Java ではデバッグに Eclipse と IntelliJ など使っています。JavaScript はほとんど Chrome の Developer Tools です。こういったブレークポイントを設定出来るデバッガでは、ブレークする条件に式を書ける機能を持っている事が多いです。少なくとも例に挙げた 3 つでは可能です。こういう条件付きブレークポイントで、最初に思いつく使い方は例えば以下のような物ですね。<br>
@@ -40,21 +51,34 @@ if (flag) {  // 条件付きブレークポイント [(flag = true) == false]
 <br>
 なんとこれだけで、ブレークポイントを通過するときに、flag が常に true になります。そこでブレークすること無しに、です。しかもブレークポイントの有効・無効を切り替えることで、挙動の切り替えも可能です。<br>
 たったこれだけの事ですが、使い慣れるとウルトラ便利で、デバッグの度に大活躍してます。このハックが誰かの役に立つことを祈っています。
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/javascript/ >javascript</a>
+<a href=/tag/java/ >java</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20130714/touch-native/ >デジタルネイティブの次の世代・タッチネイティブの話、あるいはスキュアモーフィズムについて</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20141014/5-useful-english-phrases-ive-learnt-from-work/ >英語で仕事をするようになって学んだ、日常会話で超便利な英語ベスト5</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/javascript/ >javascript</a>
-<a href=/tag/java/ >java</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

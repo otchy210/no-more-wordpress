@@ -3,16 +3,27 @@
 <head>
 <title>HTML5 で作る iPhone ローカル Web アプリ入門 - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>HTML5 で作る iPhone ローカル Web アプリ入門</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>HTML5 で作る iPhone ローカル Web アプリ入門</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 さて、まず「ローカル Web アプリ」ってなんぞっていう話ですが、Web ベースの技術で作られブラウザからサーバにアクセスして利用するものの、いったんロードが完了したら、それ以降はネットワーク接続不要で動作する Web アプリ、といった概念を表した造語です。<br>
 iPhone の App Store を経由することなく配布が可能なので、アプリの内容について一切の制限がなく、また、最近のライブラリの進歩やモバイルパフォーマンスの向上により、ものによってはネイティブアプリと遜色ないレベルのものも作れるようになってきました。<br>
 <br>
@@ -293,21 +304,34 @@ zip の提供はリクエストが多ければ検討します。<br>
 この記事が、そういった機能に期待し、面白いアプリを作ってくれる未来の開発者の助けになれば幸いです。<br>
 <br>
 <a href=#index>↑目次</a><br>
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/iphone/ >iphone</a>
+<a href=/tag/html5/ >html5</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20111116/1cc-v2/ >1 Click Config Ver 2.0.0 リリース</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20111124/google-reader-to-hatebu/ >Google リーダー公式機能だけで簡単はてブ連携</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/iphone/ >iphone</a>
-<a href=/tag/html5/ >html5</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

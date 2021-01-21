@@ -3,16 +3,27 @@
 <head>
 <title>TwitAPI.js Ver 0.1.0 公開 - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>TwitAPI.js Ver 0.1.0 公開</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>TwitAPI.js Ver 0.1.0 公開</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <a href=/javascript/twitter-api/ >TwitterAPI.js</a> の後継にあたる、OAuth 認証対応版、Twitter API 用 JS ライブラリ、<a href=/javascript/twit-api/ >TwitAPI.js</a> を公開しました。<br>
 <br>
 まだまだ荒削りなバージョンですが、とりあえず基本的な動作は可能になったので Ver 0.1.0 として公開です。<br>
@@ -20,22 +31,35 @@
 <br>
 TwitAPI.js はインターフェースを一から設計し直したので、旧版にあたる、TwitterAPI.js と互換がありません。<br>
 そのあたりは専用のラッパを書く予定なので、そこがすんなりと実装できれば、TwitMgr と Splitwit もあっさりと対応完了するはずなんですけどね。<br>
-<div class=prev>
-<a href=/20100602/select-art/ >選択反転すると画像が出てくるジェネレータ</a>
 </div>
-<div class=next>
-<a href=/20100617/twitter-api2-js-publishe/ >JavaScript で手軽に OAuth、TwitterAPI2.js 公開</a>
 </div>
-</main>
-<footer>
-<p class=categories>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
 <a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
+タグ:
 <a href=/tag/twitter/ >twitter</a>
 <a href=/tag/javascript/ >javascript</a>
 <a href=/tag/gae/ >gae</a>
-</p>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
+<a href=/20100602/select-art/ >選択反転すると画像が出てくるジェネレータ</a>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
+<a href=/20100617/twitter-api2-js-publishe/ >JavaScript で手軽に OAuth、TwitterAPI2.js 公開</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

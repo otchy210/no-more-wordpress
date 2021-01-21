@@ -3,16 +3,27 @@
 <head>
 <title>自前で短縮 URL。Simple Shorten URL 公開。 - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>自前で短縮 URL。Simple Shorten URL 公開。</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>自前で短縮 URL。Simple Shorten URL 公開。</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 自前のサーバに短縮 URL を設置したい場合の超シンプルな実装、<a href=/php/simple-shorten-url/ >Simple Shorten URL</a> を作りました。DB を使わずに実装したので、レンタルサーバとかでも気軽に動かせるかと思います。<br>
 限定された URL 以下の URL のみ短縮可能で、特定用途にしぼった使い方を想定しています。もちろん短縮対象の URL と生成される短縮 URL のドメインは異なっていても構いません。<br>
 <br>
@@ -23,20 +34,33 @@ OTCHY.NET 専用短縮 URL は <a href=http://otchy.net>http://otchy.net</a> で
 ひたすらシンプルな実装にしたのでかなり高速に動作する上、自分専用という事で、ハッシュの長さを 3 にしているので、otchy.net で使うと、http://otchy.net/XXX となり、実は bit.ly の http://bit.ly/XXXXXX と同じ長さだったりします。<br>
 <br>
 興味があればお試しを！<br>
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/php/ >php</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20100127/twitmgr-151-hadreleased/ >TwitMgr Ver 1.5.1 リリース</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20100129/chrome-greasemonkey-cross-domain-post/ >Chrome 正式版 Greasemonkey でクロスドメイン POST をする方法</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/php/ >php</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

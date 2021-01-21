@@ -3,16 +3,27 @@
 <head>
 <title>TwitMgr に分析機能を追加しました！ - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>TwitMgr に分析機能を追加しました！</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>TwitMgr に分析機能を追加しました！</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 某フォロワの方に教えてもらった、<a href=http://dossy.org/twitter/karma/ target=_blank>Your Twitter Karma</a> に触発されて、<a href=http://www.otchy.net/twitmgr/ target=_blank>TwitMgr</a> に新しく「分析」機能を追加しました。<br>
 <br>
 本当は分析した後に一括処理を可能にしたいのですが (そこまでやって始めて Karma を超えたと言える)、そこまで実装するにはまだまだ時間が掛かりそうなので、分析機能だけの段階でいったんリリースです。<br>
@@ -22,20 +33,33 @@
 とはいえ、分析機能だけでも結構面白いし有用です。<br>
 片想いなのか、方想われなのか。あれ？両想いだと思ってたあの人にいつの間にか外されてた…とか、一目瞭然です。<br>
 詳細表示にして色々と並び替えてみると、発言の多い人とかも浮かび上がってくるので、フォローしたり外したりの参考にどうぞ。<br>
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/twitter/ >twitter</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20090519/frame-like-css-layout-for-ie6/ >css による疑似フレーム IE6 標準準拠モード完全対応版 (CSS ハック / JavaScript未使用)</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20090525/answer-of-greasemoneky-javascript-beginner/ >「Greasemoneky(JavaScript)入門」への回答</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/twitter/ >twitter</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

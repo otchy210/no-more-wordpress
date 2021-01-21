@@ -3,16 +3,27 @@
 <head>
 <title>Tumblr の引用元を一発で開く方法 - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>Tumblr の引用元を一発で開く方法</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>Tumblr の引用元を一発で開く方法</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 明示的に開くならブックマークレットで。<a href="javascript:(function(e){if(!e)return;location.href=e.href;})(document.querySelector&&document.querySelector('.source%20a'));">Redirect Tumblr</a><br>
 <pre>javascript:(function(e){if(!e)return;location.href=e.href;})(document.querySelector&&document.querySelector('.source%20a'));
 </pre>
@@ -33,22 +44,35 @@
 引用元のリンクのテキストや位置が常に変わるので、探すのが面倒という場合などにどうぞ。<br>
 <br>
 サポートブラウザ：document.querySelector を実装しているブラウザ (IE 以外 らしい)
-<div class=prev>
-<a href=/20100912/using-twitter4j-oauth-authentication/ >Twitter4J から OAuth 認証部分だけを利用する方法</a>
 </div>
-<div class=next>
-<a href=/20101002/twitter-list-rss-tips/ >Twitter でホーム TL を汚さずに気になる人を補足する2つの方法</a>
 </div>
-</main>
-<footer>
-<p class=categories>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
 <a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
+タグ:
 <a href=/tag/greasemonkey/ >greasemonkey</a>
 <a href=/tag/bookmarklet/ >bookmarklet</a>
 <a href=/tag/tumblr/ >tumblr</a>
-</p>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
+<a href=/20100912/using-twitter4j-oauth-authentication/ >Twitter4J から OAuth 認証部分だけを利用する方法</a>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
+<a href=/20101002/twitter-list-rss-tips/ >Twitter でホーム TL を汚さずに気になる人を補足する2つの方法</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

@@ -3,16 +3,27 @@
 <head>
 <title>JavaScript で手軽に OAuth、TwitterAPI2.js 公開 - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>JavaScript で手軽に OAuth、TwitterAPI2.js 公開</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>JavaScript で手軽に OAuth、TwitterAPI2.js 公開</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 BASIC 認証で Twitter API を利用する <a href=/javascript/twitter-api/ >TwitterAPI.js</a> の後継ライブラリとして、OAuth 認証を行う <a href=/javascript/twit-api/ >TwitAPI.js</a> はすでに公開済でしたが、後継ライブラリといってもインターフェースの互換が無く、TwitterAPI.js で作られたアプリケーションを OAuth 対応させるには一手間必要でした。<br>
 <br>
 そこで、TwitAPI.js を従来と同じインターフェースで利用可能にするラッパを <a href=/javascript/twitter-api2/ >TwitterAPI2.js</a> として公開しました。<br>
@@ -21,21 +32,34 @@ BASIC 認証で Twitter API を利用する <a href=/javascript/twitter-api/ >Tw
 TwitMgr や Splitwit もこちらのライブラリに置き換え予定ですが、出来れば置き換え前に、TwitAPI.js に残った TODO を片づけたいですねー。<br>
 <br>
 特に、認証用のポップアップの起動が遅いのはなんとかしたいです。<br>
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/twitter/ >twitter</a>
+<a href=/tag/javascript/ >javascript</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20100612/twitapi-js-010-had-published/ >TwitAPI.js Ver 0.1.0 公開</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20100813/twitapi-js-010-had-published-2/ >TwitAPI.js Ver 0.1.2 公開</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/twitter/ >twitter</a>
-<a href=/tag/javascript/ >javascript</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

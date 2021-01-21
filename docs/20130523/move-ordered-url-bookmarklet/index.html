@@ -3,16 +3,27 @@
 <head>
 <title>連番で終わっている URL の前後に移動するブックマークレット - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>連番で終わっている URL の前後に移動するブックマークレット</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>連番で終わっている URL の前後に移動するブックマークレット</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 URL が連番で終わっているような構成のサイトでは、その前後にも類似した有用なページがある場合が多いです。<br>
 にも関わらず、前後に移動するリンクが用意されていないことがあるので、そういう時に便利なブックマークレットを書きました。<br>
 <br>
@@ -109,21 +120,34 @@ http://www.year2013.com/2013/article13.html<br>
 引数として location.href を渡して、匿名関数を実行します。<br>
 <br>
 以上！面白かったでしょうか？
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/javascript/ >javascript</a>
+<a href=/tag/bookmarklet/ >bookmarklet</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20130407/spam-byebye/ >コメントスパムが増えすぎたので SPAM-BYEBYE なるプラグインを WordPress に導入してみた話</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20130524/export-tagged-articles-from-google-reader/ >フツーの方法では出来ない Google Reader からタグ付けした記事をエクスポートする一回限りの無茶な手順</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/javascript/ >javascript</a>
-<a href=/tag/bookmarklet/ >bookmarklet</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

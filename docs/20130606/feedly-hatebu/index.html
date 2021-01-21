@@ -3,16 +3,27 @@
 <head>
 <title>Feedly 移行記念、Feedly をはてブ対応させるユーザースクリプト - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>Feedly 移行記念、Feedly をはてブ対応させるユーザースクリプト</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>Feedly 移行記念、Feedly をはてブ対応させるユーザースクリプト</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <strong>現在こちらのスクリプトは動作していません。</strong><a href=/feedly-hatebu-chrome-extension-edition/ >代わりに作成した Chrome エクステンション</a>をご利用下さい。<br>
 <br>
 Google Reader の終了に先だって Feedly へ移行したのですが、Feedly はやはり海外製だけあってはてなブックマーク数の表示などには対応していないので、それに対応させるユーザースクリプトを書きました。<br>
@@ -28,11 +39,11 @@ Google Chrome の場合、以下のリンクから user.js ファイルをダウ
 <br>
 スクリプトが作動するとこんな感じの見た目になります。<br>
 <br>
-<a href=//s.otchy.net/uploads/2013/06/fwt_listview.png><img src=//s.otchy.net/uploads/2013/06/fwt_listview-300x218.png alt="" title=fwt_listview width=300 height=218 class="aligncenter size-medium wp-image-2052"></a><br>
+<a href=/wp/uploads/2013/06/fwt_listview.png><img src=/wp/uploads/2013/06/fwt_listview-300x218.png alt="" title=fwt_listview width=300 height=218 class="aligncenter size-medium wp-image-2052"></a><br>
 <br>
-<a href=//s.otchy.net/uploads/2013/06/fwt_cardview.png><img src=//s.otchy.net/uploads/2013/06/fwt_cardview-300x241.png alt="" title=fwt_cardview width=300 height=241 class="aligncenter size-medium wp-image-2053"></a><br>
+<a href=/wp/uploads/2013/06/fwt_cardview.png><img src=/wp/uploads/2013/06/fwt_cardview-300x241.png alt="" title=fwt_cardview width=300 height=241 class="aligncenter size-medium wp-image-2053"></a><br>
 <br>
-<a href=//s.otchy.net/uploads/2013/06/fwt_listview_image.png><img src=//s.otchy.net/uploads/2013/06/fwt_listview_image-300x153.png alt="" title=fwt_listview_image width=300 height=153 class="aligncenter size-medium wp-image-2104"></a><br>
+<a href=/wp/uploads/2013/06/fwt_listview_image.png><img src=/wp/uploads/2013/06/fwt_listview_image-300x153.png alt="" title=fwt_listview_image width=300 height=153 class="aligncenter size-medium wp-image-2104"></a><br>
 <br>
 ライセンスは <a href=http://www.opensource.org/licenses/mit-license.php target=_blank class=blank>MIT License</a> (<a href=http://ja.wikipedia.org/wiki/MIT_License target=_blank class=blank>日本版 wikipedia の項</a>) で公開します。<br>
 ライセンス内での改造、再配布ご自由に！<br>
@@ -64,22 +75,35 @@ Google Chrome の場合、以下のリンクから user.js ファイルをダウ
 (2013-07-03 追記) 単に適用ドメインの問題で、www.feedly.com から cloud.freedly.com にリダイレクトされていたのが原因でした。自分のローカルが Ver 0.5.0 のままだったのを忘れていたという情けない原因で、Ver 0.5.1 にあげたらあっさりなおったので、特に修正版は作っていません。<br><br>
 一覧でのブクマ数表示の要望が多いので、それはそのうち対応しようかなと思ってます。あと保守が面倒なので、Chrome / Fx コードの共通化が課題ですね。<br>
 </div>
-<div class=prev>
-<a href=/20130524/export-tagged-articles-from-google-reader/ >フツーの方法では出来ない Google Reader からタグ付けした記事をエクスポートする一回限りの無茶な手順</a>
 </div>
-<div class=next>
-<a href=/20130617/bookmarklet-on-jquery-with-magical-210chars/ >ブックマークレットで jQuery を使う魔法の 210 文字</a>
 </div>
-</main>
-<footer>
-<p class=categories>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
 <a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
+タグ:
 <a href=/tag/greasemonkey/ >greasemonkey</a>
 <a href=/tag/javascript/ >javascript</a>
 <a href=/tag/userscript/ >userscript</a>
-</p>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
+<a href=/20130524/export-tagged-articles-from-google-reader/ >フツーの方法では出来ない Google Reader からタグ付けした記事をエクスポートする一回限りの無茶な手順</a>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
+<a href=/20130617/bookmarklet-on-jquery-with-magical-210chars/ >ブックマークレットで jQuery を使う魔法の 210 文字</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

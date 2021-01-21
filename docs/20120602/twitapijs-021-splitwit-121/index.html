@@ -3,16 +3,27 @@
 <head>
 <title>TwitAPI.js Ver.0.2.1 / Splitwit Ver.1.2.1 リリース！ - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>TwitAPI.js Ver.0.2.1 / Splitwit Ver.1.2.1 リリース！</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>TwitAPI.js Ver.0.2.1 / Splitwit Ver.1.2.1 リリース！</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <a href=/javascript/twit-api/ >TwitAPI.js</a> をバージョンアップして Ver. 0.2.1 とし、それに伴って TwitAPI.js に依存している <a href=/splitwit/ target=_blank>Splitwit</a> も Ver. 1.2.1 にバージョンアップしました。<br>
 <br>
 …といっても何のことはない、不具合修正です。<br>
@@ -25,22 +36,35 @@ TwitAPI.js の仕組みとして、Twitter API を POST で使うときも、JS 
 <br>
 以前テストをしたときは問題なかったはずなので、GAE/j でパラメータを取得したときの挙動がいつの間にか変わっていたという事でしょうか…。<br>
 まあそれが正しいっちゃあ正しい挙動だと思うので特に文句はないです。<br>
-<div class=prev>
-<a href=/20120507/web-engineer-next-10-years/ >Web 系エンジニアの今後 10 年のための生存戦略</a>
 </div>
-<div class=next>
-<a href=/20120617/eclipse-warp/ >瞬間移動でストレスフリー！Eclipse 移動系ショートカット集</a>
 </div>
-</main>
-<footer>
-<p class=categories>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
 <a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
+タグ:
 <a href=/tag/twitter/ >twitter</a>
 <a href=/tag/javascript/ >javascript</a>
 <a href=/tag/gae/ >gae</a>
-</p>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
+<a href=/20120507/web-engineer-next-10-years/ >Web 系エンジニアの今後 10 年のための生存戦略</a>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
+<a href=/20120617/eclipse-warp/ >瞬間移動でストレスフリー！Eclipse 移動系ショートカット集</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

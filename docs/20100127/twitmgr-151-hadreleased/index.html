@@ -3,16 +3,27 @@
 <head>
 <title>TwitMgr Ver 1.5.1 リリース - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>TwitMgr Ver 1.5.1 リリース</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>TwitMgr Ver 1.5.1 リリース</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <a href=/javascript/twitter-api/ >TwitterAPI.js</a> のバージョンアップにあわせて、<a href=/twitmgr/ target=_blank>TwitMgr</a> の Ver 1.5.1 をリリースしました。<br>
 <br>
 TwitterAPI.js のバージョンアップによって、Firefox 3.6 に対応したり、地味なところでは API の多重アクセスがあってもエラーにならなくなったりしています。<br>
@@ -26,17 +37,31 @@ TwitterAPI.js に Ver 0.9.3 で実装した再ログイン機能についても�
 <br>
 また、フレンズとフォロワの管理についてはカーソル式に対応したのですが、そこで力尽きたので「分析」機能についてはいったんオミットしています。<br>
 この辺はまたいずれ復活させたいところですね。
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/info/ >Information</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20100126/twitterapijs-ver-09-had-released/ >TwitterAPI.js Ver 0.9.4 リリース。Firefox 3.6 に対応。</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20100129/simple-shorten-url/ >自前で短縮 URL。Simple Shorten URL 公開。</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/info/ >Information</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

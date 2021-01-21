@@ -3,24 +3,35 @@
 <head>
 <title>画像まとめページを自動でサムネイル・スライドショー化するブックマークレット - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>画像まとめページを自動でサムネイル・スライドショー化するブックマークレット</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>画像まとめページを自動でサムネイル・スライドショー化するブックマークレット</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 縦に長く画像のリンクが大量にあるようなページで、ページに含まれている画像を全てサムネイル一覧にまとめて、そのサムネイルの内容をスライドショーのように表示する事が出来るブックマークレットです。<br>
 下のリンクをブックマークバー等にドラッグしてクリックすると利用出来ます。<br>
 <br>
 とりあえずこのページで試してみる場合は、そのまま "imageview" をクリックしてみて下さい。<br>
 <br>
-<a href="javascript:(function(d){var%20s=d.createElement('script');s.src='http://s.otchy.net/js/imageview.js';d.getElementsByTagName('head')[0].appendChild(s);})(document);">imageview</a><br>
+<a href="javascript:(function(d){var%20s=d.createElement('script');s.src='http:/wp/js/imageview.js';d.getElementsByTagName('head')[0].appendChild(s);})(document);">imageview</a><br>
 <br>
-<pre>javascript:(function(d){var%20s=d.createElement('script');s.src='http://s.otchy.net/js/imageview.js';d.getElementsByTagName('head')[0].appendChild(s);})(document);
+<pre>javascript:(function(d){var%20s=d.createElement('script');s.src='http:/wp/js/imageview.js';d.getElementsByTagName('head')[0].appendChild(s);})(document);
 </pre>
 <br>
 <h4>動作</h4>
@@ -35,13 +46,13 @@ HTML のロードが完了していない時は、HTML のロードが完了す�
 <br>
 <h4>画面キャプチャ</h4>
 こういう感じの画像まとめ、よくありますよね。<br>
-<a href=//s.otchy.net/uploads/2011/10/imageview01.png><img src=//s.otchy.net/uploads/2011/10/imageview01-300x252.png alt="" title=imageview01 width=300 height=252 class="aligncenter size-medium wp-image-1501"></a><br>
+<a href=/wp/uploads/2011/10/imageview01.png><img src=/wp/uploads/2011/10/imageview01-300x252.png alt="" title=imageview01 width=300 height=252 class="aligncenter size-medium wp-image-1501"></a><br>
 <br>
 ここでブックマークレットを実行すると読み込みが始まり、読み込みが完了するとサムネイル一覧が作成されます。<br>
-<a href=//s.otchy.net/uploads/2011/10/imageview03.png><img src=//s.otchy.net/uploads/2011/10/imageview03-300x252.png alt="" title=imageview03 width=300 height=252 class="aligncenter size-medium wp-image-1503"></a><br>
+<a href=/wp/uploads/2011/10/imageview03.png><img src=/wp/uploads/2011/10/imageview03-300x252.png alt="" title=imageview03 width=300 height=252 class="aligncenter size-medium wp-image-1503"></a><br>
 <br>
 サムネイルから画像を選択すると、その場で拡大表示されます。<br>
-<a href=//s.otchy.net/uploads/2011/10/imageview04.png><img src=//s.otchy.net/uploads/2011/10/imageview04-300x252.png alt="" title=imageview04 width=300 height=252 class="aligncenter size-medium wp-image-1504"></a><br>
+<a href=/wp/uploads/2011/10/imageview04.png><img src=/wp/uploads/2011/10/imageview04-300x252.png alt="" title=imageview04 width=300 height=252 class="aligncenter size-medium wp-image-1504"></a><br>
 <br>
 <h4>対象ブラウザ</h4>
 Google Chrome 14 と、Firefox 3.6 で動作確認しています。恐らく、Firefox 4+ と Safari 4+ あたりでは動作すると思われます。<br>
@@ -49,20 +60,33 @@ IE に関してはほとんど未確認ですが、IE6 は動作しません。I
 <br>
 (追記)<br>
 利用者の方から Firefox 7 と IE9 で正常動作するとの報告をいただきました。ありがとうございます。<br>
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/bookmarklet/ >bookmarklet</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20111004/multiple-versions-of-jquery/ >複数のバージョンの jQuery を共存させる方法</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20111016/ios5-128aac-bug/ >【解決】iOS5 にすると 128kbps AAC に変換した曲が鳴らない件</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/bookmarklet/ >bookmarklet</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

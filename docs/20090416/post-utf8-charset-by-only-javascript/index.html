@@ -3,16 +3,27 @@
 <head>
 <title>JavaScript だけで Shift_JIS/EUC-JP のページから UTF-8 に変換して POST する方法 - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>JavaScript だけで Shift_JIS/EUC-JP のページから UTF-8 に変換して POST する方法</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>JavaScript だけで Shift_JIS/EUC-JP のページから UTF-8 に変換して POST する方法</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 <a href=http://www.otchy.net/20090416/bookmarklet-for-twitter/ >1 個前のエントリ</a>で、JavaScript だけを用いて、任意の文字コードのページから、UTF-8 エンコーディングで任意のサーバに (クロスドメインして) POST する方法を編み出しました。<br>
 その部分だけで需要があるのではないかと思ったので、関数として取り出して公開します。<br>
 <br>
@@ -51,21 +62,34 @@ iframe の中身は当初 DOM で構築しようとしたのですが、うま�
 <br>
 iframe 内で window.onload しているのは、これまた直接 script タグ内で submit しようとすると、その時点では iframe の DOM 構築が完了しておらず、submit 出来ないためです。<br>
 iDoc.close(); しないと、DOM が構築されないのではないかと予想されます。<br>
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/utf-8/ >utf-8</a>
+<a href=/tag/javascript/ >javascript</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20090416/bookmarklet-for-twitter/ >閲覧中のページについてそこから遷移せずTwitterでつぶやくためのブックマークレット</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20090419/google-app-engine-java-development-in-usb-memory-1/ >Google App Engine for Java 開発環境を USB メモリで持ち歩く (1)</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/utf-8/ >utf-8</a>
-<a href=/tag/javascript/ >javascript</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>

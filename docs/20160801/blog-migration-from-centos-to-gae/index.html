@@ -3,16 +3,27 @@
 <head>
 <title>このブログを CentOS + apache + mod_php + MySQL から GAE/php に移行した話 - OTCHY.NET</title>
 <link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css>
-<style></style>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>:root{--back-color:#fff}.prev{text-align:left}.prev::before{transform:rotateZ(180deg)}.next{text-align:right}.next::after,.prev::before{display:inline-block;content:"➤"}</style>
 </head>
 <body>
-<nav>
-<a href=/ >HOME</a>
-</nav>
-<header>
-<h1>このブログを CentOS + apache + mod_php + MySQL から GAE/php に移行した話</h1>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
 </header>
-<main>
+<main class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<h1>このブログを CentOS + apache + mod_php + MySQL から GAE/php に移行した話</h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
 ここのところ数週間かけて、このブログ、ひいては www.otchy.net 全てを CentOS + apache + php_mod + MySQL だった環境から、GAE/php の環境へ移行する作業をしていて、ようやく一通り完了したので、どういった作業を行ったのかをまとめておこうと思います。<br>
 <h4>ゴール</h4>
 <ul>
@@ -56,11 +67,11 @@ WP を GAE 上で動かすにあたって、必須となるのが <a href=https
 <br>
 実のところ Cloud SQL から読み込み可能なファイルを置く場所というのが限られていて、そこに置かない限り、Could SQL のインポート画面に現れません。Amazon を知っている人であれば、EBS をイメージすると分かりやすいと思います。Amazon では EC2 インスタンス上に書き込んだファイルはインスタンスを落とすと消えてしまいますが、GAE ではそもそも書き込めなくして、読み書きするなら必ずここな！という風になっているので、分かりやすいと言えば分かりやすいかも知れません。<br>
 <br>
-[caption id="" align="aligncenter" width="550"]<img src=http://s.otchy.net/img/blog-migration-from-centos-to-gae/import-1.png width=550 height=708> メニューから Storage を選択[/caption]<br>
+[caption id="" align="aligncenter" width="550"]<img src=http:/wp/img/blog-migration-from-centos-to-gae/import-1.png width=550 height=708> メニューから Storage を選択[/caption]<br>
 <br>
-[caption id="" align="aligncenter" width="1009"]<img src=http://s.otchy.net/img/blog-migration-from-centos-to-gae/import-2.png width=1009 height=397> 保存していた SQL (ダンプ) ファイルをアップロード[/caption]<br>
+[caption id="" align="aligncenter" width="1009"]<img src=http:/wp/img/blog-migration-from-centos-to-gae/import-2.png width=1009 height=397> 保存していた SQL (ダンプ) ファイルをアップロード[/caption]<br>
 <br>
-[caption id="" align="aligncenter" width="997"]<img src=http://s.otchy.net/img/blog-migration-from-centos-to-gae/import-3.png width=997 height=600> Cloud SQL のインポートから選択可能に[/caption]<br>
+[caption id="" align="aligncenter" width="997"]<img src=http:/wp/img/blog-migration-from-centos-to-gae/import-3.png width=997 height=600> Cloud SQL のインポートから選択可能に[/caption]<br>
 <h4>WP データの修正</h4>
 WP のデータベースを丸ごと移行することで、さしあたって各記事は元と同じ URL (この時点では異なる仮ドメイン上の同じ相対パス) で表示されるようになったものの、画像ファイルのパスなどはことごとく切れていて、ろくすっぽ何も表示されない状態でした。それよりもさらに困ったことに、WP のバージョンの違いによる影響か、WP アカウントのログイン情報が正しく動作しておらず、元のデータの管理者アカウントでログインは出来るものの、何の権限もなく管理画面が開けない、という状態でした。<br>
 データの内容を読んで修正できないか試みたものの、シンプルそうなくせに、何が原因かを想像することも出来ず、いったん丸ごと全部移行することは諦めることにしました。<br>
@@ -68,20 +79,33 @@ WP のデータベースを丸ごと移行することで、さしあたって�
 色々検証した結果、データを移行した時に問題が発生するのは wp_users、wp_usermeta、wp_options の 3 つのテーブルであると分かったので、元データののダンプからこれらのテーブルの除いた SQL を作り、デフォルトのまっさらな DB にその SQL を被せることで権限の問題は解決しました。wp_options も対象だったので、設定等の移行は手動でやる必要がありましたが、それが済んだ時点でとりあえず新環境でも、管理画面が正しく使えて、新規の投稿をしたり、新規のファイルアップロードをしたりする分には問題無い状態になりました。<br>
 <br>
 さて次は、元々ある投稿内容で画像やリンクが切れまくってる問題を解決しないといけないのですが、それはまた次のポストで書こうと思います。
-<div class=prev>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+タグ:
+<a href=/tag/gae/ >gae</a>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<hr>
+</div>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1 prev">
 <a href=/20160724/next-gen-of-search/ >Google 検索、インスタ検索、の次、僕らは再びあれ以外の何かに出会う</a>
 </div>
-<div class=next>
+<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0 next">
 <a href=/20160805/static-files-hosting-server-migration/ >このドメインで使っている静的ファイルのホスト先を別ドメインに移行した話</a>
+</div>
 </div>
 </main>
 <footer>
-<p class=categories>
-<a href=/category/dev/ >Development</a>
-</p>
-<p class=categories>
-<a href=/tag/gae/ >gae</a>
-</p>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+Copyright © OTCHY.NET authored by <a href=https://twitter.com/otchy target=_blank>@otchy</a>
+</div>
 </footer>
 </body>
 </html>
