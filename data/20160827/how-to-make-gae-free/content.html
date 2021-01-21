@@ -4,11 +4,11 @@ GAE でうっかり発生していた課金を無くして無料運用に戻し�
 <br>
 前回までで一通りブログの新サーバへの移行作業は完了し、想定外のエラーなどが発生していないか数日間様子を見ていたときのことでした。こんな弱小サイトでまさか発生しないだろうと思っていた課金が発生していたのです。といってもクレカを登録した際に<a href="/20160808/migration-from-sub-directory-to-sub-domain/">もらった $300</a> が少し目減りした程度の話ですし、追加課金は許可していないので実際の課金が発生したわけではありません。<br>
 <br>
-<a href="http://s.otchy.net/img/how-to-make-gae-free/list.png"><img class="aligncenter" src="http://s.otchy.net/img/how-to-make-gae-free/list.png" width="1113" height="748"></a><br>
+<a href="http:/wp/img/how-to-make-gae-free/list.png"><img class="aligncenter" src="http:/wp/img/how-to-make-gae-free/list.png" width="1113" height="748"></a><br>
 <br>
 ただこのままでは $300 の有効期限が切れた後、課金が発生するタイミングで実際に課金が発生する代わりにエラーが発生するようになってしまうので、それは避けなければなりません。そこで課金の発生箇所を確認したところ、唯一フロントエンドのインスタンス時間が無料時間分を超えていました。<br>
 <br>
-<a href="http://s.otchy.net/img/how-to-make-gae-free/before.png"><img class="aligncenter" src="http://s.otchy.net/img/how-to-make-gae-free/before.png" width="1150" height="777"></a><br>
+<a href="http:/wp/img/how-to-make-gae-free/before.png"><img class="aligncenter" src="http:/wp/img/how-to-make-gae-free/before.png" width="1150" height="777"></a><br>
 <br>
 GAE はクラウドがベースのサービスなので、もちろん固定のフロントエンドのサーバが存在しているわけではありません。必要に応じて必要な分だけインスタンスを起動する仕組みになっていて、その無料分が一日当たり 28 時間という事になっています。つまり、1インスタンスは起動しっぱなしでも良くて、負荷が増えて 2 個目のインスタンスが立ち上がっている時間が 1 日当たり 4 時間を超えたらダメ、という感じです。<br>
 <br>
@@ -29,6 +29,6 @@ GAE はクラウドがベースのサービスなので、もちろん固定の�
 <br>
 これらを設定した結果、無事に課金は 0 になりました。素晴らしい！<br>
 <br>
-<a href="http://s.otchy.net/img/how-to-make-gae-free/after.png"><img class="aligncenter" src="http://s.otchy.net/img/how-to-make-gae-free/after.png" width="1150" height="777"></a><br>
+<a href="http:/wp/img/how-to-make-gae-free/after.png"><img class="aligncenter" src="http:/wp/img/how-to-make-gae-free/after.png" width="1150" height="777"></a><br>
 <br>
 以上で、一連のサーバ移行シリーズは完了になります。実際、現在までで本格稼働からほぼ 1 ヶ月になりますが、今のところさしたる問題もなく安定してよく動いています。相変わらずのロングテールっぷりには変わりありませんが…。
