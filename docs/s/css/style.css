@@ -17,3 +17,63 @@
     display: inline-block;
     content: "➤";
 }
+
+.profile {
+    display: flex;
+    flex-direction: column;
+}
+.profile .name {
+    font-size: 1.2rem;
+    text-align: center;
+}
+.profile .name img {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    border: solid 4px #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    max-width: 320px;
+}
+.profile .social {
+    text-align: center;
+}
+.profile .social a:hover {
+    text-decoration: none;
+}
+.profile .social svg {
+    width: 32px;
+    height: 32px;
+}
+.profile .social a:hover svg {
+    transform: translate(0, -1px);
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
+}
+.profile .social svg path {
+    fill: var(--fore-color);
+}
+
+/* md */
+@media screen and (min-width: 768px) {
+    .profile {
+        flex-direction: row;
+    }
+    .profile .name {
+        min-width: 160px;
+    }
+    .profile .social {
+        min-width: 120px;
+        align-self: center;
+    }
+}
+
+/* lg */
+@media screen and (min-width: 1280px) {
+    .profile {
+        flex-direction: column;
+    }
+    .profile .name,
+    .profile .social {
+        min-width: auto;
+    }
+}

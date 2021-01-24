@@ -1,5 +1,5 @@
-import { isDevMode } from './common.mjs';
 import { minify } from 'html-minifier';
+import { isDevMode } from './common.mjs';
 import { useMetaData } from './MetaData.mjs';
 import importStatic from './importStatic.mjs';
 
@@ -39,7 +39,8 @@ const minifyIfNeeded = (html) => {
 };
 
 let totalPages = 0;
-const page = async ({title, description, body, categories, time, tags, prev, next}) => {
+const page = async (post) => {
+    const {title, description, body, categories, time, tags, prev, next} = post;
     const metaData = await useMetaData();
     totalPages++;
     return minifyIfNeeded(`
@@ -61,42 +62,16 @@ const page = async ({title, description, body, categories, time, tags, prev, nex
     </div>
 </header>
 
-<main class="container">
-    ${title || description ? `<div class="row">
-        <div class="col-sm-12 col-md-10 col-md-offset-1">
-            ${title ? `<h1>${title}</h1>` : ''}
-            ${description ? `<p>
-                ${description}
-            </p>` : ''}
-            <hr>
-        </div>
-    </div>` : '' }
+<div class="container">
     <div class="row">
-        <div class="col-sm-12 col-md-10 col-md-offset-1">
-            ${body}
+        <div class="col-sm-12 col-md-10 col-lg-7 col-md-offset-1">
+            ${main(post, metaData)}
+        </div>
+        <div class="col-sm-12 col-md-10 col-lg-3 col-md-offset-1 col-lg-offset-0">
+            ${await aside()}
         </div>
     </div>
-    ${showCategoriesOrTags(categories, tags, metaData) ? `
-    <div class="row">
-        <div class="col-sm-12 col-md-10 col-md-offset-1">
-            <hr>
-            ${getCategories(categories, metaData)}
-            ${getTags(tags, metaData)}
-        </div>
-    </div>` : ''}
-    ${prev || next ? `
-    <div class="row">
-        <div class="col-sm-12 col-md-10 col-md-offset-1">
-            <hr>
-        </div>
-        <div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1${prev ? ' prev' : ''}">
-            ${prev ? `<a href="${prev.path}">${prev.title}</a>` : ''}
-        </div>
-        <div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-0${next ? ' next' : ''}">
-            ${next ? `<a href="${next.path}">${next.title}</a>` : ''}
-        </div>
-    </div>` : ''}
-</main>
+</div>
 
 <footer>
     <div class="col-sm-12 col-md-10 col-md-offset-1">
@@ -108,6 +83,94 @@ const page = async ({title, description, body, categories, time, tags, prev, nex
 </html>
 `);
 };
+
+const main = ({title, description, body, categories, time, tags, prev, next}, metaData) => {
+    return `
+<main class="container">
+    ${title || description ? `<div class="row">
+        <div class="col-sm-12">
+            ${title ? `<h1>${title}</h1>` : ''}
+            ${description ? `<p>
+                ${description}
+            </p>` : ''}
+            <hr>
+        </div>
+    </div>` : '' }
+    <div class="row">
+        <div class="col-sm-12">
+            ${body}
+        </div>
+    </div>
+    ${showCategoriesOrTags(categories, tags, metaData) ? `
+    <div class="row">
+        <div class="col-sm-12">
+            <hr>
+            ${getCategories(categories, metaData)}
+            ${getTags(tags, metaData)}
+        </div>
+    </div>` : ''}
+    ${prev || next ? `
+    <div class="row">
+        <div class="col-sm-12">
+            <hr>
+        </div>
+        <div class="col-sm-12 col-lg-6${prev ? ' prev' : ''}">
+            ${prev ? `<a href="${prev.path}">${prev.title}</a>` : ''}
+        </div>
+        <div class="col-sm-12 col-lg-6${next ? ' next' : ''}">
+            ${next ? `<a href="${next.path}">${next.title}</a>` : ''}
+        </div>
+    </div>` : ''}
+</main>`;
+}
+
+const aside = async () => {
+    return `
+<aside class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h4>プロフィール</h4>
+            <div class="profile">
+                <p class="name">
+                    ${await importStatic.image('/s/img/logo.jpg')}
+                    落合 徹
+                </p>
+                <p class="bio">
+                    Otchy / 1979 年 2 月 10 日生まれ / 仕事: Web システム開発 / 好きなもの: IT 全般、科学分野 / 座右の銘: 明日は明日の風が吹く / 好きな言葉: ハードルは高ければ高いほどくぐりやすい<br>
+                </p>
+                <p class="social">
+                    <a target="_blank" href="https://twitter.com/otchy">
+                        ${await importStatic.inlineSvg('/s/img/twitter.min.svg')}
+                    </a>
+                    <a target="_blank" href="https://github.com/otchy210">
+                        ${await importStatic.inlineSvg('/s/img/github.min.svg')}
+                    </a>
+                    <a target="_blank" href="https://www.linkedin.com/in/otchy">
+                        ${await importStatic.inlineSvg('/s/img/linkedin.min.svg')}
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-12">
+            <h4>最近の投稿</h4>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-12">
+            <h4>はてブ人気エントリ</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-12">
+            <h4>自サイト・ツール</h4>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-12">
+            <h4>外部関連サイト</h4>
+        </div>
+    </div>
+</aside>
+    `
+}
 
 const getTotalPages = () => {
     return totalPages;
