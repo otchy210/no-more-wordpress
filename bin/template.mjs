@@ -1,5 +1,6 @@
 import { minify } from 'html-minifier';
 import { isDevMode } from './common.mjs';
+import { usePostData } from './PostData.mjs';
 import { useMetaData } from './MetaData.mjs';
 import importStatic from './importStatic.mjs';
 
@@ -40,8 +41,7 @@ const minifyIfNeeded = (html) => {
 
 let totalPages = 0;
 const page = async (post) => {
-    const {title, description, body, categories, time, tags, prev, next} = post;
-    const metaData = await useMetaData();
+    const { title } = post;
     totalPages++;
     return minifyIfNeeded(`
 <html>
@@ -65,7 +65,7 @@ const page = async (post) => {
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-lg-7 col-md-offset-1">
-            ${main(post, metaData)}
+            ${await main(post)}
         </div>
         <div class="col-sm-12 col-md-10 col-lg-3 col-md-offset-1 col-lg-offset-0">
             ${await aside()}
@@ -88,7 +88,8 @@ const page = async (post) => {
 `);
 };
 
-const main = ({title, description, body, categories, time, tags, prev, next}, metaData) => {
+const main = async ({title, description, body, categories, time, tags, prev, next}) => {
+    const metaData = await useMetaData();
     return `
 <main class="container">
     ${title || description ? `<div class="row">
@@ -134,6 +135,7 @@ const main = ({title, description, body, categories, time, tags, prev, next}, me
 }
 
 const aside = async () => {
+    const { blogPosts } = await usePostData();
     return `
 <aside class="container">
     <div class="row">
@@ -165,6 +167,11 @@ const aside = async () => {
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-12">
             <h4>最近の投稿</h4>
+            <ul>
+                ${blogPosts.filter((_, i) => i < 10).map(post => `
+                    <li><a href="${post.path}">${post.title}</a></li>
+                `).join('\n')}
+            </ul>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-12">
             <h4>はてブ人気エントリ</h4>

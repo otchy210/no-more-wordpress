@@ -4,7 +4,7 @@ import rcopy from 'recursive-copy';
 import config from './config.mjs';
 import template from './template.mjs';
 import { isDevMode } from './common.mjs';
-import { loadPostData } from './PostData.mjs';
+import { usePostData } from './PostData.mjs';
 import { useMetaData } from './MetaData.mjs';
 
 const DOCS_ROOT = path.resolve(isDevMode() ? config.dirs.devDocs : config.dirs.docs);
@@ -15,12 +15,11 @@ const main = async () => {
     if (isDevMode()) {
         copyStaticFiles();
     }
-    const postData = await loadPostData();
     await fs.mkdir(DOCS_ROOT, {recursive: true});
-    await handleBlogPosts(postData);
-    await handlePagePosts(postData);
-    await handleCategories(postData);
-    await handleTags(postData);
+    await handleBlogPosts();
+    await handlePagePosts();
+    await handleCategories();
+    await handleTags();
     console.log(`Done! (Built ${template.getTotalPages()} pages in ${Date.now() - startTime} msecs)`);
 };
 
@@ -46,7 +45,8 @@ const copyStaticFiles = async () => {
     })
 };
 
-const handleBlogPosts = async ({ blogPosts }) => {
+const handleBlogPosts = async () => {
+    const { blogPosts } = await usePostData();
     for (let i = 0; i < blogPosts.length; i++) {
         const post = blogPosts[i];
         await writePost(post, blogPosts[i+1], blogPosts[i-1]);
@@ -59,13 +59,15 @@ const handleBlogPosts = async ({ blogPosts }) => {
     );
 };
 
-const handlePagePosts = async ({ pagePosts }) => {
+const handlePagePosts = async () => {
+    const { pagePosts } = await usePostData();
     for (let post of pagePosts) {
         await writePost(post);
     }
 };
 
-const handleCategories = async ({ posts, categories: postCategories }) => {
+const handleCategories = async () => {
+    const { posts, categories: postCategories } = await usePostData();
     const { categories } = await useMetaData();
     Object.entries(postCategories).forEach(([slug, paths]) => {
         const category = categories[slug];
@@ -83,7 +85,8 @@ const handleCategories = async ({ posts, categories: postCategories }) => {
     });
 };
 
-const handleTags = async ({ posts, tags: postTags }) => {
+const handleTags = async () => {
+    const { posts, tags: postTags } = await usePostData();
     const { tags } = await useMetaData();
     Object.entries(postTags).forEach(([slug, paths]) => {
         const tag = tags[slug];

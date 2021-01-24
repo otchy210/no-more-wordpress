@@ -93,8 +93,17 @@ const truncate = (content) => {
     return `${noTagContent.substr(0, 120)}…`;
 };
 
-export const loadPostData = async () => {
+const loadPostData = async () => {
     const postData = new PostData();
     await postData.load();
     return postData;
 }
+
+let postData;
+export const usePostData = async () => {
+    if (postData) {
+        return postData;
+    }
+    postData = await loadPostData();
+    return postData;
+};
