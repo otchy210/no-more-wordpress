@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs/promises';
 import csso from 'csso';
+import UglifyJS from 'uglify-js';
 import datauri from 'datauri';
 import config from './config.mjs';
 import { isDevMode } from './common.mjs';
@@ -11,6 +12,7 @@ const inlineThreshold = 2048;
 
 const cache = {
     css: {},
+    js: {},
     image: {},
     inlineSvg: {}
 };
@@ -25,7 +27,7 @@ const css = async (path) => {
     } else {
         return `<link rel="stylesheet" href="${css.path}">`;
     }
-}
+};
 
 const handleCss = async (path) => {
     if (!path.endsWith('.css')) {
@@ -45,7 +47,43 @@ const handleCss = async (path) => {
         path: minifiedPath,
         minified: minifiedPath.length < inlineThreshold ? minified : null
     };
-}
+};
+
+const js = async (path) => {
+    if (!cache.js[path]) {
+        cache.js[path] = await handleJs(path);
+    }
+    const js = cache.js[path];
+    if (js.minified) {
+        return `<script>${js.minified}</script>`;
+    } else {
+        return `<script src="${js.path}" async></script>`;
+    }
+};
+
+const handleJs = async (path) => {
+    if (!path.endsWith('.js')) {
+        throw new Error(`${path} is not js`);
+    }
+    const js = await fs.readFile(`${DOCS_ROOT}${path}`, 'utf-8');
+    if (path.endsWith('.min.js')) {
+        return {
+            path,
+            minified: js
+        };
+    }
+    const minifiedResult = UglifyJS.minify(js);
+    if (minifiedResult.error) {
+        throw new Error(minifiedResult.error);
+    }
+    const minified = minifiedResult.code;
+    const minifiedPath = `${path.substr(0, path.lastIndexOf('.'))}.min.js`;
+    await fs.writeFile(`${DOCS_ROOT}${minifiedPath}`, minified, 'utf-8');
+    return {
+        path: minifiedPath,
+        minified: minifiedPath.length < inlineThreshold ? minified : null
+    };
+};
 
 const image = async (path) => {
     if (!cache.image[path]) {
@@ -116,6 +154,7 @@ const handleInlineSvg = async (path) => {
 
 export default {
     css,
+    js,
     image,
     inlineSvg
 };

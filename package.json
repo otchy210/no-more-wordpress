@@ -27,6 +27,7 @@
     "html-minifier": "^4.0.0",
     "jsdom": "^16.4.0",
     "mysql": "^2.18.1",
-    "recursive-copy": "^2.0.11"
+    "recursive-copy": "^2.0.11",
+    "uglify-js": "^3.12.5"
   }
 }

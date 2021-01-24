@@ -53,6 +53,17 @@
     fill: var(--fore-color);
 }
 
+.popular-hatebu .hatena-bookmark-count a {
+    margin-left: .3rem;
+    color: red;
+    background: #fcc;
+    font-size: .8rem;
+    text-decoration: none;
+}
+
+footer {
+    text-align: center;
+}
 /* md */
 @media screen and (min-width: 768px) {
     .profile {

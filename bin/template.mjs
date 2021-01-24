@@ -79,6 +79,10 @@ const page = async (post) => {
     </div>
 </footer>
 
+<div id="hatebu-widget-loader" style="display: none">
+    <script src="//b.hatena.ne.jp/js/widget.js"></script>
+    ${await importStatic.js('/s/js/hatebu.js')}
+</div>
 </body>
 </html>
 `);
@@ -121,6 +125,11 @@ const main = ({title, description, body, categories, time, tags, prev, next}, me
             ${next ? `<a href="${next.path}">${next.title}</a>` : ''}
         </div>
     </div>` : ''}
+    <div class="row">
+        <div class="col-sm-12">
+            <hr>
+        </div>
+    </div>
 </main>`;
 }
 
@@ -150,6 +159,7 @@ const aside = async () => {
                     </a>
                 </p>
             </div>
+            <hr>
         </div>
     </div>
     <div class="row">
@@ -158,6 +168,7 @@ const aside = async () => {
         </div>
         <div class="col-sm-12 col-md-6 col-lg-12">
             <h4>はてブ人気エントリ</h4>
+            <div class="popular-hatebu"></div>
         </div>
     </div>
     <div class="row">
