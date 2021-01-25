@@ -50,6 +50,8 @@ const page = async (post) => {
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     ${await importStatic.css('/s/css/style.css')}
+    <link rel="icon" type="image/png" href="${await importStatic.imageSrc('/s/img/icon-16.png')}" sizes="16x16">
+    <link rel="icon" type="image/png" href="${await importStatic.imageSrc('/s/img/icon-32.png')}" sizes="32x32">
 </head>
 <body>
 

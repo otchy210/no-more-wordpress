@@ -8,7 +8,7 @@ import { isDevMode } from './common.mjs';
 
 const DOCS_ROOT = path.resolve(isDevMode() ? config.dirs.devDocs : config.dirs.docs);
 
-const inlineThreshold = 2048;
+const inlineThreshold = 1024;
 
 const cache = {
     css: {},
@@ -85,6 +85,14 @@ const handleJs = async (path) => {
     };
 };
 
+const imageSrc = async (path) => {
+    if (!cache.image[path]) {
+        cache.image[path] = await handleImage(path);
+    }
+    const image = cache.image[path];
+    return image.dataUri || image.path;
+};
+
 const image = async (path) => {
     if (!cache.image[path]) {
         cache.image[path] = await handleImage(path);
@@ -95,10 +103,8 @@ const image = async (path) => {
             src="${image.path}"
             srcset="${image.path} 1x, ${image.path2x} 2x"
         >`
-    } else if (image.dataUri) {
-        return `<img src="${image.dataUri}">`;
     } else {
-        return `<img src="${image.path}">`;
+        return `<img src="${image.dataUri || image.path}">`;
     }
 };
 
@@ -156,5 +162,6 @@ export default {
     css,
     js,
     image,
+    imageSrc,
     inlineSvg
 };
