@@ -181,9 +181,22 @@ const aside = async () => {
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-12">
             <h4>自サイト・ツール</h4>
+            <ul>
+                <li><a href="https://www.webcomicranking.com/" target="_blank">Web Comic Ranking</a></li>
+                <li><a href="http://viewer.webcomicranking.com/" target="_blank">WCR Comic Viewer</a></li>
+                <li><a href="http://fukidashi-talk.otchy.net/" target="_blank">フキダシトーク</a></li>
+                <li><a href="http://cronbuilder.otchy.net/" target="_blank">Cron Builder</a></li>
+                <li><a href="http://nut.otchy.net/" target="_blank">数値単位変換</a></li>
+                <li><a href="http://tacj2011.otchy.net/" target="_blank">Tech Advent Calendar Japan 2011</a></li>
+                <li><a href="http://selectart.otchy.net/" target="_blank">Select Art</a></li>
+            </ul>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-12">
             <h4>外部関連サイト</h4>
+            <ul>
+                <li><a href="https://qiita.com/otchy/" target="_blank">Qiita[キータ]</a></li>
+                <li><a href="https://note.com/otchy/" target="_blank">note</a></li>
+            </ul>
         </div>
     </div>
 </aside>
