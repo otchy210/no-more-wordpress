@@ -75,11 +75,7 @@ const page = async (post) => {
     </div>
 </div>
 
-<footer>
-    <div class="col-sm-12 col-md-10 col-md-offset-1">
-        Copyright © OTCHY.NET authored by <a href="https://twitter.com/otchy" target="_blank">@otchy</a>
-    </div>
-</footer>
+${await footer()}
 
 <div id="hatebu-widget-loader" style="display: none">
     <script src="//b.hatena.ne.jp/js/widget.js"></script>
@@ -201,8 +197,45 @@ const aside = async () => {
             </ul>
         </div>
     </div>
-</aside>
-    `
+</aside>`
+}
+
+const footer = async () => {
+    const metaData = await useMetaData();
+    return `
+<footer class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-3 col-md-offset-1">
+            <h5>アーカイブ</h5>
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <h5>カテゴリ</h5>
+            <ul>
+                ${Object.values(metaData.categories).map(category => {
+                    return `<li><a href="/category/${category.slug}/">${category.label}</a></li>`
+                }).join('\n')}
+            </ul>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <h5>タグ</h5>
+            <p>${Object.values(metaData.tags).map(tag => {
+                return `<a href="/tag/${tag.slug}/">${tag.label}</a>`
+            }).join('\n')}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <p class="copyright">
+                Copyright © OTCHY.NET authored by <a href="https://twitter.com/otchy" target="_blank">@otchy</a>
+            </p>
+        </div>
+    </div>
+</footer>`
 }
 
 const getTotalPages = () => {
