@@ -8,7 +8,7 @@ import { isDevMode } from './common.mjs';
 
 const DOCS_ROOT = path.resolve(isDevMode() ? config.dirs.devDocs : config.dirs.docs);
 
-const inlineThreshold = 1024;
+const inlineThreshold = 2048;
 
 const cache = {
     css: {},
