@@ -52,7 +52,7 @@ const handleBlogPosts = async () => {
         const post = blogPosts[i];
         await writePost(post, blogPosts[i+1], blogPosts[i-1]);
     }
-    writeArchivePages(
+    await writeArchivePages(
         '/',
         null,
         null,
@@ -69,7 +69,7 @@ const handlePagePosts = async () => {
 
 const handleMontlyArchives = async () => {
     const { posts, monthlyArchives } = await usePostData();
-    Object.entries(monthlyArchives).forEach(([rootPath, paths]) => {
+    for (const [rootPath, paths] of Object.entries(monthlyArchives)) {
         const [_, yyyy, mm] = rootPath.split('/');
         const year = parseInt(yyyy);
         const month = parseInt(mm);
@@ -77,51 +77,51 @@ const handleMontlyArchives = async () => {
         paths.forEach(path => {
             monthlyPosts.push(posts[path]);
         });
-        writeArchivePages(
+        await writeArchivePages(
             rootPath,
             `月別: ${year} 年 ${month} 月`,
             null,
             monthlyPosts
-        )
-    });
+        );
+    }
 };
 
 const handleCategories = async () => {
     const { posts, categories: postCategories } = await usePostData();
     const { categories } = await useMetaData();
-    Object.entries(postCategories).forEach(([slug, paths]) => {
+    for (const [slug, paths] of Object.entries(postCategories)) {
         const category = categories[slug];
         const rootPath = `/category/${slug}/`;
         const categoryPosts = [];
         paths.forEach(path => {
             categoryPosts.push(posts[path]);
         });
-        writeArchivePages(
+        await writeArchivePages(
             rootPath,
             `カテゴリ: ${category.label}`,
             category.description,
             categoryPosts
         );
-    });
+    };
 };
 
 const handleTags = async () => {
     const { posts, tags: postTags } = await usePostData();
     const { tags } = await useMetaData();
-    Object.entries(postTags).forEach(([slug, paths]) => {
+    for (const [slug, paths] of Object.entries(postTags)) {
         const tag = tags[slug];
         const rootPath = `/tag/${slug}/`;
         const tagPosts = [];
         paths.forEach(path => {
             tagPosts.push(posts[path]);
         });
-        writeArchivePages(
+        await writeArchivePages(
             rootPath,
             `タグ: ${tag.label}`,
             null,
             tagPosts
         );
-    });
+    };
 };
 
 const writePost = async (post, prev, next) => {

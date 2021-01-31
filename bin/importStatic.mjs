@@ -33,11 +33,16 @@ const handleCss = async (path) => {
     if (!path.endsWith('.css')) {
         throw new Error(`${path} is not css`);
     }
+    if (isDevMode()) {
+        return {
+            path
+        };
+    }
     const css = await fs.readFile(`${DOCS_ROOT}${path}`, 'utf-8');
     if (path.endsWith('.min.css')) {
         return {
             path,
-            minified: css
+            minified: css.length < inlineThreshold ? css : null
         };
     }
     const minified = csso.minify(css).css;
@@ -45,7 +50,7 @@ const handleCss = async (path) => {
     await fs.writeFile(`${DOCS_ROOT}${minifiedPath}`, minified, 'utf-8');
     return {
         path: minifiedPath,
-        minified: minifiedPath.length < inlineThreshold ? minified : null
+        minified: minified.length < inlineThreshold ? minified : null
     };
 };
 
@@ -65,11 +70,16 @@ const handleJs = async (path) => {
     if (!path.endsWith('.js')) {
         throw new Error(`${path} is not js`);
     }
+    if (isDevMode()) {
+        return {
+            path
+        };
+    }
     const js = await fs.readFile(`${DOCS_ROOT}${path}`, 'utf-8');
     if (path.endsWith('.min.js')) {
         return {
             path,
-            minified: js
+            minified: js.length < inlineThreshold ? js : null
         };
     }
     const minifiedResult = UglifyJS.minify(js);
@@ -81,7 +91,7 @@ const handleJs = async (path) => {
     await fs.writeFile(`${DOCS_ROOT}${minifiedPath}`, minified, 'utf-8');
     return {
         path: minifiedPath,
-        minified: minifiedPath.length < inlineThreshold ? minified : null
+        minified: minified.length < inlineThreshold ? minified : null
     };
 };
 
@@ -119,6 +129,11 @@ const handleImage = async (path) => {
     });
     if (!fileStat.isFile()) {
         throw new Error(`${filePath} is not a file`);
+    }
+    if (isDevMode()) {
+        return {
+            path
+        };
     }
     const dataUri = await datauri(filePath);
 
