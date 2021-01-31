@@ -92,7 +92,7 @@ const main = async ({title, description, body, categories, time, tags, prev, nex
 <main class="container">
     ${title || description ? `<div class="row">
         <div class="col-sm-12">
-            ${title ? `<h1>${title}</h1>` : ''}
+            ${title ? `<h1>${title}${time ? `<small>${formatTime(time)}</small>` : ''}</h1>` : ''}
             ${description ? `<p>
                 ${description}
             </p>` : ''}
@@ -245,6 +245,13 @@ const footer = async () => {
 
 const getTotalPages = () => {
     return totalPages;
+};
+
+const formatTime = (time) => {
+    const yyyy = time.getFullYear();
+    const mm = new String(time.getMonth() + 1).padStart(2, '0');
+    const dd = new String(time.getDate()).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}`;
 }
 
 const showCategories = (categories, metaData) => {
@@ -285,11 +292,11 @@ const getTags = (tags, metaData) => {
     `;
 };
 
-const article = ({title, truncatedBody, path}, isFirst) => {
+const article = ({title, truncatedBody, path, time}, isFirst) => {
     return `
 <article>
     ${isFirst ? '' : '<hr>'}
-    <h2><a href="${path}">${title}</a></h2>
+    <h2><a href="${path}">${title}</a>${time ? `<small>${formatTime(time)}</small>` : ''}</h2>
     <p>
         ${truncatedBody}
     </p>

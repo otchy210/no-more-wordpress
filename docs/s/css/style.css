@@ -2,6 +2,11 @@
     --back-color: #fff;
 }
 
+h1 small,
+h2 small {
+    font-size: .5em;
+}
+
 .prev {
     text-align: left;
 }
