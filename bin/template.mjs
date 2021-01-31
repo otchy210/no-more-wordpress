@@ -207,6 +207,11 @@ const footer = async () => {
     <div class="row">
         <div class="col-sm-12 col-md-3 col-md-offset-1">
             <h5>アーカイブ</h5>
+            <ul>
+                ${metaData.monthlyArchives.map(archive => {
+                    return `<li><a href="${archive.path}">${archive.label}</a></li>`
+                }).join('\n')}
+            </ul>
         </div>
         <div class="col-sm-12 col-md-3">
             <h5>カテゴリ</h5>

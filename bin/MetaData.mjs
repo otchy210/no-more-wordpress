@@ -11,6 +11,22 @@ class MetaData {
         const json = JSON.parse(jsonStr);
 
         const postData = await usePostData();
+        this.monthlyArchives = Object.entries(postData.monthlyArchives).map(([path, paths]) => {
+            const [_, yyyy, mm] = path.split('/');
+            const month = parseInt(mm);
+            const label = `${yyyy} 年 ${month} 月`;
+            return {
+                path,
+                label,
+                count: paths.length
+            };
+        }).sort((left, right) => {
+            if (left.path < right.path) {
+                return 1;
+            } else {
+                return -1;
+            }
+        });
         this.categories = Object.entries(json.categories).map(([slug, values]) => {
             return {
                 slug,

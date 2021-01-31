@@ -18,6 +18,7 @@ const main = async () => {
     await fs.mkdir(DOCS_ROOT, {recursive: true});
     await handleBlogPosts();
     await handlePagePosts();
+    await handleMontlyArchives();
     await handleCategories();
     await handleTags();
     console.log(`Done! (Built ${template.getTotalPages()} pages in ${Date.now() - startTime} msecs)`);
@@ -64,6 +65,25 @@ const handlePagePosts = async () => {
     for (let post of pagePosts) {
         await writePost(post);
     }
+};
+
+const handleMontlyArchives = async () => {
+    const { posts, monthlyArchives } = await usePostData();
+    Object.entries(monthlyArchives).forEach(([rootPath, paths]) => {
+        const [_, yyyy, mm] = rootPath.split('/');
+        const year = parseInt(yyyy);
+        const month = parseInt(mm);
+        const monthlyPosts = [];
+        paths.forEach(path => {
+            monthlyPosts.push(posts[path]);
+        });
+        writeArchivePages(
+            rootPath,
+            `月別: ${year} 年 ${month} 月`,
+            null,
+            monthlyPosts
+        )
+    });
 };
 
 const handleCategories = async () => {

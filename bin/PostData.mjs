@@ -19,10 +19,16 @@ class PostData {
         this.pagePosts = posts
             .filter(post => post.type === 'page');
 
+        this.monthlyArchives = {};
         this.categories = {};
         this.tags = {};
         this.blogPosts.forEach(post => {
-            const { path } = post;
+            const { time, path } = post;
+            const monthlyPath = getMonthlyPath(time);
+            if (!this.monthlyArchives[monthlyPath]) {
+                this.monthlyArchives[monthlyPath] = [];
+            }
+            this.monthlyArchives[monthlyPath].push(path);
             post?.categories?.forEach(category => {
                 if (!this.categories[category]) {
                     this.categories[category] = [];
@@ -64,10 +70,12 @@ const handlePost = async (dirPaths) => {
         return false;
     }
     const meta = await getPostMeta(dataDir);
+    const time = new Date(meta.time);
     const content = await fs.readFile(contentPath, 'utf-8');
     const [title, body] = content.split('\n----------------\n');
     return {
         ...meta,
+        time,
         path,
         title,
         body,
@@ -91,6 +99,12 @@ const truncate = (content) => {
         return noTagContent;
     }
     return `${noTagContent.substr(0, 120)}…`;
+};
+
+const getMonthlyPath = (date) => {
+    const yyyy = date.getFullYear();
+    const mm = new String(date.getMonth() + 1).padStart(2, '0');
+    return `/${yyyy}/${mm}/`;
 };
 
 const loadPostData = async () => {
