@@ -12,20 +12,18 @@ a[target=_blank]:not(.no-icon) {
     padding-right: 1em;
 }
 
+.prev, .next {
+    padding: 0 1em;
+    background-repeat: no-repeat;
+    background-size: 0.8em;
+}
 .prev {
+    background-position: left center;
     text-align: left;
 }
-.prev::before {
-    display: inline-block;
-    content: "➤";
-    transform: rotateZ(180deg);
-}
 .next {
+    background-position: right center;
     text-align: right;
-}
-.next::after {
-    display: inline-block;
-    content: "➤";
 }
 
 .profile {

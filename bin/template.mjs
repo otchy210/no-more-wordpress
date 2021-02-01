@@ -117,12 +117,16 @@ const main = async ({title, description, body, categories, time, tags, prev, nex
         <div class="col-sm-12">
             <hr>
         </div>
-        <div class="col-sm-12 col-lg-6${prev ? ' prev' : ''}">
-            ${prev ? `<a href="${prev.path}">${prev.title}</a>` : ''}
-        </div>
-        <div class="col-sm-12 col-lg-6${next ? ' next' : ''}">
-            ${next ? `<a href="${next.path}">${next.title}</a>` : ''}
-        </div>
+        ${prev ? `
+            <div class="col-sm-12 col-lg-6 prev" style="background-image:url(${await importStatic.imageSrc('/s/img/left.min.svg')})">
+                <a href="${prev.path}">${prev.title}</a>
+            </div>
+        ` : '<div class="col-sm-12 col-lg-6"></div>'}
+        ${next ? `
+            <div class="col-sm-12 col-lg-6 next" style="background-image:url(${await importStatic.imageSrc('/s/img/right.min.svg')})">
+                <a href="${next.path}">${next.title}</a>
+            </div>
+        ` : '<div class="col-sm-12 col-lg-6"></div>'}
     </div>` : ''}
     <div class="row">
         <div class="col-sm-12">
@@ -236,7 +240,7 @@ const footer = async () => {
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <p class="copyright">
-                Copyright © OTCHY.NET authored by <a href="https://twitter.com/otchy" target="_blank">@otchy</a>
+                Copyright © OTCHY.NET authored by <a class="no-icon" href="https://twitter.com/otchy" target="_blank">@otchy</a>
             </p>
         </div>
     </div>

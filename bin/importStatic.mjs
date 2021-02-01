@@ -120,8 +120,8 @@ const image = async (path) => {
 
 const handleImage = async (path) => {
     const extIndex = path.lastIndexOf('.');
-    if (!['png','jpg'].includes(path.substr(extIndex + 1))) {
-        throw new Error(`${path} is not png or jpg`);
+    if (!['png', 'jpg', 'svg'].includes(path.substr(extIndex + 1))) {
+        throw new Error(`${path} is not png, jpg or svg`);
     }
     const filePath = `${DOCS_ROOT}${path}`;
     const fileStat = await fs.lstat(filePath).catch(e => {
