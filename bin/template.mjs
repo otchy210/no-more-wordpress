@@ -79,7 +79,7 @@ ${await footer()}
 
 <div id="hatebu-widget-loader" style="display: none">
     <script src="//b.hatena.ne.jp/js/widget.js"></script>
-    ${await importStatic.js('/s/js/hatebu.js')}
+    ${await importStatic.js('/s/js/hatebu.js', {syncLoad: true})}
 </div>
 </body>
 </html>

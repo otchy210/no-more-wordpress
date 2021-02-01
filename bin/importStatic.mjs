@@ -54,13 +54,15 @@ const handleCss = async (path) => {
     };
 };
 
-const js = async (path) => {
+const js = async (path, options) => {
     if (!cache.js[path]) {
         cache.js[path] = await handleJs(path);
     }
     const js = cache.js[path];
     if (js.minified) {
         return `<script>${js.minified}</script>`;
+    } else if (options && options.syncLoad) {
+        return `<script src="${js.path}"></script>`;
     } else {
         return `<script src="${js.path}" async></script>`;
     }
