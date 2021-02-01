@@ -8,7 +8,7 @@ h2 small {
 }
 
 a[target=_blank]:not(.no-icon) {
-    background: url(../img/external-link.min.svg) no-repeat center right/.8em;
+    background: url(/s/img/external-link.min.svg) no-repeat center right/.8em;
     padding-right: 1em;
 }
 
