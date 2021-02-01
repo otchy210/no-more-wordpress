@@ -7,6 +7,11 @@ h2 small {
     font-size: .5em;
 }
 
+a[target=_blank]:not(.no-icon) {
+    background: url(../img/external-link.min.svg) no-repeat center right/.8em;
+    padding-right: 1em;
+}
+
 .prev {
     text-align: left;
 }

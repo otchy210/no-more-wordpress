@@ -148,13 +148,13 @@ const aside = async () => {
                     Otchy / 1979 年 2 月 10 日生まれ / 仕事: Web システム開発 / 好きなもの: IT 全般、科学分野 / 座右の銘: 明日は明日の風が吹く / 好きな言葉: ハードルは高ければ高いほどくぐりやすい<br>
                 </p>
                 <p class="social">
-                    <a target="_blank" href="https://twitter.com/otchy">
+                    <a class="no-icon" target="_blank" href="https://twitter.com/otchy">
                         ${await importStatic.inlineSvg('/s/img/twitter.min.svg')}
                     </a>
-                    <a target="_blank" href="https://github.com/otchy210">
+                    <a class="no-icon" target="_blank" href="https://github.com/otchy210">
                         ${await importStatic.inlineSvg('/s/img/github.min.svg')}
                     </a>
-                    <a target="_blank" href="https://www.linkedin.com/in/otchy">
+                    <a class="no-icon" target="_blank" href="https://www.linkedin.com/in/otchy">
                         ${await importStatic.inlineSvg('/s/img/linkedin.min.svg')}
                     </a>
                 </p>
