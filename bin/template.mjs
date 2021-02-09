@@ -86,10 +86,15 @@ ${await footer()}
 `);
 };
 
-const main = async ({title, description, body, categories, time, tags, prev, next}) => {
+const main = async ({title, description, body, categories, time, tags, prev, next, cover}) => {
     const metaData = await useMetaData();
     return `
 <main class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            ${await coverImage(cover)}
+        </div>
+    </div>
     ${title || description ? `<div class="row">
         <div class="col-sm-12">
             ${title ? `<h1>${title}${time ? `<small>${formatTime(time)}</small>` : ''}</h1>` : ''}
@@ -209,6 +214,16 @@ const aside = async () => {
         </div>
     </div>
 </aside>`
+};
+
+const coverImage = async (cover) => {
+    if (!cover) {
+        return await importStatic.image('/s/img/cover/default.jpg');
+    } else if (cover.startsWith('http')) {
+        return `<img src="${cover}">`;
+    } else {
+        return await importStatic.image(cover);
+    }
 };
 
 const socialButtons = () => {
