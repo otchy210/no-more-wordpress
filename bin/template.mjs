@@ -100,16 +100,23 @@ const main = async ({title, description, body, categories, time, tags, prev, nex
         </div>
     </div>` : '' }
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12 body">
             ${body}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <p class="social-buttons">${socialButtons()}</p>
         </div>
     </div>
     ${showCategoriesOrTags(categories, tags, metaData) ? `
     <div class="row">
         <div class="col-sm-12">
             <hr>
-            ${getCategories(categories, metaData)}
-            ${getTags(tags, metaData)}
+            <p>
+                ${getCategories(categories, metaData)}
+                ${getTags(tags, metaData)}
+            </p>
         </div>
     </div>` : ''}
     ${prev || next ? `
@@ -202,6 +209,26 @@ const aside = async () => {
         </div>
     </div>
 </aside>`
+};
+
+const socialButtons = () => {
+    return `
+    ${/* hatebu */''}
+    <script>
+    document.write(
+        '<a href="https://b.hatena.ne.jp/entry/' + location.href + '" class="hatena-bookmark-button" data-hatena-bookmark-title="' + document.title + '" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>'
+    );
+    </script>
+    <script src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async></script>
+    ${/* twitter */''}
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="otchy">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    ${/* facebook */''}
+    <script>
+    document.write(
+        '<iframe src="https://www.facebook.com/plugins/like.php?href=' + location.href + '&width=112&height=20&layout=button_count&action=like" class="facebook-share-button"></iframe>'
+    );
+    </script>
+`;
 }
 
 const footer = async () => {

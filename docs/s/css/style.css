@@ -12,6 +12,10 @@ a[target=_blank]:not(.no-icon) {
     padding-right: 1em;
 }
 
+main .body {
+    padding: var(--universal-margin);
+}
+
 .prev, .next {
     padding: 0 1em;
     background-repeat: no-repeat;
@@ -24,6 +28,19 @@ a[target=_blank]:not(.no-icon) {
 .next {
     background-position: right center;
     text-align: right;
+}
+
+.social-buttons {
+    display: flex;
+}
+.social-buttons > iframe {
+    margin-right: 4px;
+}
+.social-buttons .facebook-share-button {
+    width: 112px;
+    height: 20px;
+    border: none;
+    overflow: hidden;
 }
 
 .profile {
