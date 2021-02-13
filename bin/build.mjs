@@ -4,7 +4,7 @@ import rcopy from 'recursive-copy';
 import config from './config.mjs';
 import template from './template.mjs';
 import { isDevMode } from './common.mjs';
-import { usePostData } from './PostData.mjs';
+import { usePostData, truncate } from './PostData.mjs';
 import { useMetaData } from './MetaData.mjs';
 
 const DOCS_ROOT = path.resolve(isDevMode() ? config.dirs.devDocs : config.dirs.docs);
@@ -153,11 +153,15 @@ const writeArchivePages = async (rootPath, title, description, posts) => {
             path: getArchivePagePath(rootPath, page - 1),
             title: '新しい投稿'
         } : null;
-        const htmlDir = `${DOCS_ROOT}${getArchivePagePath(rootPath, page)}`;
+        const path = getArchivePagePath(rootPath, page);
+        const htmlDir = `${DOCS_ROOT}${path}`;
+        const body = articles.join('\n');
         const html = await template.page({
-            body: articles.join('\n'),
+            path,
+            body,
             title,
             description,
+            truncatedBody: truncate(body),
             prev,
             next
         });

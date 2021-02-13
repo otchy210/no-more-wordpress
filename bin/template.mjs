@@ -4,6 +4,12 @@ import { usePostData } from './PostData.mjs';
 import { useMetaData } from './MetaData.mjs';
 import importStatic from './importStatic.mjs';
 
+const ROOT = 'https://www.otchy.net';
+const DEFAULT_COVER = '/s/img/cover/default.jpg';
+const SITE_NAME = 'OTCHY.NET';
+const DEFAULT_DESCRIPTION = 'Otchy の雑記ブログ。技術ネタは Qiita と併用。JavaScript 率高め、古くは Twitter/PHP/Java/Perl など。共通点は Web。';
+const FBID = 1716785578265;
+
 const minifyOptions = {
     collapseBooleanAttributes: true,
     collapseInlineTagWhitespace: true,
@@ -41,17 +47,27 @@ const minifyIfNeeded = (html) => {
 
 let totalPages = 0;
 const page = async (post) => {
-    const { title } = post;
+    const { title, path, cover, truncatedBody } = post;
     totalPages++;
     return minifyIfNeeded(`
 <html>
-<head>
-    <title>${title ? `${title} - ` : ''}OTCHY.NET</title>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <title>${title ? `${title} - ` : ''}${SITE_NAME}</title>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     ${await importStatic.css('/s/css/style.css')}
     <link rel="icon" type="image/png" href="${await importStatic.imageSrc('/s/img/icon-16.png')}" sizes="16x16">
     <link rel="icon" type="image/png" href="${await importStatic.imageSrc('/s/img/icon-32.png')}" sizes="32x32">
+    <meta property="og:title" content="${title ?? SITE_NAME}" />
+    <meta property="og:type" content="${path ? 'article' : 'website'}" />
+    <meta property="og:url" content="${ROOT}${path ?? ''}" />
+    <meta property="og:image" content="${ROOT}${cover ?? DEFAULT_COVER}" />
+    <meta property="og:site_name" content="${SITE_NAME}" />
+    <meta property="og:description" content="${truncatedBody ?? DEFAULT_DESCRIPTION}" />
+    <meta property="fb:admins" content="${FBID}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@otchy" />
+    <meta name="twitter:player" content="@otchy" />
 </head>
 <body>
 
@@ -218,7 +234,7 @@ const aside = async () => {
 
 const coverImage = async (cover) => {
     if (!cover) {
-        return await importStatic.image('/s/img/cover/default.jpg');
+        return await importStatic.image(DEFAULT_COVER);
     } else if (cover.startsWith('http')) {
         return `<img src="${cover}">`;
     } else {

@@ -93,7 +93,7 @@ const getPostMeta = async (dir) => {
     return JSON.parse(json);
 };
 
-const truncate = (content) => {
+export const truncate = (content) => {
     const noTagContent = content.split(/<[^>]+>/).join(' ').split(/\s+/).join(' ');
     if (noTagContent.length < 120) {
         return noTagContent;
