@@ -25,7 +25,7 @@ const minifyOptions = {
     preserveLineBreaks: true,
     preventAttributesEscaping: false, // default
     removeAttributeQuotes: true,
-    removeComments: true,
+    removeComments: false, // default
     removeEmptyAttributes: true,
     removeEmptyElements: false, // default
     removeOptionalTags: false, // default
@@ -53,6 +53,8 @@ const page = async (post) => {
 <html>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
     <title>${title ? `${title} - ` : ''}${SITE_NAME}</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-5762897-3"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','UA-5762897-3');</script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     ${await importStatic.css('/s/css/style.css')}
@@ -243,24 +245,20 @@ const coverImage = async (cover) => {
 };
 
 const socialButtons = () => {
-    return `
-    ${/* hatebu */''}
-    <script>
-    document.write(
-        '<a href="https://b.hatena.ne.jp/entry/' + location.href + '" class="hatena-bookmark-button" data-hatena-bookmark-title="' + document.title + '" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>'
-    );
-    </script>
-    <script src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async></script>
-    ${/* twitter */''}
-    <a href="https://twitter.com/share" class="twitter-share-button" data-via="otchy">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-    ${/* facebook */''}
-    <script>
-    document.write(
-        '<iframe src="https://www.facebook.com/plugins/like.php?href=' + location.href + '&width=112&height=20&layout=button_count&action=like" class="facebook-share-button"></iframe>'
-    );
-    </script>
-`;
-}
+    return `${hatebu()}${twitter()}${facebook()}`;
+};
+
+const hatebu = () => {
+    return `<script>document.write('<a href="https://b.hatena.ne.jp/entry/' + location.href + '" class="hatena-bookmark-button" data-hatena-bookmark-title="' + document.title + '" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>');</script><script src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async></script>`;
+};
+
+const twitter = () => {
+    return `<a href="https://twitter.com/share" class="twitter-share-button" data-via="otchy">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>`
+};
+
+const facebook = () => {
+    return `<script>document.write('<iframe src="https://www.facebook.com/plugins/like.php?href=' + location.href + '&width=112&height=20&layout=button_count&action=like" class="facebook-share-button"></iframe>');</script>`
+};
 
 const footer = async () => {
     const metaData = await useMetaData();
