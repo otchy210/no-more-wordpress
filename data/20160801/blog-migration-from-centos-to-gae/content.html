@@ -43,11 +43,21 @@ WP を GAE 上で動かすにあたって、必須となるのが <a href="http
 <br>
 実のところ Cloud SQL から読み込み可能なファイルを置く場所というのが限られていて、そこに置かない限り、Could SQL のインポート画面に現れません。Amazon を知っている人であれば、EBS をイメージすると分かりやすいと思います。Amazon では EC2 インスタンス上に書き込んだファイルはインスタンスを落とすと消えてしまいますが、GAE ではそもそも書き込めなくして、読み書きするなら必ずここな！という風になっているので、分かりやすいと言えば分かりやすいかも知れません。<br>
 <br>
-[caption id="" align="aligncenter" width="550"]<img class="" src="/wp/img/blog-migration-from-centos-to-gae/import-1.png" width="550" height="708"> メニューから Storage を選択[/caption]<br>
+<figure>
+  <img src="/wp/img/blog-migration-from-centos-to-gae/import-1.png" width="550" height="708"> <br>
+  <figcaption>メニューから Storage を選択</figcaption>
+</figure>
 <br>
-[caption id="" align="aligncenter" width="1009"]<img class="" src="/wp/img/blog-migration-from-centos-to-gae/import-2.png" width="1009" height="397"> 保存していた SQL (ダンプ) ファイルをアップロード[/caption]<br>
+<figure>
+  <img src="/wp/img/blog-migration-from-centos-to-gae/import-2.png" width="1009" height="397"><br>
+  <figcaption>保存していた SQL (ダンプ) ファイルをアップロード</figcaption>
+</figure>
 <br>
-[caption id="" align="aligncenter" width="997"]<img class="" src="/wp/img/blog-migration-from-centos-to-gae/import-3.png" width="997" height="600"> Cloud SQL のインポートから選択可能に[/caption]<br>
+<figure>
+  <img src="/wp/img/blog-migration-from-centos-to-gae/import-3.png" width="997" height="600"><br>
+  <figcaption>Cloud SQL のインポートから選択可能に</figcaption>
+</figure>
+<br>
 <h4>WP データの修正</h4>
 WP のデータベースを丸ごと移行することで、さしあたって各記事は元と同じ URL (この時点では異なる仮ドメイン上の同じ相対パス) で表示されるようになったものの、画像ファイルのパスなどはことごとく切れていて、ろくすっぽ何も表示されない状態でした。それよりもさらに困ったことに、WP のバージョンの違いによる影響か、WP アカウントのログイン情報が正しく動作しておらず、元のデータの管理者アカウントでログインは出来るものの、何の権限もなく管理画面が開けない、という状態でした。<br>
 データの内容を読んで修正できないか試みたものの、シンプルそうなくせに、何が原因かを想像することも出来ず、いったん丸ごと全部移行することは諦めることにしました。<br>
