@@ -195,7 +195,7 @@ TARGET：短縮対象となる URL です。これ以下の URL のみ短縮対�
 LEN：ハッシュの長さです。62 進数で管理されるので、普通の利用だったら 3 桁で十分です。3 桁で、最大 238,328 (＝62×62×62) 件の URL を短縮出来ます。それで不足する場合は数値を大きくして下さい。<br>
 CHARS：ハッシュに使用する文字です。通常は変更の必要がありませんが、サーバが Windows の場合は大文字と小文字が区別されないため、a〜z を削除する必要があります。この時は 36 進数でハッシュが管理されるので、同時に LEN の値も大きくした方が良いです。<br>
 <br>
-フォームのデザインを変更したい場合は、<html>以降を修正して下さい。<br>
+フォームのデザインを変更したい場合は、&lt;html>以降を修正して下さい。<br>
 <br>
 <h4>動作確認</h4>
 3 つのファイルがアップ出来たら、OWN で設定した URL を開くと URL 短縮用のフォームが表示されるはずなので、そこで動作確認が出来ます。<br>
@@ -214,7 +214,7 @@ otchy.net の例だと、http://otchy.net/?url=http://www.otchy.net/&callback=fu
 実際の動作については、ファイルシステムの実装依存ですが、このようにディレクトリを走査するとファイルシステムが一種の DB インデックスのように働く事が期待され、対象の URL の数がかなり大きくなっても高速に動作するはずです。<br>
 <h4>ライセンス</h4>
 ライセンスは <a href=http://www.opensource.org/licenses/mit-license.php target=_blank>MIT License</a> (<a href=http://ja.wikipedia.org/wiki/MIT_License target=_blank>日本版 wikipedia の項</a>) で公開します。
-</html></div>
+</div>
 </div>
 <div class=row>
 <div class=col-sm-12>
