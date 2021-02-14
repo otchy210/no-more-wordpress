@@ -8,7 +8,8 @@ import { isDevMode } from './common.mjs';
 
 const DOCS_ROOT = path.resolve(isDevMode() ? config.dirs.devDocs : config.dirs.docs);
 
-const inlineThreshold = 2048;
+const inlineThreshold = 4096;
+const imgInlinethreshold = 2048;
 
 const cache = {
     css: {},
@@ -152,7 +153,7 @@ const handleImage = async (path) => {
 
     return {
         path,
-        dataUri: dataUri.length < inlineThreshold ? dataUri : null,
+        dataUri: dataUri.length < imgInlinethreshold ? dataUri : null,
         path2x
     }
 };

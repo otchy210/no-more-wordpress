@@ -50,7 +50,6 @@ const page = async (post) => {
     const { title, path, cover, truncatedBody } = post;
     totalPages++;
     return minifyIfNeeded(`
-<!DOCTYPE html>
 <html lang="ja">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
     <title>${title ? `${title} - ` : ''}${SITE_NAME}</title>
