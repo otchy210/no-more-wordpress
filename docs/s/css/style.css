@@ -7,6 +7,24 @@ h2 small {
     font-size: .5em;
 }
 
+table {
+    border-collapse: collapse;
+}
+table:not(.layout) th,
+table:not(.layout) td {
+    border: solid 1px #999;
+    padding: 0.2em 0.5em;
+}
+th {
+    background-color: #666;
+    color: #fff;
+}
+
+.layout pre {
+    margin: 0;
+    border: none;
+}
+
 a[target=_blank]:not(.no-icon) {
     background: url(/s/img/external-link.min.svg) no-repeat center right/.8em;
     padding-right: 1em;

@@ -50,13 +50,14 @@ const page = async (post) => {
     const { title, path, cover, truncatedBody } = post;
     totalPages++;
     return minifyIfNeeded(`
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
     <title>${title ? `${title} - ` : ''}${SITE_NAME}</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-5762897-3"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','UA-5762897-3');</script>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    ${await importStatic.css('/s/css/mini-otchy.min.css')}
     ${await importStatic.css('/s/css/style.css')}
     <link rel="icon" type="image/png" href="${await importStatic.imageSrc('/s/img/icon-16.png')}" sizes="16x16">
     <link rel="icon" type="image/png" href="${await importStatic.imageSrc('/s/img/icon-32.png')}" sizes="32x32">
