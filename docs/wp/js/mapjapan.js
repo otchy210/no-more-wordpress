@@ -66,7 +66,7 @@ $(function() {
 		var nameTd = $('<td></td>');
 		nameTd.text(pref.name);
 		var colorTd = $('<td></td>');
-		var colorInput = $('<input class="color" style="width:60px;" />');
+		var colorInput = $('<input class="color" style="width:80px;" />');
 		colorInput.attr('id', 'color_' + pref.code);
 		colorTd.append(colorInput);
 		var labelTd = $('<td></td>');
@@ -78,7 +78,7 @@ $(function() {
 		prefTr.append(labelTd);
 		table.append(prefTr);
 	}
-	var otherTr = $('<tr><td>未指定色</td><td><input id="otherColor" class="color" style="width:60px;" /></td></tr>');
+	var otherTr = $('<tr><td>未指定色</td><td><input id="otherColor" class="color" style="width:80px;" /></td></tr>');
 	table.append(otherTr);
 	
 	var viewButton = $('<button />');
