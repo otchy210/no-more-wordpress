@@ -44,7 +44,7 @@ curl -I -s http://www.originaldomain.com/〜〜/ | egrep -i "Location|HTTP.+ [0-
 そしたら、対象ファイルに実行権限を与えて実行すると、一気に一覧が取れます。<br>
 <br>
 $ chmod u+x list.sh<br>
-$ ./list.sh > resutls.txt<br>
+$ ./list.sh &gt; resutls.txt<br>
 <br>
 curl が 301 を解釈してリダイレクトするのを待つので、件数が多いと結構時間がかかりますが、これまで試したところ全件取れました。<br>
 Google のサーバに負荷をかけている予感がしますが、並列アクセスじゃないし、リダイレクト先へのアクセスを待った後で次のリクエストになるからいいかな、という感じです。そもそも Google Reader やめるんだからこのくらいは大目に見て欲しいです。<br>

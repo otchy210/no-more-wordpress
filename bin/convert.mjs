@@ -230,7 +230,7 @@ const pushInnerHtml = (elem, results) => {
                 }
                 break;
             case 3: // TEXT_NODE
-                const text = curr.textContent;
+                const text = curr.textContent.replace(/[<>]/g, c => ({'<': '&lt;', '>': '&gt;'})[c]);
                 if (
                     isBlock(prev) &&
                     text.length > 0 &&
