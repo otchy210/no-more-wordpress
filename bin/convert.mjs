@@ -203,7 +203,7 @@ const isBlock = (elem) => {
 }
 
 const addBr = (content) => {
-    const dom = new JSDOM(content);
+    const dom = new JSDOM(`<body>${content}</body>`);
     const body = dom.window.document.body;
     const results = [];
     pushInnerHtml(body, results);

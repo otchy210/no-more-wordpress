@@ -94,11 +94,23 @@ const getPostMeta = async (dir) => {
 };
 
 export const truncate = (content) => {
-    const noTagContent = content.split(/<[^>]+>/).join(' ').split(/\s+/).join(' ');
+    const noTagContent = content
+        .split(/<[^>]+>/).join(' ')
+        .split(/\s+/).join(' ')
+        .replace(/['"]/g, (c) => {
+            switch(c) {
+                case '\'':
+                    return '&#x27;';
+                case '"':
+                    return '&quot;';
+            }
+        });
     if (noTagContent.length < 120) {
         return noTagContent;
     }
-    return `${noTagContent.substr(0, 120)}…`;
+    const hasHtmlEntitiesInLast6Chars = noTagContent.substr(114, 6).includes('&');
+    const truncateLength = hasHtmlEntitiesInLast6Chars ? noTagContent.indexOf('&', 114) : 120;
+    return `${noTagContent.substr(0, truncateLength)}…`;
 };
 
 const getMonthlyPath = (date) => {
