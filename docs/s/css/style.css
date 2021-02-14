@@ -157,3 +157,10 @@ footer > div:first-child > div > h5 + *::after {
         min-width: auto;
     }
 }
+
+/* ported from old style */
+.aligncenter {
+    clear: both;
+    display: block;
+    margin: 0 auto;
+}
