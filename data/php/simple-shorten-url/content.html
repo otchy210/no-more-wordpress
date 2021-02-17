@@ -54,7 +54,7 @@ if (is_file($file)) {
 ≪index.php≫<br>
 <pre class="height_middle">&lt;?php
 define('OWN', 'http://otchy.net/');
-define('TARGET', 'http://www.otchy.net/');
+define('TARGET', 'https://www.otchy.net/');
 define('LEN', 3);
 define('CHARS', '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz');
 define('EXP', strlen(CHARS));
@@ -156,7 +156,7 @@ CHARS：ハッシュに使用する文字です。通常は変更の必要があ
 一度短縮 URL が作成されると、インストールディレクトリ以下に dat ディレクトリが生成されます。この dat ディレクトリをバックアップする事でデータのバックアップが出来ると同時に、不要な場合は削除する事で、最初の状態に戻ります。<br>
 <br>
 また、簡易 API として、GET のパラメータに callback を渡すと、JSONP として動作するようになっています。<br>
-otchy.net の例だと、http://otchy.net/?url=http://www.otchy.net/&callback=funcName のような感じです。<br>
+otchy.net の例だと、http://otchy.net/?url=https://www.otchy.net/&callback=funcName のような感じです。<br>
 エラー時は {errmsg:'error message'} が callback に渡され、短縮成功時は {url: 'shorten url'} が渡されます。<br>
 <br>
 これを利用したブックマークレットもセットで作ってあるので、ブックマークレットをセットアップしたら、短縮したいページを開いた状態でブックマークレットを起動すると、短縮された URL を取得する事が出来ます。<br>

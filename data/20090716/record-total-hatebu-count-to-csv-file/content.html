@@ -1,6 +1,6 @@
 自分のサイトの合計はてブ数を淡々と csv に記録し続ける
 ----------------
-<a href="http://www.otchy.net/20090629/making-of-twitter-bot-1/">Twitter ボットの作り方 Perl 編</a> 連載中ですが、ちょっとお休みして、さっき思い立って書いたスクリプトを紹介します。<br>
+<a href="/20090629/making-of-twitter-bot-1/">Twitter ボットの作り方 Perl 編</a> 連載中ですが、ちょっとお休みして、さっき思い立って書いたスクリプトを紹介します。<br>
 <br>
 最近、<a href="http://tophatenar.com/" target="_blank">TopHatenar</a> の更新が止まってしまっていて悲しいので、自分のサイトのトータルはてブ数を記録して、自分でグラフを書くことにしました。<br>
 といっても、自分が見る専用で問題ないので、csv を出力しておくだけです。適宜 Excel とかで加工してグラフ化します。<br>
@@ -27,7 +27,7 @@ use warnings;
 use XMLRPC::Lite;
 use DateTime;
 
-my $url = 'http://www.otchy.net';
+my $url = 'https://www.otchy.net';
 
 my $count = XMLRPC::Lite
     -&gt;proxy('http://b.hatena.ne.jp/xmlrpc')
