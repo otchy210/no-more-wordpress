@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           WordPress with Twitter
-// @namespace      http://www.otchy.net/
+// @namespace      https://www.otchy.net/
 // @include        http://*/wp-admin/post-new.php*
 // @include        http://*/wp-admin/post.php*
 // @include        http://*/wp-admin/page-new.php*

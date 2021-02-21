@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           dosei3_on_twitter
-// @namespace      http://www.otchy.net
+// @namespace      https://www.otchy.net
 // @include        http://twitter.com/dosei3*
 // ==/UserScript==
 

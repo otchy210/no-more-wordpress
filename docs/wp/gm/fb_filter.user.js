@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           FB Filter
-// @namespace      http://www.otchy.net/
+// @namespace      https://www.otchy.net/
 // @include        https://www.facebook.com/*
 // @version        0.0.1
 // ==/UserScript==

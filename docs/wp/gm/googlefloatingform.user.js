@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           GoogleFloatingForm
-// @namespace      http://www.otchy.net/
+// @namespace      https://www.otchy.net/
 // @include        http://www.google.*/search*
 // @version        1.1.0
 // ==/UserScript==

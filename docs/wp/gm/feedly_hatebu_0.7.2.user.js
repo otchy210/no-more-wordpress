@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Feedly with Hatena bookmark
 // @version        0.7.2
-// @namespace      http://www.otchy.net
+// @namespace      https://www.otchy.net
 // @include        http://www.feedly.com/*
 // @include        http://cloud.feedly.com/*
 // @include        http://feedly.com/*

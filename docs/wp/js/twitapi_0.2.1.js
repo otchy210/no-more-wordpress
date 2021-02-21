@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2011 Otchy
  * This source file is subject to the MIT license.
- * http://www.otchy.net
+ * https://www.otchy.net
  */
 var TwitAPI = function(base, app) {
 	// common values

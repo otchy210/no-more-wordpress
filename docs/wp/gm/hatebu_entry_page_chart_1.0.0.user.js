@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          Hatebu Entry Page Chart
-// @namespace     http://www.otchy.net/
+// @namespace     https://www.otchy.net/
 // @version       1.0.0
 // @include       http://b.hatena.ne.jp/entry*
 // ==/UserScript==

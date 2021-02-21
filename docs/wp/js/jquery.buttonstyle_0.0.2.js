@@ -2,7 +2,7 @@
  * jQuery Button Style plugin
  * Copyright (c) 2013 Otchy
  * This source file is subject to the MIT license.
- * http://www.otchy.net
+ * https://www.otchy.net
  */
 (function($){
 	var err = function(msg) {

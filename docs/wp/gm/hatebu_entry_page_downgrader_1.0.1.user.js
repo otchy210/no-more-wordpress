@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          Hatebu Entry Page Downgrader
-// @namespace     http://www.otchy.net/
+// @namespace     https://www.otchy.net/
 // @version       1.0.1
 // @include       http://b.hatena.ne.jp/entry*
 // ==/UserScript==

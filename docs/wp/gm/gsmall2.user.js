@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           Gsmall
-// @namespace      http://www.otchy.net/
+// @namespace      https://www.otchy.net/
 // @include        https://mail.google.com/mail/*
 // @version        1.0.0
 // ==/UserScript==

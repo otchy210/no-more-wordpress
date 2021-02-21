@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           Gamemeter with Twitter
-// @namespace      http://www.otchy.net
+// @namespace      https://www.otchy.net
 // @include        http://gamemeter.net/g/*
 // ==/UserScript==
 
@@ -30,7 +30,7 @@
 		return true;
 	}
 
-	// ‚Â‚Ô‚â‚«
+	// ï¿½Â‚Ô‚â‚«
 	var form = $x('//form[@action="/add"]');
 	var msgarea = $('diary_title');
 	var submit = $x('//form[@action="/add"]//input[@class="submit"]');
@@ -46,7 +46,7 @@
 		postT(msgarea);
 	});
 
-	// ƒNƒŠƒAƒRƒƒ“ƒg
+	// ï¿½Nï¿½ï¿½ï¿½Aï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½g
 	var form = $x('//form[@action="/g"]');
 	var comment = $x('//form[@action="/g"]//input[@name="comment"]');
 	var submit = $x('//form[@action="/g"]//input[@class="submit"]');

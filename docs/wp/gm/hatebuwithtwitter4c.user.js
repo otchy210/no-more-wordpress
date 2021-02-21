@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           Hatebu with Twitter For Chrome
-// @namespace      http://www.otchy.net
+// @namespace      https://www.otchy.net
 // @include        http://b.hatena.ne.jp/bookmarklet*
 // @include        http://b.hatena.ne.jp/add?*
 // ==/UserScript==

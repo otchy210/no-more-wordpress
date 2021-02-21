@@ -2,7 +2,7 @@
  * jQuery Submittable plugin Ver.1.0.0
  * Copyright (c) 2012 Otchy
  * This source file is subject to the MIT license.
- * http://www.otchy.net
+ * https://www.otchy.net
  */
 (function($){
 	$.fn.submittable = function(options){

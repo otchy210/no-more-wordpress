@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2009 Otchy
  * This source file is subject to the MIT license.
- * http://www.otchy.net
+ * https://www.otchy.net
  */
 var TwitterAPI = {
 	version: '0.9.0',

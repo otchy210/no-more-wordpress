@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Htn To Original
-// @namespace   http://www.otchy.net/
+// @namespace   https://www.otchy.net/
 // @include     http://b.hatena.ne.jp/entry/*
 // @version     1.0.0
 // ==/UserScript==

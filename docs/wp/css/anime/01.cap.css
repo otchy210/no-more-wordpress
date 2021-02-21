@@ -15,7 +15,7 @@ ul.css3anime li {
 	list-style-type: none;
 	width: 128px;
 	height: 128px;
-	background-image: url(http://www.otchy.net/img/browser_logo_128.png);
+	background-image: url(/wp/img/browser_logo_128.png);
 	float: left;
 }
 ul.css3anime li:nth-child(2) {background-position: -128px 0;}

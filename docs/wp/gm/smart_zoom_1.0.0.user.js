@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           SmartZoom
-// @namespace      http://www.otchy.net/
+// @namespace      https://www.otchy.net/
 // @include        *
 // @version        1.0.0
 // ==/UserScript==

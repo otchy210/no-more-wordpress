@@ -2,7 +2,7 @@
  * jQuery jaTicker ver 1.0.0
  * Copyright (c) 2011 Otchy
  * This source file is subject to the MIT license.
- * http://www.otchy.net
+ * https://www.otchy.net
  */
 (function($){
 	var JT = {

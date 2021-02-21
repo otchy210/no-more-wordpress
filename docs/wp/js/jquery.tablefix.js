@@ -2,7 +2,7 @@
  * jQuery TableFix plugin ver 1.0.1
  * Copyright (c) 2010 Otchy
  * This source file is subject to the MIT license.
- * http://www.otchy.net
+ * https://www.otchy.net
  */
 (function($){
 	$.fn.tablefix = function(options) {

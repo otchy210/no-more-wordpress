@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           Auto redirect from Tumblr
-// @namespace      http://www.otchy.net/
+// @namespace      https://www.otchy.net/
 // @include        http://*.tumblr.com/post/*
 // ==/UserScript==
 (function(e){

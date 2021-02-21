@@ -1,4 +1,4 @@
-// javascript:(function(){var%20d=document;var%20s=d.createElement('script');s.src='http://www.otchy.net/js/popuptwitter.js';s.charset='UTF-8';d.body.appendChild(s);})();
+// javascript:(function(){var%20d=document;var%20s=d.createElement('script');s.src='https://www.otchy.net/wp/js/popuptwitter.js';s.charset='UTF-8';d.body.appendChild(s);})();
 (function() {
 	var t = prompt('Twit now!', location.href);
 	if (!t) return;
