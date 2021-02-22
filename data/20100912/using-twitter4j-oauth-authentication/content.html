@@ -2,7 +2,7 @@ Twitter4J から OAuth 認証部分だけを利用する方法
 ----------------
 ※前置き長いです。<a href="#start_main">本題はここ</a>から。<br>
 <br>
-9/6 ごろから 9/9 にかけて、<a href="/twitmgr/" target="_blank">TwitMgr</a> と <a href="/splitwit/" target="_blank">Splitwit</a> の OAuth 認証が正しく動作しなくなってしまっていました。<br>
+9/6 ごろから 9/9 にかけて、TwitMgr (閉鎖済) と Splitwit (閉鎖済) の OAuth 認証が正しく動作しなくなってしまっていました。<br>
 これらは、JavaScript で Twitter API を扱うライブラリとして、<a href="/twit-api/">TwitAPI.js</a> を使っており、それがうまく動作していなかったのです。で、原因を追ったところ、JavaScript 側ではなく、OAuth 認証を肩代わりするプロキシサーバである <a href="http://code.google.com/p/taj-proxy/" target="_blank">taj-proxy</a> 側に問題があることがわかったので、今回はそれを直したときの話です。<br>
 <br>
 そもそも、taj-proxy は、開発当初 GAE/j 上でうまく Twitter OAuth 認証を扱えるライブラリがなかった (と思っていた) ため、OAuth 認証部分をすべて独自実装してました。Twitter 側の何らかの実装の変更により、その独自実装がうまく動かなくなったようなのですが、ぱっと見では全然原因が分かりませんでした。(多分 Signature 周りだとは思う)<br>
