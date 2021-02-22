@@ -219,6 +219,8 @@ const pushInnerHtml = (elem, results) => {
                 const html = curr.outerHTML;
                 if (curr.tagName === 'PRE') {
                     results.push(html.split('&nbsp;').join(' '));
+                } else if (curr.tagName === 'HR') {
+                    results.push(html);
                 } else if (!isBlock(curr)) {
                     results.push(html);
                 } else if (isBlock(curr)) {
