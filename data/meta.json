@@ -89,10 +89,7 @@
     "greasemonkey": {
       "label": "greasemonkey"
     },
-    "%e8%bb%a2%e8%81%b7": {
-      "label": "転職"
-    },
-    "%e3%82%ad%e3%83%a3%e3%83%aa%e3%82%a2": {
+    "career": {
       "label": "キャリア"
     },
     "jquery": {
@@ -107,19 +104,19 @@
     "link": {
       "label": "link"
     },
-    "%e3%81%af%e3%81%a6%e3%83%96": {
+    "hatebu": {
       "label": "はてブ"
     },
-    "%e6%a4%9c%e7%b4%a2%e3%82%a8%e3%83%b3%e3%82%b8%e3%83%b3": {
+    "search-engine": {
       "label": "検索エンジン"
     },
     "seo": {
       "label": "seo"
     },
-    "%e3%83%87%e3%82%a3%e3%82%b9%e3%83%97%e3%83%ac%e3%82%a4": {
+    "display": {
       "label": "ディスプレイ"
     },
-    "%e8%a7%a3%e5%83%8f%e5%ba%a6": {
+    "resolution": {
       "label": "解像度"
     },
     "svn": {
@@ -128,7 +125,7 @@
     "git": {
       "label": "git"
     },
-    "%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e7%ae%a1%e7%90%86%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0": {
+    "vcs": {
       "label": "バージョン管理システム"
     },
     "xpath": {
@@ -140,7 +137,7 @@
     "utf-8": {
       "label": "utf-8"
     },
-    "%e9%a2%a8%e9%82%aa": {
+    "cold": {
       "label": "風邪"
     },
     "eco": {
@@ -182,7 +179,7 @@
     "mobile": {
       "label": "mobile"
     },
-    "%e3%83%8b%e3%82%b3%e5%8b%95": {
+    "nikodou": {
       "label": "ニコ動"
     },
     "bookmarklet": {
@@ -200,11 +197,11 @@
     "excel": {
       "label": "excel"
     },
-    "%e3%83%aa%e3%83%a2%e3%83%bc%e3%83%88%e3%82%b3%e3%83%b3%e3%83%94%e3%83%a5%e3%83%bc%e3%82%bf": {
+    "remote-computer": {
       "label": "リモートコンピュータ"
     },
-    "%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9": {
-      "label": "サービス"
+    "service": {
+      "label": "Service"
     },
     "mmc": {
       "label": "mmc"
@@ -283,9 +280,6 @@
     },
     "html5": {
       "label": "html5"
-    },
-    "hatebu": {
-      "label": "hatebu"
     },
     "animation": {
       "label": "animation"

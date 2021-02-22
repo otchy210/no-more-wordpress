@@ -9,6 +9,58 @@ const DATA_ROOT = path.resolve(config.dirs.data);
 
 const conn = newConnection(config.mysql);
 
+const tagOverwritten = {
+    '%e3%81%af%e3%81%a6%e3%83%96': {
+        slug: 'hatebu',
+        name: 'はてブ'
+    },
+    'hatebu': {
+        slug: 'hatebu',
+        name: 'はてブ'
+    },
+    '%e3%82%ad%e3%83%a3%e3%83%aa%e3%82%a2': {
+        slug: 'career',
+        name: 'キャリア'
+    },
+    'career': {
+        slug: 'career',
+        name: 'キャリア'
+    },
+    '%e8%bb%a2%e8%81%b7': {},
+    '%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9': {
+        slug: 'service',
+        name: 'Service'
+    },
+    '%e3%83%87%e3%82%a3%e3%82%b9%e3%83%97%e3%83%ac%e3%82%a4': {
+        slug: 'display',
+        name: 'ディスプレイ'
+    },
+    '%e3%83%8b%e3%82%b3%e5%8b%95': {
+        slug: 'nikodou',
+        name: 'ニコ動'
+    },
+    '%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e7%ae%a1%e7%90%86%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0': {
+        slug: 'vcs',
+        name: 'バージョン管理システム'
+    },
+    '%e3%83%aa%e3%83%a2%e3%83%bc%e3%83%88%e3%82%b3%e3%83%b3%e3%83%94%e3%83%a5%e3%83%bc%e3%82%bf': {
+        slug: 'remote-computer',
+        name: 'リモートコンピュータ'
+    },
+    '%e6%a4%9c%e7%b4%a2%e3%82%a8%e3%83%b3%e3%82%b8%e3%83%b3': {
+        slug: 'search-engine',
+        name: '検索エンジン'
+    },
+    '%e8%a7%a3%e5%83%8f%e5%ba%a6': {
+        slug: 'resolution',
+        name: '解像度'
+    },
+    '%e9%a2%a8%e9%82%aa': {
+        slug: 'cold',
+        name: '風邪'
+    },
+};
+
 const main = async () => {
     await fs.mkdir(DATA_ROOT, {recursive: true});
 
@@ -78,12 +130,18 @@ const getTerms = async (conn) => {
                 if (!terms.posts[id].tags) {
                     terms.posts[id].tags = [];
                 }
-                terms.posts[id].tags.push(slug);
-                if (terms.tags[slug]) {
+                const overwritten = tagOverwritten[slug];
+                const tagSlug = overwritten ? overwritten.slug : slug;
+                if (!tagSlug) {
                     return;
                 }
-                terms.tags[slug] = {
-                    label: name
+                const tagName = overwritten ? overwritten.name : name;
+                terms.posts[id].tags.push(tagSlug);
+                if (terms.tags[tagSlug]) {
+                    return;
+                }
+                terms.tags[tagSlug] = {
+                    label: tagName
                 };
                 return;
         }
