@@ -8,7 +8,8 @@
     "build": "node bin/build.mjs --mode=prod",
     "build:dev": "node bin/build.mjs --mode=dev",
     "start": "node bin/start.mjs --mode=prod",
-    "start:dev": "node bin/start.mjs --mode=dev"
+    "start:dev": "node bin/start.mjs --mode=dev",
+    "draft": "node bin/draft.mjs"
   },
   "repository": {
     "type": "git",
