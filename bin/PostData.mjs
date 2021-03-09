@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs/promises';
 import config from './config.mjs';
+import { isDevMode } from './common.mjs';
 
 const DATA_ROOT = path.resolve(config.dirs.data);
 
@@ -53,6 +54,9 @@ const handleDir = async (dirPaths, posts) => {
     const currDir = `${DATA_ROOT}/${dirPaths.join('/')}`;
     const paths = await fs.readdir(currDir);
     for (const path of paths) {
+        if (!isDevMode() && path === '_draft') {
+            continue;
+        }
         const nextPath = `${currDir}/${path}`;
         const stat = await fs.lstat(nextPath);
         if (stat.isDirectory()) {
