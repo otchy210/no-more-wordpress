@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs/promises';
 import config from './config.mjs';
 import { isDevMode } from './common.mjs';
+import marked from 'marked';
 
 const DATA_ROOT = path.resolve(config.dirs.data);
 
@@ -68,15 +69,18 @@ const handleDir = async (dirPaths, posts) => {
 const handlePost = async (dirPaths) => {
     const path = `/${dirPaths.join('/')}/`;
     const dataDir = `${DATA_ROOT}${path}`;
-    const contentPath = `${dataDir}content.html`;
+    const contentName = (await fs.readdir(dataDir)).filter(file => file.startsWith('content.'))[0];
+    if (!contentName) {
+        return false;
+    }
+    const contentPath = `${dataDir}${contentName}`;
     const stat = await fs.lstat(contentPath).catch(() => {/* ignore */});
     if (!stat || !stat.isFile()) {
         return false;
     }
     const meta = await getPostMeta(dataDir);
     const time = new Date(meta.time);
-    const content = await fs.readFile(contentPath, 'utf-8');
-    const [title, body] = content.split('\n----------------\n');
+    const [title, body] = await readContent(contentPath);
     return {
         ...meta,
         time,
@@ -86,6 +90,19 @@ const handlePost = async (dirPaths) => {
         truncatedBody: truncate(body)
     };
 };
+
+const readContent = async (contentPath) => {
+    const content = await fs.readFile(contentPath, 'utf-8');
+    if (contentPath.endsWith('.html')) {
+        return content.split('\n----------------\n');
+    } else if (contentPath.endsWith('.md')) {
+        const lines = content.split('\n');
+        const title = lines.shift().replace(/^#+\s*/, '');
+        const mdBody = lines.join('\n').trim();
+        const body = marked(mdBody);
+        return [title, body];
+    }
+}
 
 const getPostMeta = async (dir) => {
     const path = `${dir}/meta.json`;

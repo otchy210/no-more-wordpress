@@ -24,6 +24,12 @@ th {
     color: #fff;
 }
 
+pre > code {
+    padding: 0;
+    line-height: inherit;
+    font-size: inherit;
+}
+
 .layout pre {
     margin: 0;
     border: none;
