@@ -70,7 +70,7 @@ const main = async () => {
     await fs.mkdir(postDir, {recursive: true});
 
     const metaPath = path.join(postDir, 'meta.json');
-    const postMeta = {};
+    const postMeta = {cover: ''};
     postMeta.categories = [category.slug];
     if (tags.length > 0) {
         postMeta.tags = tags.map(tag => tag.slug).sort();
