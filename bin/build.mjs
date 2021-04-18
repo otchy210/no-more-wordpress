@@ -6,6 +6,7 @@ import template from './template.mjs';
 import { isDevMode } from './common.mjs';
 import { usePostData, truncate } from './PostData.mjs';
 import { useMetaData } from './MetaData.mjs';
+import Sitemap from './Sitemap.mjs';
 
 const DOCS_ROOT = path.resolve(isDevMode() ? config.dirs.devDocs : config.dirs.docs);
 
@@ -21,6 +22,7 @@ const main = async () => {
     await handleMontlyArchives();
     await handleCategories();
     await handleTags();
+    await Sitemap.write(`${DOCS_ROOT}/sitemap.xml`);
     console.log(`Done! (Built ${template.getTotalPages()} pages in ${Date.now() - startTime} msecs)`);
 };
 
@@ -81,7 +83,8 @@ const handleMontlyArchives = async () => {
             rootPath,
             `月別: ${year} 年 ${month} 月`,
             null,
-            monthlyPosts
+            monthlyPosts,
+            0.4
         );
     }
 };
@@ -100,7 +103,8 @@ const handleCategories = async () => {
             rootPath,
             `カテゴリ: ${category.label}`,
             category.description,
-            categoryPosts
+            categoryPosts,
+            0.3
         );
     };
 };
@@ -119,21 +123,53 @@ const handleTags = async () => {
             rootPath,
             `タグ: ${tag.label}`,
             null,
-            tagPosts
+            tagPosts,
+            0.2
         );
     };
 };
 
+const ONE_DAY = 1000 * 60 * 60 * 24;
+const TWO_WEEKS = ONE_DAY * 7 * 2;
+const TWO_MONTHS = ONE_DAY * 60;
+const HALF_YEAR = ONE_DAY * 365/2;
+const ONE_YEAR = ONE_DAY * 365;
+const now = Date.now();
+const calcPriority = (time) => {
+    if (!time) {
+        return 0.5;
+    }
+    const diff = now - time.getTime();
+    if (diff < ONE_DAY) {
+        return 1;
+    }
+    if (diff < TWO_WEEKS) {
+        return 0.9;
+    }
+    if (diff < TWO_MONTHS) {
+        return 0.8;
+    }
+    if (diff < HALF_YEAR) {
+        return 0.7;
+    }
+    if (diff < ONE_YEAR) {
+        return 0.6;
+    }
+    return 0.5;
+}
+
 const writePost = async (post, prev, next) => {
-    const html = await template.page({...post, prev, next});
+    const priority = calcPriority(post.time);
+    const html = await template.page({...post, prev, next}, {priority});
     const htmlDir = `${DOCS_ROOT}${post.path}`;
     await fs.mkdir(htmlDir, {recursive: true});
     const htmlPath = `${htmlDir}/index.html`;
     await fs.writeFile(htmlPath, html);
 };
 
-const writeArchivePages = async (rootPath, title, description, posts) => {
+const writeArchivePages = async (rootPath, title, description, posts, priority = 0.5) => {
     for (let offset = 0; offset * 5 < posts.length; offset++) {
+        const isRoot = rootPath === '/' && offset === 0;
         const page = offset + 1;
         const articles = [];
         for (let i = 0; i < 5; i++) {
@@ -163,7 +199,10 @@ const writeArchivePages = async (rootPath, title, description, posts) => {
             description,
             truncatedBody: truncate(body),
             prev,
-            next
+            next,
+            time: isRoot ? new Date() : null
+        }, {
+            priority: isRoot ? 1 : priority
         });
         await fs.mkdir(htmlDir, {recursive: true});
         const htmlPath = `${htmlDir}index.html`;

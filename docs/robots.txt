@@ -1,0 +1,5 @@
+# All crawlers
+User-agent: *
+Allow: /
+
+Sitemap: https://www.otchy.net/sitemap.xml

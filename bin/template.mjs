@@ -3,6 +3,7 @@ import { isDevMode } from './common.mjs';
 import { usePostData } from './PostData.mjs';
 import { useMetaData } from './MetaData.mjs';
 import importStatic from './importStatic.mjs';
+import Sitemap from './Sitemap.mjs';
 
 const ROOT = 'https://www.otchy.net';
 const DEFAULT_COVER = '/s/img/cover/default.jpg';
@@ -46,8 +47,14 @@ const minifyIfNeeded = (html) => {
 };
 
 let totalPages = 0;
-const page = async (post) => {
-    const { title, path, cover, truncatedBody } = post;
+const page = async (post, sitemapEntry = {}) => {
+    const { title, path, cover, truncatedBody, time } = post;
+    const url = `${ROOT}${path ?? ''}`;
+    Sitemap.addEntry({
+        url,
+        time,
+        ...sitemapEntry
+    });
     totalPages++;
     return minifyIfNeeded(`
 <html lang="ja">
@@ -62,7 +69,7 @@ const page = async (post) => {
     <link rel="icon" type="image/png" href="${await importStatic.imageSrc('/s/img/icon-32.png')}" sizes="32x32">
     <meta property="og:title" content="${title ?? SITE_NAME}" />
     <meta property="og:type" content="${path ? 'article' : 'website'}" />
-    <meta property="og:url" content="${ROOT}${path ?? ''}" />
+    <meta property="og:url" content="${url}" />
     <meta property="og:image" content="${ROOT}${cover ?? DEFAULT_COVER}" />
     <meta property="og:site_name" content="${SITE_NAME}" />
     <meta property="og:description" content="${truncatedBody ?? DEFAULT_DESCRIPTION}" />

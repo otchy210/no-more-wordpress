@@ -79,7 +79,7 @@ const handlePost = async (dirPaths) => {
         return false;
     }
     const meta = await getPostMeta(dataDir);
-    const time = new Date(meta.time);
+    const time = meta.time ? new Date(meta.time) : null;
     const [title, body] = await readContent(contentPath);
     return {
         ...meta,
@@ -135,6 +135,9 @@ export const truncate = (content) => {
 };
 
 const getMonthlyPath = (date) => {
+    if (!date) {
+        return '/yyyy/mm/';
+    }
     const yyyy = date.getFullYear();
     const mm = new String(date.getMonth() + 1).padStart(2, '0');
     return `/${yyyy}/${mm}/`;
