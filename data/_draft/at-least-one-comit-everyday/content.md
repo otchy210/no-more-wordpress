@@ -29,9 +29,13 @@
 
 要は、クラウドに上げたくない動画、あるいはクラウドに上げたら量が多すぎて課金が酷いことになる動画を、ローカルに置いたまま YouTube のようにサムネイルで検索したり、プレビューを見たり、タグ付けしたり出来るウェブアプリです。
 
-中でも一番やりたかったのがシークバー上でのプレビュー。ローカルに保存した動画でこれが出来るの凄くないですか？
+中でも一番やりたかったのがシークバー上でのプレビュー。
 
-(Twitter 貼り付け)
+<blockquote class="twitter-tweet" data-conversation="none"><p lang="ja" dir="ltr">サムネイルのバグもなおって、ムービープレーヤーが完成したー！<br>一通りの基本機能がちゃんと動いてるし、なんと言ってもサムネイルが良い。アニメーション抑えめでキビキビ動いたり、カーソルの動きを止めた時にコントロールを隠すまでの時間が短めなのは自分の好み。 <a href="https://t.co/2mKPmgZTQv">pic.twitter.com/2mKPmgZTQv</a></p>&mdash; Otchy (@otchy) <a href="https://twitter.com/otchy/status/1487586901649653760?ref_src=twsrc%5Etfw">January 30, 2022</a></blockquote>
+
+一通りの機能の簡単な紹介ムービーはこちら。ちょっと UI が古いバージョンですが。
+
+<blockquote class="twitter-tweet" data-conversation="none"><p lang="ja" dir="ltr">バージョン 0.0.x を 0.0.120 まで積み上げた後、ソートを実装してようやく v0.1.0 に到達！ここまでは絶対実装したい、と思っていた機能が一通り揃った！！<br><br>自画自賛するけど、ローカルに保存したムービーでここまでの事ができるのすごない？ <a href="https://t.co/3KU7UlvvdT">pic.twitter.com/3KU7UlvvdT</a></p>&mdash; Otchy (@otchy) <a href="https://twitter.com/otchy/status/1493389914133925890?ref_src=twsrc%5Etfw">February 15, 2022</a></blockquote>
 
 ## [When It Will Be](https://github.com/otchy210/when-it-will-be)
 
@@ -41,7 +45,7 @@
 
 タイムゾーン "っぽい" 文字列の上にマウスカーソルを当てると、その前にある時刻 "っぽい" 文字列を拾って、あらかじめ設定したタイムゾーンに変換した時間をポップアップしてくれる感じです。
 
-(スクリーンショット)
+![When It Will Be](/s/img/at-least-one-comit-everyday/when-it-will-be.gif)
 
 技術的な面でいうと、HTML/JS 的にカーソルの下にある「HTML 要素」を取得するのは簡単なんですが、カーソルの下にある「単語」の「範囲」を取得するのはちょっと一癖ある実装が必要で、そのあたりが見所になっています。
 
@@ -57,7 +61,7 @@
 
 Twitter でもプチバズりをいただきました。
 
-(Twitter 埋め込み) https://twitter.com/otchy/status/1537946053722669056
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ScalableDots という新しいツールを公開しました！<br>PNG や GIF (ラスター画像) で作られたのドット絵を SVG (ベクター画像) に変換することで、任意の倍率に拡大縮小しても、ドットのエッジが綺麗なまま表示出来るようにするツールです。<a href="https://twitter.com/hashtag/%E3%83%89%E3%83%83%E3%83%88%E7%B5%B5?src=hash&amp;ref_src=twsrc%5Etfw">#ドット絵</a> <a href="https://twitter.com/hashtag/pixelart?src=hash&amp;ref_src=twsrc%5Etfw">#pixelart</a><a href="https://t.co/OEJWsOUuSv">https://t.co/OEJWsOUuSv</a></p>&mdash; Otchy (@otchy) <a href="https://twitter.com/otchy/status/1537946053722669056?ref_src=twsrc%5Etfw">June 17, 2022</a></blockquote>
 
 ## [GitHub Notes](https://github-notes.otchy.net/)
 
@@ -71,7 +75,7 @@ Twitter でもプチバズりをいただきました。
 
 また、モバイルファーストでデザインしたものをどのようにレスポンシブにするか、についても実験的な UI を実装してみました。まずモバイルビューでは普通のアプリっぽく最初に一覧があり、概念的には画面の右側にメモのエディタ、さらに右にプレビューという作りにします。この状態からウィンドウの横幅を広げると 2 ペインになってエディタとプレビューが同時に見れたり、さらに広げると 3 ペインになって一覧、エディタ、プレビューが同時に見える、といった感じです。
 
-(Twitter 埋め込み)
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">「ネイティブアプリ風にデザインしたモバイルサイトをどうレスポンシブにするか」という課題に対して以前から温めていたアイディアを実装した。<br>なかなか良い出来になってホクホクしている。 <a href="https://t.co/xhskYt7axQ">pic.twitter.com/xhskYt7axQ</a></p>&mdash; Otchy (@otchy) <a href="https://twitter.com/otchy/status/1582386148844138498?ref_src=twsrc%5Etfw">October 18, 2022</a></blockquote>
 
 なお、メモアプリなので当然検索機能も実装しているのですが、そこで再び [SimDoc DB](https://github.com/otchy210/sim-doc-db) が活躍しています。ソースコードは[こちら](https://github.com/otchy210/github-notes)です。
 
@@ -83,10 +87,9 @@ Twitter でもプチバズりをいただきました。
 
 仕事中に「あ、これ追加されてない」っていうのに気付くたびにメモしていて、2〜3 個たまるとは[単語のリスト](https://github.com/otchy210/it-lgtm-but-tbh-idk-so-wdyt/blob/main/src/words.txt)を更新してるので、コミット数を稼ぎやすいっていう意味ではズルいレポジトリですね。
 
-(スクリーンショット)
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">新しい Google Chrome エクステンション書きました！(無事に審査が通りました)<br>要は「LGTM って言われてもなんの略か分からんわ」を解決するやつです。(続 <a href="https://t.co/0XI9allRrv">pic.twitter.com/0XI9allRrv</a></p>&mdash; Otchy (@otchy) <a href="https://twitter.com/otchy/status/1598235278220890117?ref_src=twsrc%5Etfw">December 1, 2022</a></blockquote>
 
 ソースコードは[こちら](https://github.com/otchy210/it-lgtm-but-tbh-idk-so-wdyt)。
-
 
 ## Electron App Tutorial
 
@@ -96,7 +99,7 @@ Twitter でもプチバズりをいただきました。
 
 HomeTube は、自分で `Node.js` や `ffmpeg` をインストールしてコマンドラインからデーモンを起動できる人じゃないと使えないのですが、漫画のビューワを作るなら、いっそもうネイティブアプリとして起動できたら良いんじゃないかと。それならばとりあえず Electron だな、どれどれ…と始まったのがこのチュートリアル＋いくらかの実験です。
 
-(Twitter 埋め込み)
+<blockquote class="twitter-tweet" data-conversation="none"><p lang="ja" dir="ltr">「Electron 使ってやりたいのは要はこれなのだ」が、出来た。裏で走らせたデーモンの制御をシステムトレイから GUI でやりたかったのだ。<br>あとはデーモン書くだけだが、まあそこがメインなのでこれから先が長い。(そして楽しい) <a href="https://t.co/wZgvzVdLHg">pic.twitter.com/wZgvzVdLHg</a></p>&mdash; Otchy (@otchy) <a href="https://twitter.com/otchy/status/1601884372512428032?ref_src=twsrc%5Etfw">December 11, 2022</a></blockquote>
 
 漫画ビューワ自体はまだ着手出来てないので、一通りの検証が済んでやりたい事が全部できる見込みが立ったら、作り始めようかと思っています。2023 年最初のプログラムになりそうです。
 
@@ -106,7 +109,10 @@ Google Chrome エクステンション再び、ですが、これは 2022 年中
 
 Feedly の UI 上に、はてなブックマークの数を表示するというエクステンションで、まず自分自身がヘビーユーザーですが、他にも地味にコアなファンの方に使っていただいています。2022 年は、Feedly 側の仕様変更に追随するため、二度ほど更新しました。
 
-(スクリーンショット)
+![Feedly はてブ 1](/s/img/at-least-one-comit-everyday/feedly-hatebu-1.png)
+
+![Feedly はてブ 2](/s/img/at-least-one-comit-everyday/feedly-hatebu-2.png)
+
 
 2023 年には Google Chrome エクステンションの Manifest v3 への強制移行が控えており、[現在の方法による API 呼び出し](https://qiita.com/otchy/items/c8506f21788e97097097)では、v3 で強化されたセキュリティために動作しなくなることが分かっているので、それに対応するバージョンの準備も始めています。
 
@@ -151,3 +157,5 @@ Feedly の UI 上に、はてなブックマークの数を表示するという
 今後もずっと何かしら書き続けるとは思いますが、一年という区切りを迎えてだいぶやりきった感があるので、しばらくは毎日コミットに固執せず、好きなタイミングで好きなだけコミットしようかなと思ってます。2022 年は毎日コミットを意識するあまり、コミットのタイミングを平準化している感じだったので、もっと濃淡が出るイメージでしょうか。
 
 あと、そろそろ積みゲーの消化ペースを上げたいので！FF12 を始めたいんじゃ！
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
