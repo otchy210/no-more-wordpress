@@ -14,7 +14,7 @@
 <meta property=og:url content=https://www.otchy.net/category/dev/page/11/ >
 <meta property=og:image content=https://www.otchy.net/s/img/cover/default.jpg>
 <meta property=og:site_name content=OTCHY.NET>
-<meta property=og:description content=" Twitter4J から OAuth 認証部分だけを利用する方法 2010-09-12 ※前置き長いです。 本題はここ から。 9/6 ごろから 9/9 にかけて、TwitMgr (閉鎖済) と Splitwit (閉鎖済) の OAut…">
+<meta property=og:description content=" Tumblr の引用元を一発で開く方法 2010-09-28 明示的に開くならブックマークレットで。 Redirect Tumblr javascript:(function(e){if(!e)return;location.href=e…">
 <meta property=fb:admins content=1716785578265>
 <meta name=twitter:card content=summary_large_image>
 <meta name=twitter:site content=@otchy>
@@ -50,6 +50,13 @@
 <div class=row>
 <div class="col-sm-12 body">
 <article>
+<h2><a href=/20100928/auto-redirect-from-tumblr/ >Tumblr の引用元を一発で開く方法</a><small>2010-09-28</small></h2>
+<p>
+明示的に開くならブックマークレットで。 Redirect Tumblr javascript:(function(e){if(!e)return;location.href=e.href;})(document.querySelector…
+</p>
+</article>
+<article>
+<hr>
 <h2><a href=/20100912/using-twitter4j-oauth-authentication/ >Twitter4J から OAuth 認証部分だけを利用する方法</a><small>2010-09-12</small></h2>
 <p>
 ※前置き長いです。 本題はここ から。 9/6 ごろから 9/9 にかけて、TwitMgr (閉鎖済) と Splitwit (閉鎖済) の OAuth 認証が正しく動作しなくなってしまっていました。 これらは、JavaScript で T…
@@ -74,13 +81,6 @@ TwitMgr (閉鎖済) のバージョンアップを行いました。 OAuth 対�
 <h2><a href=/20100814/twitapi-013-twitterapi2-201-had-released/ >TwitAPI.js Ver 0.1.3 / TwitterAPI2.js Ver 2.0.1 公開</a><small>2010-08-14</small></h2>
 <p>
 TwitAPI.js については、Ver 0.1.2 を公開したばかりでしたが、 TwitterAPI2.js の Ver 2.0.1 に合わせてバージョンがあがりました。 ぶっちゃけていうと、TwitterAPI2.js にいろいろとバ…
-</p>
-</article>
-<article>
-<hr>
-<h2><a href=/20100813/twitapi-js-010-had-published-2/ >TwitAPI.js Ver 0.1.2 公開</a><small>2010-08-13</small></h2>
-<p>
-ずいぶん長い間放置してしまっていましたが、OAuth 認証対応版、Twitter API 用 JS ライブラリ、 TwitAPI.js の Ver 0.1.2 を公開しました。 初回認証時に、サーバからのレスポンスが遅いと無反応になってしま…
 </p>
 </article>
 </div>
@@ -140,6 +140,7 @@ Otchy / 1979 年 2 月 10 日生まれ / 仕事: Web システム開発 / 好き
 <div class="col-sm-12 col-md-6 col-lg-12">
 <h4>最近の投稿</h4>
 <ul>
+<li><a href=/20221222/how-to-build-original-super-fast-blog-to-replace-wordpress/ >いかに爆速ブログシステムを自作し WordPress を置き換えたか</a></li>
 <li><a href=/20210412/rakuten-mini-without-rakuten-mobile/ >【人柱】Rakuten Mini を楽天モバイルではない回線 (Y!mobile) で使う</a></li>
 <li><a href=/20210315/my-own-blog-system/ >自作のブログシステムに OTCHY.NET を移行しました</a></li>
 <li><a href=/20190921/visualization-of-libraries-and-museums-in-japan/ >東京とそれ以外の道府県における学習環境格差について都道府県別に図書館と博物館の数をビジュアライズして論じる</a></li>
@@ -149,7 +150,6 @@ Otchy / 1979 年 2 月 10 日生まれ / 仕事: Web システム開発 / 好き
 <li><a href=/20160829/wordpress-migration-from-centos-to-google-app-engine-for-free/ >CentOS で動いていた WordPress を Google App Engine 上で動かし無課金稼働させるまでのまとめ</a></li>
 <li><a href=/20160827/how-to-make-gae-free/ >GAE でうっかり発生していた課金を無くして無料運用に戻した話</a></li>
 <li><a href=/20160810/wp-theme-and-plugin/ >このブログで使ってる WP テーマと追加したプラグインの話</a></li>
-<li><a href=/20160808/migration-from-sub-directory-to-sub-domain/ >サブディレクトリごとに運用されてたサイトをごっそりとサブドメインに移行した話</a></li>
 </ul>
 </div>
 <div class="col-sm-12 col-md-6 col-lg-12">
@@ -188,6 +188,7 @@ Otchy / 1979 年 2 月 10 日生まれ / 仕事: Web システム開発 / 好き
 <div class="col-sm-12 col-md-3 col-md-offset-1">
 <h5>アーカイブ</h5>
 <ul>
+<li><a href=/2022/12/ >2022 年 12 月</a></li>
 <li><a href=/2021/04/ >2021 年 4 月</a></li>
 <li><a href=/2021/03/ >2021 年 3 月</a></li>
 <li><a href=/2019/09/ >2019 年 9 月</a></li>
@@ -271,10 +272,10 @@ Otchy / 1979 年 2 月 10 日生まれ / 仕事: Web システム開発 / 好き
 <a href=/tag/google/ >google</a>
 <a href=/tag/html/ >html</a>
 <a href=/tag/iphone/ >iphone</a>
+<a href=/tag/wordpress/ >wordpress</a>
 <a href=/tag/chrome/ >chrome</a>
 <a href=/tag/eclipse/ >eclipse</a>
 <a href=/tag/java/ >java</a>
-<a href=/tag/wordpress/ >wordpress</a>
 <a href=/tag/php/ >php</a>
 <a href=/tag/excel/ >excel</a>
 <a href=/tag/usb/ >usb</a>

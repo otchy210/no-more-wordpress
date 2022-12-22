@@ -14,7 +14,7 @@
 <meta property=og:url content=https://www.otchy.net/category/dev/page/13/ >
 <meta property=og:image content=https://www.otchy.net/s/img/cover/default.jpg>
 <meta property=og:site_name content=OTCHY.NET>
-<meta property=og:description content=" Zen Coding の Perl 実装書きました 2010-02-25 今、最高にアツい Zen Coding (ソースは自分) の Perl 実装を書きました。 これがあれば、(今すぐではありませんが) 手に馴染んだ任意のエディタ全て…">
+<meta property=og:description content=" テーブルのヘッダを固定してスクロールする jQuery プラグイン 2010-03-08 Excel のウィンドウ枠の固定のように、テーブルのヘッダや左側を固定して、残りの部分をスクロールさせるための jQuery プラグインを書きました…">
 <meta property=fb:admins content=1716785578265>
 <meta name=twitter:card content=summary_large_image>
 <meta name=twitter:site content=@otchy>
@@ -50,6 +50,13 @@
 <div class=row>
 <div class="col-sm-12 body">
 <article>
+<h2><a href=/20100308/jquery-tablefix-js-had-released/ >テーブルのヘッダを固定してスクロールする jQuery プラグイン</a><small>2010-03-08</small></h2>
+<p>
+Excel のウィンドウ枠の固定のように、テーブルのヘッダや左側を固定して、残りの部分をスクロールさせるための jQuery プラグインを書きました。 マークアップはシンプルで、普通にテーブルを書いたら、jQuery の作法でプラグインを…
+</p>
+</article>
+<article>
+<hr>
 <h2><a href=/20100225/zen-coding-for-perl/ >Zen Coding の Perl 実装書きました</a><small>2010-02-25</small></h2>
 <p>
 今、最高にアツい Zen Coding (ソースは自分) の Perl 実装を書きました。 これがあれば、(今すぐではありませんが) 手に馴染んだ任意のエディタ全てで、Zen Coding を使用することが出来るようになります。 何故かって…
@@ -74,13 +81,6 @@ Splitwit (閉鎖済) Ver 1.0.0 をリリースしました。 TwitMgr のデザ�
 <h2><a href=/20100205/my-chrome-extensions-list/ >自分向け Chrome 拡張まとめ</a><small>2010-02-05</small></h2>
 <p>
 Google Chrome v4 で正式対応したエクステンションの自分向けまとめです。 完全に自分向けですが、エクステンションごとにコメントを付けておいたので、誰かの参考になればいいかなぁと思います。 実質的には今使っているエクステンション…
-</p>
-</article>
-<article>
-<hr>
-<h2><a href=/20100129/chrome-greasemonkey-cross-domain-post/ >Chrome 正式版 Greasemonkey でクロスドメイン POST をする方法</a><small>2010-01-29</small></h2>
-<p>
-最近公開された、Google Chrome の Ver 4 では、正式に Greasemonkey がサポートされ、以前のように特別なオプションを指定することなく、ワンクリックでユーザスクリプトがインストール出来るようになりました。 それ自…
 </p>
 </article>
 </div>
@@ -140,6 +140,7 @@ Otchy / 1979 年 2 月 10 日生まれ / 仕事: Web システム開発 / 好き
 <div class="col-sm-12 col-md-6 col-lg-12">
 <h4>最近の投稿</h4>
 <ul>
+<li><a href=/20221222/how-to-build-original-super-fast-blog-to-replace-wordpress/ >いかに爆速ブログシステムを自作し WordPress を置き換えたか</a></li>
 <li><a href=/20210412/rakuten-mini-without-rakuten-mobile/ >【人柱】Rakuten Mini を楽天モバイルではない回線 (Y!mobile) で使う</a></li>
 <li><a href=/20210315/my-own-blog-system/ >自作のブログシステムに OTCHY.NET を移行しました</a></li>
 <li><a href=/20190921/visualization-of-libraries-and-museums-in-japan/ >東京とそれ以外の道府県における学習環境格差について都道府県別に図書館と博物館の数をビジュアライズして論じる</a></li>
@@ -149,7 +150,6 @@ Otchy / 1979 年 2 月 10 日生まれ / 仕事: Web システム開発 / 好き
 <li><a href=/20160829/wordpress-migration-from-centos-to-google-app-engine-for-free/ >CentOS で動いていた WordPress を Google App Engine 上で動かし無課金稼働させるまでのまとめ</a></li>
 <li><a href=/20160827/how-to-make-gae-free/ >GAE でうっかり発生していた課金を無くして無料運用に戻した話</a></li>
 <li><a href=/20160810/wp-theme-and-plugin/ >このブログで使ってる WP テーマと追加したプラグインの話</a></li>
-<li><a href=/20160808/migration-from-sub-directory-to-sub-domain/ >サブディレクトリごとに運用されてたサイトをごっそりとサブドメインに移行した話</a></li>
 </ul>
 </div>
 <div class="col-sm-12 col-md-6 col-lg-12">
@@ -188,6 +188,7 @@ Otchy / 1979 年 2 月 10 日生まれ / 仕事: Web システム開発 / 好き
 <div class="col-sm-12 col-md-3 col-md-offset-1">
 <h5>アーカイブ</h5>
 <ul>
+<li><a href=/2022/12/ >2022 年 12 月</a></li>
 <li><a href=/2021/04/ >2021 年 4 月</a></li>
 <li><a href=/2021/03/ >2021 年 3 月</a></li>
 <li><a href=/2019/09/ >2019 年 9 月</a></li>
@@ -271,10 +272,10 @@ Otchy / 1979 年 2 月 10 日生まれ / 仕事: Web システム開発 / 好き
 <a href=/tag/google/ >google</a>
 <a href=/tag/html/ >html</a>
 <a href=/tag/iphone/ >iphone</a>
+<a href=/tag/wordpress/ >wordpress</a>
 <a href=/tag/chrome/ >chrome</a>
 <a href=/tag/eclipse/ >eclipse</a>
 <a href=/tag/java/ >java</a>
-<a href=/tag/wordpress/ >wordpress</a>
 <a href=/tag/php/ >php</a>
 <a href=/tag/excel/ >excel</a>
 <a href=/tag/usb/ >usb</a>
