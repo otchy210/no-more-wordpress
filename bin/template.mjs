@@ -106,6 +106,7 @@ ${await footer()}
     <script src="//b.hatena.ne.jp/js/widget.js"></script>
     ${await importStatic.js('/s/js/hatebu.js', {syncLoad: true})}
 </div>
+${await importStatic.js('/s/js/link-target.js')}
 </body>
 </html>
 `);
