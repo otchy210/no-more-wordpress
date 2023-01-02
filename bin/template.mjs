@@ -245,11 +245,11 @@ const aside = async () => {
 
 const coverImage = async (cover) => {
     if (!cover) {
-        return await importStatic.image(DEFAULT_COVER);
+        return await importStatic.image(DEFAULT_COVER, 'cover');
     } else if (cover.startsWith('http')) {
-        return `<img src="${cover}">`;
+        return `<img src="${cover}" class="cover">`;
     } else {
-        return await importStatic.image(cover);
+        return await importStatic.image(cover, 'cover');
     }
 };
 

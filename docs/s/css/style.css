@@ -44,6 +44,10 @@ main .body {
     padding: var(--universal-margin);
 }
 
+img.cover {
+    aspect-ratio: 120 / 63;
+}
+
 .prev, .next {
     padding: 0 1em;
     background-repeat: no-repeat;

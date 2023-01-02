@@ -106,7 +106,7 @@ const imageSrc = async (path) => {
     return image.dataUri || image.path;
 };
 
-const image = async (path) => {
+const image = async (path, className) => {
     if (!cache.image[path]) {
         cache.image[path] = await handleImage(path);
     }
@@ -115,9 +115,10 @@ const image = async (path) => {
         return `<img
             src="${image.path}"
             srcset="${image.path} 1x, ${image.path2x} 2x"
+            ${className ? `class="${className}"` : ''}
         >`
     } else {
-        return `<img src="${image.dataUri || image.path}">`;
+        return `<img src="${image.dataUri || image.path}"${className ? ` class="${className}"` : ''}>`;
     }
 };
 
