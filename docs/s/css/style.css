@@ -30,6 +30,10 @@ pre > code {
     font-size: inherit;
 }
 
+blockquote {
+    overflow-wrap: break-word;
+}
+
 .layout pre {
     margin: 0;
     border: none;
