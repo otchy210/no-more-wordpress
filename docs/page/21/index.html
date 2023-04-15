@@ -14,7 +14,7 @@
 <meta property=og:url content=https://www.otchy.net/page/21/ >
 <meta property=og:image content=https://www.otchy.net/s/img/cover/default.jpg>
 <meta property=og:site_name content=OTCHY.NET>
-<meta property=og:description content=" とほほさん騒動まとめ(結論はとほほ(杜甫々)さん≠平志朗氏) 2009-10-28 今日 (2009-10-28) の朝、 とほほの WWW 入門 で有名なとほほ(杜甫々)さんが亡くなったのでは？というニュースが Twitter を駆けめ…">
+<meta property=og:description content=" TwitterAPI.js Ver 0.9.3 リリース。大幅刷新。 2009-11-02 TwitterAPI.js の Ver 0.9.3 をリリースしました。 バージョンとしてはマイナーバージョンアップとしていますが、全面的に書き直…">
 <meta property=fb:admins content=1716785578265>
 <meta name=twitter:card content=summary_large_image>
 <meta name=twitter:site content=@otchy>
@@ -41,6 +41,13 @@
 <div class=row>
 <div class="col-sm-12 body">
 <article>
+<h2><a href=/20091102/twitterapijs-ver-093-had-released/ >TwitterAPI.js Ver 0.9.3 リリース。大幅刷新。</a><small>2009-11-02</small></h2>
+<p>
+TwitterAPI.js の Ver 0.9.3 をリリースしました。 バージョンとしてはマイナーバージョンアップとしていますが、全面的に書き直して、大幅な機能追加を行っています。 JavaScript だけで Shift_JIS/EU…
+</p>
+</article>
+<article>
+<hr>
 <h2><a href=/20091028/tohoho/ >とほほさん騒動まとめ(結論はとほほ(杜甫々)さん≠平志朗氏)</a><small>2009-10-28</small></h2>
 <p>
 今日 (2009-10-28) の朝、 とほほの WWW 入門 で有名なとほほ(杜甫々)さんが亡くなったのでは？というニュースが Twitter を駆けめぐりました。 発端になったのは この投稿 です。 この投稿にはてブが付き始めたり、「と…
@@ -65,13 +72,6 @@ GIGAZINE で紹介されていた、 解読がとても難しい英語テスト�
 <h2><a href=/20090804/total-hatebu-count-with-google-chart-api/ >Google Chart API を使って自サイトの合計はてブ数をグラフ化する</a><small>2009-08-04</small></h2>
 <p>
 日頃、自サイトにはてブが付いて増えていく様子を、 TopHatenar でグラフを見てほくそ笑んでいたりしたのですが、TopHatenar は更新が遅れることが多く、残念な気持ちになることも度々ありました。 そこで以前、せめて記録だけは残そ…
-</p>
-</article>
-<article>
-<hr>
-<h2><a href=/20090726/making-of-twitter-bot-index/ >Twitter ボットの作り方 Perl 編 (目次)</a><small>2009-07-26</small></h2>
-<p>
-一通りの連載が終了したので、最後になりますが、各エントリに簡単な説明を付けた目次を別エントリとしてあげておきます。 Twitter ボットの作り方 Perl 編 (1) ボット作成の前提となる基本的な機能の動作確認を行います。この部分がうま…
 </p>
 </article>
 </div>
@@ -131,6 +131,7 @@ Otchy / 1979 年 2 月 10 日生まれ / 仕事: Web システム開発 / 好き
 <div class="col-sm-12 col-md-6 col-lg-12">
 <h4>最近の投稿</h4>
 <ul>
+<li><a href=/20230416/hatebu-twit-v1.0.1/ >「はてブついっと」という Google Chrome エクステンションを公開しました</a></li>
 <li><a href=/20230101/at-least-one-comit-everyday/ >2022 年の 365 日間、毎日コミットを達成したのでその間に作ったものを紹介します</a></li>
 <li><a href=/20221222/how-to-build-original-super-fast-blog-to-replace-wordpress/ >いかに爆速ブログシステムを自作し WordPress を置き換えたか</a></li>
 <li><a href=/20210412/rakuten-mini-without-rakuten-mobile/ >【人柱】Rakuten Mini を楽天モバイルではない回線 (Y!mobile) で使う</a></li>
@@ -140,7 +141,6 @@ Otchy / 1979 年 2 月 10 日生まれ / 仕事: Web システム開発 / 好き
 <li><a href=/20161107/this-is-good-kindle-paperwhite-32gb-model/ >Kindle Paperwhite 32 GB を買った。これは良いものだ。</a></li>
 <li><a href=/20160909/variety-of-saying-i-dont-know/ >英語で「分かりません」を伝えるときのバリエーション</a></li>
 <li><a href=/20160829/wordpress-migration-from-centos-to-google-app-engine-for-free/ >CentOS で動いていた WordPress を Google App Engine 上で動かし無課金稼働させるまでのまとめ</a></li>
-<li><a href=/20160827/how-to-make-gae-free/ >GAE でうっかり発生していた課金を無くして無料運用に戻した話</a></li>
 </ul>
 </div>
 <div class="col-sm-12 col-md-6 col-lg-12">
@@ -179,6 +179,7 @@ Otchy / 1979 年 2 月 10 日生まれ / 仕事: Web システム開発 / 好き
 <div class="col-sm-12 col-md-3 col-md-offset-1">
 <h5>アーカイブ</h5>
 <ul>
+<li><a href=/2023/04/ >2023 年 4 月</a></li>
 <li><a href=/2023/01/ >2023 年 1 月</a></li>
 <li><a href=/2022/12/ >2022 年 12 月</a></li>
 <li><a href=/2021/04/ >2021 年 4 月</a></li>

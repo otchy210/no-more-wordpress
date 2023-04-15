@@ -1,0 +1,349 @@
+
+<html lang=ja>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<title>「はてブついっと」という Google Chrome エクステンションを公開しました - OTCHY.NET</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-5762897-3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','UA-5762897-3');</script>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel=stylesheet href=/s/css/mini-otchy.min.css>
+<style>:root{--back-color:#fff}h1 small,h2 small{font-size:.5em}dl{margin:var(--universal-margin)}table{border-collapse:collapse}table:not(.layout) td,table:not(.layout) th{border:solid 1px #999;padding:.2em .5em}th{background-color:#666;color:#fff}pre>code{padding:0;line-height:inherit;font-size:inherit}blockquote{overflow-wrap:break-word}.layout pre{margin:0;border:0}a[target=_blank]:not(.no-icon){background:url(/s/img/external-link.min.svg) no-repeat center right/.8em;padding-right:1em}main .body{padding:var(--universal-margin)}img.cover{aspect-ratio:120/63}.next,.prev{padding:0 1em;background-repeat:no-repeat;background-size:.8em}.prev{background-position:left center;text-align:left}.next{background-position:right center;text-align:right}.profile,.social-buttons{display:flex}.social-buttons>iframe{margin-right:4px}.social-buttons .facebook-share-button{width:112px;height:20px;border:0;overflow:hidden}.profile{flex-direction:column}.profile .name{font-size:1.2rem}.profile .name img{display:block;width:90%;margin:0 auto;border:solid 4px #fff;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,.5);max-width:320px}.copyright,.profile .name,.profile .social{text-align:center}.profile .social a:hover{text-decoration:none}.profile .social svg{width:32px;height:32px}.profile .social a:hover svg{transform:translate(0,-1px);filter:drop-shadow(0 2px 2px rgba(0,0,0,.5))}.profile .social svg path{fill:var(--fore-color)}.popular-hatebu .hatena-bookmark-count a{margin-left:.3rem;color:red;background:#fcc;font-size:.8rem;text-decoration:none}footer>div:first-child>div>h5{margin-bottom:0}footer>div:first-child>div>h5+*{margin-top:0;max-height:7rem;overflow:auto;list-style:none;padding-left:0}footer>div:first-child>div>h5+::before{bottom:-1px}footer>div:first-child>div>h5+::after,footer>div:first-child>div>h5+::before{display:block;content:"";position:sticky;width:100%;height:1px;box-shadow:0 0 6px #000}footer>div:first-child>div>h5+::before{top:-1px}footer>div:first-child>div>h5+::after{bottom:-1px}@media screen and (min-width:768px){.profile{flex-direction:row}.profile .name{min-width:160px}.profile .social{min-width:120px;align-self:center}.img-m{display:flex;justify-content:center}.img-m img{max-width:400px}}@media screen and (min-width:1280px){.profile{flex-direction:column}.profile .name,.profile .social{min-width:auto}}.aligncenter{clear:both;display:block;margin:0 auto}</style>
+<link rel=icon type=image/png href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAABnRSTlMAAAAAAABupgeRAAABr0lEQVR4AVSSgYZVURSG/7X2PvdMM1NIiaBEQorQG4QeoCfoCSLoLRJAEEDoVUJDKpRJMkWZZubec+bsvdb60z1zZf+w+fnW8m1LAJB89uodlMmsm8ZFGc6VYXG66oflVhn7Ol6+evH+40c7Vy6JiGId1VAEgwrsbi3u3L1+8/Y1iMzzDr98e/vyNdbJ8xNO/UeTKucvbD94eA/Am+8/l19HQsn0a/9HAySIKyUnd62COYbu1POCnYtLWLuBNFM3SpUp0lyO7FbaFXqWAHIDjIWEVdNkmDYrhsjHte8gwpRYG+B0REWERxQ92dG5PPZ0FFtapWMCugYYxjBINdKwKmkuV9EdRp9FkpsyGuBkqO5KwC3GwrlcWv/H+sQsLOqB1kHNQKeDpcTGQY69k8jJFMLWYXIPcQ8QZSO9rPnIOmWAidUaYBrCRWk0omy22/rHPDLhiEUDFIe7E+ImtWCOOaozSDKpoAHqBBOBhfG/gzs9CCSFE9IAt27s7n06CgLAh/3hyfP3u9v54HcREQaIhMCcs/PePxifvvi493lJugBBFQTObjnm6X93Z7UDUD8AfGMh5ZfYopcAAAAASUVORK5CYII=" sizes=16x16>
+<link rel=icon type=image/png href=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFkUlEQVR4AY3UA6xma3TH4Wetvc+Zq6lt2zajNnbjpIhT20bMBjWCIqpt27bb63sHZ8633/WvpjnNzMV5ks/Yv7wqD0jyB3hL3MA57t2/XbzC87v4F/wT/gH/eP/2T7jrFVQSD8gXfevv0hh650bFmTircaOWR5VHapz3uNFxY+ORs/qv2+bRR8889tgjHn+Nx73mG73u7DfOjnvPvfD9T7zxG3wSLjxg9zBqqEY71pI1LudQOZxdnryQS31v2eees+NkPy5s678/u9Trnn2dbJcnZ+vox1/r0fN3+OgP/oTz17z5keePPfqeeJor7WGJsqapCFSMsq2YCim1k2ISaiORpqoUems67j7zoj/43h/uf/3NP3z9y1t3PvO/bv7/bf/vO66cP/FY0l3bjKVtExWqY3VpmzrG537Gx38svh/+4S/++dN+9Lt+4svwtklJ2qwTKUm08mc/+NPnb/oB7/Ep+6OPfAkGYP+vC3pQQ1r3MrXRsZ3YUipMBz4Z34B6i3d40487+N5Of0EpR/pqVGoRbj31onUcdj4Iv/IqU7CsGpPoXkqkSzbKGOAd8Gf4U7zDUpdLOWlHc0w5lJXN0eXU7faTz/0H3vLVFmEyuzKq26QQuzaLaHsaXh9/B3i9Y5rZ9BxqbY4eK2OrtmUT3H72hWdehzd4tQCpQ89ODlmNcrlGa3tK0vAE/h5w8+g2aVttkthmbBmjrKFqc+vZWy+4RkDm2KRirTAloReZtg62I3ADLwJuXMzuLCNrNxWbpez2LISMF5+/e/s6AdYcKhxaEllh2raWmXa2djhz5WwdZNqkmN2e0colulpn/VfAxZ3rjcBsZiIrjlAh4VilVztywObKdjk7QyfaYZ8zPa2nlSHl2duX964VcHk6TDDtmEXIYI2k9GpoV/rOtG1KZdcHuzDRRU+plFu3TpfXCXA6tQzHRCrmQCI2tRanDcqVupjWOdPHyebMkVKWWmNzYDx3e53wmq86AsflcgqGQ6m1HGlZh6CP8qA7Rzur0ko7MWe6ymap2Ug8d1kH6lUD7h1xrEi1mbCYjGNKJnriQcfsltFD51zXSc2ZziaWal68O+s6Ae6dWFNkrImsAiNmUO1BF3adxZQ9i5yrOZHSmok+aq41AuuSYyKJ1Ji1EaIcOWS2hwMGs2tLpWyJaJ3Yaqy15LTlOgFW4jhYSqUky1KCHKQ8KBdzrtbooVOS0UMJUyjHNQMy2uVcMptMJDGhlJmyDMSVXE6bxJ6dWbqIYqKF2e0m6FcNMBxrUxnHasnoGpOSMCkYV3JxtJoxItlVihmZ2FJWxW53nRE49o45FsNKEGtQrETNwHJlHTMyrY2aiA3FLFWbzJiuawU829WvdToiQypmopW1RjWnASdXTnOQKmNjMU0N4f4LjtmuF3C+91sf0yoxExKnlAQnAtzDTcAFY04oMiUTqk2QFuxcK+CZR29sjtMS9yPSkpEqyagD3MJbAm5fTitjDZVIRWYxJUXBqlxrBB5/bDcrUssc9EbCTLFiGjyJtwI8OZcDpqOm0aoigMLgWgGvc/PGzHRnYDkWM6SGalljjb/a2jui8Bd6TFoNOqyRLikqEUz3QwHtYf/6Nm/y6PNHljWxtFnFkFOZY8nwNd/+F7fw+fg8fHNrVegizVag0qKpBtc5B37rg9/ttZ9cy2szLChBesimi+/6kX/+pO/+kX+zMqr7pyWilCLQUqOKmlFhzLVG4Nff8S0ff6M3e91HfrumJWQiCWltiZEUNbpLJqCVJNIDWoAi3fqaa+BJfOXPfOMHfsmf/O3tP/nZ337qjf7qny5e69+fu+hnnjvcuVju3F1O63BxFOv/IoqKQmkDmhnVyJh6OKCSeBlvgI/C++GN7r9+w/u3m6irG6hXuLl67pfw4QD/CbJM6FgtiY6NAAAAAElFTkSuQmCC sizes=32x32>
+<meta property=og:title content="「はてブついっと」という Google Chrome エクステンションを公開しました">
+<meta property=og:type content=article>
+<meta property=og:url content=https://www.otchy.net/20230416/hatebu-twit-v1.0.1/ >
+<meta property=og:image content=https://www.otchy.net/s/img/hatebu-twit-v1.0.1/cover.png>
+<meta property=og:site_name content=OTCHY.NET>
+<meta property=og:description content=" 「 はてなブックマークで Twitter 連携機能・Twitter ログインが利用できない障害が発生しています 」という障害 (？) の報告をうけて、Twitter API の状況に関わらず、はてブのエントリーページから自分のブコメを簡単…">
+<meta property=fb:admins content=1716785578265>
+<meta name=twitter:card content=summary_large_image>
+<meta name=twitter:site content=@otchy>
+<meta name=twitter:player content=@otchy>
+</head>
+<body>
+<header class="sticky row">
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<a href=/ class=button>Home</a>
+<a href=/javascript/ class=button>JavaScript</a>
+<a href=/greasemonkey/ class=button>Greasemonkey</a>
+<a href=/php/ class=button>PHP</a>
+</div>
+</header>
+<div class=container>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-lg-7 col-md-offset-1">
+<main class=container>
+<div class=row>
+<div class=col-sm-12>
+<img src=/s/img/hatebu-twit-v1.0.1/cover.png class=cover>
+</div>
+</div>
+<div class=row>
+<div class=col-sm-12>
+<h1>「はてブついっと」という Google Chrome エクステンションを公開しました<small>2023-04-16</small></h1>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 body">
+<p>「<a href=https://bookmark.hatenastaff.com/entry/2023/04/08/074419>はてなブックマークで Twitter 連携機能・Twitter ログインが利用できない障害が発生しています</a>」という障害 (？) の報告をうけて、Twitter API の状況に関わらず、はてブのエントリーページから自分のブコメを簡単にツイート出来る Google Chrome エクステンションを書きました。</p>
+<p>本家 twitter.com 上の URL <a href=https://twitter.com/intent/tweet>https://twitter.com/intent/tweet</a> を必要なパラメータと共に開くと、ツイートの内容がプリセットされた状態で画面が開く、という本家の機能を利用しており、Twitter API には一切頼っていないため、障害 (？) 耐性が大変高くなっております。</p>
+<p>このエクステンションをインストールすると、はてなブックマークのエントリーページに「Twitter を開く」アイコンが追加されるので、それをクリックするといい感じになります。</p>
+<p><img src=/s/img/hatebu-twit-v1.0.1/animation.gif alt=はてブついっと></p>
+<p>インストールは <a href="https://chrome.google.com/webstore/detail/%E3%81%AF%E3%81%A6%E3%83%96%E3%81%A4%E3%81%84%E3%81%A3%E3%81%A8/ciiacodoiephflaplbkcfflplilpbgmm?hl=ja&authuser=0">chrome ウェブストア</a> から行ってください。ソースコードは <a href=https://github.com/otchy210/twitter-hatebu>GitHub</a> で公開しています。皆様のお役に立てれば幸いです。</p>
+<h2 id=ずいぶん昔の思い出>ずいぶん昔の思い出</h2>
+<p>10 年以上前に作って使っていた「<a href=/greasemonkey/hatebu-with-twitter/ >はてブ with Twitter</a>」は、公式で Twitter がサポートされて開発終了していましたが、まさか令和の時代になってこんな形で復活するとは思いませんでした。</p>
+<h2 id=もしかして-feedly-も使っていませんか？>もしかして Feedly も使っていませんか？</h2>
+<p>Feedly ユーザ様におかれましては、姉妹品の「<a href=https://chrome.google.com/webstore/detail/feedly-%E3%81%AF%E3%81%A6%E3%83%96/ggaaakgimbjhmglfoahnaoknmceipgni>Feedly はてブ</a>」もよろしくお願いします。</p>
+</div>
+</div>
+<div class=row>
+<div class=col-sm-12>
+<p class=social-buttons><script>document.write('<a href="https://b.hatena.ne.jp/entry/' + location.href + '" class="hatena-bookmark-button" data-hatena-bookmark-title="' + document.title + '" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>');</script><script src=https://b.st-hatena.com/js/bookmark_button.js charset=utf-8 async></script><a href=https://twitter.com/share class=twitter-share-button data-via=otchy>Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script><script>document.write('<iframe src="https://www.facebook.com/plugins/like.php?href=' + location.href + '&width=112&height=20&layout=button_count&action=like" class="facebook-share-button"></iframe>');</script></p>
+</div>
+</div>
+<div class=row>
+<div class=col-sm-12>
+<hr>
+<p>
+カテゴリ:
+<a href=/category/dev/ >Development</a>
+</p>
+</div>
+</div>
+<div class=row>
+<div class=col-sm-12>
+<hr>
+</div>
+<div class="col-sm-12 col-lg-6 prev" style="background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgNTEyIj48IS0tIEZvbnQgQXdlc29tZSBGcmVlIDUuMTUuMSBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSAtLT48cGF0aCBkPSJNMzEuNyAyMzlsMTM2LTEzNmM5LjQtOS40IDI0LjYtOS40IDMzLjkgMGwyMi42IDIyLjZjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlMMTI3LjkgMjU2bDk2LjQgOTYuNGM5LjQgOS40IDkuNCAyNC42IDAgMzMuOUwyMDEuNyA0MDljLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC0xMzYtMTM2Yy05LjUtOS40LTkuNS0yNC42LS4xLTM0eiIvPjwvc3ZnPg==)">
+<a href=/20230101/at-least-one-comit-everyday/ >2022 年の 365 日間、毎日コミットを達成したのでその間に作ったものを紹介します</a>
+</div>
+<div class="col-sm-12 col-lg-6"></div>
+</div>
+<div class=row>
+<div class=col-sm-12>
+<hr>
+</div>
+</div>
+</main>
+</div>
+<div class="col-sm-12 col-md-10 col-lg-3 col-md-offset-1 col-lg-offset-0">
+<aside class=container>
+<div class=row>
+<div class=col-sm-12>
+<h4>プロフィール</h4>
+<div class=profile>
+<p class=name>
+<img src=/s/img/logo.jpg srcset="/s/img/logo.jpg, /s/img/logo@2x.jpg 2x">
+落合 徹
+</p>
+<p class=bio>
+Otchy / 1979 年 2 月 10 日生まれ / 仕事: Web システム開発 / 好きなもの: IT 全般、科学分野 / 座右の銘: 明日は明日の風が吹く / 好きな言葉: ハードルは高ければ高いほどくぐりやすい<br>
+</p>
+<p class=social>
+<a class=no-icon target=_blank href=https://twitter.com/otchy>
+<svg xmlns=http://www.w3.org/2000/svg viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+</a>
+<a class=no-icon target=_blank href=https://github.com/otchy210>
+<svg xmlns=http://www.w3.org/2000/svg viewBox="0 0 480 512"><!-- Font Awesome Free 5.15.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+</a>
+<a class=no-icon target=_blank href=https://www.linkedin.com/in/otchy>
+<svg xmlns=http://www.w3.org/2000/svg viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</a>
+</p>
+</div>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-6 col-lg-12">
+<h4>最近の投稿</h4>
+<ul>
+<li><a href=/20230416/hatebu-twit-v1.0.1/ >「はてブついっと」という Google Chrome エクステンションを公開しました</a></li>
+<li><a href=/20230101/at-least-one-comit-everyday/ >2022 年の 365 日間、毎日コミットを達成したのでその間に作ったものを紹介します</a></li>
+<li><a href=/20221222/how-to-build-original-super-fast-blog-to-replace-wordpress/ >いかに爆速ブログシステムを自作し WordPress を置き換えたか</a></li>
+<li><a href=/20210412/rakuten-mini-without-rakuten-mobile/ >【人柱】Rakuten Mini を楽天モバイルではない回線 (Y!mobile) で使う</a></li>
+<li><a href=/20210315/my-own-blog-system/ >自作のブログシステムに OTCHY.NET を移行しました</a></li>
+<li><a href=/20190921/visualization-of-libraries-and-museums-in-japan/ >東京とそれ以外の道府県における学習環境格差について都道府県別に図書館と博物館の数をビジュアライズして論じる</a></li>
+<li><a href=/20161231/feedly-hatebu-chrome-extension-edition/ >Feedly をはてブ対応させる Chrome エクステンション</a></li>
+<li><a href=/20161107/this-is-good-kindle-paperwhite-32gb-model/ >Kindle Paperwhite 32 GB を買った。これは良いものだ。</a></li>
+<li><a href=/20160909/variety-of-saying-i-dont-know/ >英語で「分かりません」を伝えるときのバリエーション</a></li>
+<li><a href=/20160829/wordpress-migration-from-centos-to-google-app-engine-for-free/ >CentOS で動いていた WordPress を Google App Engine 上で動かし無課金稼働させるまでのまとめ</a></li>
+</ul>
+</div>
+<div class="col-sm-12 col-md-6 col-lg-12">
+<h4>はてブ人気エントリ</h4>
+<div class=popular-hatebu></div>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-6 col-lg-12">
+<h4>自サイト・ツール</h4>
+<ul>
+<li><a href=https://www.webcomicranking.com/ target=_blank>(旧) Web Comic Ranking</a></li>
+<li><a href=http://viewer.webcomicranking.com/ target=_blank>WCR Comic Viewer</a></li>
+<li><a href=http://fukidashi-talk.otchy.net/ target=_blank>フキダシトーク</a></li>
+<li><a href=http://cronbuilder.otchy.net/ target=_blank>Cron Builder</a></li>
+<li><a href=http://nut.otchy.net/ target=_blank>数値単位変換</a></li>
+<li><a href=http://tacj2011.otchy.net/ target=_blank>Tech Advent Calendar Japan 2011</a></li>
+<li><a href=http://selectart.otchy.net/ target=_blank>Select Art</a></li>
+<li><a href=https://scalable-dots.otchy.net/ target=_blank>ScalableDots</a></li>
+</ul>
+</div>
+<div class="col-sm-12 col-md-6 col-lg-12">
+<h4>外部関連サイト</h4>
+<ul>
+<li><a href=https://qiita.com/otchy/ target=_blank>Qiita[キータ]</a></li>
+<li><a href=https://note.com/otchy/ target=_blank>note</a></li>
+</ul>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</div>
+<footer class=container>
+<div class=row>
+<div class="col-sm-12 col-md-3 col-md-offset-1">
+<h5>アーカイブ</h5>
+<ul>
+<li><a href=/2023/04/ >2023 年 4 月</a></li>
+<li><a href=/2023/01/ >2023 年 1 月</a></li>
+<li><a href=/2022/12/ >2022 年 12 月</a></li>
+<li><a href=/2021/04/ >2021 年 4 月</a></li>
+<li><a href=/2021/03/ >2021 年 3 月</a></li>
+<li><a href=/2019/09/ >2019 年 9 月</a></li>
+<li><a href=/2016/12/ >2016 年 12 月</a></li>
+<li><a href=/2016/11/ >2016 年 11 月</a></li>
+<li><a href=/2016/09/ >2016 年 9 月</a></li>
+<li><a href=/2016/08/ >2016 年 8 月</a></li>
+<li><a href=/2016/07/ >2016 年 7 月</a></li>
+<li><a href=/2016/03/ >2016 年 3 月</a></li>
+<li><a href=/2014/12/ >2014 年 12 月</a></li>
+<li><a href=/2014/10/ >2014 年 10 月</a></li>
+<li><a href=/2013/12/ >2013 年 12 月</a></li>
+<li><a href=/2013/07/ >2013 年 7 月</a></li>
+<li><a href=/2013/06/ >2013 年 6 月</a></li>
+<li><a href=/2013/05/ >2013 年 5 月</a></li>
+<li><a href=/2013/04/ >2013 年 4 月</a></li>
+<li><a href=/2012/09/ >2012 年 9 月</a></li>
+<li><a href=/2012/06/ >2012 年 6 月</a></li>
+<li><a href=/2012/05/ >2012 年 5 月</a></li>
+<li><a href=/2012/03/ >2012 年 3 月</a></li>
+<li><a href=/2012/02/ >2012 年 2 月</a></li>
+<li><a href=/2012/01/ >2012 年 1 月</a></li>
+<li><a href=/2011/12/ >2011 年 12 月</a></li>
+<li><a href=/2011/11/ >2011 年 11 月</a></li>
+<li><a href=/2011/10/ >2011 年 10 月</a></li>
+<li><a href=/2011/09/ >2011 年 9 月</a></li>
+<li><a href=/2011/08/ >2011 年 8 月</a></li>
+<li><a href=/2011/07/ >2011 年 7 月</a></li>
+<li><a href=/2011/06/ >2011 年 6 月</a></li>
+<li><a href=/2011/05/ >2011 年 5 月</a></li>
+<li><a href=/2011/02/ >2011 年 2 月</a></li>
+<li><a href=/2011/01/ >2011 年 1 月</a></li>
+<li><a href=/2010/11/ >2010 年 11 月</a></li>
+<li><a href=/2010/10/ >2010 年 10 月</a></li>
+<li><a href=/2010/09/ >2010 年 9 月</a></li>
+<li><a href=/2010/08/ >2010 年 8 月</a></li>
+<li><a href=/2010/06/ >2010 年 6 月</a></li>
+<li><a href=/2010/03/ >2010 年 3 月</a></li>
+<li><a href=/2010/02/ >2010 年 2 月</a></li>
+<li><a href=/2010/01/ >2010 年 1 月</a></li>
+<li><a href=/2009/12/ >2009 年 12 月</a></li>
+<li><a href=/2009/11/ >2009 年 11 月</a></li>
+<li><a href=/2009/10/ >2009 年 10 月</a></li>
+<li><a href=/2009/09/ >2009 年 9 月</a></li>
+<li><a href=/2009/08/ >2009 年 8 月</a></li>
+<li><a href=/2009/07/ >2009 年 7 月</a></li>
+<li><a href=/2009/06/ >2009 年 6 月</a></li>
+<li><a href=/2009/05/ >2009 年 5 月</a></li>
+<li><a href=/2009/04/ >2009 年 4 月</a></li>
+<li><a href=/2009/03/ >2009 年 3 月</a></li>
+<li><a href=/2009/02/ >2009 年 2 月</a></li>
+<li><a href=/2009/01/ >2009 年 1 月</a></li>
+<li><a href=/2008/12/ >2008 年 12 月</a></li>
+</ul>
+</div>
+<div class="col-sm-12 col-md-3">
+<h5>カテゴリ</h5>
+<ul>
+<li><a href=/category/business/ >Business</a></li>
+<li><a href=/category/dev/ >Development</a></li>
+<li><a href=/category/english/ >English</a></li>
+<li><a href=/category/info/ >Information</a></li>
+<li><a href=/category/lifehack/ >Lifehack</a></li>
+<li><a href=/category/lifestyle/ >Lifestyle</a></li>
+<li><a href=/category/science/ >Science</a></li>
+<li><a href=/category/tech/ >Technology</a></li>
+<li><a href=/category/webcomic/ >Webcomic</a></li>
+</ul>
+</div>
+<div class="col-sm-12 col-md-4">
+<h5>タグ</h5>
+<p><a href=/tag/javascript/ >javascript</a>
+<a href=/tag/twitter/ >twitter</a>
+<a href=/tag/greasemonkey/ >greasemonkey</a>
+<a href=/tag/bookmarklet/ >bookmarklet</a>
+<a href=/tag/hatebu/ >はてブ</a>
+<a href=/tag/gae/ >gae</a>
+<a href=/tag/jquery/ >jquery</a>
+<a href=/tag/perl/ >perl</a>
+<a href=/tag/css/ >css</a>
+<a href=/tag/google/ >google</a>
+<a href=/tag/html/ >html</a>
+<a href=/tag/iphone/ >iphone</a>
+<a href=/tag/wordpress/ >wordpress</a>
+<a href=/tag/chrome/ >chrome</a>
+<a href=/tag/eclipse/ >eclipse</a>
+<a href=/tag/java/ >java</a>
+<a href=/tag/php/ >php</a>
+<a href=/tag/excel/ >excel</a>
+<a href=/tag/usb/ >usb</a>
+<a href=/tag/utf-8/ >utf-8</a>
+<a href=/tag/dio/ >dio</a>
+<a href=/tag/firefox/ >firefox</a>
+<a href=/tag/git/ >git</a>
+<a href=/tag/gmail/ >gmail</a>
+<a href=/tag/jojo/ >jojo</a>
+<a href=/tag/linux/ >linux</a>
+<a href=/tag/mobile/ >mobile</a>
+<a href=/tag/mysql/ >mysql</a>
+<a href=/tag/synergy/ >synergy</a>
+<a href=/tag/userscript/ >userscript</a>
+<a href=/tag/windows/ >windows</a>
+<a href=/tag/zen-coding/ >zen-coding</a>
+<a href=/tag/service/ >Service</a>
+<a href=/tag/ajaxplorer/ >ajaxplorer</a>
+<a href=/tag/amazon/ >amazon</a>
+<a href=/tag/animation/ >animation</a>
+<a href=/tag/api/ >api</a>
+<a href=/tag/backup/ >backup</a>
+<a href=/tag/blank/ >blank</a>
+<a href=/tag/canvas/ >canvas</a>
+<a href=/tag/dump/ >dump</a>
+<a href=/tag/eco/ >eco</a>
+<a href=/tag/ecode/ >ecode</a>
+<a href=/tag/ecoder/ >ecoder</a>
+<a href=/tag/extension/ >extension</a>
+<a href=/tag/facebook/ >facebook</a>
+<a href=/tag/feedly/ >feedly</a>
+<a href=/tag/float/ >float</a>
+<a href=/tag/gamemeter/ >gamemeter</a>
+<a href=/tag/gui/ >gui</a>
+<a href=/tag/html5/ >html5</a>
+<a href=/tag/icon/ >icon</a>
+<a href=/tag/ie/ >ie</a>
+<a href=/tag/ie6/ >ie6</a>
+<a href=/tag/igoogle/ >igoogle</a>
+<a href=/tag/ios/ >ios</a>
+<a href=/tag/ip/ >ip</a>
+<a href=/tag/kindle/ >kindle</a>
+<a href=/tag/link/ >link</a>
+<a href=/tag/macos/ >macos</a>
+<a href=/tag/mmc/ >mmc</a>
+<a href=/tag/nat/ >nat</a>
+<a href=/tag/network/ >network</a>
+<a href=/tag/oauth/ >oauth</a>
+<a href=/tag/os/ >os</a>
+<a href=/tag/photoshop/ >photoshop</a>
+<a href=/tag/png/ >png</a>
+<a href=/tag/rss/ >rss</a>
+<a href=/tag/seo/ >seo</a>
+<a href=/tag/svn/ >svn</a>
+<a href=/tag/tag/ >tag</a>
+<a href=/tag/tinyurl/ >tinyurl</a>
+<a href=/tag/tumblr/ >tumblr</a>
+<a href=/tag/tutorial/ >tutorial</a>
+<a href=/tag/vbs/ >vbs</a>
+<a href=/tag/xpath/ >xpath</a>
+<a href=/tag/career/ >キャリア</a>
+<a href=/tag/display/ >ディスプレイ</a>
+<a href=/tag/nikodou/ >ニコ動</a>
+<a href=/tag/vcs/ >バージョン管理システム</a>
+<a href=/tag/remote-computer/ >リモートコンピュータ</a>
+<a href=/tag/search-engine/ >検索エンジン</a>
+<a href=/tag/resolution/ >解像度</a>
+<a href=/tag/cold/ >風邪</a></p>
+</div>
+</div>
+<div class=row>
+<div class=col-sm-12>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+<p class=copyright>
+Copyright © OTCHY.NET authored by <a class=no-icon href=https://twitter.com/otchy target=_blank>@otchy</a>
+</p>
+</div>
+</div>
+</footer>
+<div id=hatebu-widget-loader style="display: none">
+<script src=//b.hatena.ne.jp/js/widget.js></script>
+<script>(()=>{var o=document.getElementById("hatebu-widget-loader");let a=0;const e=new MutationObserver(e=>{e.forEach(e=>{Array.from(e.addedNodes).forEach(e=>{if("LI"===e.tagName&&a++,12===a){const t=document.getElementById("hatena-bookmark-widget0");e=t.querySelector(".hatena-bookmark-widget-body");document.querySelector(".popular-hatebu").appendChild(e),document.body.removeChild(o)}})})});e.observe(o,{childList:!0,subtree:!0}),Object.entries({url:"https://www.otchy.net/",sort:"count",num:12,theme:"notheme"}).forEach(([e,t])=>{Hatena.BookmarkWidget[e]=t}),Hatena.BookmarkWidget.load()})();</script>
+</div>
+<script>Array.from(document.getElementsByTagName("a")).forEach(t=>{const e=t.getAttribute("href");e&&e.startsWith("http")&&(t.getAttribute("target")||t.setAttribute("target","_blank"))});</script>
+</body>
+</html>
